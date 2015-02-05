@@ -1,0 +1,108 @@
+body{
+	background:#EAEAEA;
+	width:900px;
+	margin: 0 auto;
+	color:#424242;
+	padding:50px;
+	font-family: Palatino Linotype;
+}
+
+.sites a{
+	text-decoration:none;
+	color:inherit;
+}
+
+h1, h3{
+	text-align: center;
+	font-family: Arial Black;
+}
+
+.color{
+	float:left;
+	width:1px;
+	height:200px
+}
+
+.color span{
+	display:none;
+	position:absolute;
+	background:#fff;
+	padding:5px;
+	color:#000;
+}
+
+.color:hover span{
+	display:block;
+}
+
+.explanation{
+	border-top:#939292;
+	width:600px;
+	margin: 0 auto;
+	margin-top: 20px;
+	font-size: 15pt;
+	color:#1C1C1C;
+}
+
+.holder{
+	clear:both;
+	margin: 0 auto;
+	overflow:hidden;
+	width:573px;
+	border:1px solid #707070;
+	margin-top:20px;
+	margin-bottom: 3px;
+}
+
+.caption{
+	position:relative;
+	left:164px;
+	font-size:12pt;
+}
+
+.sites{
+	text-align:center;
+	width:450px;
+	margin: 0 auto;
+	clear:both;
+	border-top:2px solid #939292;
+	margin-top:50px;
+	padding-top:10px;
+	font-size:14pt;
+	font-family: Arial;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px){
+
+	h1{
+		font-size:48pt;
+	}
+
+	body{
+		width:90%;
+	}
+
+	.explanation, .sites{
+		width:100%;
+	}
+
+	.explanation, .sites{
+		font-size: 18pt;
+	}
+
+	.caption{
+		font-size: 15pt;
+	}
+
+
+
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+
+
+}
