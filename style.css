@@ -4,7 +4,7 @@ body{
 	margin: 0 auto;
 	color:#424242;
 	padding:50px;
-	font-family: Palatino Linotype;
+	font-family: Open Sans;
 }
 
 .sites a{
@@ -14,7 +14,7 @@ body{
 
 h1, h3{
 	text-align: center;
-	font-family: Arial Black;
+	font-family: Bree Serif;
 }
 
 .color{
@@ -72,37 +72,39 @@ h1, h3{
 	font-family: Arial;
 }
 
-@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px){
+@media (max-width : 480px){
 
-	h1{
-		font-size:48pt;
-	}
-
-	body{
-		width:90%;
-	}
-
-	.explanation, .sites{
+	html, body{
 		width:100%;
+		padding-left:0px;
+		padding-right:0px;
+		padding-top:5px;
+		margin:0px;
+	}
+
+	.explanation, .sites, .holder{
+		width:90%;
+		margin:0 auto;
 	}
 
 	.explanation, .sites{
-		font-size: 18pt;
+		font-size: 16pt;
 	}
 
 	.caption{
-		font-size: 15pt;
+		font-size: 13pt;
+		left:0px;
+		width:90%;
+		margin:0 auto;
+		display:block;
+		text-align:center;
+		margin-bottom:10px;
 	}
 
-
-
-}
-
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
-
-
+	.color{
+		float:none;
+		display:block;
+		width:100%;
+		height:1px;
+	}
 }
