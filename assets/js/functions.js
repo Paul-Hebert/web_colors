@@ -3,19 +3,20 @@ $(function() {
 
     initialize_contact_form();	
 
-    convert_colors();
+    convertColors();
 	printChart('rectangle','hue');
 	printChart('rectangle','sat');
 	printChart('rectangle','val');
+    printChart('fan','hue'); 
 });
 
-function convert_colors(){
+function convertColors(){
     for (var c = 0; c < colors.length; c++) {
         var hex = colors[c].hex;
          
-        hex_to_rgb(c);
+        hexToRgb(c);
  
-        rgb_to_hsv(c);
+        rgbToHsv(c);
     }
 }
 
@@ -45,12 +46,56 @@ var sortColors = function(sortCriteria) {
 }
 
 function printChart(type,sortCriteria){
-    colors2 = sortColors(sortCriteria);
-    
-    for(i = 0; i < colors2.length; i++){
-        $('.chart.' + type + '.' + sortCriteria).append('<div class="color" style="background:#' + colors2[i].hex + ';"><span>H:' + parseInt(colors2[i].hue) + '  S:' + colors2[i].sat.toFixed(2) + '  V:' + colors2[i].val.toFixed(2) + '<hr/>#' + colors2[i].hex.toLowerCase() + '</span></div>');
+    colors = sortColors(sortCriteria);
+
+    if (type === 'fan'){
+            fan = Snap('.chart.' + type + '.' + sortCriteria);
+            center = $('.chart.' + type + '.' + sortCriteria).width()/2;
+
+            $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
+
+            var circle = fan.circle(center, center, 0);
+
+            circle.attr({
+                fill: '#fff'
+            });
+
+            circle.animate({
+                r: center
+            }, 1000);
     }
 
+    for(i = 0; i < colors.length; i++){    
+        if (type === 'fan'){
+            // Calculate rotation of current line.
+            var rot = colors[i].hue * 360 / 255;
+            // Convert from degrees to radians.
+            rot *= 3.141592653589793 / 180;
+
+            // Use simple trig to figure out line's endpoint based on angle and line length. (Selector[c]) 
+            // Adjust by scale.
+            x = center + Math.sin(rot) * colors[i].val * center * 9/10;
+            y = center + Math.cos(rot) * colors[i].val * center * 9/10;
+
+            var circle = fan.circle(center, center, center/100);
+
+            circle.attr({
+                fill: '#' + colors[i].hex
+            });
+
+            circle.animate({
+                cx: x,
+                cy: y
+            }, 1000);            
+        } else if(type === 'rectangle'){
+            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';">';
+            dataPoint += '<span>H:' + parseInt(colors[i].hue) + '  S:' + colors[i].sat.toFixed(2) + '  V:' + colors[i].val.toFixed(2) + '<hr/>';
+            dataPoint += '#' + colors[i].hex.toLowerCase();
+            dataPoint += '</span></div>';
+
+            $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
+        }
+    }
 }
 
 function getMatches(num){
@@ -61,7 +106,7 @@ function getMatches(num){
     }
 }
 
-function hex_to_rgb(color){
+function hexToRgb(color){
     hex = colors[color].hex;
 
     colors[color].red = parseInt(hex.substring(0,2),16)/255;
@@ -69,7 +114,7 @@ function hex_to_rgb(color){
     colors[color].blue = parseInt(hex.substring(4,6),16)/255;
 }
 
-function rgb_to_hsv(color){
+function rgbToHsv(color){
     var rgb = colors[color];
 
     /* Getting the Max and Min values for Chroma. */

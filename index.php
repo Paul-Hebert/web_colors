@@ -8,6 +8,11 @@
 		<div class="row">
 			<div class="col-md-6">
 				<figure>
+					<svg class="hue fan chart"></svg>
+					<figcaption>Sorted first by hue, then saturation, then value.</figcaption>
+				</figure>
+
+				<figure>
 					<div class="hue rectangle chart"></div>
 					<figcaption>Sorted first by hue, then saturation, then value.</figcaption>
 				</figure>
@@ -28,7 +33,7 @@
 					The Colors of the 10 Most Popular Websites
 				</h1>
 
-				<p>
+				<p class='desktop'>
 					Scroll over the colors to see their hue, saturation, value, and hexadecimal color code.
 				</p>
 

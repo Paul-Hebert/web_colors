@@ -1004,6 +1004,9 @@ figcaption {
     display: inline-block;
     margin-right: 13pt; }
 
+svg {
+  width: 50%; }
+
 @media (max-width: 767px) {
   .desktop {
     display: none; }
