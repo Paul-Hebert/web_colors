@@ -33,16 +33,16 @@
 					The Colors of the 10 Most Popular Websites
 				</h1>
 
-				<p class='desktop'>
-					Scroll over the colors to see their hue, saturation, value, and hexadecimal color code.
-				</p>
-
 				<p>
-					These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs above.)
+					These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs.)
 				</p>
 
 				<p>
 					There were a total of 537 colors used, including duplicates. For example, 4 of the 10 sites used pure white (#ffffff) in their designs. Duplicated colors are represented in the data multiple times (once for each use), giving those colors a wider bar in the charts.
+				</p>
+
+				<p class='desktop'>
+					Scroll over the colors to see their hue, saturation, value, and hexadecimal color code.
 				</p>
 
 				<div class="sites">

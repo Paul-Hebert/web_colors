@@ -63,19 +63,30 @@ function printChart(type,sortCriteria){
             circle.animate({
                 r: center
             }, 1000);
+
+            usedColors = [];
     }
 
     for(i = 0; i < colors.length; i++){    
         if (type === 'fan'){
-            // Calculate rotation of current line.
+            // Calculate rotation of hue.
             var rot = colors[i].hue * 360 / 255;
             // Convert from degrees to radians.
             rot *= 3.141592653589793 / 180;
 
-            // Use simple trig to figure out line's endpoint based on angle and line length. (Selector[c]) 
-            // Adjust by scale.
+            // Use simple trig to plot colors.
             x = center + Math.sin(rot) * colors[i].val * center * 9/10;
             y = center + Math.cos(rot) * colors[i].val * center * 9/10;
+
+            var used = 1;
+
+            for(z = 0; z < usedColors.length; z++){
+                if (colors[i].hex === usedColors[z]){
+                    used ++;
+                }
+            }
+
+            usedColors.push(colors[i].hex);
 
             var circle = fan.circle(center, center, center/100);
 
@@ -85,7 +96,8 @@ function printChart(type,sortCriteria){
 
             circle.animate({
                 cx: x,
-                cy: y
+                cy: y,
+                r: center/100 * used
             }, 1000);            
         } else if(type === 'rectangle'){
             dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';">';
@@ -94,14 +106,6 @@ function printChart(type,sortCriteria){
             dataPoint += '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
-        }
-    }
-}
-
-function getMatches(num){
-    for(i = 0; i < num; i++){
-        if (colors[i].hex == colors[num].hex){
-            return true;
         }
     }
 }

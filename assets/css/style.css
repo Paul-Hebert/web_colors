@@ -1005,7 +1005,7 @@ figcaption {
     margin-right: 13pt; }
 
 svg {
-  width: 50%; }
+  width: 100%; }
 
 @media (max-width: 767px) {
   .desktop {
