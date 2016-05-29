@@ -1,0 +1,60 @@
+form{
+	position:relative;
+}
+
+label{
+	font-family:$second-font;
+}
+
+input:not([type="submit"]), textarea{
+	font-size: $size-5;
+	width:100%;
+	border:1px solid $grey;
+	padding:$size-1;
+	margin-top:$size-1;
+	margin-bottom:$size-2;
+	@include transition_mixin(all $base-duration $base-easing);
+
+	&.error{
+		@include shadow( 0px 0px 3px 1px $error );				
+	}
+
+	&:focus{
+		@include shadow( 0px 0px 0px 0px $off-white );
+	}	
+}
+
+#error_text{
+	padding:$size-2;
+	background:$error;
+	color:$off-white;
+	display:none;
+	margin:$size-2 0;
+}
+
+#success{
+	display:none;
+	position:absolute;
+	top:$size-7;
+}
+
+.button, input[type=submit]{
+	-webkit-appearance: none;
+    font-size:$size-5;
+    background:$accent;
+    color:$off-white;
+    padding:$size-2;
+    @include radius($size-2);
+    padding:$size-5 $size-6;
+    margin-top:$size-5;
+    margin-right:$size-2;
+    border:0px;
+    cursor:pointer;
+    display:inline-block;
+
+    @include transition_mixin(background $base-duration $base-easing);
+
+    &:hover{
+    	background:$hovered;
+    }
+}

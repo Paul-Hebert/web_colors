@@ -1,0 +1,28 @@
+*{
+    font-family:$main-font, sans-serif;
+    color:$off-black;
+    line-height: 150%;    
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family:$second-font;
+}
+
+h1{
+	font-size:$size-8;
+    margin-bottom:$size-7;	
+}
+
+h2{
+    font-size:$size-7;
+    margin-bottom:$size-6;
+}
+
+p, small, span, figcaption{
+    font-size:$size-5;
+    padding-bottom:$size-3;
+}
+
+a{
+    font-family:inherit;
+}

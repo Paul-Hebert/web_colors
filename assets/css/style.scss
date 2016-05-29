@@ -1,0 +1,61 @@
+@import 'reset';
+@import 'vars';
+@import 'mixins-extends';
+@import 'grid';
+@import 'forms';
+@import 'typography';
+
+body{
+	background:$off-white;
+	padding:$size-8;
+}
+
+header, footer{
+
+	h1{
+		font-size:$size-7;
+	}
+
+	a{
+		text-decoration:none;
+		color:$off-black;
+	}
+}
+
+main{
+	padding:$size-8 0;
+}
+
+.color{
+	display:inline-block;
+	width:1px;
+	height:20vh;
+}
+
+.color span{
+	display:none;
+	position:absolute;
+	background:#fff;
+	padding:5px;
+}
+
+.color:hover span{
+	display:block;
+}
+
+figcaption{
+	display:block;
+}
+
+.sites{
+	border-top:1px solid $grey;
+	padding-top:$size-6;
+	margin-top:$size-5;
+
+	a{
+		display:inline-block;
+		margin-right:$size-5;
+	}
+}
+
+@import 'responsive';

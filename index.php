@@ -1,90 +1,76 @@
-<!Doctype HTML>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+	$title = 'The Colors of the Web';
 
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-		<script type="text/javascript" src="js/functions.js"></script>
-		<script type="text/javascript" src="js/thenBy.js"></script>
+	include('assets/php/header.php');
+?>
 
-		<link href='http://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-	</head>
+	<main>
+		<div class="row">
+			<div class="col-md-6">
+				<figure>
+					<div class="hue rectangle chart"></div>
+					<figcaption>Sorted first by hue, then saturation, then value.</figcaption>
+				</figure>
 
-	<body>
-		<h1>
-			The Colors of the 10 Most Popular Websites
-		</h1>
+				<figure>
+					<div class="sat rectangle chart"></div>
+					<figcaption>Sorted first by saturation, then hue, then value.</figcaption>
+				</figure>
 
-		<div id="hue" class="holder"></div>
-		<span class="caption">Sorted first by hue, then saturation, then value.</span>
+				<figure>
+					<div class="val rectangle chart"></div>
+					<figcaption>Sorted first by value, then saturation, then hue.</figcaption>
+				</figure>
+			</div>
 
-		<div id="sat" class="holder"></div>
-		<span class="caption">Sorted first by saturation, then hue, then value.</span>
+			<div class="col-md-5">
+				<h1>
+					The Colors of the 10 Most Popular Websites
+				</h1>
 
-		<div id="val" class="holder"></div>
-		<span class="caption">Sorted first by value, then saturation, then hue.</span>
+				<p>
+					Scroll over the colors to see their hue, saturation, value, and hexadecimal color code.
+				</p>
 
-		<div class="explanation">
-			<p>
-				Scroll over the colors above to see their hue, saturation, value, and hexadecimal color code.
-			</p>
+				<p>
+					These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs above.)
+				</p>
 
-			<p>
-				These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs above.)
-			</p>
+				<p>
+					There were a total of 537 colors used, including duplicates. For example, 4 of the 10 sites used pure white (#ffffff) in their designs. Duplicated colors are represented in the data multiple times (once for each use), giving those colors a wider bar in the charts.
+				</p>
 
-			<p>
-				There were a total of 537 colors used, including duplicates. For example, 4 of the 10 sites used pure white (#ffffff) in their designs. Duplicated colors are represented in the data multiple times (once for each use), giving those colors a wider bar in the charts.
-			</p>
-
-			<!--<p>
-				*Colors were sorted by one characteristic (e.g. hue) and then sorted by the other two. For example, the first graph was sorted by hue. If two colors had the same hue then they were sorted by saturation. If they also had the same saturation they were sorted again by value.
-			</p>-->
-		</div>
-
-		<div class="sites">
-			<a href="http://www.google.com" target="_blank">google.com</a>
-			 &bull; 
-			 <a href="http://www.facebook.com" target="_blank">facebook.com </a>
-			 &bull; 
-			 <a href="http://www.youtube.com" target="_blank">youtube.com </a>
-			 &bull; 
-			 <a href="http://www.yahoo.com" target="_blank">yahoo.com </a>
-			 &bull; 
-			 <a href="http://www.baidu.com" target="_blank">baidu.com </a>
-			 &bull; 
-			 <a href="http://www.wikipedia.org" target="_blank">wikipedia.org </a>
-			 &bull; 
-			 <a href="http://www.amazon.com" target="_blank">amazon.com </a>
-			 &bull; 
-			 <a href="http://www.twitter.com" target="_blank">twitter.com </a>
-			 &bull; 
-			 <a href="http://www.cq.com" target="_blank">cq.com </a>
-			 &bull; 
-			 <a href="http://www.linkedin.com" target="_blank">linkedin.com</a>
+				<div class="sites">
+					<a href="http://www.google.com" target="_blank">google.com</a>
+					 <a href="http://www.facebook.com" target="_blank">facebook.com </a>
+					 <a href="http://www.youtube.com" target="_blank">youtube.com </a>
+					 <a href="http://www.yahoo.com" target="_blank">yahoo.com </a>
+					 <a href="http://www.baidu.com" target="_blank">baidu.com </a>
+					 <a href="http://www.wikipedia.org" target="_blank">wikipedia.org </a>
+					 <a href="http://www.amazon.com" target="_blank">amazon.com </a>
+					 <a href="http://www.twitter.com" target="_blank">twitter.com </a>
+					 <a href="http://www.cq.com" target="_blank">cq.com </a>
+					 <a href="http://www.linkedin.com" target="_blank">linkedin.com</a>
+				</div>
+			</div>
 		</div>
 
 		<?php
 			$txt = file_get_contents('colors.txt', FILE_USE_INCLUDE_PATH);
 			$colors = preg_split('/,/', $txt);
 			echo '<script type="text/javascript">';
-				echo 'colorsOG = new Array;';
+				echo 'colors = new Array;';
 				$i = 0;
 				foreach ($colors as $color){
 					echo 'current ={"hex":"' . $color . '"};';
-					echo 'colorsOG.push(current);';  
+					echo 'colors.push(current);';  
 
 					$i++;
 				}
 		?>
 			</script>
-			<script type="text/javascript">
-				printColors('hue');
-				printColors('sat');
-				printColors('val');
-			</script>
-		
-	</body>
-</html>
+	</main>
+
+<?php
+	include('assets/php/footer.php');
+?>
