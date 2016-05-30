@@ -6,7 +6,7 @@ label{
 	font-family:$second-font;
 }
 
-input:not([type="submit"]), textarea{
+input:not([type="submit"],[type="range"]), textarea{
 	font-size: $size-5;
 	width:100%;
 	border:1px solid $grey;

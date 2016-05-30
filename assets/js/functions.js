@@ -8,6 +8,12 @@ $(function() {
 	printChart('rectangle','sat');
 	printChart('rectangle','val');
     printChart('fan','hue'); 
+
+    $('.backgroundChanger').change(function(){
+        $( $(this).attr('dataTarget') ).css({
+            fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
+        });
+    });
 });
 
 function convertColors(){
@@ -57,7 +63,8 @@ function printChart(type,sortCriteria){
             var circle = fan.circle(center, center, 0);
 
             circle.attr({
-                fill: '#fff'
+                fill: '#fff',
+                class: 'background'
             });
 
             circle.animate({
@@ -75,8 +82,8 @@ function printChart(type,sortCriteria){
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * colors[i].val * center * 9/10;
-            y = center + Math.cos(rot) * colors[i].val * center * 9/10;
+            x = center + Math.sin(rot) * colors[i].val * center * 93/100;
+            y = center + Math.cos(rot) * colors[i].val * center * 93/100;
 
             var used = 1;
 

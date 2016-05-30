@@ -49,8 +49,12 @@ main{
 	display:block;
 }
 
-figcaption{
-	display:block;
+figure{
+	margin-bottom:$size-6;
+
+	figcaption{
+		display:block;
+	}
 }
 
 .sites{

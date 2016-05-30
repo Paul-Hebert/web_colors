@@ -6,8 +6,10 @@
 
 	<main>
 		<div class="row">
-			<figure>
-				<svg class="hue fan chart col-sm-5"></svg>
+			<figure class="col-sm-5">
+				<svg class="hue fan chart"></svg>
+
+				<input type="range" min="0" max="255" dataTarget=".hue.fan.chart .background" class="backgroundChanger">
 			</figure>
 
 			<div class="col-sm-5">
