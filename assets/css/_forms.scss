@@ -6,9 +6,13 @@ label{
 	font-family:$second-font;
 }
 
+input{
+	width:100%;	
+	margin:0px;
+}
+
 input:not([type="submit"],[type="range"]), textarea{
 	font-size: $size-5;
-	width:100%;
 	border:1px solid $grey;
 	padding:$size-1;
 	margin-top:$size-1;

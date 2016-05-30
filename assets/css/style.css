@@ -888,9 +888,12 @@ form {
 label {
   font-family: Roboto Slab; }
 
+input {
+  width: 100%;
+  margin: 0px; }
+
 input:not([type="submit"], [type="range"]), textarea {
   font-size: 13pt;
-  width: 100%;
   border: 1px solid #ccc;
   padding: 3pt;
   margin-top: 3pt;
@@ -949,7 +952,8 @@ input:not([type="submit"], [type="range"]), textarea {
   line-height: 150%; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Roboto Slab; }
+  font-family: Roboto Slab;
+  color: #444; }
 
 h1 {
   font-size: 26pt;
@@ -959,25 +963,16 @@ h2 {
   font-size: 21pt;
   margin-bottom: 16pt; }
 
+h3 {
+  font-size: 16pt;
+  margin-bottom: 13pt; }
+
 p, small, span, figcaption {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
 a {
   font-family: inherit; }
-
-body {
-  background: #f0f0f0;
-  padding: 26pt; }
-
-header h1, footer h1 {
-  font-size: 21pt; }
-header a, footer a {
-  text-decoration: none;
-  color: #222; }
-
-main {
-  padding: 26pt 0; }
 
 .rectangle {
   max-width: 1%;
@@ -998,21 +993,86 @@ main {
 .color:hover span {
   display: block; }
 
+svg {
+  width: 100%; }
+
+.bwSlider:before {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ffffff+100 */
+  background: -moz-linear-gradient(left, black 0%, white 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, black 0%, white 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, black 0%, white 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=1 );
+  /* IE6-9 */
+  display: block;
+  height: 7px;
+  content: ''; }
+
+.backgroundChanger {
+  margin: 0px;
+  position: relative;
+  top: -10px; }
+
+#rgbaExample .colorBlock {
+  background: #bada55;
+  width: 100%;
+  display: block;
+  height: 20px;
+  content: ''; }
+
+body {
+  background: #f0f0f0;
+  padding: 26pt; }
+
+header h1, footer h1 {
+  font-size: 21pt; }
+header a, footer a {
+  text-decoration: none;
+  color: #222; }
+
+main {
+  padding: 26pt 0;
+  max-width: 440pt;
+  width: 100%;
+  margin: 0 auto; }
+
+section:not(:first-of-type) {
+  border-top: 1px solid #ddd;
+  padding-top: 42pt;
+  margin-top: 34pt; }
+
+.subsection:not(:first-of-type) {
+  padding-top: 13pt; }
+
+aside {
+  width: 200px; }
+  aside * {
+    font-size: 10pt; }
+  aside.left {
+    float: left;
+    clear: left;
+    margin-left: -250px; }
+    aside.left figure {
+      float: right; }
+  aside.right {
+    float: right;
+    clear: right;
+    margin-right: -250px; }
+
 figure {
   margin-bottom: 16pt; }
   figure figcaption {
     display: block; }
 
-.sites {
-  border-top: 1px solid #ccc;
-  padding-top: 16pt;
-  margin-top: 13pt; }
-  .sites a {
-    display: inline-block;
-    margin-right: 13pt; }
+.sites a {
+  display: block; }
 
-svg {
-  width: 100%; }
+code {
+  background: #ddd;
+  padding: 0px 5px;
+  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace; }
 
 @media (max-width: 767px) {
   .desktop {

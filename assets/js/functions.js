@@ -14,6 +14,18 @@ $(function() {
             fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
         });
     });
+
+    rgbaExample = ['186','218','85','0'];
+
+    $('#rgbaExample input').change(function(){
+        console.log('bing');
+        var rgbaVariable = $(this).attr('dataTarget');
+        rgbaExample[ rgbaVariable ] = $(this).val();
+
+        var rgbaColor = 'rgba(' + rgbaExample[0] + ',' + rgbaExample[1]  + ',' + rgbaExample[2]  + ',' + rgbaExample[3]/100  + ')';
+
+        $('#rgbaExample .colorBlock').css('background',rgbaColor)
+    });
 });
 
 function convertColors(){

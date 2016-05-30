@@ -4,6 +4,7 @@
 @import 'grid';
 @import 'forms';
 @import 'typography';
+@import 'graphs';
 
 body{
 	background:$off-white;
@@ -24,29 +25,43 @@ header, footer{
 
 main{
 	padding:$size-8 0;
+	max-width:440pt;
+	width:100%;
+	margin: 0 auto;
 }
 
-.rectangle{
-	max-width:1%;
-	height:20px;
-	overflow:hidden;
+section:not(:first-of-type){
+	border-top:1px solid $light-grey;
+	padding-top:$size-10;
+	margin-top:$size-9;
 }
 
-.color{
-	display:inline-block;
-	width:1px;
-	height:100%;;
+.subsection:not(:first-of-type){
+	padding-top:$size-5;
 }
 
-.color span{
-	display:none;
-	position:absolute;
-	background:#fff;
-	padding:5px;
-}
+aside{
+	width:200px;
 
-.color:hover span{
-	display:block;
+	*{
+		font-size:$size-4;
+	}
+
+	&.left{
+		float:left;
+		clear:left;
+		margin-left:-250px;
+
+		figure{
+			float:right;
+		}
+	}
+
+	&.right{
+		float:right;
+		clear:right;
+		margin-right:-250px;
+	}
 }
 
 figure{
@@ -57,19 +72,14 @@ figure{
 	}
 }
 
-.sites{
-	border-top:1px solid $grey;
-	padding-top:$size-6;
-	margin-top:$size-5;
-
-	a{
-		display:inline-block;
-		margin-right:$size-5;
-	}
+.sites a{
+	display:block;
 }
 
-svg{
-	width:100%;
+code{
+	background:$light-grey;
+	padding:0px 5px;
+	font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
 }
 
 @import 'responsive';
