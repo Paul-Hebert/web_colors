@@ -61,8 +61,8 @@ function printChart(type,sortCriteria){
             });
 
             circle.animate({
-                r: center
-            }, 1000);
+                r: center * 95/100
+            }, 500);
 
             usedColors = [];
     }
@@ -88,17 +88,12 @@ function printChart(type,sortCriteria){
 
             usedColors.push(colors[i].hex);
 
-            var circle = fan.circle(center, center, center/100);
+            var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: '#' + colors[i].hex
+                fill: '#' + colors[i].hex,
+                opacity: 0
             });
-
-            circle.animate({
-                cx: x,
-                cy: y,
-                r: center/100 * used
-            }, 1000);            
         } else if(type === 'rectangle'){
             dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';">';
             dataPoint += '<span>H:' + parseInt(colors[i].hue) + '  S:' + colors[i].sat.toFixed(2) + '  V:' + colors[i].val.toFixed(2) + '<hr/>';
@@ -107,6 +102,18 @@ function printChart(type,sortCriteria){
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
+    }
+
+    if (type === 'fan'){
+        setTimeout(function(){
+            fan.selectAll('circle').animate({
+                opacity:1
+            }, Math.floor(Math.random() * 500) + 300);  
+        }, Math.floor(Math.random() * 500) + 500);
+    } else if(type === 'rectangle'){
+        $('.chart.' + type + '.' + sortCriteria).animate({
+            'max-width':'100%'
+        },1000);
     }
 }
 

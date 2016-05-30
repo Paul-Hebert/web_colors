@@ -26,10 +26,16 @@ main{
 	padding:$size-8 0;
 }
 
+.rectangle{
+	max-width:1%;
+	height:20px;
+	overflow:hidden;
+}
+
 .color{
 	display:inline-block;
 	width:1px;
-	height:20vh;
+	height:100%;;
 }
 
 .color span{

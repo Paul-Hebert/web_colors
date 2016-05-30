@@ -6,32 +6,18 @@
 
 	<main>
 		<div class="row">
-			<div class="col-md-6">
-				<figure>
-					<svg class="hue fan chart"></svg>
-					<figcaption>Sorted first by hue, then saturation, then value.</figcaption>
-				</figure>
+			<figure>
+				<svg class="hue fan chart col-sm-5"></svg>
+			</figure>
 
-				<figure>
-					<div class="hue rectangle chart"></div>
-					<figcaption>Sorted first by hue, then saturation, then value.</figcaption>
-				</figure>
-
-				<figure>
-					<div class="sat rectangle chart"></div>
-					<figcaption>Sorted first by saturation, then hue, then value.</figcaption>
-				</figure>
-
-				<figure>
-					<div class="val rectangle chart"></div>
-					<figcaption>Sorted first by value, then saturation, then hue.</figcaption>
-				</figure>
-			</div>
-
-			<div class="col-md-5">
+			<div class="col-sm-5">
 				<h1>
 					The Colors of the 10 Most Popular Websites
 				</h1>
+
+				<figure>
+					<div class="hue rectangle chart"></div>
+				</figure>
 
 				<p>
 					These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs.)
