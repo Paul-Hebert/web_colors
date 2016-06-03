@@ -15,16 +15,36 @@ $(function() {
         });
     });
 
-    rgbaExample = ['186','218','85','0'];
 
-    $('#rgbaExample input').change(function(){
-        console.log('bing');
-        var rgbaVariable = $(this).attr('dataTarget');
-        rgbaExample[ rgbaVariable ] = $(this).val();
+    $('.colorPicker input, .colorPicker select').change(function(){
+        var colorPicker = $(this).parents('.colorPicker');
 
-        var rgbaColor = 'rgba(' + rgbaExample[0] + ',' + rgbaExample[1]  + ',' + rgbaExample[2]  + ',' + rgbaExample[3]/100  + ')';
+        var colorFormat = colorPicker.attr('data-format');
+        colorFormat = colorFormat.split(',');
 
-        $('#rgbaExample .colorBlock').css('background',rgbaColor)
+        var colorDelimiter = colorPicker.attr('data-delimiter');
+
+        var color = colorFormat[0];
+
+        colorPicker.find('input, select').each(function(){
+            if ($(this).attr('data-scale') != ''){
+                color += $(this).val() / $(this).attr('data-scale') ;
+            } else{
+                color += $(this).val();                
+            }
+
+            color += $(this).attr('data-unit');
+
+            if( ! $(this).is(':last-of-type') ){
+                color += colorDelimiter;
+            }
+        });
+
+        color += colorFormat[1];
+
+        colorPicker.find('.color').text(color)
+
+        colorPicker.find('.colorBlock').css('background',color);
     });
 });
 

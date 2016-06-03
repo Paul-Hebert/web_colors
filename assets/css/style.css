@@ -886,9 +886,9 @@ form {
   position: relative; }
 
 label {
-  font-family: Roboto Slab; }
+  font-family: Roboto Slab, "sans-serif"; }
 
-input {
+input, textarea {
   width: 100%;
   margin: 0px; }
 
@@ -947,12 +947,12 @@ input:not([type="submit"], [type="range"]), textarea {
     background: #166993; }
 
 * {
-  font-family: Roboto, sans-serif;
+  font-family: Roboto, "sans-serif", sans-serif;
   color: #222;
   line-height: 150%; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Roboto Slab;
+  font-family: Roboto Slab, "sans-serif";
   color: #444; }
 
 h1 {
@@ -967,45 +967,41 @@ h3 {
   font-size: 16pt;
   margin-bottom: 13pt; }
 
-p, small, span, figcaption {
+p, small, figcaption, code {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
+span {
+  font-size: inherit;
+  color: inherit; }
+
 a {
   font-family: inherit; }
+
+.acronym {
+  letter-spacing: 1px; }
 
 .rectangle {
   max-width: 1%;
   height: 20px;
   overflow: hidden; }
-
-.color {
-  display: inline-block;
-  width: 1px;
-  height: 100%; }
-
-.color span {
-  display: none;
-  position: absolute;
-  background: #fff;
-  padding: 5px; }
-
-.color:hover span {
-  display: block; }
+  .rectangle .color {
+    display: inline-block;
+    width: 1px;
+    height: 100%; }
+    .rectangle .color span {
+      display: none;
+      position: absolute;
+      background: #fff;
+      padding: 5px; }
+    .rectangle .color:hover span {
+      display: block; }
 
 svg {
   width: 100%; }
 
 .bwSlider:before {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ffffff+100 */
-  background: -moz-linear-gradient(left, black 0%, white 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, black 0%, white 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, black 0%, white 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=1 );
-  /* IE6-9 */
   display: block;
   height: 7px;
   content: ''; }
@@ -1015,12 +1011,17 @@ svg {
   position: relative;
   top: -10px; }
 
-#rgbaExample .colorBlock {
+.colorPicker .colorBlock {
   background: #bada55;
   width: 100%;
   display: block;
   height: 20px;
   content: ''; }
+
+#hexConversion td:first-of-type {
+  text-align: right; }
+#hexConversion td.ellipsis {
+  text-align: center; }
 
 body {
   background: #f0f0f0;
@@ -1072,7 +1073,7 @@ figure {
 code {
   background: #ddd;
   padding: 0px 5px;
-  font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace; }
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 @media (max-width: 767px) {
   .desktop {

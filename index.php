@@ -18,6 +18,7 @@
 				<h2>The Data</h2>
 
 				<aside class="right sites">
+					<h4>The Top 10</h4>
 					<a href="http://www.google.com" target="_blank">google.com</a>
 					 <a href="http://www.facebook.com" target="_blank">facebook.com </a>
 					 <a href="http://www.youtube.com" target="_blank">youtube.com </a>
@@ -58,54 +59,78 @@
 
 				<aside class="left">
 					<figure>
-						<table>
+						<table id="hexConversion">
 							<tr>
-								<td>0</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>0</td>
+								<td>0</td><td>&nbsp;&#8594;&nbsp;</td><td>0</td>
 							</tr>
 							<tr>
-								<td>1</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>1</td>
+								<td>1</td><td>&nbsp;&#8594;&nbsp;</td><td>1</td>
 							</tr>
 							<tr>
-								<td>2</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>2</td>
+								<td>2</td><td>&nbsp;&#8594;&nbsp;</td><td>2</td>
 							</tr>
 							<tr>
-								<td>3</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>3</td>
+								<td>3</td><td>&nbsp;&#8594;&nbsp;</td><td>3</td>
 							</tr>
 							<tr>
-								<td>4</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>4</td>
+								<td>4</td><td>&nbsp;&#8594;&nbsp;</td><td>4</td>
 							</tr>
 							<tr>
-								<td>5</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>5</td>
+								<td>5</td><td>&nbsp;&#8594;&nbsp;</td><td>5</td>
 							</tr>
 							<tr>
-								<td>6</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>6</td>
+								<td>6</td><td>&nbsp;&#8594;&nbsp;</td><td>6</td>
 							</tr>
 							<tr>
-								<td>7</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>7</td>
+								<td>7</td><td>&nbsp;&#8594;&nbsp;</td><td>7</td>
 							</tr>
 							<tr>
-								<td>8</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>8</td>
+								<td>8</td><td>&nbsp;&#8594;&nbsp;</td><td>8</td>
 							</tr>
 							<tr>
-								<td>9</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>9</td>
+								<td>9</td><td>&nbsp;&#8594;&nbsp;</td><td>9</td>
 							</tr>
 							<tr>
-								<td>a</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>10</td>
+								<td>a</td><td>&nbsp;&#8594;&nbsp;</td><td>10</td>
 							</tr>
 							<tr>
-								<td>b</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>11</td>
+								<td>b</td><td>&nbsp;&#8594;&nbsp;</td><td>11</td>
 							</tr>
 							<tr>
-								<td>c</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>12</td>
+								<td>c</td><td>&nbsp;&#8594;&nbsp;</td><td>12</td>
 							</tr>
 							<tr>
-								<td>d</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>13</td>
+								<td>d</td><td>&nbsp;&#8594;&nbsp;</td><td>13</td>
 							</tr>
 							<tr>
-								<td>e</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>14</td>
+								<td>e</td><td>&nbsp;&#8594;&nbsp;</td><td>14</td>
 							</tr>
 							<tr>
-								<td>f</td><td>&nbsp;&nbsp;&#8594;&nbsp;&nbsp;</td><td>15</td>
+								<td>f</td><td>&nbsp;&#8594;&nbsp;</td><td>15</td>
+							</tr>
+							<tr>
+								<td>10</td><td>&nbsp;&#8594;&nbsp;</td><td>16</td>
+							</tr>
+							<tr>
+								<td>11</td><td>&nbsp;&#8594;&nbsp;</td><td>17</td>
+							</tr>
+							<tr>
+								<td>12</td><td>&nbsp;&#8594;&nbsp;</td><td>18</td>
+							</tr>
+							<tr>
+								<td>13</td><td>&nbsp;&#8594;&nbsp;</td><td>19</td>
+							</tr>
+							<tr>
+								<td colspan="3" class="ellipsis">&#8230;</td>
+							</tr>
+							<tr>
+								<td>fd</td><td>&nbsp;&#8594;&nbsp;</td><td>253</td>
+							</tr>
+							<tr>
+								<td>fe</td><td>&nbsp;&#8594;&nbsp;</td><td>254</td>
+							</tr>
+							<tr>
+								<td>ff</td><td>&nbsp;&#8594;&nbsp;</td><td>255</td>
 							</tr>
 						</table>
 					</figure>
@@ -118,13 +143,29 @@
 				<p>
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
-
 				<p>
 					Hexidecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section just tells the program that a hexidecimal color is coming.
 				</p>
+			
+				<aside class="right">
+					<figure class="colorPicker" data-format='#,' data-delimiter="">
+						<div class="color">#BADA55</div>
+
+						<div class="colorBlock"></div>
+
+						<fieldset>
+							#
+							<?php
+								for($i = 0; $i < 6; $i++){
+									include('assets/php/hex-select.php');
+								}
+							?>
+						</fieldset>
+					</figure>
+				</aside>
 
 				<p>
-					The remaining 3 sections contain important information about the color. Hexidecimal colors are based off of the RGB (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
+					The remaining 3 sections contain important information about the color. Hexidecimal colors are based off of the <span class="acronym">RGB</span> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
 				</p>
 
 				<p>
@@ -132,7 +173,7 @@
 				</p>
 
 				<p>
-					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each color (RGB) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
+					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each color (<span class="acronym">RGB</span>) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
 				</p>
 
 				<p>
@@ -141,10 +182,10 @@
 			</div>
 
 			<div class="subsection">
-				<h3>RGB (Red Green Blue)</h3>
+				<h3><span class="acronym">RGB (Red, Green, Blue)</span></h3>
 
 				<p>
-					The hexadecimal numbering system is just one way to represent RGB numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in RGB format:
+					The hexadecimal numbering system is just one way to represent <span class="acronym">RGB</span> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <span class="acronym">RGB</span> format:
 				</p>
 
 				<p>
@@ -153,53 +194,93 @@
 			</div>
 
 			<div class="subsection">
-				<h3>RGB (Red Green Blue Alpha)</h3>	
+				<h3><span class="acronym">RGBA</span> (Red, Green, Blue, Alpha)</h3>	
 
 				<aside class="right">
-					<figure id="rgbaExample">
+					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
+						<div class="color">rgba(186, 218, 85, 1)</div>
+
 						<div class="colorBlock"></div>
 
 						<fieldset>
 							<label for="red">Red:</label>
-							<input type="range" min="0" max="255" dataTarget="0" name="red" value="186">
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="red" value="186">
 
 							<label for="green">Green:</label>
-							<input type="range" min="0" max="255" dataTarget="1" name="green" value="218">
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="green" value="218">
 
 							<label for="blue">Blue:</label>
-							<input type="range" min="0" max="255" dataTarget="2" name="blue" value="85">
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="blue" value="85">
 
 							<label for="alpha">Alpha:</label>
-							<input type="range" min="0" max="100" dataTarget="3" name="alpha" value="100">
+							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
 						</fieldset>
 					</figure>
 				</aside>
 
 				<p>
-					There's another version of RGB which is frequently used on the web. RGBA adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
+					There's another version of <span class="acronym">RGB</span> which is frequently used on the web. <span class="acronym">RGBA</span> adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
 				</p>
 
 				<p>
-					<code>rgb(186, 218, 85, 0)</code> vs <code>rgb(186, 218, 85, 1)</code>
+					<code>rgba(186, 218, 85, 0)</code> vs <code>rgba(186, 218, 85, 1)</code>
 				</p>
 
 				<p>
-					RGBA is going out of fashion since most browsers now support the opacity attribute, making it easier to handle transpareny separately from color.
+					<span class="acronym">RGBA</span> is going out of fashion since most browsers now support the opacity attribute, making it easier to handle transparency separately from color.
 				</p>
+
+				<p>
+					For the purposes of these data visualizations, the alpha tag has been stripped from <span class="acronym">RGBA</span> colors, effectively treating them as <span class="acronym">RGB</span>.
+				</p>
+			</div>
+
+			<div class="subsection">
+				<h3 class="acronym">HSV (Hue, Saturation, Value)</h3 class="acronym">
+			</div>
+			
+			<div class="subsection">
+				<h3 class="acronym">HSL (Hue, Saturation, Lightness)</h3 class="acronym">
+			</div>
+			
+			<div class="subsection">
+				<h3 class="acronym">HSLA (Hue, Saturation, Lightness, Alpha)</h3 class="acronym">
+			
+				<aside class="right">
+					<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
+						<div class="color">hsla(74,64%,59%,1)</div>
+
+						<div class="colorBlock"></div>
+
+						<fieldset>
+							<label for="red">Hue:</label>
+							<input type="range" min="0" max="359" data-scale="" data-unit="" name="red" value="186">
+
+							<label for="green">Saturation:</label>
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="green" value="218">
+
+							<label for="blue">Lightness:</label>
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="blue" value="85">
+
+							<label for="alpha">Alpha:</label>
+							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
+						</fieldset>
+					</figure>
+				</aside>
 			</div>
 		</section>
 
 		<section>
 			<div class="subsection">			
-				<aside class="right">
+				<aside class="left">
 					<figure>
 						<svg class="hue fan chart"></svg>
 
 						<div class="bwSlider">
-							<input type="range" min="0" max="255" value="255" dataTarget=".hue.fan.chart .background" class="backgroundChanger">
+							<input type="range" min="0" max="255" value="255" data-scale="1hue.fan.chart .background" class="backgroundChanger">
 						</div>
 
-						<figcaption>Use this slider to change the background color.</figcaption>
+						<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
 					</figure>	
 				</aside>
 

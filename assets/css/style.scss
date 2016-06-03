@@ -79,7 +79,7 @@ figure{
 code{
 	background:$light-grey;
 	padding:0px 5px;
-	font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
+	font-family: $monospace;
 }
 
 @import 'responsive';

@@ -20,9 +20,7 @@ $error		: 	#f00;
     Sizing
 //////////////////////////////////////////////////////////////////////////////*/
 
-$size-8    	:   34pt;
-$size-10  :   42pt;
-
+$size-0  :  1pt;
 $size-1	 :  3pt;
 $size-2	 :  6pt;
 $size-3	 :  8pt;
@@ -45,5 +43,6 @@ $base-easing	: ease-in-out;
     Fonts
 //////////////////////////////////////////////////////////////////////////////*/
 
-$main-font:Roboto;
-$second-font:Roboto Slab;
+$main-font		:	Roboto, 'sans-serif';
+$second-font	:	Roboto Slab, 'sans-serif';
+$monospace		:	Consolas,"Liberation Mono",Menlo,Courier,monospace;

@@ -24,11 +24,20 @@ h3{
     margin-bottom:$size-5;
 }
 
-p, small, span, figcaption{
+p, small, figcaption, code{
     font-size:$size-5;
     padding-bottom:$size-3;
 }
 
+span{
+    font-size:inherit;
+    color:inherit;
+}
+
 a{
     font-family:inherit;
+}
+
+.acronym{
+    letter-spacing: 1px;;
 }
