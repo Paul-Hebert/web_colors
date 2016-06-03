@@ -967,7 +967,7 @@ h3 {
   font-size: 16pt;
   margin-bottom: 13pt; }
 
-p, small, figcaption, code {
+p, small, figure, figcaption, code {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
@@ -978,7 +978,8 @@ span {
 a {
   font-family: inherit; }
 
-.acronym {
+abbr {
+  text-transform: uppercase;
   letter-spacing: 1px; }
 
 .rectangle {
@@ -1000,23 +1001,17 @@ a {
 svg {
   width: 100%; }
 
-.bwSlider:before {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ffffff+100 */
-  display: block;
-  height: 7px;
-  content: ''; }
-
-.backgroundChanger {
-  margin: 0px;
-  position: relative;
-  top: -10px; }
-
-.colorPicker .colorBlock {
-  background: #bada55;
-  width: 100%;
-  display: block;
-  height: 20px;
-  content: ''; }
+.colorPicker .color {
+  border-color: #bada55;
+  border-width: 13pt;
+  text-align: center;
+  padding: 3pt 0px;
+  border-style: solid;
+  margin-bottom: 6pt; }
+.colorPicker select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 1pt #ccc solid; }
 
 #hexConversion td:first-of-type {
   text-align: right; }
@@ -1046,21 +1041,6 @@ section:not(:first-of-type) {
 
 .subsection:not(:first-of-type) {
   padding-top: 13pt; }
-
-aside {
-  width: 200px; }
-  aside * {
-    font-size: 10pt; }
-  aside.left {
-    float: left;
-    clear: left;
-    margin-left: -250px; }
-    aside.left figure {
-      float: right; }
-  aside.right {
-    float: right;
-    clear: right;
-    margin-right: -250px; }
 
 figure {
   margin-bottom: 16pt; }
@@ -1136,6 +1116,21 @@ code {
   nav {
     float: right; }
     nav a {
-      padding: 16pt; } }
+      padding: 16pt; }
+
+  aside {
+    width: 200px; }
+    aside * {
+      font-size: 10pt; }
+    aside.left {
+      float: left;
+      clear: left;
+      margin-left: -250px; }
+      aside.left figure {
+        float: right; }
+    aside.right {
+      float: right;
+      clear: right;
+      margin-right: -250px; } }
 
 /*# sourceMappingURL=style.css.map */

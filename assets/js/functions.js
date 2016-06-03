@@ -9,14 +9,14 @@ $(function() {
 	printChart('rectangle','val');
     printChart('fan','hue'); 
 
-    $('.backgroundChanger').change(function(){
-        $( $(this).attr('dataTarget') ).css({
+    $('.backgroundChanger').on("input change", function(){
+        $( $(this).attr('data-target') ).css({
             fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
         });
     });
 
 
-    $('.colorPicker input, .colorPicker select').change(function(){
+    $('.colorPicker input, .colorPicker select').on("input change", function(){
         var colorPicker = $(this).parents('.colorPicker');
 
         var colorFormat = colorPicker.attr('data-format');
@@ -42,9 +42,7 @@ $(function() {
 
         color += colorFormat[1];
 
-        colorPicker.find('.color').text(color)
-
-        colorPicker.find('.colorBlock').css('background',color);
+        colorPicker.find('.color').text(color).css('border-color',color);
     });
 });
 

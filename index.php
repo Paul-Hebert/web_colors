@@ -151,58 +151,72 @@
 					<figure class="colorPicker" data-format='#,' data-delimiter="">
 						<div class="color">#BADA55</div>
 
-						<div class="colorBlock"></div>
-
-						<fieldset>
+						<form autocomplete="off">
 							#
 							<?php
-								for($i = 0; $i < 6; $i++){
+								$color = str_split('BADA55');
+
+								foreach($color as $character){
 									include('assets/php/hex-select.php');
 								}
 							?>
-						</fieldset>
+						</form>
 					</figure>
 				</aside>
 
 				<p>
-					The remaining 3 sections contain important information about the color. Hexidecimal colors are based off of the <span class="acronym">RGB</span> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
+					The remaining 3 sections contain important information about the color. Hexidecimal colors are based off of the <abbr>RGB</abbr> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
 				</p>
 
-				<p>
+				<figure>
 					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
-				</p>
+				</figure>
 
 				<p>
-					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each color (<span class="acronym">RGB</span>) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
+					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each color (<abbr>RGB</abbr>) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
 				</p>
 
-				<p>
+				<figure>
 					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
-				</p>
+				</figure>
 			</div>
 
 			<div class="subsection">
-				<h3><span class="acronym">RGB (Red, Green, Blue)</span></h3>
+				<h3>3 Digit Hexadecimal</h3>
 
 				<p>
-					The hexadecimal numbering system is just one way to represent <span class="acronym">RGB</span> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <span class="acronym">RGB</span> format:
+					Sometimes you'll see 3 digit hexadecimal colors like this: <code>#000</code>.
 				</p>
 
 				<p>
+					This means each color pair had 2 identical digits.
+				</p>
+
+				<figure>
+					For example, <code>#000</code> = <code>#000000</code> and <code>#fff</code> = <code>#ffffff</code>
+				</figure>
+			</div>
+
+			<div class="subsection">
+				<h3><abbr>RGB</abbr> (Red, Green, Blue)</h3>
+
+				<p>
+					The hexadecimal numbering system is just one way to represent <abbr>RGB</abbr> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <abbr>RGB</abbr> format:
+				</p>
+
+				<figure>
 					<code>rgb(186, 218, 85)</code>
-				</p>
+				</figure>
 			</div>
 
 			<div class="subsection">
-				<h3><span class="acronym">RGBA</span> (Red, Green, Blue, Alpha)</h3>	
+				<h3><abbr>RGBA</abbr> (Red, Green, Blue, Alpha)</h3>	
 
 				<aside class="right">
 					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
 						<div class="color">rgba(186, 218, 85, 1)</div>
 
-						<div class="colorBlock"></div>
-
-						<fieldset>
+						<form autocomplete="off">
 							<label for="red">Red:</label>
 							<input type="range" min="0" max="255" data-scale="" data-unit="" name="red" value="186">
 
@@ -214,45 +228,43 @@
 
 							<label for="alpha">Alpha:</label>
 							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
-						</fieldset>
+						</form>
 					</figure>
 				</aside>
 
 				<p>
-					There's another version of <span class="acronym">RGB</span> which is frequently used on the web. <span class="acronym">RGBA</span> adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
+					There's another version of <abbr>RGB</abbr> which is frequently used on the web. <abbr>RGBA</abbr> adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
 				</p>
 
-				<p>
+				<figure>
 					<code>rgba(186, 218, 85, 0)</code> vs <code>rgba(186, 218, 85, 1)</code>
+				</figure>
+
+				<p>
+					<abbr>RGBA</abbr> is going out of fashion since most browsers now support the opacity attribute, making it easier to handle transparency separately from color.
 				</p>
 
 				<p>
-					<span class="acronym">RGBA</span> is going out of fashion since most browsers now support the opacity attribute, making it easier to handle transparency separately from color.
-				</p>
-
-				<p>
-					For the purposes of these data visualizations, the alpha tag has been stripped from <span class="acronym">RGBA</span> colors, effectively treating them as <span class="acronym">RGB</span>.
+					For the purposes of these data visualizations, the alpha tag has been stripped from <abbr>RGBA</abbr> colors, effectively treating them as <abbr>RGB</abbr>.
 				</p>
 			</div>
 
 			<div class="subsection">
-				<h3 class="acronym">HSV (Hue, Saturation, Value)</h3 class="acronym">
+				<h3><abbr>HSV</abbr> (Hue, Saturation, Value)</h3>
 			</div>
 			
 			<div class="subsection">
-				<h3 class="acronym">HSL (Hue, Saturation, Lightness)</h3 class="acronym">
+				<h3><abbr>HSL</abbr> (Hue, Saturation, Lightness)</h3>
 			</div>
 			
 			<div class="subsection">
-				<h3 class="acronym">HSLA (Hue, Saturation, Lightness, Alpha)</h3 class="acronym">
+				<h3><abbr>HSLA</abbr> (Hue, Saturation, Lightness, Alpha)</h3>
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
 						<div class="color">hsla(74,64%,59%,1)</div>
 
-						<div class="colorBlock"></div>
-
-						<fieldset>
+						<form autocomplete="off">
 							<label for="red">Hue:</label>
 							<input type="range" min="0" max="359" data-scale="" data-unit="" name="red" value="186">
 
@@ -264,9 +276,16 @@
 
 							<label for="alpha">Alpha:</label>
 							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
-						</fieldset>
+						</form>
 					</figure>
 				</aside>
+				<p>
+					Similar to <abbr>RGBA</abbr>, <abbr>HSLA</abbr> has an alpha channel to determine transparency.
+				</p>
+
+				<p>
+					For the purposes of these data visualizations, the alpha tag has been stripped from RGBA colors, effectively treating them as RGB. 
+				</p>
 			</div>
 		</section>
 
@@ -276,9 +295,7 @@
 					<figure>
 						<svg class="hue fan chart"></svg>
 
-						<div class="bwSlider">
-							<input type="range" min="0" max="255" value="255" data-scale="1hue.fan.chart .background" class="backgroundChanger">
-						</div>
+						<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
 
 						<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
 					</figure>	

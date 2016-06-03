@@ -14,7 +14,7 @@
 			background:#fff;
 			padding:5px;
 		}
-		
+
 		&:hover span{
 			display:block;
 		}		
@@ -25,30 +25,20 @@ svg{
 	width:100%;
 }
 
-.bwSlider:before{
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ffffff+100 */
-	//background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-	//background: -webkit-linear-gradient(left,  rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	//background: linear-gradient(to right,  rgba(0,0,0,1) 0%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
-	display:block;
-	height:7px;
-	content:'';
-}
-
-.backgroundChanger{
-	margin:0px;
-	position:relative;
-	top:-10px;
-}
-
 .colorPicker{
-	.colorBlock{
-		background:#bada55;
-		width:100%;
-		display:block;
-		height:20px;
-		content:'';
+	.color{
+		border-color:#bada55;
+		border-width:$size-5;
+		text-align:center;
+		padding:$size-1 0px;
+		border-style:solid;
+		margin-bottom:$size-2;
+	}
+
+	select{
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		border: $size-0 $grey solid;
 	}
 }
 

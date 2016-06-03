@@ -40,30 +40,6 @@ section:not(:first-of-type){
 	padding-top:$size-5;
 }
 
-aside{
-	width:200px;
-
-	*{
-		font-size:$size-4;
-	}
-
-	&.left{
-		float:left;
-		clear:left;
-		margin-left:-250px;
-
-		figure{
-			float:right;
-		}
-	}
-
-	&.right{
-		float:right;
-		clear:right;
-		margin-right:-250px;
-	}
-}
-
 figure{
 	margin-bottom:$size-6;
 
