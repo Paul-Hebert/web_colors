@@ -1007,16 +1007,30 @@ svg {
   text-align: center;
   padding: 3pt 0px;
   border-style: solid;
-  margin-bottom: 6pt; }
+  margin-bottom: 6pt;
+  background: #fff;
+  display: block;
+  font-size: 8pt; }
 .colorPicker select {
   -moz-appearance: none;
   -webkit-appearance: none;
-  border: 1pt #ccc solid; }
+  border: 1pt #ccc solid;
+  -o-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px; }
 
-#hexConversion td:first-of-type {
+#conversionTable td {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+#conversionTable td:first-of-type {
   text-align: right; }
-#hexConversion td.ellipsis {
-  text-align: center; }
+  #conversionTable td:first-of-type:not(.ellipsis):after {
+    content: '\2192';
+    padding: 8pt 6pt;
+    font-family: Roboto, "sans-serif"; }
+#conversionTable td.ellipsis {
+  text-align: center;
+  font-family: Roboto, "sans-serif"; }
 
 body {
   background: #f0f0f0;
@@ -1042,12 +1056,7 @@ section:not(:first-of-type) {
 .subsection:not(:first-of-type) {
   padding-top: 13pt; }
 
-figure {
-  margin-bottom: 16pt; }
-  figure figcaption {
-    display: block; }
-
-.sites a {
+figcaption {
   display: block; }
 
 code {
@@ -1055,7 +1064,7 @@ code {
   padding: 0px 5px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .desktop {
     display: none; }
 
@@ -1109,7 +1118,7 @@ code {
         transition: opacity 300ms; }
       #menu-toggle svg.open .middle-line {
         opacity: 0; } }
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .mobile {
     display: none; }
 

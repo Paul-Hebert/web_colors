@@ -8,7 +8,7 @@
 		<section>
 			<div class="subsection">
 				<h1>
-					The Colors of the 10 Most Popular Websites
+					The Popularity Contest
 				</h1>
 
 				<figure>
@@ -17,18 +17,21 @@
 
 				<h2>The Data</h2>
 
-				<aside class="right sites">
+				<aside class="right">
 					<h4>The Top 10</h4>
-					<a href="http://www.google.com" target="_blank">google.com</a>
-					 <a href="http://www.facebook.com" target="_blank">facebook.com </a>
-					 <a href="http://www.youtube.com" target="_blank">youtube.com </a>
-					 <a href="http://www.yahoo.com" target="_blank">yahoo.com </a>
-					 <a href="http://www.baidu.com" target="_blank">baidu.com </a>
-					 <a href="http://www.wikipedia.org" target="_blank">wikipedia.org </a>
-					 <a href="http://www.amazon.com" target="_blank">amazon.com </a>
-					 <a href="http://www.twitter.com" target="_blank">twitter.com </a>
-					 <a href="http://www.cq.com" target="_blank">cq.com </a>
-					 <a href="http://www.linkedin.com" target="_blank">linkedin.com</a>
+
+					<ol>
+						<li><a href="http://www.google.com" target="_blank">google.com</a></li>
+						<li><a href="http://www.facebook.com" target="_blank">facebook.com </a></li>
+						<li><a href="http://www.youtube.com" target="_blank">youtube.com </a></li>
+						<li><a href="http://www.yahoo.com" target="_blank">yahoo.com </a></li>
+						<li><a href="http://www.baidu.com" target="_blank">baidu.com </a></li>
+						<li><a href="http://www.wikipedia.org" target="_blank">wikipedia.org </a></li>
+						<li><a href="http://www.amazon.com" target="_blank">amazon.com </a></li>
+						<li><a href="http://www.twitter.com" target="_blank">twitter.com </a></li>
+						<li><a href="http://www.cq.com" target="_blank">cq.com </a></li>
+						<li><a href="http://www.linkedin.com" target="_blank">linkedin.com</a></li>
+					</ol>
 				</aside>
 
 				<p>
@@ -59,78 +62,78 @@
 
 				<aside class="left">
 					<figure>
-						<table id="hexConversion">
+						<table id="conversionTable">
 							<tr>
-								<td>0</td><td>&nbsp;&#8594;&nbsp;</td><td>0</td>
+								<td>0</td><td>0</td>
 							</tr>
 							<tr>
-								<td>1</td><td>&nbsp;&#8594;&nbsp;</td><td>1</td>
+								<td>1</td><td>1</td>
 							</tr>
 							<tr>
-								<td>2</td><td>&nbsp;&#8594;&nbsp;</td><td>2</td>
+								<td>2</td><td>2</td>
 							</tr>
 							<tr>
-								<td>3</td><td>&nbsp;&#8594;&nbsp;</td><td>3</td>
+								<td>3</td><td>3</td>
 							</tr>
 							<tr>
-								<td>4</td><td>&nbsp;&#8594;&nbsp;</td><td>4</td>
+								<td>4</td><td>4</td>
 							</tr>
 							<tr>
-								<td>5</td><td>&nbsp;&#8594;&nbsp;</td><td>5</td>
+								<td>5</td><td>5</td>
 							</tr>
 							<tr>
-								<td>6</td><td>&nbsp;&#8594;&nbsp;</td><td>6</td>
+								<td>6</td><td>6</td>
 							</tr>
 							<tr>
-								<td>7</td><td>&nbsp;&#8594;&nbsp;</td><td>7</td>
+								<td>7</td><td>7</td>
 							</tr>
 							<tr>
-								<td>8</td><td>&nbsp;&#8594;&nbsp;</td><td>8</td>
+								<td>8</td><td>8</td>
 							</tr>
 							<tr>
-								<td>9</td><td>&nbsp;&#8594;&nbsp;</td><td>9</td>
+								<td>9</td><td>9</td>
 							</tr>
 							<tr>
-								<td>a</td><td>&nbsp;&#8594;&nbsp;</td><td>10</td>
+								<td>a</td><td>10</td>
 							</tr>
 							<tr>
-								<td>b</td><td>&nbsp;&#8594;&nbsp;</td><td>11</td>
+								<td>b</td><td>11</td>
 							</tr>
 							<tr>
-								<td>c</td><td>&nbsp;&#8594;&nbsp;</td><td>12</td>
+								<td>c</td><td>12</td>
 							</tr>
 							<tr>
-								<td>d</td><td>&nbsp;&#8594;&nbsp;</td><td>13</td>
+								<td>d</td><td>13</td>
 							</tr>
 							<tr>
-								<td>e</td><td>&nbsp;&#8594;&nbsp;</td><td>14</td>
+								<td>e</td><td>14</td>
 							</tr>
 							<tr>
-								<td>f</td><td>&nbsp;&#8594;&nbsp;</td><td>15</td>
+								<td>f</td><td>15</td>
 							</tr>
 							<tr>
-								<td>10</td><td>&nbsp;&#8594;&nbsp;</td><td>16</td>
+								<td>10</td><td>16</td>
 							</tr>
 							<tr>
-								<td>11</td><td>&nbsp;&#8594;&nbsp;</td><td>17</td>
+								<td>11</td><td>17</td>
 							</tr>
 							<tr>
-								<td>12</td><td>&nbsp;&#8594;&nbsp;</td><td>18</td>
+								<td>12</td><td>18</td>
 							</tr>
 							<tr>
-								<td>13</td><td>&nbsp;&#8594;&nbsp;</td><td>19</td>
+								<td>13</td><td>19</td>
 							</tr>
 							<tr>
 								<td colspan="3" class="ellipsis">&#8230;</td>
 							</tr>
 							<tr>
-								<td>fd</td><td>&nbsp;&#8594;&nbsp;</td><td>253</td>
+								<td>fd</td><td>253</td>
 							</tr>
 							<tr>
-								<td>fe</td><td>&nbsp;&#8594;&nbsp;</td><td>254</td>
+								<td>fe</td><td>254</td>
 							</tr>
 							<tr>
-								<td>ff</td><td>&nbsp;&#8594;&nbsp;</td><td>255</td>
+								<td>ff</td><td>255</td>
 							</tr>
 						</table>
 					</figure>
@@ -149,7 +152,7 @@
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='#,' data-delimiter="">
-						<div class="color">#BADA55</div>
+						<code class="color">#BADA55</code>
 
 						<form autocomplete="off">
 							#
@@ -173,7 +176,7 @@
 				</figure>
 
 				<p>
-					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each color (<abbr>RGB</abbr>) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
+					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each hue (Red, Green, Blue) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
 				</p>
 
 				<figure>
@@ -193,8 +196,11 @@
 				</p>
 
 				<figure>
-					For example, <code>#000</code> = <code>#000000</code> and <code>#fff</code> = <code>#ffffff</code>
+					<code>f</code> = <code>ff</code> so <code>#fff</code> = <code>#ffffff</code>.
 				</figure>
+				<figure>
+					<code>3</code> = <code>33</code> so <code>#333</code> = <code>#333333</code>.
+				</figure>				
 			</div>
 
 			<div class="subsection">
@@ -214,7 +220,7 @@
 
 				<aside class="right">
 					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
-						<div class="color">rgba(186, 218, 85, 1)</div>
+						<code class="color">rgba(186,218,85,1)</code>
 
 						<form autocomplete="off">
 							<label for="red">Red:</label>
@@ -262,7 +268,7 @@
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
-						<div class="color">hsla(74,64%,59%,1)</div>
+						<code class="color">hsla(74,64%,59%,1)</code>
 
 						<form autocomplete="off">
 							<label for="red">Hue:</label>
@@ -286,6 +292,10 @@
 				<p>
 					For the purposes of these data visualizations, the alpha tag has been stripped from RGBA colors, effectively treating them as RGB. 
 				</p>
+			</div>
+
+			<div class="subsection">
+				<h3>Predefined Color Names</h3>
 			</div>
 		</section>
 

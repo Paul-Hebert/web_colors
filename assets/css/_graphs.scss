@@ -33,21 +33,36 @@ svg{
 		padding:$size-1 0px;
 		border-style:solid;
 		margin-bottom:$size-2;
+		background:$white;
+		display:block;
+		font-size: $size-3;
 	}
 
 	select{
 		-moz-appearance: none;
 		-webkit-appearance: none;
 		border: $size-0 $grey solid;
+		@include radius(0px);
 	}
 }
 
-#hexConversion{
+#conversionTable{
+	td{
+		font-family:$monospace;
+	}
+
 	td:first-of-type{
 		text-align:right;
+
+		&:not(.ellipsis):after{
+			content:'\2192';
+			padding:$size-3 $size-2;
+			font-family:$main-font;
+		}
 	}
 
 	td.ellipsis{
 		text-align:center;
+		font-family:$main-font;		
 	}
 }

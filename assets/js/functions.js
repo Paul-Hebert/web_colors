@@ -56,7 +56,7 @@ function convertColors(){
     }
 }
 
-var sortColors = function(sortCriteria) {
+function sortColors(sortCriteria) {
     if (sortCriteria == 'hue'){
         return colors.sort(
             firstBy(function (v1, v2) { return v1.hue - v2.hue; })
