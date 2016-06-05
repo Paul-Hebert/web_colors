@@ -185,18 +185,18 @@
 
 				<figure>
 					<figcaption>
-						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript.
+						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript:
 					</figcaption>
 
 <?php
 $source = "hexToRgb('#BADA55');
 
 function hexToRgb(hex){
-        var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
-        var green = parseInt( hex.substring( 2, 4 ),16 )/255;
-        var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
+    var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
+    var green = parseInt( hex.substring( 2, 4 ),16 )/255;
+    var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
 
-        return 'rgb(' + red + ',' + green + ',' + blue + ')';
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }";
 
 $geshi = new GeSHi($source, 'javascript');
@@ -226,7 +226,31 @@ echo $geshi->parse_code();
 				</figure>
 				<figure>
 					<code>3</code> = <code>33</code> so <code>#333</code> = <code>#333333</code>.
-				</figure>				
+				</figure>
+
+				<figure>
+					<figcaption>
+						Here's how to convert a 3 digit hexidecimal color to 6 digits:
+					</figcaption>
+
+<?php
+$source = "threeDigitsToSix('#000');
+
+function threeDigitsToSix(color){
+    hex = color.split('');
+
+    return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>
+				</figure>								
 			</div>
 
 			<div class="subsection">
