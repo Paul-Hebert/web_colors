@@ -967,7 +967,7 @@ h3 {
   font-size: 16pt;
   margin-bottom: 13pt; }
 
-p, small, figure, figcaption, code {
+h4, p, small, figure, figcaption, code {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
@@ -980,7 +980,10 @@ a {
 
 abbr {
   text-transform: uppercase;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit; }
 
 .rectangle {
   max-width: 1%;
@@ -1032,6 +1035,27 @@ svg {
   text-align: center;
   font-family: Roboto, "sans-serif"; }
 
+code {
+  background: #ddd;
+  padding: 0px 5px;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+
+pre {
+  background: #444;
+  display: block; }
+  pre ol {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 10pt;
+    list-style: numbered;
+    position: relative;
+    left: 20px; }
+    pre ol li {
+      color: #ddd;
+      background: #ddd;
+      padding-left: 20px; }
+      pre ol li:nth-of-type(odd) {
+        background: #ccc; }
+
 body {
   background: #f0f0f0;
   padding: 26pt; }
@@ -1055,14 +1079,14 @@ section:not(:first-of-type) {
 
 .subsection:not(:first-of-type) {
   padding-top: 13pt; }
+  .subsection:not(:first-of-type) .subsection {
+    padding-top: 8pt; }
 
 figcaption {
   display: block; }
 
-code {
-  background: #ddd;
-  padding: 0px 5px;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.hidden {
+  display: none; }
 
 @media (max-width: 900px) {
   .desktop {

@@ -5,6 +5,7 @@
 @import 'forms';
 @import 'typography';
 @import 'graphs';
+@import 'code';
 
 body{
 	background:$off-white;
@@ -38,16 +39,18 @@ section:not(:first-of-type){
 
 .subsection:not(:first-of-type){
 	padding-top:$size-5;
+
+	.subsection{
+		padding-top:$size-3;
+	}
 }
 
 figcaption{
 	display:block;
 }
 
-code{
-	background:$light-grey;
-	padding:0px 5px;
-	font-family: $monospace;
+.hidden{
+	display:none;
 }
 
 @import 'responsive';

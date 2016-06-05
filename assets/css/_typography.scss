@@ -24,7 +24,7 @@ h3{
     margin-bottom:$size-5;
 }
 
-p, small, figure, figcaption, code{
+h4, p, small, figure, figcaption, code{
     font-size:$size-5;
     padding-bottom:$size-3;
 }
@@ -41,4 +41,7 @@ a{
 abbr{
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-family:inherit;
+    font-size:inherit;
+    color:inherit;
 }

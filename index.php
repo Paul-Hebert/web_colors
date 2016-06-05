@@ -175,6 +175,34 @@
 					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
 				</figure>
 
+				<figure>
+					<figcaption>
+						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript.
+					</figcaption>
+
+<?php
+$source = "hexToRgb('#BADA55');
+
+function hexToRgb(hex){
+    var red = parseInt(hex.substring(0,2),16)/255;
+    var green = parseInt(hex.substring(2,4),16)/255;
+    var blue = parseInt(hex.substring(4,6),16)/255;
+
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+$geshi->get_stylesheet();
+
+echo $geshi->parse_code();
+?>
+				</figure>
+
 				<p>
 					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each hue (Red, Green, Blue) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
 				</p>
@@ -256,11 +284,69 @@
 			</div>
 
 			<div class="subsection">
-				<h3><abbr>HSV</abbr> (Hue, Saturation, Value)</h3>
-			</div>
-			
-			<div class="subsection">
 				<h3><abbr>HSL</abbr> (Hue, Saturation, Lightness)</h3>
+
+				<p><abbr>HSL</abbr> is a color format that attempts to match how humans view color by organizing by hue, saturation and lightness.</p>
+			
+				<div class="subsection">
+					<h4>Hue</h4>
+
+					<aside class="right">
+						<?php include('assets/svgs/hue_color_wheel.php'); ?>
+					</aside>
+
+					<p>Hue is the most common way for people to describe colors. Hue refers to the shade of a color. Red, Green, Blue, Pink and Orange are all examples of hue.</p>
+				
+					<p>In the <abbr>hsl</abbr> color model hue is plotted around a circle, so is represented as a number between 0 and 360.</p>
+
+					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
+						<code class="color">hsl(74,64%,59%)</code>
+
+						<form autocomplete="off">
+							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
+
+							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
+
+							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="50">
+						</form>
+					</figure>
+				</div>	
+
+				<div class="subsection">
+					<h4>Saturation</h4>
+
+					<p>Saturation is a little more difficult to understand than hue. Saturation is the purity of a color, or how much grey is in the color.</p>
+
+					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 1 and 100.
+
+					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
+						<code class="color">hsl(74,64%,59%)</code>
+
+						<form autocomplete="off">
+							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
+
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
+
+							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="50">
+						</form>
+					</figure>
+				</div>
+
+				<div class="subsection">
+					<h4>Lightness</h4>
+
+					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
+						<code class="color">hsl(74,64%,59%)</code>
+
+						<form autocomplete="off">
+							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
+
+							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
+
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="50">
+						</form>
+					</figure>
+				</div>
 			</div>
 			
 			<div class="subsection">
@@ -271,14 +357,14 @@
 						<code class="color">hsla(74,64%,59%,1)</code>
 
 						<form autocomplete="off">
-							<label for="red">Hue:</label>
-							<input type="range" min="0" max="359" data-scale="" data-unit="" name="red" value="186">
+							<label for="hue">Hue:</label>
+							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="186">
 
-							<label for="green">Saturation:</label>
-							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="green" value="218">
+							<label for="saturation">Saturation:</label>
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
 
-							<label for="blue">Lightness:</label>
-							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="blue" value="85">
+							<label for="lightness">Lightness:</label>
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="85">
 
 							<label for="alpha">Alpha:</label>
 							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">

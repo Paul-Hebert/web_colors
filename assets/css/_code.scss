@@ -1,0 +1,28 @@
+code{
+	background:$light-grey;
+	padding:0px 5px;
+	font-family: $monospace;	
+}
+
+pre{
+	background:$dark-grey;
+	display:block;
+
+	 ol{
+		font-family: $monospace;
+		font-size:$size-4;
+		list-style:numbered;
+		position:relative;
+		left:20px;
+
+		li{
+			color:$light-grey;	
+			background:$light-grey;	
+			padding-left:20px;	
+
+			&:nth-of-type(odd){
+				background:$grey;
+			}
+		}
+	}
+}

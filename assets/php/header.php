@@ -1,3 +1,8 @@
+<?php
+	include('assets/php/utilities/geshi/geshi/javascript.php');
+	include('assets/php/utilities/geshi/geshi.php');
+?>
+
 <!doctype HTML>
 
 <html>
