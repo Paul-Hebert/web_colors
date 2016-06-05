@@ -1005,7 +1005,6 @@ svg {
   width: 100%; }
 
 .colorPicker .color {
-  border-color: #bada55;
   border-width: 13pt;
   text-align: center;
   padding: 3pt 0px;
@@ -1041,20 +1040,92 @@ code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 pre {
-  background: #444;
   display: block; }
+  pre * {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
   pre ol {
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    font-size: 10pt;
-    list-style: numbered;
-    position: relative;
-    left: 20px; }
+    font-size: 10pt; }
     pre ol li {
-      color: #ddd;
       background: #ddd;
-      padding-left: 20px; }
+      counter-increment: customlistcounter; }
+      pre ol li:first-of-type {
+        counter-reset: customlistcounter; }
       pre ol li:nth-of-type(odd) {
         background: #ccc; }
+      pre ol li:before {
+        color: #ccc;
+        content: counter(customlistcounter) " ";
+        float: left;
+        background: #444;
+        text-align: right;
+        margin-right: 8pt;
+        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        width: 21pt; }
+
+.javascript {
+  /*.imp{
+  	color: red;
+  }
+  li{
+  	font-weight: normal; 
+  	vertical-align:top;
+  }
+  .ln{
+  	width:1px;
+  	text-align:right;
+  	margin:0;
+  	padding:0 2px;
+  	vertical-align:top;
+  }
+  .li2{
+  	vertical-align:top;
+  }
+  .kw1{
+  	color: #000066; 
+  }
+  .kw2{
+  	color: #003366; 
+  }
+  .kw3{
+  	color: #000066;
+  }
+  .co1{
+  	color: #006600; 
+  	font-style: italic;
+  }
+  .co2{
+  	color: #009966; 
+  	font-style: italic;
+  }
+  .coMLTI {
+  	color: #006600; 
+  	font-style: italic;
+  }
+  .es0{
+  	color: #000099; 
+  }
+  .br0{
+  	color: #009900;
+  }
+  .sy0{
+  	color: #339933;
+  }
+  .nu0{
+  	color: #CC0000;
+  }
+  .ln-xtra, li.ln-xtra, div.n-xtra {
+  	background-color: #ffc;
+  }*/ }
+  .javascript .st0 {
+    color: #C54E2C; }
+  .javascript .kw1 {
+    color: #0B24FB; }
+  .javascript .de1 {
+    color: #444; }
+  .javascript .me1 {
+    color: #660066; }
+  .javascript .br0 {
+    color: #222; }
 
 body {
   background: #f0f0f0;

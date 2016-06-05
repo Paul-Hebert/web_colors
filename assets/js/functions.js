@@ -43,7 +43,7 @@ $(function() {
         color += colorFormat[1];
 
         colorPicker.find('.color').text(color).css('border-color',color);
-    });
+    }).change();
 });
 
 function convertColors(){

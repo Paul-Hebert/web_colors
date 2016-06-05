@@ -5,24 +5,116 @@ code{
 }
 
 pre{
-	background:$dark-grey;
 	display:block;
 
-	 ol{
+	*{
 		font-family: $monospace;
+	}
+
+	 ol{
 		font-size:$size-4;
-		list-style:numbered;
-		position:relative;
-		left:20px;
+		//list-style:numbered;
+		//left:20px;
 
 		li{
-			color:$light-grey;	
 			background:$light-grey;	
-			padding-left:20px;	
+
+			counter-increment: customlistcounter;
+			
+			&:first-of-type{
+				counter-reset: customlistcounter;
+			}	
 
 			&:nth-of-type(odd){
 				background:$grey;
 			}
+
+			&:before{
+				color:$grey;	
+				content: counter(customlistcounter) " ";
+				float:left;
+				background:$dark-grey;
+				text-align:right;
+				margin-right:$size-3;	
+				font-family: $monospace;	
+				width:$size-7;			
+			}
 		}
+	}
+}
+
+.javascript{
+	/*.imp{
+		color: red;
+	}
+	li{
+		font-weight: normal; 
+		vertical-align:top;
+	}
+	.ln{
+		width:1px;
+		text-align:right;
+		margin:0;
+		padding:0 2px;
+		vertical-align:top;
+	}
+	.li2{
+		vertical-align:top;
+	}
+	.kw1{
+		color: #000066; 
+	}
+	.kw2{
+		color: #003366; 
+	}
+	.kw3{
+		color: #000066;
+	}
+	.co1{
+		color: #006600; 
+		font-style: italic;
+	}
+	.co2{
+		color: #009966; 
+		font-style: italic;
+	}
+	.coMLTI {
+		color: #006600; 
+		font-style: italic;
+	}
+	.es0{
+		color: #000099; 
+	}
+	.br0{
+		color: #009900;
+	}
+	.sy0{
+		color: #339933;
+	}
+	.nu0{
+		color: #CC0000;
+	}
+	.ln-xtra, li.ln-xtra, div.n-xtra {
+		background-color: #ffc;
+	}*/
+
+	.st0{
+		color:#C54E2C;
+	}
+
+	.kw1{
+		color:#0B24FB;
+	}
+
+	.de1{
+		color:$dark-grey;
+	}
+
+	.me1{
+		color: #660066;
+	}
+
+	.br0{
+		color:$off-black;
 	}
 }

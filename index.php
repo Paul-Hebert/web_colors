@@ -152,7 +152,7 @@
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='#,' data-delimiter="">
-						<code class="color">#BADA55</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							#
@@ -175,6 +175,14 @@
 					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
 				</figure>
 
+				<p>
+					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each hue (Red, Green, Blue) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
+				</p>
+
+				<figure>
+					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
+				</figure>
+
 				<figure>
 					<figcaption>
 						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript.
@@ -184,11 +192,11 @@
 $source = "hexToRgb('#BADA55');
 
 function hexToRgb(hex){
-    var red = parseInt(hex.substring(0,2),16)/255;
-    var green = parseInt(hex.substring(2,4),16)/255;
-    var blue = parseInt(hex.substring(4,6),16)/255;
+        var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
+        var green = parseInt( hex.substring( 2, 4 ),16 )/255;
+        var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
 
-    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+        return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }";
 
 $geshi = new GeSHi($source, 'javascript');
@@ -197,18 +205,8 @@ $geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
 
 $geshi->enable_classes();
 
-$geshi->get_stylesheet();
-
 echo $geshi->parse_code();
 ?>
-				</figure>
-
-				<p>
-					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each hue (Red, Green, Blue) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
-				</p>
-
-				<figure>
-					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
 				</figure>
 			</div>
 
@@ -248,7 +246,7 @@ echo $geshi->parse_code();
 
 				<aside class="right">
 					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
-						<code class="color">rgba(186,218,85,1)</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							<label for="red">Red:</label>
@@ -300,7 +298,7 @@ echo $geshi->parse_code();
 					<p>In the <abbr>hsl</abbr> color model hue is plotted around a circle, so is represented as a number between 0 and 360.</p>
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color">hsl(74,64%,59%)</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
@@ -320,7 +318,7 @@ echo $geshi->parse_code();
 					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 1 and 100.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color">hsl(74,64%,59%)</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
@@ -336,7 +334,7 @@ echo $geshi->parse_code();
 					<h4>Lightness</h4>
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color">hsl(74,64%,59%)</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
@@ -354,7 +352,7 @@ echo $geshi->parse_code();
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
-						<code class="color">hsla(74,64%,59%,1)</code>
+						<code class="color"></code>
 
 						<form autocomplete="off">
 							<label for="hue">Hue:</label>
