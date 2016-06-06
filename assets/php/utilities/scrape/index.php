@@ -58,6 +58,12 @@
 		if($links->length > 0){
 			foreach($links as $link){
 				if (strpos($link->getAttribute('href'), '.css') !== false) {
+					$url = $link->getAttribute('href');
+
+					if (strpos($url, 'http') !== false) {
+					    $url .= 'http:';
+					}
+
 					array_push($stylesheets, $link->getAttribute('href'));
 				}
 			}

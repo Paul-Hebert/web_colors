@@ -1,5 +1,5 @@
 <?php
-	$title = 'Contact | Beanstalk';
+	$title = 'Contact';
 
 	include('assets/php/header.php');
 ?>

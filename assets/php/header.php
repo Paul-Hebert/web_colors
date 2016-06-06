@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title><?php echo $title; ?></title>
-		<link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>		
+		<link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>		
 		<link rel="stylesheet" type='text/css' href='assets/css/style.css'>
 
 		<?php include('assets/php/favicons.php'); ?>

@@ -1029,7 +1029,8 @@ svg {
   #conversionTable td:first-of-type:not(.ellipsis):after {
     content: '\2192';
     padding: 8pt 6pt;
-    font-family: Roboto, "sans-serif"; }
+    font-family: Roboto, "sans-serif";
+    color: #444; }
 #conversionTable td.ellipsis {
   text-align: center;
   font-family: Roboto, "sans-serif"; }
@@ -1040,7 +1041,8 @@ code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 pre {
-  display: block; }
+  display: block;
+  overflow: scroll; }
   pre * {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
   pre ol {
@@ -1062,70 +1064,16 @@ pre {
         font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
         width: 21pt; }
 
-.javascript {
-  /*.imp{
-  	color: red;
-  }
-  li{
-  	font-weight: normal; 
-  	vertical-align:top;
-  }
-  .ln{
-  	width:1px;
-  	text-align:right;
-  	margin:0;
-  	padding:0 2px;
-  	vertical-align:top;
-  }
-  .li2{
-  	vertical-align:top;
-  }
-  .kw1{
-  	color: #000066; 
-  }
-  .kw2{
-  	color: #003366; 
-  }
-  .kw3{
-  	color: #000066;
-  }
-  .co1{
-  	color: #006600; 
-  	font-style: italic;
-  }
-  .co2{
-  	color: #009966; 
-  	font-style: italic;
-  }
-  .coMLTI {
-  	color: #006600; 
-  	font-style: italic;
-  }
-  .es0{
-  	color: #000099; 
-  }
-  .br0{
-  	color: #009900;
-  }
-  .sy0{
-  	color: #339933;
-  }
-  .nu0{
-  	color: #CC0000;
-  }
-  .ln-xtra, li.ln-xtra, div.n-xtra {
-  	background-color: #ffc;
-  }*/ }
-  .javascript .st0 {
-    color: #C54E2C; }
-  .javascript .kw1 {
-    color: #0B24FB; }
-  .javascript .de1 {
-    color: #444; }
-  .javascript .me1 {
-    color: #660066; }
-  .javascript .br0 {
-    color: #222; }
+.javascript .st0 {
+  color: #C54E2C; }
+.javascript .kw1 {
+  color: #0B24FB; }
+.javascript .de1 {
+  color: #444; }
+.javascript .me1 {
+  color: #80a; }
+.javascript .br0, .javascript .sy0 {
+  color: #222; }
 
 body {
   background: #f0f0f0;

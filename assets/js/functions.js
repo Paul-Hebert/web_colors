@@ -94,12 +94,9 @@ function printChart(type,sortCriteria){
 
             circle.attr({
                 fill: '#fff',
-                class: 'background'
-            });
-
-            circle.animate({
+                class: 'background',
                 r: center * 95/100
-            }, 500);
+            });
 
             usedColors = [];
     }
@@ -129,25 +126,15 @@ function printChart(type,sortCriteria){
 
             circle.attr({
                 fill: '#' + colors[i].hex,
-                opacity: 0
             });
         } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';">';
-            dataPoint += '<span>H:' + parseInt(colors[i].hue) + '  S:' + colors[i].sat.toFixed(2) + '  V:' + colors[i].val.toFixed(2) + '<hr/>';
-            dataPoint += '#' + colors[i].hex.toLowerCase();
-            dataPoint += '</span></div>';
+            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';"></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
     }
 
-    if (type === 'fan'){
-        setTimeout(function(){
-            fan.selectAll('circle').animate({
-                opacity:1
-            }, Math.floor(Math.random() * 500) + 300);  
-        }, Math.floor(Math.random() * 500) + 500);
-    } else if(type === 'rectangle'){
+    if(type === 'rectangle'){
         $('.chart.' + type + '.' + sortCriteria).animate({
             'max-width':'100%'
         },1000);

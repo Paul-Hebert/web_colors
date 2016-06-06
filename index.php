@@ -8,7 +8,7 @@
 		<section>
 			<div class="subsection">
 				<h1>
-					The Popularity Contest
+					The Colors Used by the Most Popular Sites
 				</h1>
 
 				<figure>
@@ -41,10 +41,6 @@
 				<p>
 					There were a total of 537 colors used, including duplicates. For example, 4 of the 10 sites used pure white (#ffffff) in their designs. Duplicated colors are represented in the data multiple times (once for each use), giving those colors a wider bar in the charts.
 				</p>
-
-				<p class='desktop'>
-					Scroll over the colors to see their hue, saturation, value, and hexadecimal color code.
-				</p>
 			</div>
 		</section>
 
@@ -53,7 +49,7 @@
 				<h2>Converting Between Color Formats</h2>
 
 				<p>
-					Artists, graphic designers, scientists and programmers have developed a number of different numerical models to represent color. In order to analyze this data, we'll first have to convert all the colors used into a single format.
+					Scientists and programmers have developed a number of different numerical models to represent color. In order to analyze this data, we'll first have to convert all the colors used into a single format.
 				</p>
 			</div>
 
@@ -182,32 +178,6 @@
 				<figure>
 					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
 				</figure>
-
-				<figure>
-					<figcaption>
-						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript:
-					</figcaption>
-
-<?php
-$source = "hexToRgb('#BADA55');
-
-function hexToRgb(hex){
-    var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
-    var green = parseInt( hex.substring( 2, 4 ),16 )/255;
-    var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
-
-    return 'rgb(' + red + ',' + green + ',' + blue + ')';
-}";
-
-$geshi = new GeSHi($source, 'javascript');
-
-$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-
-$geshi->enable_classes();
-
-echo $geshi->parse_code();
-?>
-				</figure>
 			</div>
 
 			<div class="subsection">
@@ -230,7 +200,7 @@ echo $geshi->parse_code();
 
 				<figure>
 					<figcaption>
-						Here's how to convert a 3 digit hexidecimal color to 6 digits:
+						Here's how to convert a 3 digit hexidecimal color to 6 digits in javascript:
 					</figcaption>
 
 <?php
@@ -262,6 +232,32 @@ echo $geshi->parse_code();
 
 				<figure>
 					<code>rgb(186, 218, 85)</code>
+				</figure>
+
+				<figure>
+					<figcaption>
+						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript:
+					</figcaption>
+
+<?php
+$source = "hexToRgb('#BADA55');
+
+function hexToRgb(hex){
+    var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
+    var green = parseInt( hex.substring( 2, 4 ),16 )/255;
+    var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
+
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>
 				</figure>
 			</div>
 
@@ -356,6 +352,8 @@ echo $geshi->parse_code();
 
 				<div class="subsection">
 					<h4>Lightness</h4>
+
+					<p>Lightness is about what it sounds like. Lightness determines whether a color is dark or light. A <code>100</code> is very light and a <code>0</code> is very dark.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
 						<code class="color"></code>
