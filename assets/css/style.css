@@ -1013,7 +1013,7 @@ svg {
   background: #fff;
   display: block;
   font-size: 8pt; }
-.colorPicker select {
+.colorPicker .hexSelect {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: 1pt #ccc solid;
@@ -1041,8 +1041,7 @@ code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 pre {
-  display: block;
-  overflow: scroll; }
+  display: block; }
   pre * {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
   pre ol {

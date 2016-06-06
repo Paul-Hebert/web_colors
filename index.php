@@ -402,6 +402,18 @@ echo $geshi->parse_code();
 
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
+
+				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
+			
+				<figure class="colorPicker" data-format=',' data-delimiter="">
+					<code class="color"></code>
+
+					<form autocomplete="off">
+						<select name='color' data-scale="" data-unit="">
+							<?php include('assets/php/color_names.php'); ?>
+						</select>
+					</form>
+				</figure>
 			</div>
 		</section>
 

@@ -1,4 +1,4 @@
-<select data-unit="" data-scale="">
+<select data-unit="" data-scale="" class="hexSelect">
 	<?php 
 		$hex = str_split('0123456789ABCDEF');
 
