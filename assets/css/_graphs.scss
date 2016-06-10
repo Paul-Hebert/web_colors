@@ -43,6 +43,11 @@ svg{
 		border: $size-0 $grey solid;
 		@include radius(0px);
 	}
+
+	.colorNames{
+		width:100%;
+		padding:10px;
+	}
 }
 
 #conversionTable{

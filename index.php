@@ -321,7 +321,7 @@ echo $geshi->parse_code();
 						<code class="color"></code>
 
 						<form autocomplete="off">
-							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
+							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="180">
 
 							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
 
@@ -343,7 +343,7 @@ echo $geshi->parse_code();
 						<form autocomplete="off">
 							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
 
-							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
+							<input type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="50">
 
 							<input class="hidden" type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="50">
 						</form>
@@ -353,7 +353,7 @@ echo $geshi->parse_code();
 				<div class="subsection">
 					<h4>Lightness</h4>
 
-					<p>Lightness is about what it sounds like. Lightness determines whether a color is dark or light. A <code>100</code> is very light and a <code>0</code> is very dark.
+					<p>Lightness determines whether a color is dark or light. A <code>100</code> is very light and a <code>0</code> is very dark.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
 						<code class="color"></code>
@@ -409,7 +409,7 @@ echo $geshi->parse_code();
 					<code class="color"></code>
 
 					<form autocomplete="off">
-						<select name='color' data-scale="" data-unit="">
+						<select name='color' data-scale="" data-unit="" class="colorNames">
 							<?php include('assets/php/color_names.php'); ?>
 						</select>
 					</form>

@@ -1021,6 +1021,9 @@ svg {
   -ms-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px; }
+.colorPicker .colorNames {
+  width: 100%;
+  padding: 10px; }
 
 #conversionTable td {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
@@ -1096,9 +1099,9 @@ section:not(:first-of-type) {
   margin-top: 34pt; }
 
 .subsection:not(:first-of-type) {
-  padding-top: 13pt; }
+  padding-top: 42pt; }
   .subsection:not(:first-of-type) .subsection {
-    padding-top: 8pt; }
+    padding-top: 21pt; }
 
 figcaption {
   display: block; }

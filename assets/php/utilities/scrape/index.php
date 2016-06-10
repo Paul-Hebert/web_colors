@@ -1,12 +1,22 @@
 <?php
-	$top_sites = get_alexa_top_sites();
+	//$top_sites = get_alexa_top_sites();
+	$top_sites = ['http://paulhebertdesigns.com'];
 
 	foreach($top_sites as $top_site){
-		echo '<h1><a href="' . 'http://' . $top_site . '" target="_BLANK">' .$top_site . '</a></h1>';
-		echo '<h3>External Stylesheets:</h3>';
-		print_r( get_external_stylesheets( 'http://' . $top_site ) );
-		echo '<h3>Internal Stylesheets:</h3>';		
-		print_r( get_internal_stylesheets( 'http://' . $top_site ) );
+		$text = file_get_contents($top_site);
+
+		foreach(get_external_stylesheets($top_site) as $styles ){
+			$text .= file_get_contents($top_site . '/' . $styles);
+		}
+
+		$text =  htmlspecialchars($text);
+
+		preg_match_all('/#(?:[0-9a-fA-F]{6})|#(?:[0-9a-fA-F]{3})/', $text, $matches);
+
+		$colors = array_map('array_unique', $matches);
+
+		print_r($colors);	
+
 		echo '<hr>';
 	}
 

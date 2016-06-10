@@ -38,10 +38,10 @@ section:not(:first-of-type){
 }
 
 .subsection:not(:first-of-type){
-	padding-top:$size-5;
+	padding-top:$size-10;
 
 	.subsection{
-		padding-top:$size-3;
+		padding-top:$size-7;
 	}
 }
 
