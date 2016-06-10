@@ -1,21 +1,58 @@
 <?php
-	//$top_sites = get_alexa_top_sites();
-	$top_sites = ['http://paulhebertdesigns.com'];
+	//Begin Regex
+	$GLOBALS['colorRegex'] = '/';
+
+	// 6-Digit Hexadecimal
+	$GLOBALS['colorRegex'] .= '#(?:[0-9a-fA-F]{6})';
+
+	// 3-Digit Hexadecimal
+	$GLOBALS['colorRegex'] .= '|#(?:[0-9a-fA-F]{3})';
+
+	// Named Colors
+	$GLOBALS['colorRegex'] .= '|' . file_get_contents('color_names.php');
+
+	// RGB + RGBA
+    $GLOBALS['colorRegex'] .= '|^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$';
+	
+	// RGBA and HSLA
+	$GLOBALS['colorRegex'] .= '|((rgba|hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)';
+	
+	// RGB and HSL
+	$GLOBALS['colorRegex'] .= '|(rgb|hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\))';
+
+	// Finish Regex. Make case insensitive
+	$GLOBALS['colorRegex'] .= '/i';
+
+	$top_sites = get_alexa_top_sites();
+	//$top_sites = ['paulhebertdesigns.com'];
 
 	foreach($top_sites as $top_site){
+		echo '<h2>' . $top_site . '</h2>';
+
+		$top_site = 'http://' . $top_site;
+
 		$text = file_get_contents($top_site);
 
 		foreach(get_external_stylesheets($top_site) as $styles ){
-			$text .= file_get_contents($top_site . '/' . $styles);
+			if (strpos($styles, '//') === false) {
+				$text .= file_get_contents($top_site . '/' . $styles);
+			} elseif(strpos($styles, 'http:') === false){
+				$text .= file_get_contents('http:' . $top_site . '/' . $styles);				
+			} else{
+				$text .= file_get_contents($styles);				
+			}
 		}
+
+		// Uncomment for REGEX testing.
+		// $text = '#333 #333333 green rgb(1,255,33) rgb(1, 255, 33) rgba(1,255,33,.55) rgb(1, 255, 33, .55) hsl(210,50%,50%) hsl(210, 50%, 50%) hsla(210,50%,50%,.5) hsla(210, 50%, 50%, .5)';
 
 		$text =  htmlspecialchars($text);
 
-		preg_match_all('/#(?:[0-9a-fA-F]{6})|#(?:[0-9a-fA-F]{3})/', $text, $matches);
+		preg_match_all($GLOBALS['colorRegex'], $text, $matches);
 
 		$colors = array_map('array_unique', $matches);
 
-		print_r($colors);	
+		print_r($colors[0]);	
 
 		echo '<hr>';
 	}
