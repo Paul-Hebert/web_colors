@@ -192,11 +192,9 @@
 				</p>
 
 				<figure>
-					<code>f</code> = <code>ff</code> so <code>#fff</code> = <code>#ffffff</code>.
+					<code>f</code> = <code>ff</code> so <code>#fff</code> = <code>#ffffff</code> and <code>#3a9</code> = <code>#33aa99</code>.
 				</figure>
 				<figure>
-					<code>3</code> = <code>33</code> so <code>#333</code> = <code>#333333</code>.
-				</figure>
 
 				<figure>
 					<figcaption>
@@ -227,7 +225,7 @@ echo $geshi->parse_code();
 				<h3><abbr>RGB</abbr> (Red, Green, Blue)</h3>
 
 				<p>
-					The hexadecimal numbering system is just one way to represent <abbr>RGB</abbr> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <abbr>RGB</abbr> format:
+					The hexadecimal numbering system is just one way to represent <abbr>RGB</abbr> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <abbr>RGB</abbr>, a base-10 format:
 				</p>
 
 				<figure>
@@ -403,7 +401,7 @@ echo $geshi->parse_code();
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
 
-				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
+				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
 			
 				<figure class="colorPicker" data-format=',' data-delimiter="">
 					<code class="color"></code>

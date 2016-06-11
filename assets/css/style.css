@@ -1081,17 +1081,14 @@ body {
   background: #f0f0f0;
   padding: 26pt; }
 
-header h1, footer h1 {
-  font-size: 21pt; }
 header a, footer a {
   text-decoration: none;
   color: #222; }
 
 main {
-  padding: 26pt 0;
   max-width: 440pt;
   width: 100%;
-  margin: 0 auto; }
+  margin-left: 250px; }
 
 section:not(:first-of-type) {
   border-top: 1px solid #ddd;

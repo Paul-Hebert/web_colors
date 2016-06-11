@@ -21,8 +21,6 @@
 		<header>
 			<?php include('assets/php/nav.php'); ?>
 
-			<h1><a href="index.php">The Colors of the Web</a></h1>
-
 			<div id="menu-toggle" class="mobile">
 				<?php include('assets/svgs/hamburger.php'); ?>
 			</div>

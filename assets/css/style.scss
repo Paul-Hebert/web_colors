@@ -14,10 +14,6 @@ body{
 
 header, footer{
 
-	h1{
-		font-size:$size-7;
-	}
-
 	a{
 		text-decoration:none;
 		color:$off-black;
@@ -25,10 +21,10 @@ header, footer{
 }
 
 main{
-	padding:$size-8 0;
+	//padding:$size-8 0;
 	max-width:440pt;
 	width:100%;
-	margin: 0 auto;
+	margin-left:250px;
 }
 
 section:not(:first-of-type){
