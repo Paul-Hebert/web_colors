@@ -1182,6 +1182,13 @@ figcaption {
     aside.right {
       float: right;
       clear: right;
-      margin-right: -250px; } }
+      margin-right: -250px; }
+
+  figure.large {
+    width: 836px; }
+    figure.large.left, figure.large.extra {
+      margin-left: -250px; }
+    figure.large.extra {
+      width: 1086px; } }
 
 /*# sourceMappingURL=style.css.map */

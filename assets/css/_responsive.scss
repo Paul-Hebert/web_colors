@@ -99,4 +99,16 @@
 			margin-right:-250px;
 		}
 	}
+
+	figure.large{
+		width:836px;
+
+		&.left, &.extra{
+			margin-left:-250px;			
+		}	
+
+		&.extra{
+			width:1086px;
+		}
+	}
 }
