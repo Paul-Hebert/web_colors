@@ -1,12 +1,12 @@
 $(function() {
-	initialize_mobile_menu();
+	initializeMobileMenu();
 
-    initialize_contact_form();	
+    initializeContactForm();	
+
+    initializeColorPickers();
 
     convertColors();
 	printChart('rectangle','hue');
-	printChart('rectangle','sat');
-	printChart('rectangle','val');
     printChart('fan','hue'); 
 
     $('.backgroundChanger').on("input change", function(){
@@ -14,8 +14,9 @@ $(function() {
             fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
         });
     });
+});
 
-
+function initializeColorPickers(){
     $('.colorPicker input, .colorPicker select').on("input change", function(){
         var colorPicker = $(this).parents('.colorPicker');
 
@@ -44,12 +45,10 @@ $(function() {
 
         colorPicker.find('.color').text(color).css('border-color',color);
     }).change();
-});
+}
 
 function convertColors(){
-    for (var c = 0; c < colors.length; c++) {
-        var hex = colors[c].hex;
-         
+    for (var c = 0; c < colors.length; c++) {         
         hexToRgb(c);
  
         rgbToHsv(c);
@@ -141,16 +140,33 @@ function printChart(type,sortCriteria){
     }
 }
 
+function threeDigitsToSix(color){
+    hex = color.split('');
+ 
+    return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+}
+
 function hexToRgb(color){
     hex = colors[color].hex;
 
-    colors[color].red = parseInt(hex.substring(0,2),16)/255;
-    colors[color].green = parseInt(hex.substring(2,4),16)/255;
-    colors[color].blue = parseInt(hex.substring(4,6),16)/255;
+    colors[color].red = base16ToBase10( hex.substring(0,2) );
+    colors[color].green = base16ToBase10( hex.substring(2,4) );
+    colors[color].blue = base16ToBase10( hex.substring(4,6) );
+}
+
+function base16ToBase10(base16){
+    return parseInt(base16,16);
+}
+
+function base10ToBase16(base10){
+    return base10.toString(16);
 }
 
 function rgbToHsv(color){
     var rgb = colors[color];
+    rgb.red /= 255; 
+    rgb.green /= 255; 
+    rgb.blue /= 255; 
 
     /* Getting the Max and Min values for Chroma. */
     var max = Math.max.apply(Math, [rgb.red,rgb.green,rgb.blue]);
@@ -191,7 +207,7 @@ function rgbToHsv(color){
 // Default template functions
 /*****************************************************************************************************/
 
-function initialize_mobile_menu(){
+function initializeMobileMenu(){
 	$('#menu-toggle').click(function(){
 		if ( $('#menu-toggle svg').attr('class') === 'open' ){
 			$('#menu-toggle svg').attr('class','');
@@ -219,7 +235,7 @@ function initialize_mobile_menu(){
 	});
 }
 
-function initialize_contact_form(){
+function initializeContactForm(){
 	$( ".contact_form" ).on( "submit", function( event ) {
 	    event.preventDefault();
 

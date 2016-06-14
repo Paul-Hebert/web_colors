@@ -178,6 +178,50 @@
 				<figure>
 					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
 				</figure>
+
+				<figure>
+					<figcaption>
+						Here's how to convert base-16 to base-10 in javascript.
+					</figcaption>
+
+<?php
+$source = "base16ToBase10('BA');
+
+function base16ToBase10(base16){
+    return parseInt(base16,16);
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>
+				</figure>
+
+				<figure>
+					<figcaption>
+						Here's how to do the inverse: convert base-10 to base-16.
+					</figcaption>
+
+<?php
+$source = "base10ToBase16(186);
+
+function base10ToBase16(base10){
+    return base10.toString(16);
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>
+				</figure>
 			</div>
 
 			<div class="subsection">
@@ -241,11 +285,15 @@ echo $geshi->parse_code();
 $source = "hexToRgb('#BADA55');
 
 function hexToRgb(hex){
-    var red   = parseInt( hex.substring( 0, 2 ),16 )/255;
-    var green = parseInt( hex.substring( 2, 4 ),16 )/255;
-    var blue  = parseInt( hex.substring( 4, 6 ),16 )/255;
+    var red   = base16ToBase10( hex.substring( 0, 2 ) );
+    var green = base16ToBase10( hex.substring( 2, 4 ) );
+    var blue  = base16ToBase10( hex.substring( 4, 6 ) );
 
     return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}
+
+function base16ToBase10(base16){
+    return parseInt(base16,16);
 }";
 
 $geshi = new GeSHi($source, 'javascript');
@@ -333,7 +381,7 @@ echo $geshi->parse_code();
 
 					<p>Saturation is a little more difficult to understand than hue. Saturation is the purity of a color, or how much grey is in the color.</p>
 
-					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 1 and 100.
+					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 0 and 100.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
 						<code class="color"></code>
@@ -395,6 +443,18 @@ echo $geshi->parse_code();
 
 				<p>
 					For the purposes of these data visualizations, the alpha tag has been stripped from RGBA colors, effectively treating them as RGB. 
+				</p>
+			</div>
+			
+			<div class="subsection">
+				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
+
+				<p>
+					Coverting <abbr>RGB</abbr> colors to <abbr>HSL</abbr> gets a little complicated.
+				</p>
+
+				<p>
+					All of our calculations will require
 				</p>
 			</div>
 

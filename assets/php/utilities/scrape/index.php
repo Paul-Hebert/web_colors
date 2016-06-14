@@ -31,40 +31,50 @@
 	// Finish Regex. Make case insensitive
 	$GLOBALS['colorRegex'] .= '/i';
 
-	//$top_sites = get_alexa_top_sites();
-	$top_sites = ['paulhebertdesigns.com'];
+	$top_sites = get_alexa_top_sites();
+	//$top_sites = ['live.com'];
+
+	$count = 0;
 
 	foreach($top_sites as $top_site){
-		echo '<h2>' . $top_site . '</h2>';
+		//echo '<h2>' . $top_site . '</h2>';
 
-		$top_site = 'http://' . $top_site;
+		if($count < 10){
+			$top_site = 'http://' . $top_site;
 
-		$text = file_get_contents($top_site);
+			$text = file_get_contents($top_site);
 
-		foreach(get_external_stylesheets($top_site) as $styles ){
-			if (strpos($styles, '//') === false) {
-				$text .= file_get_contents($top_site . '/' . $styles);
-			} elseif(strpos($styles, 'http:') === false){
-				$text .= file_get_contents('http:' . $top_site . '/' . $styles);				
-			} else{
-				$text .= file_get_contents($styles);				
+			foreach(get_external_stylesheets($top_site) as $styles ){
+				if (strpos($styles, '//') === false) {
+					$text .= file_get_contents($top_site . '/' . $styles);
+				} elseif(strpos($styles, 'http') === false){
+					$text .= file_get_contents('http:' . $top_site . '/' . $styles);				
+				} else{
+					$text .= file_get_contents($styles);				
+				}
 			}
+
+			// Uncomment for REGEX testing
+			//$text = '#333 #333333 green important rgb(1,255,33) rgb(1, 255, 33) rgba(1,255,33,.55) rgb(1, 255, 33, .55) hsl(210,50%,50%) hsl(210, 50%, 50%) hsla(210,50%,50%,.5) hsla(210, 50%, 50%, .5)';
+
+			$text =  htmlspecialchars($text, ENT_COMPAT|ENT_SUBSTITUTE, 'UTF-8');
+			
+			//echo $text;
+
+			preg_match_all($GLOBALS['colorRegex'], $text, $matches);
+
+			$colors = array_map('array_unique', $matches);
+
+			//print_r($colors[0]);	
+
+			foreach($colors[0] as $color){
+				echo $color . ',';
+			}
+
+			//echo '<hr>';
+
+			$count++;
 		}
-
-		// Uncomment for REGEX testing
-		$text = '#333 #333333 green important rgb(1,255,33) rgb(1, 255, 33) rgba(1,255,33,.55) rgb(1, 255, 33, .55) hsl(210,50%,50%) hsl(210, 50%, 50%) hsla(210,50%,50%,.5) hsla(210, 50%, 50%, .5)';
-
-		/*$text =  htmlentities($text);
-		
-		echo $text;*/
-
-		preg_match_all($GLOBALS['colorRegex'], $text, $matches);
-
-		$colors = array_map('array_unique', $matches);
-
-		print_r($colors[0]);	
-
-		echo '<hr>';
 	}
 
 	function get_alexa_top_sites(){
