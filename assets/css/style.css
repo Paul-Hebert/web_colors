@@ -1021,7 +1021,8 @@ svg {
     padding: 10pt;
     font-size: 10pt;
     left: 0px;
-    top: 8pt; }
+    top: 8pt;
+    z-index: 5; }
 
 .colorPicker .colorBlock {
   border-width: 13pt;
