@@ -14,6 +14,10 @@ $(function() {
             fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
         });
     });
+
+    $('.colorListing').each(function(){
+        $(this).css( 'background', $(this).find('span').text() )
+    })
 });
 
 function initializeColorPickers(){
@@ -43,7 +47,7 @@ function initializeColorPickers(){
 
         color += colorFormat[1];
 
-        colorPicker.find('.color').text(color).css('border-color',color);
+        colorPicker.find('.colorBlock').text(color).css('border-color',color);
     }).change();
 }
 
@@ -127,16 +131,10 @@ function printChart(type,sortCriteria){
                 fill: '#' + colors[i].hex,
             });
         } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';"></div>';
+            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';"><span>#' + colors[i].hex + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
-    }
-
-    if(type === 'rectangle'){
-        $('.chart.' + type + '.' + sortCriteria).animate({
-            'max-width':'100%'
-        },1000);
     }
 }
 

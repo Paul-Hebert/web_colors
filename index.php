@@ -46,6 +46,29 @@
 
 		<section>
 			<div class="subsection">
+				<figure class="large right" style="font-size:0px;">
+					<?php
+						$path    = 'assets/data/';
+						$files = scandir($path);
+						$array_length = count($files);
+						$files = array_diff($files, array('.', '..'));
+
+						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
+
+						foreach($sites as $site){
+							echo '<h3>' . $site[0] . '</h3>';
+
+							for($count = 1; $count < count($site); $count++){
+								echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
+							}
+						}
+					?>
+				</figure>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
 				<h2>Converting Between Color Formats</h2>
 
 				<p>
@@ -148,7 +171,7 @@
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='#,' data-delimiter="">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							#
@@ -312,7 +335,7 @@ echo $geshi->parse_code();
 
 				<aside class="right">
 					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							<label for="red">Red:</label>
@@ -364,7 +387,7 @@ echo $geshi->parse_code();
 					<p>In the <abbr>hsl</abbr> color model hue is plotted around a circle, so is represented as a number between 0 and 360.</p>
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="180">
@@ -384,7 +407,7 @@ echo $geshi->parse_code();
 					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 0 and 100.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="0">
@@ -402,7 +425,7 @@ echo $geshi->parse_code();
 					<p>Lightness determines whether a color is dark or light. A <code>100</code> is white and a <code>0</code> is black.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							<input class="hidden" type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="180">
@@ -420,7 +443,7 @@ echo $geshi->parse_code();
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
-						<code class="color"></code>
+						<code class="colorBlock"></code>
 
 						<form autocomplete="off">
 							<label for="hue">Hue:</label>
@@ -464,7 +487,7 @@ echo $geshi->parse_code();
 				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
 			
 				<figure class="colorPicker" data-format=',' data-delimiter="">
-					<code class="color"></code>
+					<code class="colorBlock"></code>
 
 					<form autocomplete="off">
 						<select name='color' data-scale="" data-unit="" class="colorNames">

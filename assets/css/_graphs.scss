@@ -1,18 +1,20 @@
 .rectangle{
-	max-width:1%;
-	height:20px;
-	overflow:hidden;
+	height:$size-6;
 
 	.color{
 		display:inline-block;
 		width:1px;
 		height:100%;
+		position:relative;
 
 		span{
 			display:none;
 			position:absolute;
 			background:#fff;
 			padding:5px;
+			top:$size-6;
+			left:0;
+			z-index:5;
 		}
 
 		&:hover span{
@@ -25,8 +27,30 @@ svg{
 	width:100%;
 }
 
+.colorListing{
+	display:inline-block;
+	width:$size-3;
+	height:$size-3;
+	line-height:0px;
+	position:relative;
+
+	span{
+		display:none;
+	}
+
+	&:hover span{
+		display:block;
+		position:absolute;
+		background:#fff;
+		padding:$size-4;
+		font-size:$size-4;
+		left:0px;
+		top:$size-3;
+	}
+}
+
 .colorPicker{
-	.color{
+	.colorBlock{
 		border-width:$size-5;
 		text-align:center;
 		padding:$size-1 0px;

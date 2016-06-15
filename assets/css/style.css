@@ -986,25 +986,44 @@ abbr {
   color: inherit; }
 
 .rectangle {
-  max-width: 1%;
-  height: 20px;
-  overflow: hidden; }
+  height: 16pt; }
   .rectangle .color {
     display: inline-block;
     width: 1px;
-    height: 100%; }
+    height: 100%;
+    position: relative; }
     .rectangle .color span {
       display: none;
       position: absolute;
       background: #fff;
-      padding: 5px; }
+      padding: 5px;
+      top: 16pt;
+      left: 0;
+      z-index: 5; }
     .rectangle .color:hover span {
       display: block; }
 
 svg {
   width: 100%; }
 
-.colorPicker .color {
+.colorListing {
+  display: inline-block;
+  width: 8pt;
+  height: 8pt;
+  line-height: 0px;
+  position: relative; }
+  .colorListing span {
+    display: none; }
+  .colorListing:hover span {
+    display: block;
+    position: absolute;
+    background: #fff;
+    padding: 10pt;
+    font-size: 10pt;
+    left: 0px;
+    top: 8pt; }
+
+.colorPicker .colorBlock {
   border-width: 13pt;
   text-align: center;
   padding: 3pt 0px;

@@ -32,7 +32,14 @@
 	$GLOBALS['colorRegex'] .= '/i';
 
 	$top_sites = get_alexa_top_sites();
-	//$top_sites = ['live.com'];
+	//$top_sites = ['paulhebertdesigns.com','localbranch.org','paulhebertdesigns.com','localbranch.org'];
+
+	// set the default timezone to use.
+	date_default_timezone_set('UTC');
+
+	$date_time = date(DATE_ATOM); 
+
+	$csv = fopen("../../../data/" . $date_time . ".csv", "w");
 
 	$count = 0;
 
@@ -65,17 +72,19 @@
 
 			$colors = array_map('array_unique', $matches);
 
-			//print_r($colors[0]);	
+			fwrite($csv, $top_site . '|');
 
 			foreach($colors[0] as $color){
-				echo $color . ',';
+				fwrite($csv, $color . '|');
 			}
 
-			//echo '<hr>';
+			fwrite($csv,"\r\n");
 
 			$count++;
 		}
 	}
+
+	fclose($csv);
 
 	function get_alexa_top_sites(){
 		$alexa_html = file_get_contents('http://www.alexa.com/topsites');
