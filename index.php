@@ -8,7 +8,7 @@
 		<section>
 			<div class="subsection">
 				<h1>
-					The Colors Used by the Most Popular Sites
+					The Colors Used by the Ten Most Popular Sites
 				</h1>
 
 				<figure>
@@ -429,7 +429,7 @@ echo $geshi->parse_code();
 				<div class="subsection">
 					<h4>Lightness</h4>
 
-					<p>Lightness determines whether a color is dark or light. A <code>100</code> is white and a <code>0</code> is black.
+					<p>Lightness determines whether a color is dark or light. A <code>100%</code> is white and a <code>0%</code> is black.
 
 					<figure class="colorPicker" data-format='hsl(,)' data-delimiter=",">
 						<code class="colorBlock"></code>

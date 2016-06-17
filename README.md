@@ -1,6 +1,11 @@
 Index
 	Purpose
 	Data
+		Raw data
+			by site
+			aggregate
+		Organizing data
+			
 	Methods
 		Scraping
 			PHP
