@@ -53,7 +53,7 @@
 		</section>
 		
 		<section>
-			<div class="subsection">
+			<div class="subsection" id="aggregate">
 				<h2>The Colors</h2>
 
 				<p>Here are all of the sites' colors put together:</p>
@@ -530,21 +530,6 @@ echo $geshi->parse_code();
 				<h2>Bar Charts</h2>
 			</div>
 		</section>
-
-		<?php
-			$txt = file_get_contents('colors.txt', FILE_USE_INCLUDE_PATH);
-			$colors = preg_split('/,/', $txt);
-			echo '<script type="text/javascript">';
-				echo 'colors = new Array;';
-				$i = 0;
-				foreach ($colors as $color){
-					echo 'current ={"hex":"' . $color . '"};';
-					echo 'colors.push(current);';  
-
-					$i++;
-				}
-		?>
-			</script>
 	</main>
 
 <?php

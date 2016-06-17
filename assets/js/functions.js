@@ -6,8 +6,8 @@ $(function() {
     initializeColorPickers();
 
     convertColors();
-	printChart('rectangle','hue');
-    printChart('fan','hue'); 
+	//printChart('rectangle','hue');
+    //printChart('fan','hue'); 
 
     $('.backgroundChanger').on("input change", function(){
         $( $(this).attr('data-target') ).css({
@@ -52,11 +52,35 @@ function initializeColorPickers(){
 }
 
 function convertColors(){
-    for (var c = 0; c < colors.length; c++) {         
-        hexToRgb(c);
- 
-        rgbToHsv(c);
-    }
+    colors = [];
+
+    $('#aggregate .colorListing').each(function(){
+        // Get original text
+        var color = {original: $(this).text()};
+
+        // Determine original color format and convert to hexadecimal        
+        if ( /#(?:[0-9a-fA-F]{6})/.test(color.original) ){
+            color.originalFormat = 'hexadecimal';
+        } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
+            color.originalFormat = '3-digit-hexadecimal';
+            color.hex = threeDigitsToSix(color.original);
+        } else if ( /(rgba)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
+            color.originalFormat = 'rgba';
+        } else if ( /(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
+            color.originalFormat = 'rgb';
+        } else if ( /(hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
+            color.originalFormat = 'hsla';
+        } else if ( /(hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
+            color.originalFormat = 'hsl';
+        }
+
+        // From hex, convert to RGB
+
+        // From RGB, convert to HSV
+
+        // throughout process add all as properties of color
+        colors.push( color );
+    });
 }
 
 function sortColors(sortCriteria) {
