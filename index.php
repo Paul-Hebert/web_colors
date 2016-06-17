@@ -18,6 +18,8 @@
 				<p>As a graphic designer, I often struggle when choosing a color scheme for a new project. I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
 			
 				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
+			
+				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
 			</div>
 		</section>
 
@@ -36,17 +38,15 @@
 
 						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
-						echo '<ol>';
-							foreach($sites as $site){
-								echo '<li>';
-									echo '<h3>' . $site[0] . '</h3>';
+						foreach($sites as $site){
+							echo '<div class="chart">';
+								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
 
-									for($count = 1; $count < count($site); $count++){
-										echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
-									}
-								echo '</li>';
-							}
-						echo '</ol>';
+								for($count = 1; $count < count($site); $count++){
+									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								}
+							echo '</div>';
+						}
 					?>
 				</figure>
 			</div>
@@ -62,7 +62,7 @@
 					<?php
 						foreach($sites as $site){
 							for($count = 1; $count < count($site); $count++){
-								echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
+								echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
 							}
 						}
 					?>
@@ -74,13 +74,52 @@
 			<div class="subsection">
 				<h2>Converting Between Color Formats</h2>
 
-				<p>While this data may look like pretty pixel art, it's not very informative without being organized.The colors used by these sites are all written in one of 6 different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
+				<p>While this data may look pretty, it's not very informative without being organized.The colors used by these sites are all written in one of 6 different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
 
-				<p>ADD BAR CHART FOR COLOR FORMATS</p>
+				<figure class="large right">
+					<div class="format bar chart">
+						<aside class="left"><label>Hexadecimal</label></aside>
+						<div class="barColumn" id="hexadecimalColors"></div>
+
+						<aside class="left"><label>Three Digit Hexadecimal</label></aside>
+						<div class="barColumn" id="threeDigitHexadecimalColors"></div>
+
+						<aside class="left"><label><abbr>RGB</abbr></label></aside>
+						<div class="barColumn" id="rgbColors"></div>
+
+						<aside class="left"><label><abbr>RGBA</abbr></label></aside>
+						<div class="barColumn" id="rgbaColors"></div>
+
+						<aside class="left"><label><abbr>HSL</abbr></label></aside>
+						<div class="barColumn" id="hslColors"></div>
+
+						<aside class="left"><label><abbr>HSLA</abbr></label></aside>
+						<div class="barColumn" id="hslaColors"></div>
+
+						<aside class="left"><label>Named Colors</label></aside>
+						<div class="barColumn" id="namedColors"></div>
+					</div>
+				</figure>
 
 				<p>
 					In order to better organize this data, we'll first have to convert all the colors used into a single format.
 				</p>
+			</div>
+
+			<div class="subsection">
+				<h3>Predefined Color Names</h3>
+
+				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
+			
+				<figure class="colorPicker" data-format=',' data-delimiter="">
+					<code class="colorBlock"></code>
+
+					<form autocomplete="off">
+						<select name='color' data-scale="" data-unit="" class="colorNames">
+							<?php include('assets/php/color_names.php'); ?>
+						</select>
+					</form>
+				</figure>
 			</div>
 
 			<div class="subsection">
@@ -315,9 +354,9 @@ echo $geshi->parse_code();
 $source = "hexToRgb('#BADA55');
 
 function hexToRgb(hex){
-    var red   = base16ToBase10( hex.substring( 0, 2 ) );
-    var green = base16ToBase10( hex.substring( 2, 4 ) );
-    var blue  = base16ToBase10( hex.substring( 4, 6 ) );
+    var red   = base16ToBase10( hex.substring( 1, 3 ) );
+    var green = base16ToBase10( hex.substring( 3, 5 ) );
+    var blue  = base16ToBase10( hex.substring( 5, 7 ) );
 
     return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }
@@ -486,22 +525,6 @@ echo $geshi->parse_code();
 				<p>
 					All of our calculations will require
 				</p>
-			</div>
-
-			<div class="subsection">
-				<h3>Predefined Color Names</h3>
-
-				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
-			
-				<figure class="colorPicker" data-format=',' data-delimiter="">
-					<code class="colorBlock"></code>
-
-					<form autocomplete="off">
-						<select name='color' data-scale="" data-unit="" class="colorNames">
-							<?php include('assets/php/color_names.php'); ?>
-						</select>
-					</form>
-				</figure>
 			</div>
 		</section>
 

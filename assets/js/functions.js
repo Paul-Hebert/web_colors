@@ -9,13 +9,17 @@ $(function() {
 	//printChart('rectangle','hue');
     //printChart('fan','hue'); 
 
+    for(i = 0; i < colors.length; i++){
+        $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
+    }
+
     $('.backgroundChanger').on("input change", function(){
         $( $(this).attr('data-target') ).css({
             fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
         });
     });
 
-    $('.colorListing').each(function(){
+    $('.color.listing').each(function(){
         $(this).css( 'background', $(this).find('span').text() )
     })
 });
@@ -54,7 +58,7 @@ function initializeColorPickers(){
 function convertColors(){
     colors = [];
 
-    $('#aggregate .colorListing').each(function(){
+    $('#aggregate .color.listing').each(function(){
         // Get original text
         var color = {original: $(this).text()};
 
@@ -62,7 +66,7 @@ function convertColors(){
         if ( /#(?:[0-9a-fA-F]{6})/.test(color.original) ){
             color.originalFormat = 'hexadecimal';
         } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
-            color.originalFormat = '3-digit-hexadecimal';
+            color.originalFormat = 'threeDigitHexadecimal';
             color.hex = threeDigitsToSix(color.original);
         } else if ( /(rgba)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'rgba';
@@ -73,6 +77,8 @@ function convertColors(){
             color.originalFormat = 'hsla';
         } else if ( /(hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
             color.originalFormat = 'hsl';
+        } else{
+            color.originalFormat = 'named';
         }
 
         // From hex, convert to RGB
@@ -168,7 +174,11 @@ function threeDigitsToSix(color){
 }
 
 function hexToRgb(color){
-    return 'rgb(' + base16ToBase10( color.substring(1,3) ) + ',' + base16ToBase10( color.substring(3,5) ) + ',' +  base16ToBase10( color.substring(5,7) ) + ')';
+    var red   = base16ToBase10( color.substring( 1, 3 ) );
+    var green = base16ToBase10( color.substring( 3, 5 ) );
+    var blue  = base16ToBase10( color.substring( 5, 7 ) );
+ 
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
 }
 
 function rgbToHex(color){
