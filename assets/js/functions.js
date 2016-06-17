@@ -68,6 +68,7 @@ function convertColors(){
             color.originalFormat = 'rgba';
         } else if ( /(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
             color.originalFormat = 'rgb';
+            color.hex = rgbToHex(color.original);
         } else if ( /(hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'hsla';
         } else if ( /(hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
@@ -112,20 +113,20 @@ function printChart(type,sortCriteria){
     colors = sortColors(sortCriteria);
 
     if (type === 'fan'){
-            fan = Snap('.chart.' + type + '.' + sortCriteria);
-            center = $('.chart.' + type + '.' + sortCriteria).width()/2;
+        fan = Snap('.chart.' + type + '.' + sortCriteria);
+        center = $('.chart.' + type + '.' + sortCriteria).width()/2;
 
-            $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
+        $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
 
-            var circle = fan.circle(center, center, 0);
+        var circle = fan.circle(center, center, 0);
 
-            circle.attr({
-                fill: '#fff',
-                class: 'background',
-                r: center * 95/100
-            });
+        circle.attr({
+            fill: '#fff',
+            class: 'background',
+            r: center * 95/100
+        });
 
-            usedColors = [];
+        usedColors = [];
     }
 
     for(i = 0; i < colors.length; i++){    
@@ -162,18 +163,20 @@ function printChart(type,sortCriteria){
     }
 }
 
-function threeDigitsToSix(color){
-    hex = color.split('');
- 
-    return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+function threeDigitsToSix(color){ 
+   return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
 }
 
 function hexToRgb(color){
-    hex = colors[color].hex;
+    return 'rgb(' + base16ToBase10( color.substring(1,3) ) + ',' + base16ToBase10( color.substring(3,5) ) + ',' +  base16ToBase10( color.substring(5,7) ) + ')';
+}
 
-    colors[color].red = base16ToBase10( hex.substring(0,2) );
-    colors[color].green = base16ToBase10( hex.substring(2,4) );
-    colors[color].blue = base16ToBase10( hex.substring(4,6) );
+function rgbToHex(color){
+    var temp_color = color.replace("rgb(", "");
+    temp_color = temp_color.replace(")", "");
+    temp_color = temp_color.split(',');
+
+    return '#' + base10ToBase16(temp_color[0]) + '' + base10ToBase16(temp_color[1]) + '' + base10ToBase16(temp_color[2]);
 }
 
 function base16ToBase10(base16){
@@ -181,7 +184,7 @@ function base16ToBase10(base16){
 }
 
 function base10ToBase16(base10){
-    return base10.toString(16);
+    return parseFloat(base10).toString(16);
 }
 
 function rgbToHsv(color){

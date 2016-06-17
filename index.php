@@ -240,7 +240,7 @@ echo $geshi->parse_code();
 $source = "base10ToBase16(186);
 
 function base10ToBase16(base10){
-    return base10.toString(16);
+    return parseFloat(base10).toString(16);
 }";
 
 $geshi = new GeSHi($source, 'javascript');
