@@ -1,3 +1,5 @@
+<!doctype html>
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -47,17 +49,23 @@
 		//echo '<h2>' . $top_site . '</h2>';
 
 		if($count < 10){
-			$top_site = 'http://' . $top_site;
+			$top_site = $top_site;
 
-			$text = file_get_contents($top_site);
+			$text = file_get_contents('http://' . $top_site);
 
+			// This part's not working.
 			foreach(get_external_stylesheets($top_site) as $styles ){
+				echo $styles;
+
 				if (strpos($styles, '//') === false) {
 					$text .= file_get_contents($top_site . '/' . $styles);
+					echo $top_site . '/' . $styles;
 				} elseif(strpos($styles, 'http') === false){
-					$text .= file_get_contents('http:' . $top_site . '/' . $styles);				
+					$text .= file_get_contents('http:' . $top_site . '/' . $styles);
+					echo 'http:' . $top_site . '/' . $styles;				
 				} else{
-					$text .= file_get_contents($styles);				
+					$text .= file_get_contents($styles);
+					echo $styles;				
 				}
 			}
 
@@ -72,10 +80,10 @@
 
 			$colors = array_map('array_unique', $matches);
 
-			fwrite($csv, $top_site . '|');
+			fwrite($csv, $top_site);
 
 			foreach($colors[0] as $color){
-				fwrite($csv, $color . '|');
+				fwrite($csv, '|' . $color);
 			}
 
 			fwrite($csv,"\r\n");

@@ -15,49 +15,52 @@
 					<div class="hue rectangle chart"></div>
 				</figure>
 
-				<h2>The Data</h2>
-
-				<aside class="right">
-					<h4>The Top 10</h4>
-
-					<ol>
-						<li><a href="http://www.google.com" target="_blank">google.com</a></li>
-						<li><a href="http://www.facebook.com" target="_blank">facebook.com </a></li>
-						<li><a href="http://www.youtube.com" target="_blank">youtube.com </a></li>
-						<li><a href="http://www.yahoo.com" target="_blank">yahoo.com </a></li>
-						<li><a href="http://www.baidu.com" target="_blank">baidu.com </a></li>
-						<li><a href="http://www.wikipedia.org" target="_blank">wikipedia.org </a></li>
-						<li><a href="http://www.amazon.com" target="_blank">amazon.com </a></li>
-						<li><a href="http://www.twitter.com" target="_blank">twitter.com </a></li>
-						<li><a href="http://www.cq.com" target="_blank">cq.com </a></li>
-						<li><a href="http://www.linkedin.com" target="_blank">linkedin.com</a></li>
-					</ol>
-				</aside>
-
-				<p>
-					These colors were used in stylesheets or images featured in <a href="http://www.alexa.com/topsites" target="_blank">the top 10 sites</a> listed on Alexa.com. (Some colors were present in stylesheets but not actually used on the site. These were still included in the graphs.)
-				</p>
-
-				<p>
-					There were a total of 537 colors used, including duplicates. For example, 4 of the 10 sites used pure white (#ffffff) in their designs. Duplicated colors are represented in the data multiple times (once for each use), giving those colors a wider bar in the charts.
-				</p>
+				<p>As a graphic designer, I often struggle when choosing a color scheme for a new project. I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
+			
+				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
 			</div>
 		</section>
 
 		<section>
 			<div class="subsection">
+				<h2>The Sites</h2>
+
+				<p>Here are the ten most popular sites, and the colors that they use:</p>
+
 				<figure class="large right" style="font-size:0px;">
 					<?php
-						$path    = 'assets/data/';
+						$path = 'assets/data/';
 						$files = scandir($path);
 						$array_length = count($files);
 						$files = array_diff($files, array('.', '..'));
 
 						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
-						foreach($sites as $site){
-							echo '<h3>' . $site[0] . '</h3>';
+						echo '<ol>';
+							foreach($sites as $site){
+								echo '<li>';
+									echo '<h3>' . $site[0] . '</h3>';
 
+									for($count = 1; $count < count($site); $count++){
+										echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
+									}
+								echo '</li>';
+							}
+						echo '</ol>';
+					?>
+				</figure>
+			</div>
+		</section>
+		
+		<section>
+			<div class="subsection">
+				<h2>The Colors</h2>
+
+				<p>Here are all of the sites' colors put together:</p>
+
+				<figure class="large right" style="font-size:0px;">
+					<?php
+						foreach($sites as $site){
 							for($count = 1; $count < count($site); $count++){
 								echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
 							}
@@ -71,8 +74,12 @@
 			<div class="subsection">
 				<h2>Converting Between Color Formats</h2>
 
+				<p>While this data may look like pretty pixel art, it's not very informative without being organized.The colors used by these sites are all written in one of 6 different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
+
+				<p>ADD BAR CHART FOR COLOR FORMATS</p>
+
 				<p>
-					Scientists and programmers have developed a number of different numerical models to represent color. In order to analyze this data, we'll first have to convert all the colors used into a single format.
+					In order to better organize this data, we'll first have to convert all the colors used into a single format.
 				</p>
 			</div>
 
