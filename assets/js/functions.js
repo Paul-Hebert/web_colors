@@ -6,6 +6,8 @@ $(function() {
     initializeColorPickers();
 
     convertColors();
+    //console.table(colors); // For Testing purposes
+
 	//printChart('rectangle','hue');
     //printChart('fan','hue'); 
 
@@ -65,14 +67,43 @@ function convertColors(){
         // Determine original color format and convert to hexadecimal        
         if ( /#(?:[0-9a-fA-F]{6})/.test(color.original) ){
             color.originalFormat = 'hexadecimal';
+
+            color.hex = color.original;            
+
+            color.rgb = hexToRgb(color.original);       
+
+            //colors.hsv = rgbToHsv(color);                 
         } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
             color.originalFormat = 'threeDigitHexadecimal';
+
             color.hex = threeDigitsToSix(color.original);
+
+            color.rgb = hexToRgb(color.hex);             
+
+            //colors.hsv = rgbToHsv(color);                       
         } else if ( /(rgba)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'rgba';
+
+            color.rgb = rgbaToRgb(color.original);
+
+            color.hex = rgbToHex(color.rgb);
+
+            if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
+                color.hex = threeDigitsToSix(color.hex);
+            }            
+
+            //colors.hsv = rgbToHsv(color);            
         } else if ( /(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
             color.originalFormat = 'rgb';
+
+            color.rgb = color.original;            
+
             color.hex = rgbToHex(color.original);
+
+            colors.hsv = rgbToHsv(color.rgb);
+            if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
+                color.hex = threeDigitsToSix(color.hex);
+            }            
         } else if ( /(hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'hsla';
         } else if ( /(hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
@@ -80,12 +111,6 @@ function convertColors(){
         } else{
             color.originalFormat = 'named';
         }
-
-        // From hex, convert to RGB
-
-        // From RGB, convert to HSV
-
-        // throughout process add all as properties of color
         colors.push( color );
     });
 }
@@ -187,6 +212,14 @@ function rgbToHex(color){
     temp_color = temp_color.split(',');
 
     return '#' + base10ToBase16(temp_color[0]) + '' + base10ToBase16(temp_color[1]) + '' + base10ToBase16(temp_color[2]);
+}
+
+function rgbaToRgb(color){
+    var temp_color = color.replace("rgba(", "");
+    temp_color = temp_color.replace(")", "");        
+    temp_color = temp_color.split(',');
+
+    return 'rgb(' + temp_color[0] + ',' + temp_color[1] + ',' + temp_color[2] + ')';
 }
 
 function base16ToBase10(base16){

@@ -980,7 +980,7 @@ a {
 
 abbr {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: .03em;
   font-family: inherit;
   font-size: inherit;
   color: inherit; }
@@ -1029,8 +1029,8 @@ svg {
 
 .color.listing {
   display: inline-block;
-  width: 8pt;
-  height: 8pt;
+  width: 10pt;
+  height: 10pt;
   line-height: 0px;
   position: relative; }
 
@@ -1117,8 +1117,7 @@ header a, footer a {
 
 main {
   max-width: 440pt;
-  width: 100%;
-  margin-left: 250px; }
+  width: 100%; }
 
 section:not(:first-of-type) {
   border-top: 1px solid #ddd;
@@ -1191,6 +1190,9 @@ figcaption {
       #menu-toggle svg.open .middle-line {
         opacity: 0; } }
 @media (min-width: 900px) {
+  main {
+    margin-left: 250px; }
+
   .mobile {
     display: none; }
 

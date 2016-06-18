@@ -15,7 +15,7 @@
 					<div class="hue rectangle chart"></div>
 				</figure>
 
-				<p>As a graphic designer, I often struggle when choosing a color scheme for a new project. I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
+				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
 			
 				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
 			
@@ -27,7 +27,7 @@
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use:</p>
+				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
 
 				<figure class="large right" style="font-size:0px;">
 					<?php
@@ -72,9 +72,9 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Converting Between Color Formats</h2>
+				<h2>Color Formats</h2>
 
-				<p>While this data may look pretty, it's not very informative without being organized.The colors used by these sites are all written in one of 6 different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
+				<p>While this data may look pretty, it's not very informative without being organized. Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
 
 				<figure class="large right">
 					<div class="format bar chart">
@@ -101,9 +101,7 @@
 					</div>
 				</figure>
 
-				<p>
-					In order to better organize this data, we'll first have to convert all the colors used into a single format.
-				</p>
+			<p>In order to better organize this data, we'll first have to convert all the colors used into a single format. First we need to understand these different color formats.</p>				
 			</div>
 
 			<div class="subsection">
@@ -212,7 +210,7 @@
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
 				<p>
-					Hexidecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section just tells the program that a hexidecimal color is coming.
+					Hexidecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section tells the browser that a hexidecimal color is coming.
 				</p>
 			
 				<aside class="right">

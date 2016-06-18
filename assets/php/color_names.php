@@ -131,7 +131,7 @@
 <option>tan</option>
 <option>teal</option>
 <option>thistle</option>
-<option>tomato</option>
+<option selected>tomato</option>
 <option>turquoise</option>
 <option>violet</option>
 <option>wheat</option>
