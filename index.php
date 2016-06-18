@@ -11,7 +11,7 @@
 					The Colors Used by the Ten Most Popular Sites
 				</h1>
 
-				<figure>
+				<figure class="large right">
 					<div class="hue rectangle chart"></div>
 				</figure>
 
@@ -39,7 +39,7 @@
 						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
 						foreach($sites as $site){
-							echo '<div class="chart">';
+							echo '<div class="block chart">';
 								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
 
 								for($count = 1; $count < count($site); $count++){

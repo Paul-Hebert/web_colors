@@ -8,9 +8,6 @@ $(function() {
     convertColors();
     //console.table(colors); // For Testing purposes
 
-	//printChart('rectangle','hue');
-    //printChart('fan','hue'); 
-
     for(i = 0; i < colors.length; i++){
         $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
     }
@@ -23,7 +20,10 @@ $(function() {
 
     $('.color.listing').each(function(){
         $(this).css( 'background', $(this).find('span').text() )
-    })
+    });
+
+    printChart('rectangle','hue');
+    printChart('fan','hue'); 
 });
 
 function initializeColorPickers(){
@@ -111,7 +111,13 @@ function convertColors(){
         } else{
             color.originalFormat = 'named';
         }
-        colors.push( color );
+
+        if (color.rgb){ // Remove later, once I've converted named colors
+            separateRgbValues(color);
+
+            rgbToHsv(color);
+            colors.push( color );
+        }
     });
 }
 
@@ -184,10 +190,10 @@ function printChart(type,sortCriteria){
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: '#' + colors[i].hex,
+                fill: colors[i].hex,
             });
         } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';"><span>#' + colors[i].hex + '</span></div>';
+            dataPoint = '<div class="color" style="background:' + colors[i].hex + ';"><span>#' + colors[i].hex + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
@@ -241,8 +247,18 @@ function base10ToBase16(base10){
     return base16;
 }
 
+function separateRgbValues(color){
+    var temp_color = color.rgb.replace("rgb(", "");
+    temp_color = temp_color.replace(")", "");
+    temp_color = temp_color.split(',');
+
+    color.red = temp_color[0];
+    color.green = temp_color[1];
+    color.blue = temp_color[2];    
+}
+
 function rgbToHsv(color){
-    var rgb = colors[color];
+    var rgb = color;
     rgb.red /= 255; 
     rgb.green /= 255; 
     rgb.blue /= 255; 
@@ -276,9 +292,9 @@ function rgbToHsv(color){
         }
     }
 
-    colors[color].hue = hue;
-    colors[color].sat = sat;
-    colors[color].val = val;
+    rgb.hue = hue;
+    rgb.sat = sat;
+    rgb.val = val;
 }
 
 

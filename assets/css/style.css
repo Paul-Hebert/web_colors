@@ -985,9 +985,9 @@ abbr {
   font-size: inherit;
   color: inherit; }
 
-.chart {
+.block.chart {
   padding: 8pt; }
-  .chart:after {
+  .block.chart:after {
     content: "";
     display: table;
     clear: both; }
