@@ -211,7 +211,11 @@ function rgbToHex(color){
     temp_color = temp_color.replace(")", "");
     temp_color = temp_color.split(',');
 
-    return '#' + base10ToBase16(temp_color[0]) + '' + base10ToBase16(temp_color[1]) + '' + base10ToBase16(temp_color[2]);
+    var red = base10ToBase16(temp_color[0]);
+    var green = base10ToBase16(temp_color[1]);
+    var blue = base10ToBase16(temp_color[2]);
+
+    return '#' + red + green + blue;
 }
 
 function rgbaToRgb(color){
@@ -227,7 +231,14 @@ function base16ToBase10(base16){
 }
 
 function base10ToBase16(base10){
-    return parseFloat(base10).toString(16);
+    var base16 = parseFloat(base10).toString(16);
+
+    // If the hexadecimal number is only 1 character long, add 0 to the front.
+    if (base16.length == 1){
+        base16 = '0' + base16;
+    }
+
+    return base16;
 }
 
 function rgbToHsv(color){
