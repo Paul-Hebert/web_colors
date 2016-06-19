@@ -75,13 +75,6 @@ svg{
 		font-size: $size-3;
 	}
 
-	.hexSelect{
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		border: $size-0 $grey solid;
-		@include radius(0px);
-	}
-
 	.colorNames{
 		width:100%;
 		padding:10px;

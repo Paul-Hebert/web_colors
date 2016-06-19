@@ -1,4 +1,4 @@
-<select data-unit="" data-scale="" class="hexSelect">
+<select data-unit="" data-scale="">
 	<?php 
 		for($i = 0; $i < 255; $i ++){
 			$hex = base_convert($i, 10, 16);

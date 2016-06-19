@@ -64,3 +64,15 @@ pre{
 		color:$off-black;
 	}
 }
+
+.codeFigure{
+	max-height:1000px;
+	overflow:hidden;
+	@include transition_mixin(all 600ms);
+
+	&.hiddenHeight{
+		max-height:0;
+		padding:0;
+		margin:0;
+	}
+}

@@ -1043,14 +1043,6 @@ svg {
   background: #fff;
   display: block;
   font-size: 8pt; }
-.colorPicker .hexSelect {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  border: 1pt #ccc solid;
-  -o-border-radius: 0px;
-  -ms-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px; }
 .colorPicker .colorNames {
   width: 100%;
   padding: 10px; }
@@ -1106,6 +1098,18 @@ pre {
   color: #80a; }
 .javascript .br0, .javascript .sy0 {
   color: #222; }
+
+.codeFigure {
+  max-height: 1000px;
+  overflow: hidden;
+  -o-transition: all 600ms;
+  -ms-transition: all 600ms;
+  -webkit-transition: all 600ms;
+  transition: all 600ms; }
+  .codeFigure.hiddenHeight {
+    max-height: 0;
+    padding: 0;
+    margin: 0; }
 
 body {
   background: #f0f0f0;

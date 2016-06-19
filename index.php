@@ -74,7 +74,12 @@
 			<div class="subsection">
 				<h2>Color Formats</h2>
 
-				<p>Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>
+				
+				<p id="colorFormatParagraph">
+					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+				</p>
+
+				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>
 
 				<figure class="large right">
 					<div class="format bar chart">
@@ -250,7 +255,12 @@
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
 
-				<figure>
+				<aside class="right">
+					<p>Not interested in the code examples? You can read this article without them.</p>
+					<p id="codeToggle">Hide Code</p>
+				</aside>
+
+				<figure class="codeFigure">
 					<figcaption>
 						Here's how to convert base-16 to base-10 in javascript.
 					</figcaption>
@@ -272,7 +282,7 @@ echo $geshi->parse_code();
 ?>
 				</figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>
 						Here's how to do the inverse: convert base-10 to base-16.
 					</figcaption>
@@ -338,7 +348,7 @@ echo $geshi->parse_code();
 					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
 				</figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>Here's how to convert a hexadecimal color to <abbr>RGB</abbr>.</figcaption>
 
 <?php
@@ -362,7 +372,7 @@ echo $geshi->parse_code();
 ?>				
 				<figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>Here's how to convert an <abbr>RGB</abbr> color to hexadecimal.</figcaption>
 				
 <?php
@@ -407,7 +417,7 @@ echo $geshi->parse_code();
 				</figure>
 				<figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>
 						Here's how to convert a 3 digit hexadecimal color to 6 digits in javascript:
 					</figcaption>
@@ -536,22 +546,23 @@ echo $geshi->parse_code();
 		</section>
 
 		<section>
-			<div class="subsection">			
-				<aside class="left">
-					<figure>
-						<svg class="hue fan chart"></svg>
-
-						<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
-
-						<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
-					</figure>	
-				</aside>
+			<div class="subsection">
 
 				<h2>Fan Charts</h2>	
 
 				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
 
-				<p>Depending on the background color of the chart, you may not be able to see certain colors. Use the color slider below the chart to change the background and expose hidden colors.</p>
+				<figure>
+					<svg class="hue fan chart"></svg>
+
+					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
+
+					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
+				</figure>	
+
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
+			
+				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is covering pure white, since they both have a hue and value of 0.</p>
 			</div>
 		</section>
 
