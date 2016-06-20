@@ -190,8 +190,8 @@ function printChart(type,sortCriteria){
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * colors[i].val * center * 90/100;
-            y = center + Math.cos(rot) * colors[i].val * center * 90/100;
+            x = center + Math.sin(rot) * colors[i].val * center * 90/10000;
+            y = center + Math.cos(rot) * colors[i].val * center * 90/10000;
 
             var used = 1;
 
@@ -206,10 +206,11 @@ function printChart(type,sortCriteria){
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: colors[i].hex,
+                fill: colors[i].hex //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
             });
+
         } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:' + colors[i].hex + ';"><span>' + colors[i].hex + '</span></div>';
+            dataPoint = '<div class="color" style="background:' + colors[i].hex + ';"><span>' + colors[i].original + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
@@ -306,19 +307,19 @@ function rgbToHsv(color){
         sat = chr/val;
         if (sat > 0) {
             if (rgb.red == max) {
-                hue = 60*(((rgb.green-min)-(rgb.blue-min))/chr);
-                if (hue < 0) {hue += 360;}
+                hue = 42.6*(((rgb.green-min)-(rgb.blue-min))/chr);
+                if (hue < 0) {hue += 255;}
             } else if (rgb.green == max) {
-                hue = 120+60*(((rgb.blue-min)-(rgb.red-min))/chr);
+                hue = 85.2+42.6*(((rgb.blue-min)-(rgb.red-min))/chr);
             } else if (rgb.blue == max) {
-                hue = 240+60*(((rgb.red-min)-(rgb.green-min))/chr);
+                hue = 170.4+42.6*(((rgb.red-min)-(rgb.green-min))/chr);
             }
         }
     }
 
-    rgb.hue = hue;
-    rgb.sat = sat;
-    rgb.val = val;
+    rgb.hue = parseInt(hue);
+    rgb.sat = sat * 100;
+    rgb.val = val * 100;
 }
 
 
