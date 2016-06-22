@@ -257,7 +257,7 @@
 
 				<aside class="right">
 					<p>Not interested in the code examples? You can read this article without them.</p>
-					<p id="codeToggle">Hide Code</p>
+					<a href="#" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
 				</aside>
 
 				<figure class="codeFigure">

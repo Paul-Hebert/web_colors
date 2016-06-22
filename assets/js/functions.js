@@ -34,19 +34,34 @@ $(function() {
     });
 
     $('#codeToggle').click(function(){
+        $(this).find('span').toggleClass('hidden');
+
         $('.codeFigure').toggleClass('hiddenHeight');
+
+        return false;
     });
 
-    $('#scraperButton').click(function(){
-        var scraperUrl = $('#scraperUrl').val();
+    busy = false;
 
-        $.ajax({
-            type: "POST",
-            url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
-            success: function(data){
-                $('#results').append(data);
-            }
-        });
+    $('#scraperButton').click(function(){
+        if (busy !== true){
+            var scraperUrl = $('#scraperUrl').val();
+
+            busy = true;
+
+            $('#scraperButton').text('Busy');
+
+            $.ajax({
+                type: "POST",
+                url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+                success: function(data){
+                    $('#results').append(data);
+                    busy = false;
+
+                    $('#scraperButton').text('Scrape');
+                }
+            });
+        }
     });
 
    printChart('rectangle','hue');

@@ -12,12 +12,11 @@
 				<label for="url">
 					URL to scrape
 				</label>
-				<input type="text" name="url" id="scraperUrl">
+				<input type="text" name="url" id="scraperUrl" placeholder="http://www...">
 			</fieldset>			
 
-			<figure class="large right">
-				<div class="block chart" id="results">
-				</div>
+			<figure class="large right" id="results">
+				
 			</figure>
 
 			<span class="button" id="scraperButton">Scrape</span>
