@@ -986,7 +986,8 @@ abbr {
   color: inherit; }
 
 .block.chart {
-  padding: 8pt; }
+  padding: 8pt;
+  font-size: 0px; }
   .block.chart:after {
     content: "";
     display: table;

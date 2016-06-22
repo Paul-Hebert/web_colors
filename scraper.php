@@ -1,42 +1,26 @@
 <?php
-	$title = 'Data';
+	$title = 'Scraper';
 
 	include('assets/php/header.php');
 ?>
 
 	<main>
-		<form method="post" action="assets/php/utilities/data/">
-			<h1>Data</h1>
+		<form>
+			<h1>Scraper</h1>
 
 			<fieldset>
-				<label for="DataFormat">Data Format</label>
+				<label for="url">
+					URL to scrape
+				</label>
+				<input type="text" name="url" id="scraperUrl">
+			</fieldset>			
 
-				<select name="DataFormat">
-					<option>CSV</option>
-					<option>JSON</option>
-					<option>XML</option>
-				</select>
-			</fieldset>
+			<figure class="large right">
+				<div class="block chart" id="results">
+				</div>
+			</figure>
 
-			<fieldset>
-				<label for="ColorFormat">Color Format</label>
-
-				<select name="ColorFormat">
-					<option>Hexadecimal</option>
-					<option>RGB</option>
-					<option>RGBA</option>
-					<option>HSL</option>
-					<option>HSLA</option>
-					<option>Original Colors</option>
-				</select>
-			</fieldset>
-
-			<fieldset>
-				<label for="Email">Delimiter</label>
-				<input type="text" class="required" name="Delimiter">
-			</fieldset>
-
-			<input type="submit" value="Download Data">
+			<span class="button" id="scraperButton">Scrape</span>
 		</form>
 	</main>
 

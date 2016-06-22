@@ -29,7 +29,7 @@
 
 				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
 
-				<figure class="large right" style="font-size:0px;">
+				<figure class="large right">
 					<?php
 						$path = 'assets/data/';
 						$files = scandir($path);
@@ -266,7 +266,7 @@
 					</figcaption>
 
 <?php
-$source = "base16ToBase10('BA');
+$source = "base16ToBase10('f0');
 
 function base16ToBase10(base16){
     return parseInt(base16,16);
@@ -405,11 +405,7 @@ echo $geshi->parse_code();
 				<h3>3 Digit Hexadecimal</h3>
 
 				<p>
-					Sometimes you'll see 3 digit hexadecimal colors like this: <code>#000</code>.
-				</p>
-
-				<p>
-					This means each color pair had 2 identical digits.
+					Sometimes you'll see 3 digit hexadecimal colors like this: <code>#000</code>. This means each color pair had 2 identical digits.
 				</p>
 
 				<figure>

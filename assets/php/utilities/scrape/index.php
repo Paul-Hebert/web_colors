@@ -1,10 +1,3 @@
-<!doctype html>
-
-<html>
-<head>
-	<meta charset="UTF-8">
-</head>
-<body>
 <?php
 	//Begin Regex
 	$GLOBALS['colorRegex'] = '/';
@@ -33,15 +26,19 @@
 	// Finish Regex. Make case insensitive
 	$GLOBALS['colorRegex'] .= '/i';
 
-	$top_sites = get_alexa_top_sites();
-	//$top_sites = ['paulhebertdesigns.com','localbranch.org','paulhebertdesigns.com','localbranch.org'];
+	if ( isset($_GET['url']) ){
+		$top_sites = [];
+		array_push($top_sites, $_GET['url']);
+	} else{
+		$top_sites = get_alexa_top_sites();
 
-	// set the default timezone to use.
-	date_default_timezone_set('UTC');
+		// set the default timezone to use.
+		date_default_timezone_set('UTC');
 
-	$date_time = date(DATE_ATOM); 
+		$date_time = date(DATE_ATOM); 
 
-	$csv = fopen("../../../data/" . $date_time . ".csv", "w");
+		$csv = fopen("../../../data/" . $date_time . ".csv", "w");
+	}
 
 	$count = 0;
 
@@ -55,17 +52,12 @@
 
 			// This part's not working.
 			foreach(get_external_stylesheets($top_site) as $styles ){
-				echo $styles;
-
 				if (strpos($styles, '//') === false) {
 					$text .= file_get_contents($top_site . '/' . $styles);
-					echo $top_site . '/' . $styles;
 				} elseif(strpos($styles, 'http') === false){
 					$text .= file_get_contents('http:' . $top_site . '/' . $styles);
-					echo 'http:' . $top_site . '/' . $styles;				
 				} else{
 					$text .= file_get_contents($styles);
-					echo $styles;				
 				}
 			}
 
@@ -80,19 +72,29 @@
 
 			$colors = array_map('array_unique', $matches);
 
-			fwrite($csv, $top_site);
+			if ( isset($_GET['url']) ){
+				echo '<div class="block chart"><aside class="left"><label>' . $top_site . '</label></aside>';
+					foreach($colors[0] as $color){
+						echo '<span style="background:' . $color . '" class="color listing"><span>' . $color . '</span></span>';
+					}	
+				echo '</div>';
+			} else{
+				fwrite($csv, $top_site);
 
-			foreach($colors[0] as $color){
-				fwrite($csv, '|' . $color);
+				foreach($colors[0] as $color){
+					fwrite($csv, '|' . $color);
+				}	
+
+				fwrite($csv,"\r\n");		
 			}
-
-			fwrite($csv,"\r\n");
 
 			$count++;
 		}
 	}
 
-	fclose($csv);
+	if (! isset($_GET['url']) ){
+		fclose($csv);
+	}
 
 	function get_alexa_top_sites(){
 		$alexa_html = file_get_contents('http://www.alexa.com/topsites');
@@ -156,5 +158,3 @@
 		return $stylesheets;
 	}
 ?>
-</body>
-</html>

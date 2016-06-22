@@ -32,7 +32,7 @@
 			</fieldset>
 
 			<fieldset>
-				<label for="Email">Delimiter</label>
+				<label for="Delimiter">Delimiter</label>
 				<input type="text" class="required" name="Delimiter">
 			</fieldset>
 

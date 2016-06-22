@@ -40,3 +40,6 @@ Data
 	Choose date range
 	API?
 	Curl commands?
+
+Add noscript info
+Add GA

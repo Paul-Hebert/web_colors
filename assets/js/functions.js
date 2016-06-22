@@ -30,15 +30,27 @@ $(function() {
     });
 
     $('.color.listing').each(function(){
-        $(this).css( 'background', $(this).find('span').text() )
+        $(this).css( 'background', $(this).find('span').text() );
     });
-
-    printChart('rectangle','hue');
-    printChart('fan','hue'); 
 
     $('#codeToggle').click(function(){
         $('.codeFigure').toggleClass('hiddenHeight');
     });
+
+    $('#scraperButton').click(function(){
+        var scraperUrl = $('#scraperUrl').val();
+
+        $.ajax({
+            type: "POST",
+            url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+            success: function(data){
+                $('#results').append(data);
+            }
+        });
+    });
+
+   printChart('rectangle','hue');
+   printChart('fan','hue');
 });
 
 function initializeColorPickers(){

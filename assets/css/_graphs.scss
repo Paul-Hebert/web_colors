@@ -1,6 +1,7 @@
 .block.chart{
 	@include clearfix();
 	padding:$size-3;
+	font-size:0px;
 }
 
 .color{
