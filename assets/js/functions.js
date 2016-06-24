@@ -55,7 +55,8 @@ $(function() {
                 type: "POST",
                 url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
                 success: function(data){
-                    $('#results').append(data);
+                    $('#scraperResults').append(data);
+                    
                     busy = false;
 
                     $('#scraperButton').text('Scrape');
