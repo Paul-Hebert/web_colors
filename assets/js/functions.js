@@ -6,8 +6,22 @@ $(function() {
     initializeColorPickers();
 
     convertColors();
-	printChart('rectangle','hue');
-    printChart('fan','hue'); 
+
+    for(i = 0; i < colors.length; i++){
+        $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
+    }
+
+    colorFormatsUsed = 0;
+
+    $('.format.bar.chart .barColumn').each(function(){
+        if ( $(this).html() !== '' ){
+            colorFormatsUsed ++;
+        }
+    });
+
+    if (colorFormatsUsed < 6){
+        $('#colorFormatParagraph').append('Only ' + colorFormatsUsed + ' of the six color formats were used by these sites.')
+    }
 
     $('.backgroundChanger').on("input change", function(){
         $( $(this).attr('data-target') ).css({
@@ -15,9 +29,44 @@ $(function() {
         });
     });
 
-    $('.colorListing').each(function(){
-        $(this).css( 'background', $(this).find('span').text() )
-    })
+    $('.color.listing').each(function(){
+        $(this).css( 'background', $(this).find('span').text() );
+    });
+
+    $('#codeToggle').click(function(){
+        $(this).find('span').toggleClass('hidden');
+
+        $('.codeFigure').toggleClass('hiddenHeight');
+
+        return false;
+    });
+
+    busy = false;
+
+    $('#scraperButton').click(function(){
+        if (busy !== true){
+            var scraperUrl = $('#scraperUrl').val();
+
+            busy = true;
+
+            $('#scraperButton').text('Busy');
+
+            $.ajax({
+                type: "POST",
+                url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+                success: function(data){
+                    $('#scraperResults').append(data);
+                    
+                    busy = false;
+
+                    $('#scraperButton').text('Scrape');
+                }
+            });
+        }
+    });
+
+   printChart('rectangle','hue');
+   printChart('fan','hue');
 });
 
 function initializeColorPickers(){
@@ -52,11 +101,68 @@ function initializeColorPickers(){
 }
 
 function convertColors(){
-    for (var c = 0; c < colors.length; c++) {         
-        hexToRgb(c);
- 
-        rgbToHsv(c);
-    }
+    colors = [];
+
+    $('#aggregate .color.listing').each(function(){
+        // Get original text
+        var color = {original: $(this).text()};
+
+        // Determine original color format and convert to hexadecimal        
+        if ( /#(?:[0-9a-fA-F]{6})/.test(color.original) ){
+            color.originalFormat = 'hexadecimal';
+
+            color.hex = color.original;            
+
+            color.rgb = hexToRgb(color.original);       
+
+            //colors.hsv = rgbToHsv(color);                 
+        } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
+            color.originalFormat = 'threeDigitHexadecimal';
+
+            color.hex = threeDigitsToSix(color.original);
+
+            color.rgb = hexToRgb(color.hex);             
+
+            //colors.hsv = rgbToHsv(color);                       
+        } else if ( /(rgba)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
+            color.originalFormat = 'rgba';
+
+            color.rgb = rgbaToRgb(color.original);
+
+            color.hex = rgbToHex(color.rgb);
+
+            if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
+                color.hex = threeDigitsToSix(color.hex);
+            }            
+
+            //colors.hsv = rgbToHsv(color);            
+        } else if ( /(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
+            color.originalFormat = 'rgb';
+
+            color.rgb = color.original;            
+
+            color.hex = rgbToHex(color.original);
+
+            colors.hsv = rgbToHsv(color.rgb);
+            if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
+                color.hex = threeDigitsToSix(color.hex);
+            }            
+        } else if ( /(hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
+            color.originalFormat = 'hsla';
+        } else if ( /(hsl)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
+            color.originalFormat = 'hsl';
+        } else{
+            color.originalFormat = 'named';
+            color.hex = namedToHex(color.original);
+            color.rgb = hexToRgb(color.hex);
+        }
+
+        separateRgbValues(color);
+
+        rgbToHsv(color);
+        
+        colors.push( color );
+    });
 }
 
 function sortColors(sortCriteria) {
@@ -88,20 +194,20 @@ function printChart(type,sortCriteria){
     colors = sortColors(sortCriteria);
 
     if (type === 'fan'){
-            fan = Snap('.chart.' + type + '.' + sortCriteria);
-            center = $('.chart.' + type + '.' + sortCriteria).width()/2;
+        fan = Snap('.chart.' + type + '.' + sortCriteria);
+        center = $('.chart.' + type + '.' + sortCriteria).width()/2;
 
-            $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
+        $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
 
-            var circle = fan.circle(center, center, 0);
+        var circle = fan.circle(center, center, 0);
 
-            circle.attr({
-                fill: '#fff',
-                class: 'background',
-                r: center * 95/100
-            });
+        circle.attr({
+            fill: '#fff',
+            class: 'background',
+            r: center * 95/100
+        });
 
-            usedColors = [];
+        usedColors = [];
     }
 
     for(i = 0; i < colors.length; i++){    
@@ -112,8 +218,8 @@ function printChart(type,sortCriteria){
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * colors[i].val * center * 93/100;
-            y = center + Math.cos(rot) * colors[i].val * center * 93/100;
+            x = center + Math.sin(rot) * colors[i].val * center * 90/10000;
+            y = center + Math.cos(rot) * colors[i].val * center * 90/10000;
 
             var used = 1;
 
@@ -128,28 +234,47 @@ function printChart(type,sortCriteria){
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: '#' + colors[i].hex,
+                fill: colors[i].hex //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
             });
+
         } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:#' + colors[i].hex + ';"><span>#' + colors[i].hex + '</span></div>';
+            dataPoint = '<div class="color" style="background:' + colors[i].hex + ';"><span>' + colors[i].original + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
     }
 }
 
-function threeDigitsToSix(color){
-    hex = color.split('');
- 
-    return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+function threeDigitsToSix(color){ 
+   return '#' + color[1] + color[1] + color[2] + color[2] + color[3] + color[3];
 }
 
 function hexToRgb(color){
-    hex = colors[color].hex;
+    var red   = base16ToBase10( color.substring( 1, 3 ) );
+    var green = base16ToBase10( color.substring( 3, 5 ) );
+    var blue  = base16ToBase10( color.substring( 5, 7 ) );
+ 
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}
 
-    colors[color].red = base16ToBase10( hex.substring(0,2) );
-    colors[color].green = base16ToBase10( hex.substring(2,4) );
-    colors[color].blue = base16ToBase10( hex.substring(4,6) );
+function rgbToHex(color){
+    var temp_color = color.replace("rgb(", "");
+    temp_color = temp_color.replace(")", "");
+    temp_color = temp_color.split(',');
+
+    var red = base10ToBase16(temp_color[0]);
+    var green = base10ToBase16(temp_color[1]);
+    var blue = base10ToBase16(temp_color[2]);
+
+    return '#' + red + green + blue;
+}
+
+function rgbaToRgb(color){
+    var temp_color = color.replace("rgba(", "");
+    temp_color = temp_color.replace(")", "");        
+    temp_color = temp_color.split(',');
+
+    return 'rgb(' + temp_color[0] + ',' + temp_color[1] + ',' + temp_color[2] + ')';
 }
 
 function base16ToBase10(base16){
@@ -157,11 +282,36 @@ function base16ToBase10(base16){
 }
 
 function base10ToBase16(base10){
-    return base10.toString(16);
+    var base16 = parseFloat(base10).toString(16);
+
+    // If the hexadecimal number is only 1 character long, add 0 to the front.
+    if (base16.length == 1){
+        base16 = '0' + base16;
+    }
+
+    return base16;
+}
+
+function namedToHex(named){
+    for (x = 0; x < colorNames.length; x++){
+        if (named.toLowerCase() === colorNames[x][0].toLowerCase()){
+            return colorNames[x][1];
+        }
+    }
+}
+
+function separateRgbValues(color){
+    var temp_color = color.rgb.replace("rgb(", "");
+    temp_color = temp_color.replace(")", "");
+    temp_color = temp_color.split(',');
+
+    color.red = temp_color[0];
+    color.green = temp_color[1];
+    color.blue = temp_color[2];    
 }
 
 function rgbToHsv(color){
-    var rgb = colors[color];
+    var rgb = color;
     rgb.red /= 255; 
     rgb.green /= 255; 
     rgb.blue /= 255; 
@@ -185,19 +335,19 @@ function rgbToHsv(color){
         sat = chr/val;
         if (sat > 0) {
             if (rgb.red == max) {
-                hue = 60*(((rgb.green-min)-(rgb.blue-min))/chr);
-                if (hue < 0) {hue += 360;}
+                hue = 42.6*(((rgb.green-min)-(rgb.blue-min))/chr);
+                if (hue < 0) {hue += 255;}
             } else if (rgb.green == max) {
-                hue = 120+60*(((rgb.blue-min)-(rgb.red-min))/chr);
+                hue = 85.2+42.6*(((rgb.blue-min)-(rgb.red-min))/chr);
             } else if (rgb.blue == max) {
-                hue = 240+60*(((rgb.red-min)-(rgb.green-min))/chr);
+                hue = 170.4+42.6*(((rgb.red-min)-(rgb.green-min))/chr);
             }
         }
     }
 
-    colors[color].hue = hue;
-    colors[color].sat = sat;
-    colors[color].val = val;
+    rgb.hue = parseInt(hue);
+    rgb.sat = sat * 100;
+    rgb.val = val * 100;
 }
 
 
@@ -337,3 +487,158 @@ firstBy = (function() {
     }
     return extend;
 })();
+
+/*****************************************************************************************************/
+// Array of named colors
+/*****************************************************************************************************/
+
+var colorNames = [
+    ['AliceBlue','#F0F8FF'],
+    ['AntiqueWhite','#FAEBD7'],
+    ['Aqua','#00FFFF'],
+    ['Aquamarine','#7FFFD4'],
+    ['Azure','#F0FFFF'],
+    ['Beige','#F5F5DC'],
+    ['Bisque','#FFE4C4'],
+    ['Black','#000000'],
+    ['BlanchedAlmond','#FFEBCD'],
+    ['Blue','#0000FF'],
+    ['BlueViolet','#8A2BE2'],
+    ['Brown','#A52A2A'],
+    ['BurlyWood','#DEB887'],
+    ['CadetBlue','#5F9EA0'],
+    ['Chartreuse','#7FFF00'],
+    ['Chocolate','#D2691E'],
+    ['Coral','#FF7F50'],
+    ['CornflowerBlue','#6495ED'],
+    ['Cornsilk','#FFF8DC'],
+    ['Crimson','#DC143C'],
+    ['Cyan','#00FFFF'],
+    ['DarkBlue','#00008B'],
+    ['DarkCyan','#008B8B'],
+    ['DarkGoldenRod','#B8860B'],
+    ['DarkGray','#A9A9A9'],
+    ['DarkGrey','#A9A9A9'],
+    ['DarkGreen','#006400'],
+    ['DarkKhaki','#BDB76B'],
+    ['DarkMagenta','#8B008B'],
+    ['DarkOliveGreen','#556B2F'],
+    ['DarkOrange','#FF8C00'],
+    ['DarkOrchid','#9932CC'],
+    ['DarkRed','#8B0000'],
+    ['DarkSalmon','#E9967A'],
+    ['DarkSeaGreen','#8FBC8F'],
+    ['DarkSlateBlue','#483D8B'],
+    ['DarkSlateGray','#2F4F4F'],
+    ['DarkSlateGrey','#2F4F4F'],
+    ['DarkTurquoise','#00CED1'],
+    ['DarkViolet','#9400D3'],
+    ['DeepPink','#FF1493'],
+    ['DeepSkyBlue','#00BFFF'],
+    ['DimGray','#696969'],
+    ['DimGrey','#696969'],
+    ['DodgerBlue','#1E90FF'],
+    ['FireBrick','#B22222'],
+    ['FloralWhite','#FFFAF0'],
+    ['ForestGreen','#228B22'],
+    ['Fuchsia','#FF00FF'],
+    ['Gainsboro','#DCDCDC'],
+    ['GhostWhite','#F8F8FF'],
+    ['Gold','#FFD700'],
+    ['GoldenRod','#DAA520'],
+    ['Gray','#808080'],
+    ['Grey','#808080'],
+    ['Green','#008000'],
+    ['GreenYellow','#ADFF2F'],
+    ['HoneyDew','#F0FFF0'],
+    ['HotPink','#FF69B4'],
+    ['IndianRed ','#CD5C5C'],
+    ['Indigo ','#4B0082'],
+    ['Ivory','#FFFFF0'],
+    ['Khaki','#F0E68C'],
+    ['Lavender','#E6E6FA'],
+    ['LavenderBlush','#FFF0F5'],
+    ['LawnGreen','#7CFC00'],
+    ['LemonChiffon','#FFFACD'],
+    ['LightBlue','#ADD8E6'],
+    ['LightCoral','#F08080'],
+    ['LightCyan','#E0FFFF'],
+    ['LightGoldenRodYellow','#FAFAD2'],
+    ['LightGray','#D3D3D3'],
+    ['LightGrey','#D3D3D3'],
+    ['LightGreen','#90EE90'],
+    ['LightPink','#FFB6C1'],
+    ['LightSalmon','#FFA07A'],
+    ['LightSeaGreen','#20B2AA'],
+    ['LightSkyBlue','#87CEFA'],
+    ['LightSlateGray','#778899'],
+    ['LightSlateGrey','#778899'],
+    ['LightSteelBlue','#B0C4DE'],
+    ['LightYellow','#FFFFE0'],
+    ['Lime','#00FF00'],
+    ['LimeGreen','#32CD32'],
+    ['Linen','#FAF0E6'],
+    ['Magenta','#FF00FF'],
+    ['Maroon','#800000'],
+    ['MediumAquaMarine','#66CDAA'],
+    ['MediumBlue','#0000CD'],
+    ['MediumOrchid','#BA55D3'],
+    ['MediumPurple','#9370DB'],
+    ['MediumSeaGreen','#3CB371'],
+    ['MediumSlateBlue','#7B68EE'],
+    ['MediumSpringGreen','#00FA9A'],
+    ['MediumTurquoise','#48D1CC'],
+    ['MediumVioletRed','#C71585'],
+    ['MidnightBlue','#191970'],
+    ['MintCream','#F5FFFA'],
+    ['MistyRose','#FFE4E1'],
+    ['Moccasin','#FFE4B5'],
+    ['NavajoWhite','#FFDEAD'],
+    ['Navy','#000080'],
+    ['OldLace','#FDF5E6'],
+    ['Olive','#808000'],
+    ['OliveDrab','#6B8E23'],
+    ['Orange','#FFA500'],
+    ['OrangeRed','#FF4500'],
+    ['Orchid','#DA70D6'],
+    ['PaleGoldenRod','#EEE8AA'],
+    ['PaleGreen','#98FB98'],
+    ['PaleTurquoise','#AFEEEE'],
+    ['PaleVioletRed','#DB7093'],
+    ['PapayaWhip','#FFEFD5'],
+    ['PeachPuff','#FFDAB9'],
+    ['Peru','#CD853F'],
+    ['Pink','#FFC0CB'],
+    ['Plum','#DDA0DD'],
+    ['PowderBlue','#B0E0E6'],
+    ['Purple','#800080'],
+    ['RebeccaPurple','#663399'],
+    ['Red','#FF0000'],
+    ['RosyBrown','#BC8F8F'],
+    ['RoyalBlue','#4169E1'],
+    ['SaddleBrown','#8B4513'],
+    ['Salmon','#FA8072'],
+    ['SandyBrown','#F4A460'],
+    ['SeaGreen','#2E8B57'],
+    ['SeaShell','#FFF5EE'],
+    ['Sienna','#A0522D'],
+    ['Silver','#C0C0C0'],
+    ['SkyBlue','#87CEEB'],
+    ['SlateBlue','#6A5ACD'],
+    ['SlateGray','#708090'],
+    ['SlateGrey','#708090'],
+    ['Snow','#FFFAFA'],
+    ['SpringGreen','#00FF7F'],
+    ['SteelBlue','#4682B4'],
+    ['Tan','#D2B48C'],
+    ['Teal','#008080'],
+    ['Thistle','#D8BFD8'],
+    ['Tomato','#FF6347'],
+    ['Turquoise','#40E0D0'],
+    ['Violet','#EE82EE'],
+    ['Wheat','#F5DEB3'],
+    ['White','#FFFFFF'],
+    ['WhiteSmoke','#F5F5F5'],
+    ['Yellow','#FFFF00'],
+    ['YellowGreen','#9ACD32']
+];

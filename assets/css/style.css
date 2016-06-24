@@ -980,50 +980,60 @@ a {
 
 abbr {
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: .03em;
   font-family: inherit;
   font-size: inherit;
   color: inherit; }
+
+.block.chart {
+  padding: 8pt;
+  font-size: 0px; }
+  .block.chart:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+.color {
+  position: relative; }
+  .color span {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 5px;
+    top: 13pt;
+    left: 13pt;
+    z-index: 5;
+    font-size: 13pt; }
+  .color:hover span {
+    display: block; }
 
 .rectangle {
   height: 16pt; }
   .rectangle .color {
     display: inline-block;
     width: 1px;
+    height: 100%; }
+
+.bar .barColumn {
+  height: 21pt;
+  margin-bottom: 6pt; }
+  .bar .barColumn .color {
     height: 100%;
-    position: relative; }
-    .rectangle .color span {
-      display: none;
-      position: absolute;
-      background: #fff;
-      padding: 5px;
-      top: 16pt;
-      left: 0;
-      z-index: 5; }
-    .rectangle .color:hover span {
-      display: block; }
+    width: 1.6px;
+    display: inline-block; }
+    .bar .barColumn .color span {
+      top: 21pt;
+      left: 0px; }
 
 svg {
   width: 100%; }
 
-.colorListing {
+.color.listing {
   display: inline-block;
-  width: 8pt;
-  height: 8pt;
+  width: 10pt;
+  height: 10pt;
   line-height: 0px;
   position: relative; }
-  .colorListing span {
-    display: none; }
-  .colorListing:hover span {
-    display: block;
-    position: absolute;
-    background: #fff;
-    padding: 10pt;
-    font-size: 10pt;
-    left: 0px;
-    top: 10pt;
-    left: 10pt;
-    z-index: 5; }
 
 .colorPicker .colorBlock {
   border-width: 13pt;
@@ -1034,14 +1044,6 @@ svg {
   background: #fff;
   display: block;
   font-size: 8pt; }
-.colorPicker .hexSelect {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  border: 1pt #ccc solid;
-  -o-border-radius: 0px;
-  -ms-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px; }
 .colorPicker .colorNames {
   width: 100%;
   padding: 10px; }
@@ -1061,7 +1063,7 @@ svg {
 
 code {
   background: #ddd;
-  padding: 0px 5px;
+  padding: 0px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
 
 pre {
@@ -1098,6 +1100,18 @@ pre {
 .javascript .br0, .javascript .sy0 {
   color: #222; }
 
+.codeFigure {
+  max-height: 1000px;
+  overflow: hidden;
+  -o-transition: all 600ms;
+  -ms-transition: all 600ms;
+  -webkit-transition: all 600ms;
+  transition: all 600ms; }
+  .codeFigure.hiddenHeight {
+    max-height: 0;
+    padding: 0;
+    margin: 0; }
+
 body {
   background: #f0f0f0;
   padding: 26pt; }
@@ -1108,8 +1122,7 @@ header a, footer a {
 
 main {
   max-width: 440pt;
-  width: 100%;
-  margin-left: 250px; }
+  width: 100%; }
 
 section:not(:first-of-type) {
   border-top: 1px solid #ddd;
@@ -1182,6 +1195,9 @@ figcaption {
       #menu-toggle svg.open .middle-line {
         opacity: 0; } }
 @media (min-width: 900px) {
+  main {
+    margin-left: 250px; }
+
   .mobile {
     display: none; }
 
@@ -1204,6 +1220,10 @@ figcaption {
       float: right;
       clear: right;
       margin-right: -250px; }
+
+  .chart aside.left {
+    text-align: right;
+    margin-left: -210px; }
 
   figure.large {
     width: 836px; }

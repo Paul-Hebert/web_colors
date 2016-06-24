@@ -6,7 +6,7 @@
 
 	</footer>
 
-		<?php include('assets/php/scripts.php'); ?>
+	<?php include('assets/php/scripts.php'); ?>
 
 	</body>
 </html>

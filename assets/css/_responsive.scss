@@ -64,6 +64,10 @@
 }
 
 @media (min-width:900px){
+	main{
+		margin-left:250px;
+	}
+
 	.mobile{
 		display:none;
 	}
@@ -98,6 +102,11 @@
 			clear:right;
 			margin-right:-250px;
 		}
+	}
+
+	.chart aside.left{
+		text-align:right;
+		margin-left:-210px;
 	}
 
 	figure.large{

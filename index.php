@@ -11,13 +11,15 @@
 					The Colors Used by the Ten Most Popular Sites
 				</h1>
 
-				<figure>
+				<figure class="large right">
 					<div class="hue rectangle chart"></div>
 				</figure>
 
-				<p>As a graphic designer, I often struggle when choosing a color scheme for a new project. I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
+				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
 			
 				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
+			
+				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
 			</div>
 		</section>
 
@@ -25,9 +27,9 @@
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use:</p>
+				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
 
-				<figure class="large right" style="font-size:0px;">
+				<figure class="large right">
 					<?php
 						$path = 'assets/data/';
 						$files = scandir($path);
@@ -36,24 +38,22 @@
 
 						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
-						echo '<ol>';
-							foreach($sites as $site){
-								echo '<li>';
-									echo '<h3>' . $site[0] . '</h3>';
+						foreach($sites as $site){
+							echo '<div class="block chart">';
+								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
 
-									for($count = 1; $count < count($site); $count++){
-										echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
-									}
-								echo '</li>';
-							}
-						echo '</ol>';
+								for($count = 1; $count < count($site); $count++){
+									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								}
+							echo '</div>';
+						}
 					?>
 				</figure>
 			</div>
 		</section>
 		
 		<section>
-			<div class="subsection">
+			<div class="subsection" id="aggregate">
 				<h2>The Colors</h2>
 
 				<p>Here are all of the sites' colors put together:</p>
@@ -62,7 +62,7 @@
 					<?php
 						foreach($sites as $site){
 							for($count = 1; $count < count($site); $count++){
-								echo '<span class="colorListing"><span>' . $site[$count] . '</span></span>';
+								echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
 							}
 						}
 					?>
@@ -72,15 +72,107 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Converting Between Color Formats</h2>
+				<h2>Try it For Yourself</h2>
 
-				<p>While this data may look like pretty pixel art, it's not very informative without being organized.The colors used by these sites are all written in one of 6 different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names.</p>
+				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page.</p>
 
-				<p>ADD BAR CHART FOR COLOR FORMATS</p>
+				<?php include('assets/php/utilities/scrape/form.php'); ?>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
+				<h2>Color Formats</h2>
+
+				
+				<p id="colorFormatParagraph">
+					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+				</p>
+
+				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>
+
+				<figure class="large right">
+					<div class="format bar chart">
+						<aside class="left"><label>Hexadecimal</label></aside>
+						<div class="barColumn" id="hexadecimalColors"></div>
+
+						<aside class="left"><label>Three Digit Hexadecimal</label></aside>
+						<div class="barColumn" id="threeDigitHexadecimalColors"></div>
+
+						<aside class="left"><label><abbr>RGB</abbr></label></aside>
+						<div class="barColumn" id="rgbColors"></div>
+
+						<aside class="left"><label><abbr>RGBA</abbr></label></aside>
+						<div class="barColumn" id="rgbaColors"></div>
+
+						<aside class="left"><label><abbr>HSL</abbr></label></aside>
+						<div class="barColumn" id="hslColors"></div>
+
+						<aside class="left"><label><abbr>HSLA</abbr></label></aside>
+						<div class="barColumn" id="hslaColors"></div>
+
+						<aside class="left"><label>Named Colors</label></aside>
+						<div class="barColumn" id="namedColors"></div>
+					</div>
+				</figure>
+			</div>
+
+			<div class="subsection">
+				<h3>Predefined Color Names</h3>
+
+				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
+			
+				<figure class="colorPicker" data-format=',' data-delimiter="">
+					<code class="colorBlock"></code>
+
+					<form autocomplete="off">
+						<select name='color' data-scale="" data-unit="" class="colorNames">
+							<?php include('assets/php/color_names.php'); ?>
+						</select>
+					</form>
+				</figure>
+			</div>
+
+			<div class="subsection">
+				<h3><abbr>RGB</abbr> (Red, Green, Blue)</h3>
 
 				<p>
-					In order to better organize this data, we'll first have to convert all the colors used into a single format.
+					Digital colors are made by combining different amounts of red, green and blue light. The amount of each color is represent by a number between 0 and 255.
 				</p>
+
+				<p>This is how to write the <abbr>RGB</abbr> color format: <code>rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is red.</p>
+			</div>
+
+			<div class="subsection">
+				<h3><abbr>RGBA</abbr> (Red, Green, Blue, Alpha)</h3>	
+
+				<aside class="right">
+					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
+						<code class="colorBlock"></code>
+
+						<form autocomplete="off">
+							<label for="red">Red:</label>
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="red" value="186">
+
+							<label for="green">Green:</label>
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="green" value="218">
+
+							<label for="blue">Blue:</label>
+							<input type="range" min="0" max="255" data-scale="" data-unit="" name="blue" value="85">
+
+							<label for="alpha">Alpha:</label>
+							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
+						</form>
+					</figure>
+				</aside>
+
+				<p>
+					There's another version of <abbr>RGB</abbr> which is frequently used on the web. <abbr>RGBA</abbr> adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
+				</p>
+
+				<figure>
+					<code>rgba(186, 218, 85, 0)</code> vs <code>rgba(186, 218, 85, 1)</code>
+				</figure>
 			</div>
 
 			<div class="subsection">
@@ -166,56 +258,25 @@
 				</aside>
 
 				<p>
-					The most common color format on the web is hexadecimal. A hexidecimal color is six characters long and preceded by a number sign: <code>#BADA55</code>
+					The most common color format on the web is hexadecimal. Hexadecimal colors are another way to represent <abbr>RGB</abbr> colors.
 				</p>
 
 				<p>
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
-				<p>
-					Hexidecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section just tells the program that a hexidecimal color is coming.
-				</p>
-			
+
 				<aside class="right">
-					<figure class="colorPicker" data-format='#,' data-delimiter="">
-						<code class="colorBlock"></code>
-
-						<form autocomplete="off">
-							#
-							<?php
-								$color = str_split('BADA55');
-
-								foreach($color as $character){
-									include('assets/php/hex-select.php');
-								}
-							?>
-						</form>
-					</figure>
+					<p>Not interested in the code examples? You can read this article without them.</p>
+					<a href="#" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
 				</aside>
 
-				<p>
-					The remaining 3 sections contain important information about the color. Hexidecimal colors are based off of the <abbr>RGB</abbr> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
-				</p>
-
-				<figure>
-					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
-				</figure>
-
-				<p>
-					Two base-10 digits have 100 possible combinations. (10 * 10) Two base-16 digits have 256 possible combinations (16 * 16), so each hue (Red, Green, Blue) has a possible value between 0 and 255. Here are the color values for <code>#BADA55</code>, converted into base-10.
-				</p>
-
-				<figure>
-					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
-				</figure>
-
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>
 						Here's how to convert base-16 to base-10 in javascript.
 					</figcaption>
 
 <?php
-$source = "base16ToBase10('BA');
+$source = "base16ToBase10('f0');
 
 function base16ToBase10(base16){
     return parseInt(base16,16);
@@ -231,7 +292,7 @@ echo $geshi->parse_code();
 ?>
 				</figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>
 						Here's how to do the inverse: convert base-10 to base-16.
 					</figcaption>
@@ -240,7 +301,14 @@ echo $geshi->parse_code();
 $source = "base10ToBase16(186);
 
 function base10ToBase16(base10){
-    return base10.toString(16);
+    var base16 = parseFloat(base10).toString(16);
+
+	// If the hex number is 1 character long, add a 0 to the front.
+    if (base16.length == 1){
+        base16 = '0' + base16;
+    }
+
+    return base16;
 }";
 
 $geshi = new GeSHi($source, 'javascript');
@@ -252,17 +320,102 @@ $geshi->enable_classes();
 echo $geshi->parse_code();
 ?>
 				</figure>
+
+				<p>
+					A hexadecimal color is six characters long and preceded by a number sign: <code>#BADA55</code>. Hexadecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section tells the browser that a hexadecimal color is coming.
+				</p>
+			
+				<aside class="right">
+					<figure class="colorPicker" data-format='#,' data-delimiter="">
+						<code class="colorBlock"></code>
+
+						<form autocomplete="off">
+							#
+							<?php
+								$color = str_split('BADA55',2);
+
+								foreach($color as $character){
+									include('assets/php/hex-select.php');
+								}
+							?>
+						</form>
+					</figure>
+				</aside>
+
+				<p>
+					The remaining 3 sections contain important information about the color. Hexadecimal colors are based off of the <abbr>RGB</abbr> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
+				</p>
+
+				<figure>
+					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
+				</figure>
+
+				<p>
+					Here are the color values for <code>#BADA55</code>, converted into base-10.
+				</p>
+
+				<figure>
+					Red: <code>186</code> Green: <code>218</code> Blue: <code>85</code>
+				</figure>
+
+				<figure class="codeFigure">
+					<figcaption>Here's how to convert a hexadecimal color to <abbr>RGB</abbr>.</figcaption>
+
+<?php
+$source = " hexToRgb( '#BADA55' );
+
+function hexToRgb(color){
+    var red   = base16ToBase10( color.substring( 1, 3 ) );
+    var green = base16ToBase10( color.substring( 3, 5 ) );
+    var blue  = base16ToBase10( color.substring( 5, 7 ) );
+ 
+    return 'rgb(' + red + ',' + green + ',' + blue + ')';
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>				
+				<figure>
+
+				<figure class="codeFigure">
+					<figcaption>Here's how to convert an <abbr>RGB</abbr> color to hexadecimal.</figcaption>
+				
+<?php
+$source = " rgbToHex( 'rgb(100,222,0)' );
+
+function rgbToHex(color){
+    var temp_color = color.replace('rgb(', '');
+    temp_color = temp_color.replace(')', '');
+    temp_color = temp_color.split(',');
+
+    var red = base10ToBase16(temp_color[0]);
+    var green = base10ToBase16(temp_color[1]);
+    var blue = base10ToBase16(temp_color[2]);
+
+    return '#' + red + green + blue;
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>				
+				<figure>
 			</div>
 
 			<div class="subsection">
 				<h3>3 Digit Hexadecimal</h3>
 
 				<p>
-					Sometimes you'll see 3 digit hexadecimal colors like this: <code>#000</code>.
-				</p>
-
-				<p>
-					This means each color pair had 2 identical digits.
+					Sometimes you'll see 3 digit hexadecimal colors like this: <code>#000</code>. This means each color pair had 2 identical digits.
 				</p>
 
 				<figure>
@@ -270,9 +423,9 @@ echo $geshi->parse_code();
 				</figure>
 				<figure>
 
-				<figure>
+				<figure class="codeFigure">
 					<figcaption>
-						Here's how to convert a 3 digit hexidecimal color to 6 digits in javascript:
+						Here's how to convert a 3 digit hexadecimal color to 6 digits in javascript:
 					</figcaption>
 
 <?php
@@ -294,89 +447,6 @@ echo $geshi->parse_code();
 ?>
 				</figure>								
 			</div>
-
-			<div class="subsection">
-				<h3><abbr>RGB</abbr> (Red, Green, Blue)</h3>
-
-				<p>
-					The hexadecimal numbering system is just one way to represent <abbr>RGB</abbr> numbers. Now that we've converted the hexidecimal numbers to base-10, we can easily write the color in <abbr>RGB</abbr>, a base-10 format:
-				</p>
-
-				<figure>
-					<code>rgb(186, 218, 85)</code>
-				</figure>
-
-				<figure>
-					<figcaption>
-						Here's how to convert a hexidecimal color to an <abbr>RGB</abbr> color in javascript:
-					</figcaption>
-
-<?php
-$source = "hexToRgb('#BADA55');
-
-function hexToRgb(hex){
-    var red   = base16ToBase10( hex.substring( 0, 2 ) );
-    var green = base16ToBase10( hex.substring( 2, 4 ) );
-    var blue  = base16ToBase10( hex.substring( 4, 6 ) );
-
-    return 'rgb(' + red + ',' + green + ',' + blue + ')';
-}
-
-function base16ToBase10(base16){
-    return parseInt(base16,16);
-}";
-
-$geshi = new GeSHi($source, 'javascript');
-
-$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
-
-$geshi->enable_classes();
-
-echo $geshi->parse_code();
-?>
-				</figure>
-			</div>
-
-			<div class="subsection">
-				<h3><abbr>RGBA</abbr> (Red, Green, Blue, Alpha)</h3>	
-
-				<aside class="right">
-					<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
-						<code class="colorBlock"></code>
-
-						<form autocomplete="off">
-							<label for="red">Red:</label>
-							<input type="range" min="0" max="255" data-scale="" data-unit="" name="red" value="186">
-
-							<label for="green">Green:</label>
-							<input type="range" min="0" max="255" data-scale="" data-unit="" name="green" value="218">
-
-							<label for="blue">Blue:</label>
-							<input type="range" min="0" max="255" data-scale="" data-unit="" name="blue" value="85">
-
-							<label for="alpha">Alpha:</label>
-							<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
-						</form>
-					</figure>
-				</aside>
-
-				<p>
-					There's another version of <abbr>RGB</abbr> which is frequently used on the web. <abbr>RGBA</abbr> adds an additional parameter; alpha. Alpha determines the transparency or opacity of the color. 0 is completely transparent. 1 is completely opaque. 
-				</p>
-
-				<figure>
-					<code>rgba(186, 218, 85, 0)</code> vs <code>rgba(186, 218, 85, 1)</code>
-				</figure>
-
-				<p>
-					<abbr>RGBA</abbr> is going out of fashion since most browsers now support the opacity attribute, making it easier to handle transparency separately from color.
-				</p>
-
-				<p>
-					For the purposes of these data visualizations, the alpha tag has been stripped from <abbr>RGBA</abbr> colors, effectively treating them as <abbr>RGB</abbr>.
-				</p>
-			</div>
-
 			<div class="subsection">
 				<h3><abbr>HSL</abbr> (Hue, Saturation, Lightness)</h3>
 
@@ -478,50 +548,27 @@ echo $geshi->parse_code();
 			
 			<div class="subsection">
 				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
-
-				<p>
-					Coverting <abbr>RGB</abbr> colors to <abbr>HSL</abbr> gets a little complicated.
-				</p>
-
-				<p>
-					All of our calculations will require
-				</p>
-			</div>
-
-			<div class="subsection">
-				<h3>Predefined Color Names</h3>
-
-				<p>In addition to the numeric systems, <abbr>HTML</abbr> and <abbr>CSS</abbr> recognize certain color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
-			
-				<figure class="colorPicker" data-format=',' data-delimiter="">
-					<code class="colorBlock"></code>
-
-					<form autocomplete="off">
-						<select name='color' data-scale="" data-unit="" class="colorNames">
-							<?php include('assets/php/color_names.php'); ?>
-						</select>
-					</form>
-				</figure>
 			</div>
 		</section>
 
 		<section>
-			<div class="subsection">			
-				<aside class="left">
-					<figure>
-						<svg class="hue fan chart"></svg>
-
-						<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
-
-						<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
-					</figure>	
-				</aside>
+			<div class="subsection">
 
 				<h2>Fan Charts</h2>	
 
 				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
 
-				<p>Depending on the background color of the chart, you may not be able to see certain colors. Use the color slider below the chart to change the background and expose hidden colors.</p>
+				<figure>
+					<svg class="hue fan chart"></svg>
+
+					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
+
+					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
+				</figure>	
+
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
+			
+				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is covering pure white, since they both have a hue and value of 0.</p>
 			</div>
 		</section>
 
@@ -530,21 +577,6 @@ echo $geshi->parse_code();
 				<h2>Bar Charts</h2>
 			</div>
 		</section>
-
-		<?php
-			$txt = file_get_contents('colors.txt', FILE_USE_INCLUDE_PATH);
-			$colors = preg_split('/,/', $txt);
-			echo '<script type="text/javascript">';
-				echo 'colors = new Array;';
-				$i = 0;
-				foreach ($colors as $color){
-					echo 'current ={"hex":"' . $color . '"};';
-					echo 'colors.push(current);';  
-
-					$i++;
-				}
-		?>
-			</script>
 	</main>
 
 <?php

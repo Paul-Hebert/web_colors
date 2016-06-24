@@ -1,3 +1,28 @@
+.block.chart{
+	@include clearfix();
+	padding:$size-3;
+	font-size:0px;
+}
+
+.color{
+	position:relative;
+
+	span{
+		display:none;
+		position:absolute;
+		background:#fff;
+		padding:5px;
+		top:$size-5;
+		left:$size-5;
+		z-index:5;	
+		font-size:$size-5;
+	}
+
+	&:hover span{
+		display:block;
+	}	
+}
+
 .rectangle{
 	height:$size-6;
 
@@ -5,21 +30,25 @@
 		display:inline-block;
 		width:1px;
 		height:100%;
-		position:relative;
+	}
+}
 
-		span{
-			display:none;
-			position:absolute;
-			background:#fff;
-			padding:5px;
-			top:$size-6;
-			left:0;
-			z-index:5;
+.bar{
+	
+	.barColumn{
+		height:$size-7;
+		margin-bottom:$size-2;
+
+		.color{
+			height:100%;
+			width:1.6px;
+			display:inline-block;
+
+			span{
+				top:$size-7;
+				left:0px;
+			}
 		}
-
-		&:hover span{
-			display:block;
-		}		
 	}
 }
 
@@ -27,28 +56,12 @@ svg{
 	width:100%;
 }
 
-.colorListing{
+.color.listing{
 	display:inline-block;
-	width:$size-3;
-	height:$size-3;
+	width:$size-4;
+	height:$size-4;
 	line-height:0px;
 	position:relative;
-
-	span{
-		display:none;
-	}
-
-	&:hover span{
-		display:block;
-		position:absolute;
-		background:#fff;
-		padding:$size-4;
-		font-size:$size-4;
-		left:0px;
-		top:$size-4;
-		left:$size-4;
-		z-index:5;		
-	}
 }
 
 .colorPicker{
@@ -61,13 +74,6 @@ svg{
 		background:$white;
 		display:block;
 		font-size: $size-3;
-	}
-
-	.hexSelect{
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		border: $size-0 $grey solid;
-		@include radius(0px);
 	}
 
 	.colorNames{

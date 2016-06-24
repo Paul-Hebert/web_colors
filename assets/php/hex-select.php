@@ -1,9 +1,13 @@
-<select data-unit="" data-scale="" class="hexSelect">
+<select data-unit="" data-scale="">
 	<?php 
-		$hex = str_split('0123456789ABCDEF');
+		for($i = 0; $i < 255; $i ++){
+			$hex = base_convert($i, 10, 16);
 
-		foreach($hex as $option){
-			if ($option === $character){
+			if ($i < 16){
+				$hex = '0' . $hex;
+			}
+
+			if ($hex === strtolower($character) ){
 				$selected = ' selected';
 			} else{
 				$selected = '';				
@@ -11,7 +15,7 @@
 
 			echo'
 				<option' . $selected . '>
-				' . $option . '	
+				' . $hex . '	
 				</option>			
 			';
 		}
