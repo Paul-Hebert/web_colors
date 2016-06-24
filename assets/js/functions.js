@@ -67,6 +67,7 @@ $(function() {
 
    printChart('rectangle','hue');
    printChart('fan','hue');
+   printChart('histogram','hue');   
 });
 
 function initializeColorPickers(){
@@ -193,6 +194,8 @@ function sortColors(sortCriteria) {
 function printChart(type,sortCriteria){
     colors = sortColors(sortCriteria);
 
+    usedColors = [];
+
     if (type === 'fan'){
         fan = Snap('.chart.' + type + '.' + sortCriteria);
         center = $('.chart.' + type + '.' + sortCriteria).width()/2;
@@ -206,11 +209,23 @@ function printChart(type,sortCriteria){
             class: 'background',
             r: center * 95/100
         });
-
-        usedColors = [];
     }
 
-    for(i = 0; i < colors.length; i++){    
+    for(i = 0; i < colors.length; i++){         
+        var used = 1;
+
+        for(z = 0; z < usedColors.length; z++){
+            if (colors[i].hex === usedColors[z]){
+                used ++;
+            }
+        }
+
+        if (used != 1){
+            $('.chart.' + type + ' ' + colors[i].hex).remove();
+        }   
+
+        usedColors.push(colors[i].hex);
+
         if (type === 'fan'){
             // Calculate rotation of hue.
             var rot = colors[i].hue * 360 / 255;
@@ -221,24 +236,21 @@ function printChart(type,sortCriteria){
             x = center + Math.sin(rot) * colors[i].val * center * 90/10000;
             y = center + Math.cos(rot) * colors[i].val * center * 90/10000;
 
-            var used = 1;
-
-            for(z = 0; z < usedColors.length; z++){
-                if (colors[i].hex === usedColors[z]){
-                    used ++;
-                }
-            }
-
-            usedColors.push(colors[i].hex);
-
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: colors[i].hex //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
+                fill: colors[i].hex, //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
+                id: colors[i].hex.replace('#','')
             });
 
-        } else if(type === 'rectangle'){
-            dataPoint = '<div class="color" style="background:' + colors[i].hex + ';"><span>' + colors[i].original + '</span></div>';
+        } else if(type === 'histogram'){
+            var height = 4;
+
+            dataPoint = '<div class="color" style="';
+            dataPoint += 'background:' + colors[i].hex + ';';
+            dataPoint += 'height:' + (height * used) + 'px;"';
+            dataPoint += ' id="' + colors[i].hex.replace('#','') + '">';
+            dataPoint += '<span>' + colors[i].original + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }

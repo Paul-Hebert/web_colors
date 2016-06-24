@@ -12,7 +12,7 @@
 				</h1>
 
 				<figure class="large right">
-					<div class="hue rectangle chart"></div>
+					<div class="hue histogram chart"></div>
 				</figure>
 
 				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
@@ -574,7 +574,11 @@ echo $geshi->parse_code();
 
 		<section>
 			<div class="subsection">
-				<h2>Bar Charts</h2>
+				<!--<h2>Histogram Charts</h2>
+
+				<figure class="large right">
+					<div class="histogram chart"></div>
+				</figure>-->
 			</div>
 		</section>
 	</main>

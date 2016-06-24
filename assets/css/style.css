@@ -1007,12 +1007,9 @@ abbr {
   .color:hover span {
     display: block; }
 
-.rectangle {
-  height: 16pt; }
-  .rectangle .color {
-    display: inline-block;
-    width: 1px;
-    height: 100%; }
+.histogram .color {
+  display: inline-block;
+  width: 1.5px; }
 
 .bar .barColumn {
   height: 21pt;
