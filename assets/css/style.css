@@ -1137,6 +1137,42 @@ figcaption {
 .hidden {
   display: none; }
 
+.loading {
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px;
+  border-color: #166993;
+  border-top-color: #fff;
+  height: 30px;
+  width: 30px;
+  border-style: solid;
+  -webkit-animation: rotation .6s infinite linear;
+  -moz-animation: rotation .6s infinite linear;
+  -o-animation: rotation .6s infinite linear;
+  animation: rotation .6s infinite linear; }
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(359deg); } }
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(359deg); } }
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg); }
+  to {
+    -o-transform: rotate(359deg); } }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(359deg); } }
 @media (max-width: 900px) {
   .desktop {
     display: none; }

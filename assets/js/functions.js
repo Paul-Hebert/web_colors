@@ -49,7 +49,7 @@ $(function() {
 
             busy = true;
 
-            $('#scraperButton').text('Busy');
+            $('#scraperButton').html('<div class="loading"></div>');
 
             $.ajax({
                 type: "POST",
@@ -59,7 +59,7 @@ $(function() {
                     
                     busy = false;
 
-                    $('#scraperButton').text('Scrape');
+                    $('#scraperButton').html('Scrape');
                 }
             });
         }

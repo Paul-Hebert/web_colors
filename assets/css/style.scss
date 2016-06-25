@@ -21,7 +21,6 @@ header, footer{
 }
 
 main{
-	//padding:$size-8 0;
 	max-width:440pt;
 	width:100%;
 }
@@ -46,6 +45,56 @@ figcaption{
 
 .hidden{
 	display:none;
+}
+
+.loading{
+	@include radius(50%);
+	border:5px;
+	border-color:$hovered;
+	border-top-color:$white;
+	height:30px;
+	width:30px;
+	border-style:solid; 
+	-webkit-animation: rotation .6s infinite linear;
+	-moz-animation: rotation .6s infinite linear;
+	-o-animation: rotation .6s infinite linear;
+	animation: rotation .6s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes rotation {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 @import 'responsive';
