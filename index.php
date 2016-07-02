@@ -6,28 +6,10 @@
 
 	<main>
 		<section>
-			<div class="subsection">
+			<div class="subsection" id="aggregate">
 				<h1>
 					The Colors Used by the Ten Most Popular Sites
 				</h1>
-
-				<figure class="large right">
-					<div class="hue histogram chart"></div>
-				</figure>
-
-				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
-			
-				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
-			
-				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
-			</div>
-		</section>
-		
-		<section>
-			<div class="subsection" id="aggregate">
-				<h2>The Colors</h2>
-
-				<p>Here are all of the sites' colors put together:</p>
 
 				<figure class="large right" style="font-size:0px;">
 					<?php
@@ -46,6 +28,12 @@
 						}
 					?>
 				</figure>
+
+				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
+			
+				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
+			
+				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
 			</div>
 		</section>
 
@@ -577,11 +565,11 @@ echo $geshi->parse_code();
 
 		<section>
 			<div class="subsection">
-				<!--<h2>Histogram Charts</h2>
+				<h2>Histogram Charts</h2>
 
 				<figure class="large right">
-					<div class="histogram chart"></div>
-				</figure>-->
+					<div class="histogram chart hue"></div>
+				</figure>
 			</div>
 		</section>
 	</main>

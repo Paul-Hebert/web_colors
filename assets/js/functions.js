@@ -112,7 +112,7 @@ function convertColors(){
         if ( /#(?:[0-9a-fA-F]{6})/.test(color.original) ){
             color.originalFormat = 'hexadecimal';
 
-            color.hex = color.original;            
+            color.hex = color.original.toUpperCase();            
 
             color.rgb = hexToRgb(color.original);       
 
@@ -120,7 +120,7 @@ function convertColors(){
         } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
             color.originalFormat = 'threeDigitHexadecimal';
 
-            color.hex = threeDigitsToSix(color.original);
+            color.hex = threeDigitsToSix(color.original).toUpperCase();
 
             color.rgb = hexToRgb(color.hex);             
 
@@ -130,7 +130,7 @@ function convertColors(){
 
             color.rgb = rgbaToRgb(color.original);
 
-            color.hex = rgbToHex(color.rgb);
+            color.hex = rgbToHex(color.rgb).toUpperCase();
 
             if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
                 color.hex = threeDigitsToSix(color.hex);
@@ -142,11 +142,11 @@ function convertColors(){
 
             color.rgb = color.original;            
 
-            color.hex = rgbToHex(color.original);
+            color.hex = rgbToHex(color.original).toUpperCase();
 
             colors.hsv = rgbToHsv(color.rgb);
             if ( /#(?:[0-9a-fA-F]{3})/.test(color.hex) ){
-                color.hex = threeDigitsToSix(color.hex);
+                color.hex = threeDigitsToSix(color.hex).toUpperCase();
             }            
         } else if ( /(hsla)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'hsla';
@@ -154,7 +154,7 @@ function convertColors(){
             color.originalFormat = 'hsl';
         } else{
             color.originalFormat = 'named';
-            color.hex = namedToHex(color.original);
+            color.hex = namedToHex(color.original).toUpperCase();
             color.rgb = hexToRgb(color.hex);
         }
 
@@ -192,7 +192,7 @@ function sortColors(sortCriteria) {
 }
 
 function printChart(type,sortCriteria){
-    colors = sortColors(sortCriteria);
+    sortedColors = sortColors(sortCriteria);
 
     usedColors = [];
 
@@ -211,46 +211,47 @@ function printChart(type,sortCriteria){
         });
     }
 
-    for(i = 0; i < colors.length; i++){         
+    for(i = 0; i < sortedColors.length; i++){         
         var used = 1;
 
+
         for(z = 0; z < usedColors.length; z++){
-            if (colors[i].hex === usedColors[z]){
+            if (sortedColors[i].hex === usedColors[z]){
                 used ++;
             }
         }
 
         if (used != 1){
-            $('.chart.' + type + ' ' + colors[i].hex).remove();
+            $( '.chart.' + type + ' #' + sortedColors[i].hex.replace('#','c_') ).remove();
         }   
 
-        usedColors.push(colors[i].hex);
+        usedColors.push(sortedColors[i].hex);
 
         if (type === 'fan'){
             // Calculate rotation of hue.
-            var rot = colors[i].hue * 360 / 255;
+            var rot = sortedColors[i].hue * 360 / 255;
             // Convert from degrees to radians.
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * colors[i].val * center * 90/10000;
-            y = center + Math.cos(rot) * colors[i].val * center * 90/10000;
+            x = center + Math.sin(rot) * sortedColors[i].val * center * 90/10000;
+            y = center + Math.cos(rot) * sortedColors[i].val * center * 90/10000;
 
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
             circle.attr({
-                fill: colors[i].hex, //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
-                id: colors[i].hex.replace('#','')
+                fill: sortedColors[i].hex, //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
+                id: sortedColors[i].hex.replace('#','c_')
             });
 
         } else if(type === 'histogram'){
             var height = 4;
 
             dataPoint = '<div class="color" style="';
-            dataPoint += 'background:' + colors[i].hex + ';';
+            dataPoint += 'background:' + sortedColors[i].hex + ';';
             dataPoint += 'height:' + (height * used) + 'px;"';
-            dataPoint += ' id="' + colors[i].hex.replace('#','') + '">';
-            dataPoint += '<span>' + colors[i].original + '</span></div>';
+            dataPoint += ' id="c_' + sortedColors[i].hex.replace('#','') + '">';
+            dataPoint += '<span>' + sortedColors[i].hex + '</span></div>';
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
