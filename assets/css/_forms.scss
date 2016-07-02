@@ -55,10 +55,15 @@ input:not([type="submit"],[type="range"]), textarea{
     border:0px;
     cursor:pointer;
     display:inline-block;
+    text-decoration:none;
 
     @include transition_mixin(background $base-duration $base-easing);
 
     &:hover{
     	background:$hovered;
+    }
+
+    *{
+    	font-size: inherit;
     }
 }

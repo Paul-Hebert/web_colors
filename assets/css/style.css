@@ -939,12 +939,15 @@ input:not([type="submit"], [type="range"]), textarea {
   border: 0px;
   cursor: pointer;
   display: inline-block;
+  text-decoration: none;
   -o-transition: background 250ms ease-in-out;
   -ms-transition: background 250ms ease-in-out;
   -webkit-transition: background 250ms ease-in-out;
   transition: background 250ms ease-in-out; }
   .button:hover, input[type=submit]:hover {
     background: #166993; }
+  .button *, input[type=submit] * {
+    font-size: inherit; }
 
 * {
   font-family: Roboto, "sans-serif", sans-serif;
@@ -1061,7 +1064,9 @@ svg {
 code {
   background: #ddd;
   padding: 0px;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 10pt;
+  padding: 3px 4px; }
 
 pre {
   display: block; }

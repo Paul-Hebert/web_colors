@@ -22,35 +22,6 @@
 				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
 			</div>
 		</section>
-
-		<section>
-			<div class="subsection">
-				<h2>The Sites</h2>
-
-				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
-
-				<figure class="large right">
-					<?php
-						$path = 'assets/data/';
-						$files = scandir($path);
-						$array_length = count($files);
-						$files = array_diff($files, array('.', '..'));
-
-						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
-
-						foreach($sites as $site){
-							echo '<div class="block chart">';
-								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
-
-								for($count = 1; $count < count($site); $count++){
-									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
-								}
-							echo '</div>';
-						}
-					?>
-				</figure>
-			</div>
-		</section>
 		
 		<section>
 			<div class="subsection" id="aggregate">
@@ -60,10 +31,40 @@
 
 				<figure class="large right" style="font-size:0px;">
 					<?php
+						$path = 'assets/data/';
+						$files = scandir($path);
+						$array_length = count($files);
+						$files = array_diff($files, array('.', '..'));
+
+						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
+
+
 						foreach($sites as $site){
 							for($count = 1; $count < count($site); $count++){
 								echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
 							}
+						}
+					?>
+				</figure>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
+				<h2>The Sites</h2>
+
+				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
+
+				<figure class="large right">
+					<?php
+						foreach($sites as $site){
+							echo '<div class="block chart">';
+								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
+
+								for($count = 1; $count < count($site); $count++){
+									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								}
+							echo '</div>';
 						}
 					?>
 				</figure>
@@ -267,7 +268,7 @@
 
 				<aside class="right">
 					<p>Not interested in the code examples? You can read this article without them.</p>
-					<a href="#" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
+					<a href="#" class="button" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
 				</aside>
 
 				<figure class="codeFigure">
@@ -324,6 +325,10 @@ echo $geshi->parse_code();
 				<p>
 					A hexadecimal color is six characters long and preceded by a number sign: <code>#BADA55</code>. Hexadecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section tells the browser that a hexadecimal color is coming.
 				</p>
+
+				<p>
+					The remaining 3 sections contain important information about the color. Hexadecimal colors are based off of the <abbr>RGB</abbr> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
+				</p>
 			
 				<aside class="right">
 					<figure class="colorPicker" data-format='#,' data-delimiter="">
@@ -341,10 +346,6 @@ echo $geshi->parse_code();
 						</form>
 					</figure>
 				</aside>
-
-				<p>
-					The remaining 3 sections contain important information about the color. Hexadecimal colors are based off of the <abbr>RGB</abbr> (Red, Green, Blue) color model and each section defines how much of one of those colors is present in the final color.
-				</p>
 
 				<figure>
 					Red: <code>BA</code> Green: <code>DA</code> Blue: <code>55</code>
@@ -568,6 +569,8 @@ echo $geshi->parse_code();
 
 				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
 			
+				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see white, blakc and grey cluster with grey.</p>
+
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is covering pure white, since they both have a hue and value of 0.</p>
 			</div>
 		</section>
