@@ -63,9 +63,10 @@
     }
 }
 
-@media (min-width:900px){
+@media (min-width:901px){
 	main{
 		margin-left:250px;
+		margin-top:$size-8;
 	}
 
 	.mobile{
@@ -78,6 +79,10 @@
 		a{
 			padding:$size-6;
 		}
+	}
+
+	footer nav{	
+		margin-top:$size-8;
 	}
 
 	aside{
@@ -119,5 +124,28 @@
 		&.extra{
 			width:1086px;
 		}
+	}
+}
+
+@media (min-width:1300px){
+	main{
+		margin-top:0px;
+	}
+
+	header nav{
+		position:fixed;
+		top:0px;
+		right:0px;
+		bottom:0px;
+		background:$light-grey;
+		padding:$size-6;
+
+		a{
+			display:block;
+		}
+	}
+
+	footer nav{
+		display:none;
 	}
 }

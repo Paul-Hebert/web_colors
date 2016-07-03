@@ -1232,9 +1232,10 @@ figcaption {
         transition: opacity 300ms; }
       #menu-toggle svg.open .middle-line {
         opacity: 0; } }
-@media (min-width: 900px) {
+@media (min-width: 901px) {
   main {
-    margin-left: 250px; }
+    margin-left: 250px;
+    margin-top: 26pt; }
 
   .mobile {
     display: none; }
@@ -1243,6 +1244,9 @@ figcaption {
     float: right; }
     nav a {
       padding: 16pt; }
+
+  footer nav {
+    margin-top: 26pt; }
 
   aside {
     width: 200px; }
@@ -1269,5 +1273,21 @@ figcaption {
       margin-left: -250px; }
     figure.large.extra {
       width: 1086px; } }
+@media (min-width: 1300px) {
+  main {
+    margin-top: 0px; }
+
+  header nav {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: #ddd;
+    padding: 16pt; }
+    header nav a {
+      display: block; }
+
+  footer nav {
+    display: none; } }
 
 /*# sourceMappingURL=style.css.map */
