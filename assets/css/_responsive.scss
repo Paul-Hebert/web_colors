@@ -78,6 +78,25 @@
 
 		a{
 			padding:$size-6;
+			color:$dark-grey;
+			text-align:center;	
+			position:relative;
+			
+			&:after{
+				content:'';
+				position:absolute;
+				bottom:$size-5;
+				width:0px;
+				height:$size-1;
+				background:$grey;
+				@include transition_mixin(all 500ms);
+				left:50%;
+			}	
+
+			&:hover:after{
+				width:80%;
+				left:10%;
+			}	
 		}
 	}
 
@@ -141,7 +160,7 @@
 		padding:$size-6;
 
 		a{
-			display:block;
+			display:block;			
 		}
 	}
 
