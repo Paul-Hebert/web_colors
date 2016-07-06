@@ -86,7 +86,10 @@ $(function() {
     if( bodyId === 'data'){
         $('#downloads').submit(function(e){
             e.preventDefault();
-            window.location = 'assets/data/' + $('#date').val();
+            
+            if( $('#date').val() != 'All'){
+                window.location.href = 'assets/data/' + $('#date').val();
+            }
         });
     }
 });

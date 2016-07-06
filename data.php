@@ -24,7 +24,7 @@
 
 							echo '<option value="' . $fileName . '">' . $date . '</option>';
 						}
-						echo '<option>All</option>';
+						echo '<option value="All">All</option>';
 					echo '</select>';
 				?>
 			</fieldset>
