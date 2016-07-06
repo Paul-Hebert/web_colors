@@ -1,44 +1,44 @@
 <?php
-	$title = 'Data';
-	$id = 'data';
+	$title = 'Converter';
+	$id = 'converter';
 
 	include('assets/php/header.php');
 ?>
 
 	<main>
-		<form method="post" action="assets/php/utilities/data/">
-			<h1>Data</h1>
+		<h1>Converter</h1>
 
-			<fieldset>
-				<label for="DataFormat">Data Format</label>
+			<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
+				<code class="colorBlock"></code>
 
-				<select name="DataFormat">
-					<option>CSV</option>
-					<option>JSON</option>
-					<option>XML</option>
-				</select>
-			</fieldset>
+				<form autocomplete="off">
+					<label for="red">Red:</label>
+					<input type="range" min="0" max="255" data-scale="" data-unit="" name="red" value="186">
 
-			<fieldset>
-				<label for="ColorFormat">Color Format</label>
+					<label for="green">Green:</label>
+					<input type="range" min="0" max="255" data-scale="" data-unit="" name="green" value="218">
 
-				<select name="ColorFormat">
-					<option>Hexadecimal</option>
-					<option>RGB</option>
-					<option>RGBA</option>
-					<option>HSL</option>
-					<option>HSLA</option>
-					<option>Original Colors</option>
-				</select>
-			</fieldset>
+					<label for="blue">Blue:</label>
+					<input type="range" min="0" max="255" data-scale="" data-unit="" name="blue" value="85">
 
-			<fieldset>
-				<label for="Email">Delimiter</label>
-				<input type="text" class="required" name="Delimiter">
-			</fieldset>
+					<label for="alpha">Alpha:</label>
+					<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
+				</form>
+			</figure>
+			<figure class="colorPicker" data-format='#,' data-delimiter="">
+				<code class="colorBlock"></code>
 
-			<input type="submit" value="Download Data">
-		</form>
+				<form autocomplete="off">
+					#
+					<?php
+						$color = str_split('BADA55',2);
+
+						foreach($color as $character){
+							include('assets/php/hex-select.php');
+						}
+					?>
+				</form>
+			</figure>
 	</main>
 
 <?php

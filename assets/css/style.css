@@ -891,11 +891,10 @@ label {
 input, textarea {
   width: 100%;
   margin: 0px;
-  border: 0px solid;
   padding: 6pt;
   border: 1px solid #ddd; }
 
-input:not([type="submit"], [type="range"]), textarea {
+input:not([type="submit"]):not([type="range"]), textarea {
   font-size: 13pt;
   border: 1px solid #ccc;
   padding: 3pt;
@@ -905,16 +904,18 @@ input:not([type="submit"], [type="range"]), textarea {
   -ms-transition: all 250ms ease-in-out;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out; }
-  input:not([type="submit"], [type="range"]).error, textarea.error {
+  input:not([type="submit"]):not([type="range"]).error, textarea.error {
     -webkit-box-shadow: 0px 0px 3px 1px #f00;
     -moz-box-shadow: 0px 0px 3px 1px #f00;
-    box-shadow: 0px 0px 3px 1px #f00; }
-  input:not([type="submit"], [type="range"]):focus, textarea:focus {
+    box-shadow: 0px 0px 3px 1px #f00;
+    border: 0px; }
+  input:not([type="submit"]):not([type="range"]):focus, textarea:focus {
     -webkit-box-shadow: 0px 0px 0px 0px #f0f0f0;
     -moz-box-shadow: 0px 0px 0px 0px #f0f0f0;
-    box-shadow: 0px 0px 0px 0px #f0f0f0; }
+    box-shadow: 0px 0px 0px 0px #f0f0f0;
+    border: 0px; }
 
-#error_text {
+.error_text {
   padding: 6pt;
   background: #f00;
   color: #f0f0f0;

@@ -1,13 +1,13 @@
 $(function() {
 	initializeMobileMenu();
 
-    if( $('body').attr('id') === 'contact' ){ 
+    bodyId = $('body').attr('id');
+
+    if( bodyId === 'contact' ){ 
         initializeContactForm();
     }	
 
-    if( $('body').attr('id') === 'home' ){ 
-        initializeColorPickers();
-
+    if( bodyId === 'home' ){ 
         convertColors();
 
         for(i = 0; i < colors.length; i++){
@@ -49,28 +49,36 @@ $(function() {
         printChart('histogram','hue'); 
     }
 
-    if( $('body').attr('id') === 'home' || $('body').attr('id') === 'scraper'){ 
+    if (bodyId === 'home' || bodyId === 'converter'){
+        initializeColorPickers();
+    }
+
+    if( bodyId === 'home' || bodyId === 'scraper'){ 
         busy = false;
 
         $('#scraperButton').click(function(){
-            if ( busy !== true && $('#scraperUrl').val() != null ){
-                var scraperUrl = $('#scraperUrl').val();
+            if ( busy !== true ){
+                if( validate( $('#scraper') ) ){
+                    var scraperUrl = $('#scraperUrl').val();
 
-                busy = true;
+                    busy = true;
 
-                $('#scraperButton').html('<div class="loading"></div>');
+                    $('#scraperButton').html('<div class="loading"></div>');
 
-                $.ajax({
-                    type: "POST",
-                    url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
-                    success: function(data){
-                        $('#scraperResults').append(data);
-                        
-                        busy = false;
+                    $.ajax({
+                        type: "POST",
+                        url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+                        success: function(data){
+                            $('#scraperResults').append(data);
+                            
+                            busy = false;
 
-                        $('#scraperButton').html('Scrape');
-                    }
-                });
+                            $('#scraperButton').html('Scrape');
+                        }
+                    });
+                } else{
+                    $('#scraperUrl').val();
+                }
             }
         });  
     }
@@ -406,7 +414,7 @@ function initializeContactForm(){
 	$( ".contact_form" ).on( "submit", function( event ) {
 	    event.preventDefault();
 
-	    if ( validate() ){
+	    if ( validate( $(this) ) ){
 		    var form_data = $('.contact_form').serialize();
 
 		    $.ajax({
@@ -423,11 +431,11 @@ function initializeContactForm(){
 	});
 }
 
-function validate(){
-	$('.error').removeClass('error');
-	$('#error_text').remove();
+function validate(form){
+	form.find('.error').removeClass('error');
+	form.find('.error_text').remove();
 
-	$('.required').each(function(){
+	form.find('.required').each(function(){
 		if ( $(this).val() === '' || $(this).val() === null || $(this).val() === undefined ){
 			$(this).addClass('error');
 			$(this).change(function(){ $(this).removeClass('error') });
@@ -435,8 +443,11 @@ function validate(){
 	});
 
 	if ( $('.error').length > 0 ){
-		$('<div id="error_text">Please fill out all required fields above. Required fields have a red outline.</div>').insertBefore('input[type=submit]');
-		$('#error_text').slideDown(350);
+        var error_text = $('<div class="error_text">Please fill out all required fields above. Required fields have a red outline.</div>');
+
+        error_text.insertBefore( form.find('input[type=submit], .button') );
+
+		form.find('.error_text').slideDown(350);
 
 		return false;
 	} else{

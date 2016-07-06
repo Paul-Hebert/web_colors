@@ -9,12 +9,11 @@ label{
 input, textarea{
 	width:100%;	
 	margin:0px;
-	border:0px solid;
 	padding:$size-2;
 	border:1px solid $light-grey;
 }
 
-input:not([type="submit"],[type="range"]), textarea{
+input:not([type="submit"]):not([type="range"]), textarea{
 	font-size: $size-5;
 	border:1px solid $grey;
 	padding:$size-1;
@@ -23,15 +22,17 @@ input:not([type="submit"],[type="range"]), textarea{
 	@include transition_mixin(all $base-duration $base-easing);
 
 	&.error{
-		@include shadow( 0px 0px 3px 1px $error );				
+		@include shadow( 0px 0px 3px 1px $error );	
+		border:0px;			
 	}
 
 	&:focus{
 		@include shadow( 0px 0px 0px 0px $off-white );
+		border:0px;
 	}	
 }
 
-#error_text{
+.error_text{
 	padding:$size-2;
 	background:$error;
 	color:$off-white;

@@ -1,9 +1,9 @@
-		<form>
+		<form id="scraper">
 			<fieldset>
 				<label for="url">
 					URL to scrape
 				</label>
-				<input type="text" name="url" id="scraperUrl" placeholder="http://www...">
+				<input class="required" type="text" name="url" id="scraperUrl" placeholder="http://www...">
 			</fieldset>			
 
 			<figure class="large right" id="scraperResults">
