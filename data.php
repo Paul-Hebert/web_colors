@@ -1,14 +1,35 @@
 <?php
 	$title = 'Data';
+	$id = 'data';
 
 	include('assets/php/header.php');
 ?>
 
 	<main>
-		<form method="post" action="assets/php/utilities/data/">
+		<form id="downloads">
 			<h1>Data</h1>
 
 			<fieldset>
+				<label for="Date">Date</label>
+
+				<?php
+					$path = 'assets/data/';
+					$files = scandir($path, 1);
+					$array_length = count($files);
+					$files = array_diff($files, array('.', '..'));
+
+					echo '<select name="Date" id="date">';
+						foreach($files as $fileName){
+							$date = date('F j, Y h:i:s A', strtotime($fileName));
+
+							echo '<option value="' . $fileName . '">' . $date . '</option>';
+						}
+						echo '<option>All</option>';
+					echo '</select>';
+				?>
+			</fieldset>
+
+			<!--<fieldset>
 				<label for="DataFormat">Data Format</label>
 
 				<select name="DataFormat">
@@ -34,7 +55,7 @@
 			<fieldset>
 				<label for="Delimiter">Delimiter</label>
 				<input type="text" class="required" name="Delimiter">
-			</fieldset>
+			</fieldset> -->
 
 			<input type="submit" value="Download Data">
 		</form>
