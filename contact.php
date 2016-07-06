@@ -1,5 +1,6 @@
 <?php
 	$title = 'Contact';
+	$id = 'contact';
 
 	include('assets/php/header.php');
 ?>

@@ -1,5 +1,6 @@
 <?php
 	$title = 'Scraper';
+	$id = 'scraper';
 
 	include('assets/php/header.php');
 ?>

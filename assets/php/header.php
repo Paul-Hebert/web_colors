@@ -17,7 +17,7 @@
 		<?php include('assets/php/favicons.php'); ?>
 	</head>
 
-	<body>
+	<?php echo "<body id='" . $id . "'>"; ?>
 		<header>
 			<?php include('assets/php/nav.php'); ?>
 

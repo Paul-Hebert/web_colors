@@ -9,6 +9,9 @@ label{
 input, textarea{
 	width:100%;	
 	margin:0px;
+	border:0px solid;
+	padding:$size-2;
+	border:1px solid $light-grey;
 }
 
 input:not([type="submit"],[type="range"]), textarea{

@@ -1,73 +1,79 @@
 $(function() {
 	initializeMobileMenu();
 
-    initializeContactForm();	
+    if( $('body').attr('id') === 'contact' ){ 
+        initializeContactForm();
+    }	
 
-    initializeColorPickers();
+    if( $('body').attr('id') === 'home' ){ 
+        initializeColorPickers();
 
-    convertColors();
+        convertColors();
 
-    for(i = 0; i < colors.length; i++){
-        $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
-    }
-
-    colorFormatsUsed = 0;
-
-    $('.format.bar.chart .barColumn').each(function(){
-        if ( $(this).html() !== '' ){
-            colorFormatsUsed ++;
+        for(i = 0; i < colors.length; i++){
+            $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
         }
-    });
 
-    if (colorFormatsUsed < 6){
-        $('#colorFormatParagraph').append('Only ' + colorFormatsUsed + ' of the six color formats were used by these sites.')
-    }
+        colorFormatsUsed = 0;
 
-    $('.backgroundChanger').on("input change", function(){
-        $( $(this).attr('data-target') ).css({
-            fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
+        $('.format.bar.chart .barColumn').each(function(){
+            if ( $(this).html() !== '' ){
+                colorFormatsUsed ++;
+            }
         });
-    });
 
-    $('.color.listing').each(function(){
-        $(this).css( 'background', $(this).find('span').text() );
-    });
-
-    $('#codeToggle').click(function(){
-        $(this).find('span').toggleClass('hidden');
-
-        $('.codeFigure').toggleClass('hiddenHeight');
-
-        return false;
-    });
-
-    busy = false;
-
-    $('#scraperButton').click(function(){
-        if (busy !== true){
-            var scraperUrl = $('#scraperUrl').val();
-
-            busy = true;
-
-            $('#scraperButton').html('<div class="loading"></div>');
-
-            $.ajax({
-                type: "POST",
-                url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
-                success: function(data){
-                    $('#scraperResults').append(data);
-                    
-                    busy = false;
-
-                    $('#scraperButton').html('Scrape');
-                }
-            });
+        if (colorFormatsUsed < 6){
+            $('#colorFormatParagraph').append('Only ' + colorFormatsUsed + ' of the six color formats were used by these sites.')
         }
-    });
 
-   printChart('rectangle','hue');
-   printChart('fan','hue');
-   printChart('histogram','hue');   
+        $('.backgroundChanger').on("input change", function(){
+            $( $(this).attr('data-target') ).css({
+                fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
+            });
+        });
+
+        $('.color.listing').each(function(){
+            $(this).css( 'background', $(this).find('span').text() );
+        });
+
+        $('#codeToggle').click(function(){
+            $(this).find('span').toggleClass('hidden');
+
+            $('.codeFigure').toggleClass('hiddenHeight');
+
+            return false;
+        });
+
+        printChart('rectangle','hue');
+        printChart('fan','hue');
+        printChart('histogram','hue'); 
+    }
+
+    if( $('body').attr('id') === 'home' || $('body').attr('id') === 'scraper'){ 
+        busy = false;
+
+        $('#scraperButton').click(function(){
+            if ( busy !== true && $('#scraperUrl').val() != null ){
+                var scraperUrl = $('#scraperUrl').val();
+
+                busy = true;
+
+                $('#scraperButton').html('<div class="loading"></div>');
+
+                $.ajax({
+                    type: "POST",
+                    url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+                    success: function(data){
+                        $('#scraperResults').append(data);
+                        
+                        busy = false;
+
+                        $('#scraperButton').html('Scrape');
+                    }
+                });
+            }
+        });  
+    }
 });
 
 function initializeColorPickers(){

@@ -1,5 +1,6 @@
 <?php
 	$title = 'Data';
+	$id = 'data';
 
 	include('assets/php/header.php');
 ?>

@@ -1,5 +1,6 @@
 <?php
 	$title = 'The Colors of the Web';
+	$id = 'home';
 
 	include('assets/php/header.php');
 ?>
