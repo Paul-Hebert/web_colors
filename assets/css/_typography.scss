@@ -36,6 +36,11 @@ span{
 
 a{
     font-family:inherit;
+    color:$accent;
+
+    &:hover{
+        color:$hovered;
+    }
 }
 
 abbr{

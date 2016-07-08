@@ -891,8 +891,7 @@ label {
 input, textarea {
   width: 100%;
   margin: 0px;
-  padding: 6pt;
-  border: 1px solid #ddd; }
+  padding: 6pt; }
 
 input:not([type="submit"]):not([type="range"]), textarea {
   font-size: 13pt;
@@ -900,6 +899,7 @@ input:not([type="submit"]):not([type="range"]), textarea {
   padding: 3pt;
   margin-top: 3pt;
   margin-bottom: 6pt;
+  border: 1px solid #ddd;
   -o-transition: all 250ms ease-in-out;
   -ms-transition: all 250ms ease-in-out;
   -webkit-transition: all 250ms ease-in-out;
@@ -907,13 +907,11 @@ input:not([type="submit"]):not([type="range"]), textarea {
   input:not([type="submit"]):not([type="range"]).error, textarea.error {
     -webkit-box-shadow: 0px 0px 3px 1px #f00;
     -moz-box-shadow: 0px 0px 3px 1px #f00;
-    box-shadow: 0px 0px 3px 1px #f00;
-    border: 0px; }
+    box-shadow: 0px 0px 3px 1px #f00; }
   input:not([type="submit"]):not([type="range"]):focus, textarea:focus {
-    -webkit-box-shadow: 0px 0px 0px 0px #f0f0f0;
-    -moz-box-shadow: 0px 0px 0px 0px #f0f0f0;
-    box-shadow: 0px 0px 0px 0px #f0f0f0;
-    border: 0px; }
+    -webkit-box-shadow: 0px 0px 3px 1px #166993;
+    -moz-box-shadow: 0px 0px 3px 1px #166993;
+    box-shadow: 0px 0px 3px 1px #166993; }
 
 .error_text {
   padding: 6pt;
@@ -983,7 +981,10 @@ span {
   color: inherit; }
 
 a {
-  font-family: inherit; }
+  font-family: inherit;
+  color: #0C3D56; }
+  a:hover {
+    color: #166993; }
 
 abbr {
   text-transform: uppercase;

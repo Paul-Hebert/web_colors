@@ -10,7 +10,6 @@ input, textarea{
 	width:100%;	
 	margin:0px;
 	padding:$size-2;
-	border:1px solid $light-grey;
 }
 
 input:not([type="submit"]):not([type="range"]), textarea{
@@ -19,16 +18,15 @@ input:not([type="submit"]):not([type="range"]), textarea{
 	padding:$size-1;
 	margin-top:$size-1;
 	margin-bottom:$size-2;
+	border:1px solid $light-grey;
 	@include transition_mixin(all $base-duration $base-easing);
 
 	&.error{
 		@include shadow( 0px 0px 3px 1px $error );	
-		border:0px;			
 	}
 
 	&:focus{
-		@include shadow( 0px 0px 0px 0px $off-white );
-		border:0px;
+		@include shadow( 0px 0px 3px 1px $hovered );	
 	}	
 }
 
