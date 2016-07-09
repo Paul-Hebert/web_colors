@@ -980,10 +980,10 @@ span {
   font-size: inherit;
   color: inherit; }
 
-a {
+a:not(.button) {
   font-family: inherit;
   color: #0C3D56; }
-  a:hover {
+  a:not(.button):hover {
     color: #166993; }
 
 abbr {
@@ -1024,7 +1024,7 @@ abbr {
   margin-bottom: 6pt; }
   .bar .barColumn .color {
     height: 100%;
-    width: 1.6px;
+    width: .75px;
     display: inline-block; }
     .bar .barColumn .color span {
       top: 21pt;

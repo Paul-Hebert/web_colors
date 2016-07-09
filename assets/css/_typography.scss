@@ -34,7 +34,7 @@ span{
     color:inherit;
 }
 
-a{
+a:not(.button){
     font-family:inherit;
     color:$accent;
 

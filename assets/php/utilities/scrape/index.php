@@ -26,6 +26,7 @@
 	// Finish Regex. Make case insensitive
 	$GLOBALS['colorRegex'] .= '/i';
 
+	// Check for GET request
 	if ( isset($_GET['url']) ){
 		$top_sites = [];
 		array_push($top_sites, $_GET['url']);
@@ -43,12 +44,10 @@
 	$count = 0;
 
 	foreach($top_sites as $top_site){
-		//echo '<h2>' . $top_site . '</h2>';
-
 		if($count < 10){
-			$top_site = $top_site;
+			$top_site = 'http://www.' . $top_site;
 
-			$text = file_get_contents('http://' . $top_site);
+			$text = file_get_contents($top_site);
 
 			// This part's not working.
 			foreach(get_external_stylesheets($top_site) as $styles ){
