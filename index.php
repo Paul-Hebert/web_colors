@@ -111,6 +111,8 @@
 			<div class="subsection">
 				<h2>Colors by Hue</h2>
 
+				<p>For the purposes of this chart, transparency was removed from all colors.</p>
+
 				<figure class="large right">
 					<div class="shade bar chart">
 						<aside class="left"><label>Black</label></aside>
@@ -597,16 +599,6 @@ echo $geshi->parse_code();
 				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
 
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is on top of pure white, since they both have a hue and value of 0.</p>
-			</div>
-		</section>
-
-		<section>
-			<div class="subsection">
-				<h2>Histogram Charts</h2>
-
-				<figure class="extra large">
-					<div class="histogram chart hue"></div>
-				</figure>
 			</div>
 		</section>
 	</main>

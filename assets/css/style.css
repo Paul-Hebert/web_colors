@@ -1011,7 +1011,8 @@ abbr {
     top: 13pt;
     left: 13pt;
     z-index: 5;
-    font-size: 13pt; }
+    font-size: 13pt;
+    white-space: nowrap; }
   .color:hover span {
     display: block; }
 

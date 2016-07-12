@@ -44,31 +44,14 @@ $(function() {
     if( bodyId === 'home' || bodyId === 'scraper'){ 
         busy = false;
 
-        $('#scraperButton').click(function(){
-            if ( busy !== true ){
-                if( validate( $('#scraper') ) ){
-                    var scraperUrl = $('#scraperUrl').val();
-
-                    busy = true;
-
-                    $('#scraperButton').html('<div class="loading"></div>');
-
-                    $.ajax({
-                        type: "POST",
-                        url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
-                        success: function(data){
-                            $('#scraperResults').append(data);
-                            
-                            busy = false;
-
-                            $('#scraperButton').html('Scrape');
-                        }
-                    });
-                } else{
-                    $('#scraperUrl').val();
-                }
-            }
+        $('#scraper').submit(function(e){
+            e.preventDefault();
+            ajaxScrape();
         });  
+
+        $('#scraperButton').click(function(){
+            ajaxScrape();
+        });
     }
 
     if( bodyId === 'data'){
@@ -81,6 +64,32 @@ $(function() {
         });
     }
 });
+
+function ajaxScrape(){
+    if ( busy !== true ){
+        if( validate( $('#scraper') ) ){
+            var scraperUrl = $('#scraperUrl').val();
+
+            busy = true;
+
+            $('#scraperButton').html('<div class="loading"></div>');
+
+            $.ajax({
+                type: "POST",
+                url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
+                success: function(data){
+                    $('#scraperResults').append(data);
+                    
+                    busy = false;
+
+                    $('#scraperButton').html('Scrape');
+                }
+            });
+        } else{
+            $('#scraperUrl').val();
+        }
+    }
+}
 
 function initializeColorPickers(){
     $('.colorPicker input, .colorPicker select').on("input change", function(){
@@ -198,7 +207,6 @@ function printColorFormats(){
 
 function printColorShades(){
     for(i = 0; i < colors.length; i++){
-        console.log(colors[i].hue);
         if (colors[i].sat < 10 && colors[i].val < 10){
             shade = 'black';
         } else if(colors[i].sat < 10 && colors[i].val > 95){
@@ -406,7 +414,9 @@ function rgbToHsv(color){
         if (sat > 0) {
             if (rgb.red == max) {
                 hue = 42.6*(((rgb.green-min)-(rgb.blue-min))/chr);
-                if (hue < 0) {hue += 255;}
+                if (hue < 0) {
+                    hue += 255;
+                }
             } else if (rgb.green == max) {
                 hue = 85.2+42.6*(((rgb.blue-min)-(rgb.red-min))/chr);
             } else if (rgb.blue == max) {
