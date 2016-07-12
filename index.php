@@ -64,7 +64,7 @@
 			<div class="subsection">
 				<h2>Try it For Yourself</h2>
 
-				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page.</p>
+				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page. It can take a little while.</p>
 
 				<?php include('assets/php/utilities/scrape/form.php'); ?>
 			</div>

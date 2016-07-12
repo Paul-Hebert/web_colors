@@ -70,6 +70,10 @@ function ajaxScrape(){
         if( validate( $('#scraper') ) ){
             var scraperUrl = $('#scraperUrl').val();
 
+            if ( scraperUrl.indexOf('http') === -1 ){
+                scraperUrl = 'http://' + scraperUrl;
+            }
+
             busy = true;
 
             $('#scraperButton').html('<div class="loading"></div>');

@@ -45,7 +45,7 @@
 
 	foreach($top_sites as $top_site){
 		if($count < 10){
-			$top_site = 'http://www.' . $top_site;
+			$top_site = $top_site;
 
 			$text = file_get_contents($top_site);
 
@@ -115,7 +115,7 @@
 		if($links->length > 0){
 			foreach($links as $link){
 				if($link->nodeValue != 'More'){
-					array_push($sites, $link->nodeValue);
+					array_push($sites,  'http://www.' . $link->nodeValue);
 				}
 			}
 		}
