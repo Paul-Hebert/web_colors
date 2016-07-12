@@ -20,8 +20,9 @@ $(function() {
             });
         });
 
-        $('#resetButton').click(function(){
+        $('#resetBackground').click(function(){
             $('.chart').css( 'background', $('body').css('background') );
+            $('#backgroundChangerWrapper input').val(241);
         });
 
         $('.color.listing').each(function(){

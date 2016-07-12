@@ -1,5 +1,7 @@
 .chart{
 	padding:$size-3;
+	margin-left:-$size-3;
+	margin-right:-$size-3;
 
 	&.block.chart{
 		@include clearfix();

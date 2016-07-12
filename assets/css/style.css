@@ -925,7 +925,7 @@ input:not([type="submit"]):not([type="range"]), textarea {
   position: absolute;
   top: 21pt; }
 
-.button, input[type=submit] {
+button, .button, input[type=submit] {
   -webkit-appearance: none;
   font-size: 13pt;
   background: #0C3D56;
@@ -946,9 +946,9 @@ input:not([type="submit"]):not([type="range"]), textarea {
   -ms-transition: background 250ms ease-in-out;
   -webkit-transition: background 250ms ease-in-out;
   transition: background 250ms ease-in-out; }
-  .button:hover, input[type=submit]:hover {
+  button:hover, .button:hover, input[type=submit]:hover {
     background: #166993; }
-  .button *, input[type=submit] * {
+  button *, .button *, input[type=submit] * {
     font-size: inherit; }
 
 * {
@@ -993,13 +993,33 @@ abbr {
   font-size: inherit;
   color: inherit; }
 
-.block.chart {
+.chart {
   padding: 8pt;
-  font-size: 0px; }
-  .block.chart:after {
-    content: "";
-    display: table;
-    clear: both; }
+  margin-left: -8pt;
+  margin-right: -8pt; }
+  .chart.block.chart {
+    font-size: 0px; }
+    .chart.block.chart:after {
+      content: "";
+      display: table;
+      clear: both; }
+  .chart.fan {
+    border-radius: 50%; }
+  .chart.histogram .color {
+    display: inline-block;
+    width: 1.1px; }
+  .chart.bar {
+    padding: 8pt; }
+    .chart.bar .barColumn {
+      height: 21pt;
+      margin-bottom: 6pt; }
+      .chart.bar .barColumn .color {
+        height: 100%;
+        width: .75px;
+        display: inline-block; }
+        .chart.bar .barColumn .color span {
+          top: 21pt;
+          left: 0px; }
 
 .color {
   position: relative; }
@@ -1015,21 +1035,6 @@ abbr {
     white-space: nowrap; }
   .color:hover span {
     display: block; }
-
-.histogram .color {
-  display: inline-block;
-  width: 1.1px; }
-
-.bar .barColumn {
-  height: 21pt;
-  margin-bottom: 6pt; }
-  .bar .barColumn .color {
-    height: 100%;
-    width: .75px;
-    display: inline-block; }
-    .bar .barColumn .color span {
-      top: 21pt;
-      left: 0px; }
 
 svg {
   width: 100%; }
@@ -1312,6 +1317,13 @@ figcaption {
       display: block; }
 
   footer nav {
-    display: none; } }
+    display: none; }
+
+  #backgroundChangerWrapper {
+    position: fixed;
+    bottom: 16pt;
+    right: 16pt;
+    width: 120px;
+    text-align: center; } }
 
 /*# sourceMappingURL=style.css.map */

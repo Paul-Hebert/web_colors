@@ -6,7 +6,7 @@
 ?>
 
 	<figure id="backgroundChangerWrapper">
-		<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
+		<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" autocomplete="off">
 		<figcaption>Background Color</figcaption>
 
 		<button id="resetBackground">Reset</button>
@@ -20,21 +20,23 @@
 				</h1>
 
 				<figure class="large right" style="font-size:0px;">
-					<?php
-						$path = 'assets/data/';
-						$files = scandir($path);
-						$array_length = count($files);
-						$files = array_diff($files, array('.', '..'));
+					<div class="chart">
+						<?php
+							$path = 'assets/data/';
+							$files = scandir($path);
+							$array_length = count($files);
+							$files = array_diff($files, array('.', '..'));
 
-						$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
+							$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
 
-						foreach($sites as $site){
-							for($count = 1; $count < count($site); $count++){
-								echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+							foreach($sites as $site){
+								for($count = 1; $count < count($site); $count++){
+									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								}
 							}
-						}
-					?>
+						?>
+					</div>
 				</figure>
 
 				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
