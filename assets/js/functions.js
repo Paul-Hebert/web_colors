@@ -14,10 +14,14 @@ $(function() {
 
         printColorShades();
 
-        $('.backgroundChanger').on("input change", function(){
-            $( $(this).attr('data-target') ).css({
-                fill: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
+        $('#backgroundChangerWrapper input').on("input change", function(){
+            $('.chart').css({
+                background: 'rgb(' + $(this).val() + ',' + $(this).val() + ',' + $(this).val() + ')'
             });
+        });
+
+        $('#resetButton').click(function(){
+            $('.chart').css( 'background', $('body').css('background') );
         });
 
         $('.color.listing').each(function(){
@@ -270,19 +274,10 @@ function printChart(type,sortCriteria){
         center = $('.chart.' + type + '.' + sortCriteria).width()/2;
 
         $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
-
-        var circle = fan.circle(center, center, 0);
-
-        circle.attr({
-            fill: '#fff',
-            class: 'background',
-            r: center
-        });
     }
 
     for(i = 0; i < sortedColors.length; i++){         
         var used = 1;
-
 
         for(z = 0; z < usedColors.length; z++){
             if (sortedColors[i].hex === usedColors[z]){
@@ -303,8 +298,8 @@ function printChart(type,sortCriteria){
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * sortedColors[i].val * center * 90/10000;
-            y = center + Math.cos(rot) * sortedColors[i].val * center * 90/10000;
+            x = center + Math.sin(rot) * sortedColors[i].val * center * 9/1000;
+            y = center + Math.cos(rot) * sortedColors[i].val * center * 9/1000;
 
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 

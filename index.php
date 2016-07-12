@@ -5,6 +5,13 @@
 	include('assets/php/header.php');
 ?>
 
+	<figure id="backgroundChangerWrapper">
+		<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
+		<figcaption>Background Color</figcaption>
+
+		<button id="resetBackground">Reset</button>
+	</figure>
+
 	<main>
 		<section>
 			<div class="subsection" id="aggregate">
@@ -588,10 +595,6 @@ echo $geshi->parse_code();
 
 				<figure>
 					<svg class="hue fan chart"></svg>
-
-					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
-
-					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
 				</figure>	
 
 				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>

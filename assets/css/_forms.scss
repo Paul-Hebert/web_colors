@@ -44,7 +44,7 @@ input:not([type="submit"]):not([type="range"]), textarea{
 	top:$size-7;
 }
 
-.button, input[type=submit]{
+button, .button, input[type=submit]{
 	-webkit-appearance: none;
     font-size:$size-5;
     background:$accent;

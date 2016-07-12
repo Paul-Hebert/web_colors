@@ -167,4 +167,12 @@
 	footer nav{
 		display:none;
 	}
+
+	#backgroundChangerWrapper{
+		position:fixed;
+		bottom:$size-6;
+		right:$size-6;
+		width:120px;
+		text-align:center;
+	}
 }

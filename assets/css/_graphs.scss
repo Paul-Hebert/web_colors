@@ -1,7 +1,41 @@
-.block.chart{
-	@include clearfix();
+.chart{
 	padding:$size-3;
-	font-size:0px;
+
+	&.block.chart{
+		@include clearfix();
+		font-size:0px;
+	}
+
+	&.fan{
+		border-radius:50%;
+	}
+
+	&.histogram{
+		.color{
+			display:inline-block;
+			width:1.1px;
+		}
+	}
+
+	&.bar{
+		padding:$size-3;
+		
+		.barColumn{
+			height:$size-7;
+			margin-bottom:$size-2;
+
+			.color{
+				height:100%;
+				width:.75px;
+				display:inline-block;
+
+				span{
+					top:$size-7;
+					left:0px;
+				}
+			}
+		}
+	}
 }
 
 .color{
@@ -22,32 +56,6 @@
 	&:hover span{
 		display:block;
 	}	
-}
-
-.histogram{
-	.color{
-		display:inline-block;
-		width:1.1px;
-	}
-}
-
-.bar{
-	
-	.barColumn{
-		height:$size-7;
-		margin-bottom:$size-2;
-
-		.color{
-			height:100%;
-			width:.75px;
-			display:inline-block;
-
-			span{
-				top:$size-7;
-				left:0px;
-			}
-		}
-	}
 }
 
 svg{
