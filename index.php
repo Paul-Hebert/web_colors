@@ -113,6 +113,12 @@
 
 				<figure class="large right">
 					<div class="shade bar chart">
+						<aside class="left"><label>Black</label></aside>
+						<div class="barColumn" id="blackColors"></div>
+
+						<aside class="left"><label>White</label></aside>
+						<div class="barColumn" id="whiteColors"></div>
+
 						<aside class="left"><label>Grey</label></aside>
 						<div class="barColumn" id="greyColors"></div>
 

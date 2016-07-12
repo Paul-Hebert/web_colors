@@ -199,23 +199,27 @@ function printColorFormats(){
 function printColorShades(){
     for(i = 0; i < colors.length; i++){
         console.log(colors[i].hue);
-        if (colors[i].sat === 0){
+        if (colors[i].sat < 10 && colors[i].val < 10){
+            shade = 'black';
+        } else if(colors[i].sat < 10 && colors[i].val > 95){
+            shade = 'white';
+        } else if(colors[i].sat < 10 ){
             shade = 'grey';
-        } else if( colors[i].hue < 30 || colors[i].hue > 330){
+        } else if( colors[i].hue > 330 || colors[i].hue <= 30 ){
             shade = 'red';
-        } else if( colors[i].hue > 30 && colors[i].hue < 90 ){
+        } else if( colors[i].hue > 30 && colors[i].hue <= 75 ){
             shade = 'yellow';
-        } else if( colors[i].hue > 90 && colors[i].hue < 150 ){
+        } else if( colors[i].hue > 75 && colors[i].hue <= 150 ){
             shade = 'green';
-        } else if( colors[i].hue > 150 && colors[i].hue < 210 ){
+        } else if( colors[i].hue > 150 && colors[i].hue <= 210 ){
             shade = 'turquoise';
-        } else if( colors[i].hue > 210 && colors[i].hue < 270 ){
+        } else if( colors[i].hue > 210 && colors[i].hue <= 270 ){
             shade = 'blue';
-        } else if( colors[i].hue > 270 && colors[i].hue < 330 ){
+        } else if( colors[i].hue > 270 && colors[i].hue <= 330 ){
             shade = 'purple';
         }
         
-        $('#' + shade + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
+        $('#' + shade + 'Colors').append('<div class="color" style="background:' + colors[i].rgb + ';"><span>' + colors[i].original + '</span></div>');
     }
 }
 
