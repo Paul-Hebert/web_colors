@@ -3,7 +3,7 @@
 				<label for="url">
 					URL to scrape
 				</label>
-				<input class="required" type="text" name="url" id="scraperUrl" placeholder="http://www...">
+				<input class="required" type="text" name="url" id="scraperUrl" placeholder="paulhebertdesigns.com">
 			</fieldset>			
 
 			<figure class="large right" id="scraperResults">

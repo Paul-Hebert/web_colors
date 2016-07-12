@@ -10,21 +10,9 @@ $(function() {
     if( bodyId === 'home' ){ 
         convertColors();
 
-        for(i = 0; i < colors.length; i++){
-            $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
-        }
+        printColorFormats();
 
-        colorFormatsUsed = 0;
-
-        $('.format.bar.chart .barColumn').each(function(){
-            if ( $(this).html() !== '' ){
-                colorFormatsUsed ++;
-            }
-        });
-
-        if (colorFormatsUsed < 6){
-            $('#colorFormatParagraph').append('Only ' + colorFormatsUsed + ' of the six color formats were used by these sites.')
-        }
+        printColorShades();
 
         $('.backgroundChanger').on("input change", function(){
             $( $(this).attr('data-target') ).css({
@@ -190,6 +178,47 @@ function convertColors(){
     });
 }
 
+function printColorFormats(){
+    for(i = 0; i < colors.length; i++){
+        $( '#' + colors[i].originalFormat + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
+    }
+
+    colorFormatsUsed = 0;
+
+    $('.format.bar.chart .barColumn').each(function(){
+        if ( $(this).html() !== '' ){
+            colorFormatsUsed ++;
+        }
+    });
+
+    if (colorFormatsUsed < 6){
+        $('#colorFormatParagraph').append('Only ' + colorFormatsUsed + ' of the six color formats were used by these sites.')
+    }
+}
+
+function printColorShades(){
+    for(i = 0; i < colors.length; i++){
+        console.log(colors[i].hue);
+        if (colors[i].sat === 0){
+            shade = 'grey';
+        } else if( colors[i].hue < 30 || colors[i].hue > 330){
+            shade = 'red';
+        } else if( colors[i].hue > 30 && colors[i].hue < 90 ){
+            shade = 'yellow';
+        } else if( colors[i].hue > 90 && colors[i].hue < 150 ){
+            shade = 'green';
+        } else if( colors[i].hue > 150 && colors[i].hue < 210 ){
+            shade = 'turquoise';
+        } else if( colors[i].hue > 210 && colors[i].hue < 270 ){
+            shade = 'blue';
+        } else if( colors[i].hue > 270 && colors[i].hue < 330 ){
+            shade = 'purple';
+        }
+        
+        $('#' + shade + 'Colors').append('<div class="color" style="background:' + colors[i].original + ';"><span>' + colors[i].original + '</span></div>');
+    }
+}
+
 function sortColors(sortCriteria) {
     if (sortCriteria == 'hue'){
         return colors.sort(
@@ -231,7 +260,7 @@ function printChart(type,sortCriteria){
         circle.attr({
             fill: '#fff',
             class: 'background',
-            r: center * 95/100
+            r: center
         });
     }
 
@@ -253,7 +282,7 @@ function printChart(type,sortCriteria){
 
         if (type === 'fan'){
             // Calculate rotation of hue.
-            var rot = sortedColors[i].hue * 360 / 255;
+            var rot = sortedColors[i].hue;
             // Convert from degrees to radians.
             rot *= 3.141592653589793 / 180;
 
@@ -382,7 +411,7 @@ function rgbToHsv(color){
         }
     }
 
-    rgb.hue = parseInt(hue);
+    rgb.hue = parseInt(hue) * 360/255;
     rgb.sat = sat * 100;
     rgb.val = val * 100;
 }

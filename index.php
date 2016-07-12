@@ -107,6 +107,36 @@
 				</figure>
 			</div>
 
+		<section>
+			<div class="subsection">
+				<h2>Colors by Hue</h2>
+
+				<figure class="large right">
+					<div class="shade bar chart">
+						<aside class="left"><label>Grey</label></aside>
+						<div class="barColumn" id="greyColors"></div>
+
+						<aside class="left"><label>Red</label></aside>
+						<div class="barColumn" id="redColors"></div>
+
+						<aside class="left"><label>Yellow</label></aside>
+						<div class="barColumn" id="yellowColors"></div>
+
+						<aside class="left"><label>Green</label></aside>
+						<div class="barColumn" id="greenColors"></div>
+
+						<aside class="left"><label>Turquoise</label></aside>
+						<div class="barColumn" id="turquoiseColors"></div>
+
+						<aside class="left"><label>Blue</label></aside>
+						<div class="barColumn" id="blueColors"></div>
+
+						<aside class="left"><label>Purple</label></aside>
+						<div class="barColumn" id="purpleColors"></div>
+					</div>
+				</figure>
+			</div>
+
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
 
@@ -560,7 +590,7 @@ echo $geshi->parse_code();
 			
 				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
 
-				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is covering pure white, since they both have a hue and value of 0.</p>
+				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is on top of pure white, since they both have a hue and value of 0.</p>
 			</div>
 		</section>
 
@@ -568,7 +598,7 @@ echo $geshi->parse_code();
 			<div class="subsection">
 				<h2>Histogram Charts</h2>
 
-				<figure class="large right">
+				<figure class="extra large">
 					<div class="histogram chart hue"></div>
 				</figure>
 			</div>

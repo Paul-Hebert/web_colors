@@ -54,7 +54,7 @@
 				if (strpos($styles, '//') === false) {
 					$text .= file_get_contents($top_site . '/' . $styles);
 				} elseif(strpos($styles, 'http') === false){
-					$text .= file_get_contents('http:' . $top_site . '/' . $styles);
+					$text .= file_get_contents('http:' . $styles);
 				} else{
 					$text .= file_get_contents($styles);
 				}
