@@ -1,3 +1,33 @@
+# Task List
+
+Add noscript info
+Investigate security of Scraper
+Set up Scraper to accept different URL formats.
+Fix responsive issues
+Reorganize content
+Add number labels to bar charts
+Refactor/optimize JS
+
+
+
+
+# New outline
+
+Index
+	Purpose
+	Quick explanation
+	Link to data
+	Fan chart
+	Colors by Hue
+	Colors by Format
+Data
+Scraper
+Converting
+Contact
+
+# Misc. Notes
+
+
 Index
 	Purpose
 	Data
@@ -41,5 +71,3 @@ Data
 	API?
 	Curl commands?
 
-Add noscript info
-Add GA

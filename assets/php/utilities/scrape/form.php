@@ -1,10 +1,5 @@
 		<form id="scraper">
-			<fieldset>
-				<label for="url">
-					URL to scrape
-				</label>
-				<input class="required" type="text" name="url" id="scraperUrl" placeholder="paulhebertdesigns.com">
-			</fieldset>			
+			<input class="required" type="text" name="url" id="scraperUrl" placeholder="paulhebertdesigns.com">
 
 			<figure class="large right" id="scraperResults">
 				
