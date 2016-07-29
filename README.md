@@ -7,26 +7,40 @@ Fix responsive issues
 Reorganize content
 Add number labels to bar charts
 Refactor/optimize JS
-
-
-
+Add caveats about scraper
 
 # New outline
 
 Index
+	Color Listings
 	Purpose
 	Quick explanation
 	Link to data
+	Site Listings
 	Fan chart
 	Colors by Hue
 	Colors by Format
 Data
 Scraper
 Converting
+		Color Formats
+				Named Colors			
+				RGB
+				RGBA
+				Hexadecimal
+				HSL
+				HSLA
+		Conversion
+			Choosing HSL
+			Stripping Alpha Channels
+			3 digit to 6
+			Hex to RGB		
+			RGB to HSV
+			Color Names to HSV		
 Contact
 
-# Misc. Notes
 
+# Misc. Notes
 
 Index
 	Purpose

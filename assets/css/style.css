@@ -1247,7 +1247,8 @@ figcaption {
     display: none; }
 
   nav {
-    float: right; }
+    width: 100%;
+    text-align: right; }
     nav a {
       padding: 16pt;
       color: #444;
@@ -1306,6 +1307,7 @@ figcaption {
     top: 0px;
     right: 0px;
     bottom: 0px;
+    width: auto;
     background: #ddd;
     padding: 16pt; }
     header nav a {

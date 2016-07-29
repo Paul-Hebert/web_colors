@@ -74,7 +74,8 @@
 	}
 
 	nav{
-		float:right;
+		width:100%;
+		text-align:right;
 
 		a{
 			padding:$size-6;
@@ -156,6 +157,7 @@
 		top:0px;
 		right:0px;
 		bottom:0px;
+		width:auto;
 		background:$light-grey;
 		padding:$size-6;
 
