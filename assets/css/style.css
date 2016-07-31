@@ -382,28 +382,37 @@ figcaption {
       display: block;
       padding: 8pt;
       text-align: center;
-      background: #ddd;
+      background: #f0f0f0;
       margin-bottom: 3pt; }
 
   #menu-toggle {
     position: absolute;
-    top: 26pt;
-    right: 26pt;
-    color: #222;
+    top: 10pt;
+    right: 10pt;
+    padding: 10pt;
+    background: #fff;
     cursor: pointer;
     z-index: 25; }
     #menu-toggle svg {
       width: 30px;
       fill: none;
       stroke: #222;
-      stroke-width: 5; }
+      stroke-width: 5;
+      display: block; }
       #menu-toggle svg .middle-line {
         -o-transition: opacity 300ms;
         -ms-transition: opacity 300ms;
         -webkit-transition: opacity 300ms;
         transition: opacity 300ms; }
       #menu-toggle svg.open .middle-line {
-        opacity: 0; } }
+        opacity: 0; }
+
+  .color.listing {
+    width: 6pt;
+    height: 6pt; }
+
+  .block.chart {
+    padding: 8pt 0; } }
 @media (min-width: 901px) {
   main {
     margin-left: 250px;

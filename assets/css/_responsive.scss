@@ -38,16 +38,17 @@
 			display:block;
 			padding:$size-3;
 			text-align:center;
-			background:$light-grey;
+			background:$off-white;
 			margin-bottom:$size-1;
 		}
 	}
 
 	#menu-toggle{
         position:absolute;
-        top:$size-8;
-        right:$size-8;
-        color:$off-black;
+        top:$size-4;
+        right:$size-4;
+        padding:$size-4;
+        background:$white;
         cursor:pointer;
         z-index:25;
 
@@ -56,6 +57,7 @@
             fill:none;
             stroke:$off-black;
             stroke-width:5;
+            display:block;
 
             .middle-line{
                 @include transition_mixin(opacity 300ms);
@@ -67,6 +69,15 @@
                 }
             }
         }
+    }
+
+    .color.listing{
+    	width:$size-2;
+    	height:$size-2;
+    }
+
+    .block.chart{
+    	padding:$size-3 0;
     }
 }
 

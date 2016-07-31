@@ -113,6 +113,10 @@
 			<div class="subsection">
 				<h2>Colors by Format</h2>
 
+				<p id="colorFormatParagraph">
+					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+				</p>
+
 				<figure class="large right">
 					<div class="format bar chart">
 						<aside class="left"><label>Hexadecimal</label></aside>
@@ -164,11 +168,7 @@
 
 		<section>
 			<div class="subsection">
-				<h1>Converting Color Formats</h1>
-
-				<p id="colorFormatParagraph">
-					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
-				</p>
+				<h1>Converting Between Color Formats</h1>
 
 				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>				
 			</div>
@@ -196,7 +196,7 @@
 					Digital colors are made by combining different amounts of red, green and blue light. The amount of each color is represent by a number between 0 and 255.
 				</p>
 
-				<p>This is how to write the <abbr>RGB</abbr> color format: <code>rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is red.</p>
+				<p>This is how to write the <abbr>RGB</abbr> color format: <code>rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is blue.</p>
 			</div>
 
 			<div class="subsection">
@@ -234,7 +234,7 @@
 			<div class="subsection">
 				<h3>Hexadecimal</h3>
 
-				<aside class="left">
+				<aside class="left desktop">
 					<figure>
 						<table id="conversionTable">
 							<tr>
@@ -535,7 +535,7 @@ echo $geshi->parse_code();
 				<div class="subsection">
 					<h4>Saturation</h4>
 
-					<p>Saturation is a little more difficult to understand than hue. Saturation is the purity of a color, or how much grey is in the color.</p>
+					<p>Saturation is the purity of a color, or how much grey is in the color.</p>
 
 					<p>A low saturation color is almost completely grey, black or white. A high saturation color is almost completely its hue. Saturation is represented as a percentage between 0 and 100.
 
@@ -596,14 +596,18 @@ echo $geshi->parse_code();
 				<p>
 					Similar to <abbr>RGBA</abbr>, <abbr>HSLA</abbr> has an alpha channel to determine transparency.
 				</p>
-
-				<p>
-					For the purposes of these data visualizations, the alpha tag has been stripped from RGBA colors, effectively treating them as RGB. 
-				</p>
 			</div>
 			
 			<div class="subsection">
 				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
+				<h1>Caveats</h1>
+				<p>Although I've tried to make this site as accurate as possible there are some known issues which have not yet been resolved.</p>
+				<p></p>
 			</div>
 		</section>
 	</main>
