@@ -142,9 +142,7 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Fan Charts</h2>	
-
-				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
+				<h2>Colors by Hue and Lightness</h2>
 
 				<figure>
 					<svg class="hue fan chart"></svg>
@@ -153,6 +151,8 @@
 
 					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
 				</figure>	
+
+				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
 
 				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
 			
@@ -164,8 +164,8 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Color Formats</h2>
-				
+				<h1>Converting Color Formats</h1>
+
 				<p id="colorFormatParagraph">
 					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
 				</p>
