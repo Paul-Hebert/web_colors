@@ -10,6 +10,7 @@ Refactor/optimize JS
 	Remove unused histogram code
 Add caveats about scraper
 Add hover effects to fan chart.
+Switch from HSV to HSL
 
 # New outline
 

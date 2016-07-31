@@ -24,14 +24,6 @@ $(function() {
             $(this).css( 'background', $(this).find('span').text() );
         });
 
-        $('#codeToggle').click(function(){
-            $(this).find('span').toggleClass('hidden');
-
-            $('.codeFigure').toggleClass('hiddenHeight');
-
-            return false;
-        });
-
         printChart('rectangle','hue');
         printChart('fan','hue');
         printChart('histogram','hue'); 

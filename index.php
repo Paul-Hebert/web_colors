@@ -42,7 +42,7 @@
 			<div class="subsection">
 				<h2>Try it For Yourself</h2>
 
-				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page. It can take a little while.</p>
+				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page. It may take a little while.</p>
 
 				<?php include('assets/php/utilities/scrape/form.php'); ?>
 			</div>
@@ -170,7 +170,7 @@
 			<div class="subsection">
 				<h1>Converting Between Color Formats</h1>
 
-				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>				
+				<p>In order to organize this data for the above charts, we had to convert all the colors used into a single format. Here I'll explain the different color formats and how I converted them all to <Abbr>HSL</abbr>.</p>				
 			</div>
 
 			<div class="subsection">
@@ -234,7 +234,7 @@
 			<div class="subsection">
 				<h3>Hexadecimal</h3>
 
-				<aside class="left hide-on-medium-small">
+				<aside class="left hide-on-small">
 					<figure>
 						<table id="conversionTable">
 							<tr>
@@ -320,11 +320,6 @@
 				<p>
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
-
-				<aside class="right">
-					<p>Not interested in the code examples? You can read this article without them.</p>
-					<a href="#" class="button" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
-				</aside>
 
 				<figure class="codeFigure">
 					<figcaption>
@@ -600,6 +595,40 @@ echo $geshi->parse_code();
 			
 			<div class="subsection">
 				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
+
+				<aside class="left">
+					<citation>I learned how to do this conversion from this <a href="http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/">helpful article</a> by Nikolai Waldman.</citation>
+				</aside>
+
+				<p>The first step is to convert all red, green and blue values into decimals between 0 and 1.</p>
+
+				<p>Then you determine the "min" and "max." The min is the smallest decimal and the max is the largest decimal.</p>
+
+				<p>To discover the lightness, add the min and max values together and then divide by 2.</p>
+
+				<p>Once we have these values we can determine whether there is saturation and hue. If min and max are the same, then the saturation is 0. If the saturation is 0, then the hue is 0.</p>
+
+				<p>If min and max aren't the same, then we need to determine the saturation. Depending on the lightness there are 2 different formulas to use.</p>
+
+				<p>If the lightness is below 0.5 then the saturation equals <code>(max-min)/(max+min)</code></p>
+				
+				<p>If the lightness is larger than 0.5 then the saturation equals <code>(max-min)/(2.0-max-min)</code></p>
+
+				<p>Now that we know the lightness and saturation, we can determine the hue. The formula to determine hue depends on which color was the "max."</p>
+			
+				<p>If red was the max then hue equals <code>(green-blue)/(max-min)</code></p>
+
+				<p>If green was the max then hue equals <code>2+(blue-red)/(max-min)</code></p>
+
+				<p>If red was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
+
+				<p>After making this calculation you need to convert hue to degrees on a circle by multiplying the value by 60. If it is below 0, then add 360 to the value.</p>
+			</div>
+
+			<div class="subsection">
+				<h3>We're Done!</h3>
+
+				<p>The <abbr>HSL</abbr> color model is very close to how people interpret colors, so it is the most useful model for organization and analysis. Now that all of our colors are in <abbr>HSL</abbr> we can organize by hue, saturation and lightness.</p>
 			</div>
 		</section>
 
@@ -607,7 +636,6 @@ echo $geshi->parse_code();
 			<div class="subsection">
 				<h1>Caveats</h1>
 				<p>Although I've tried to make this site as accurate as possible there are some known issues which have not yet been resolved.</p>
-				<p></p>
 			</div>
 		</section>
 	</main>
