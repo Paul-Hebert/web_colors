@@ -3,6 +3,10 @@
 		display:none;
 	}
 
+	.hide-on-medium-small{
+		display:none;
+	}	
+
 	h1{
 		font-size:$size-7;
 	    margin-bottom:$size-6;	
@@ -166,6 +170,10 @@
 }
 
 @media (max-width:1140px) and (min-width:901px){
+	.hide-on-medium-small{
+		display:none;
+	}
+
 	figure.large.right, figure.extra.large{
 		width:440pt;
 	}

@@ -348,6 +348,9 @@ figcaption {
   .hide-on-small {
     display: none; }
 
+  .hide-on-medium-small {
+    display: none; }
+
   h1 {
     font-size: 21pt;
     margin-bottom: 16pt; }
@@ -474,6 +477,9 @@ figcaption {
     figure.large.extra {
       width: 1086px; } }
 @media (max-width: 1140px) and (min-width: 901px) {
+  .hide-on-medium-small {
+    display: none; }
+
   figure.large.right, figure.extra.large {
     width: 440pt; }
 

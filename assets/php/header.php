@@ -21,7 +21,7 @@
 		<header>
 			<?php include('assets/php/nav.php'); ?>
 
-			<div id="menu-toggle" class="mobile">
+			<div id="menu-toggle" class="hide-on-medium-large">
 				<?php include('assets/svgs/hamburger.php'); ?>
 			</div>
 		</header>

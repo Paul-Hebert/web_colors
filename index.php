@@ -234,7 +234,7 @@
 			<div class="subsection">
 				<h3>Hexadecimal</h3>
 
-				<aside class="left hide-on-small">
+				<aside class="left hide-on-medium-small">
 					<figure>
 						<table id="conversionTable">
 							<tr>
