@@ -8,7 +8,7 @@
 	<main>
 		<section>
 			<div class="subsection" id="aggregate">
-				<h1>
+				<h1 id="title">
 					The Colors Used by the Ten Most Popular Sites
 				</h1>
 
@@ -40,6 +40,16 @@
 
 		<section>
 			<div class="subsection">
+				<h2>Try it For Yourself</h2>
+
+				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page. It can take a little while.</p>
+
+				<?php include('assets/php/utilities/scrape/form.php'); ?>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
 				<h2>The Sites</h2>
 
 				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
@@ -59,53 +69,6 @@
 				</figure>
 			</div>
 		</section>
-
-		<section>
-			<div class="subsection">
-				<h2>Try it For Yourself</h2>
-
-				<p>Enter a <abbr>URL</abbr> below and click Scrape to see the colors used on that page. It can take a little while.</p>
-
-				<?php include('assets/php/utilities/scrape/form.php'); ?>
-			</div>
-		</section>
-
-		<section>
-			<div class="subsection">
-				<h2>Color Formats</h2>
-
-				
-				<p id="colorFormatParagraph">
-					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
-				</p>
-
-				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>
-
-				<figure class="large right">
-					<div class="format bar chart">
-						<aside class="left"><label>Hexadecimal</label></aside>
-						<div class="barColumn" id="hexadecimalColors"></div>
-
-						<aside class="left"><label>Three Digit Hexadecimal</label></aside>
-						<div class="barColumn" id="threeDigitHexadecimalColors"></div>
-
-						<aside class="left"><label><abbr>RGB</abbr></label></aside>
-						<div class="barColumn" id="rgbColors"></div>
-
-						<aside class="left"><label><abbr>RGBA</abbr></label></aside>
-						<div class="barColumn" id="rgbaColors"></div>
-
-						<aside class="left"><label><abbr>HSL</abbr></label></aside>
-						<div class="barColumn" id="hslColors"></div>
-
-						<aside class="left"><label><abbr>HSLA</abbr></label></aside>
-						<div class="barColumn" id="hslaColors"></div>
-
-						<aside class="left"><label>Named Colors</label></aside>
-						<div class="barColumn" id="namedColors"></div>
-					</div>
-				</figure>
-			</div>
 
 		<section>
 			<div class="subsection">
@@ -143,6 +106,71 @@
 						<div class="barColumn" id="purpleColors"></div>
 					</div>
 				</figure>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
+				<h2>Colors by Format</h2>
+
+				<figure class="large right">
+					<div class="format bar chart">
+						<aside class="left"><label>Hexadecimal</label></aside>
+						<div class="barColumn" id="hexadecimalColors"></div>
+
+						<aside class="left"><label>Three Digit Hexadecimal</label></aside>
+						<div class="barColumn" id="threeDigitHexadecimalColors"></div>
+
+						<aside class="left"><label><abbr>RGB</abbr></label></aside>
+						<div class="barColumn" id="rgbColors"></div>
+
+						<aside class="left"><label><abbr>RGBA</abbr></label></aside>
+						<div class="barColumn" id="rgbaColors"></div>
+
+						<aside class="left"><label><abbr>HSL</abbr></label></aside>
+						<div class="barColumn" id="hslColors"></div>
+
+						<aside class="left"><label><abbr>HSLA</abbr></label></aside>
+						<div class="barColumn" id="hslaColors"></div>
+
+						<aside class="left"><label>Named Colors</label></aside>
+						<div class="barColumn" id="namedColors"></div>
+					</div>
+				</figure>
+			</div>
+		</section>
+
+		<section>
+			<div class="subsection">
+				<h2>Colors by Hue and Lightness</h2>
+
+				<figure>
+					<svg class="hue fan chart"></svg>
+
+					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
+
+					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
+				</figure>	
+
+				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
+
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
+			
+				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
+
+				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is on top of pure white, since they both have a hue and value of 0.</p>
+			</div>
+		</section>		
+
+		<section>
+			<div class="subsection">
+				<h1>Converting Color Formats</h1>
+
+				<p id="colorFormatParagraph">
+					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+				</p>
+
+				<p>In order to better organize this data, we'll have to convert all the colors used into a single format. First we need to understand these different color formats.</p>				
 			</div>
 
 			<div class="subsection">
@@ -576,29 +604,6 @@ echo $geshi->parse_code();
 			
 			<div class="subsection">
 				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
-			</div>
-		</section>
-
-		<section>
-			<div class="subsection">
-
-				<h2>Fan Charts</h2>	
-
-				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
-
-				<figure>
-					<svg class="hue fan chart"></svg>
-
-					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
-
-					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
-				</figure>	
-
-				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
-			
-				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
-
-				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is on top of pure white, since they both have a hue and value of 0.</p>
 			</div>
 		</section>
 	</main>
