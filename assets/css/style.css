@@ -473,6 +473,14 @@ figcaption {
       margin-left: -250px; }
     figure.large.extra {
       width: 1086px; } }
+@media (max-width: 1140px) {
+  figure.large.right, figure.extra.large {
+    width: 440pt; }
+
+  aside.right {
+    float: left;
+    margin-left: -250px;
+    margin-right: auto; } }
 @media (min-width: 1300px) {
   main {
     margin-top: 0px; }
