@@ -52,7 +52,7 @@
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use. <span class="desktop">Mouse over</span><span class="mobile">Click on</span> colors to see their color codes.</p>
+				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes.</p>
 
 				<figure class="large right">
 					<?php
@@ -234,7 +234,7 @@
 			<div class="subsection">
 				<h3>Hexadecimal</h3>
 
-				<aside class="left desktop">
+				<aside class="left hide-on-small">
 					<figure>
 						<table id="conversionTable">
 							<tr>

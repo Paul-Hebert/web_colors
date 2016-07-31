@@ -1,5 +1,5 @@
 @media (max-width:900px){
-	.desktop{
+	.hide-on-small{
 		display:none;
 	}
 
@@ -87,7 +87,7 @@
 		margin-top:$size-8;
 	}
 
-	.mobile{
+	.hide-on-medium-large{
 		display:none;
 	}
 
@@ -165,7 +165,7 @@
 	}
 }
 
-@media (max-width:1140px){
+@media (max-width:1140px) and (min-width:901px){
 	figure.large.right, figure.extra.large{
 		width:440pt;
 	}

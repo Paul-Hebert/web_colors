@@ -345,7 +345,7 @@ figcaption {
   to {
     transform: rotate(359deg); } }
 @media (max-width: 900px) {
-  .desktop {
+  .hide-on-small {
     display: none; }
 
   h1 {
@@ -418,7 +418,7 @@ figcaption {
     margin-left: 250px;
     margin-top: 26pt; }
 
-  .mobile {
+  .hide-on-medium-large {
     display: none; }
 
   nav {
@@ -473,7 +473,7 @@ figcaption {
       margin-left: -250px; }
     figure.large.extra {
       width: 1086px; } }
-@media (max-width: 1140px) {
+@media (max-width: 1140px) and (min-width: 901px) {
   figure.large.right, figure.extra.large {
     width: 440pt; }
 
