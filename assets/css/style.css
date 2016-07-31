@@ -16,9 +16,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   line-height: 1; }
 
-ol, ul {
-  list-style: none; }
-
 blockquote, q {
   quotes: none; }
 
@@ -156,6 +153,9 @@ abbr {
   font-family: inherit;
   font-size: inherit;
   color: inherit; }
+
+strong {
+  color: #000; }
 
 .block.chart {
   padding: 8pt;
