@@ -612,7 +612,7 @@ echo $geshi->parse_code();
 
 				<p>If the lightness is below 0.5 then the saturation equals <code>(max-min)/(max+min)</code></p>
 				
-				<p>If the lightness is larger than 0.5 then the saturation equals <code>(max-min)/(2.0-max-min)</code></p>
+				<p>If the lightness is larger than 0.5 then the saturation equals <code>(max-min)/(2-max-min)</code></p>
 
 				<p>Now that we know the lightness and saturation, we can determine the hue. The formula to determine hue depends on which color was the "max."</p>
 			
@@ -622,7 +622,7 @@ echo $geshi->parse_code();
 
 				<p>If red was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
 
-				<p>After making this calculation you need to convert hue to degrees on a circle by multiplying the value by 60. If it is below 0, then add 360 to the value.</p>
+				<p>After making this calculation you need to convert hue to a vlue between and 255. Multiply the value by 42.6. If it is below 0, then add 255 to the value.</p>
 			</div>
 
 			<div class="subsection">

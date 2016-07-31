@@ -133,7 +133,6 @@ function convertColors(){
 
             color.rgb = hexToRgb(color.original);       
 
-            //colors.hsv = rgbToHsv(color);                 
         } else if ( /#(?:[0-9a-fA-F]{3})/.test(color.original) ){
             color.originalFormat = 'threeDigitHexadecimal';
 
@@ -141,7 +140,6 @@ function convertColors(){
 
             color.rgb = hexToRgb(color.hex);             
 
-            //colors.hsv = rgbToHsv(color);                       
         } else if ( /(rgba)\(\d{1,3}%?(,\s?\d{1,3}%?){2},\s?(1|0|0?\.\d+)\)/.test(color.original) ){
             color.originalFormat = 'rgba';
 
@@ -153,7 +151,6 @@ function convertColors(){
                 color.hex = threeDigitsToSix(color.hex);
             }            
 
-            //colors.hsv = rgbToHsv(color);            
         } else if ( /(rgb)\(\d{1,3}%?(,\s?\d{1,3}%?){2}\)/.test(color.original) ){
             color.originalFormat = 'rgb';
 
@@ -177,7 +174,7 @@ function convertColors(){
 
         separateRgbValues(color);
 
-        rgbToHsv(color);
+        rgbToHsl(color);
         
         colors.push( color );
     });
@@ -203,23 +200,23 @@ function printColorFormats(){
 
 function printColorShades(){
     for(i = 0; i < colors.length; i++){
-        if (colors[i].sat < 10 && colors[i].val < 10){
+        if (colors[i].sat < 0.1 && colors[i].light < 0.05){
             shade = 'black';
-        } else if(colors[i].sat < 10 && colors[i].val > 95){
+        } else if(colors[i].sat < 0.1 && colors[i].light > 0.9){
             shade = 'white';
-        } else if(colors[i].sat < 10 ){
+        } else if(colors[i].sat < 0.1 ){
             shade = 'grey';
-        } else if( colors[i].hue > 330 || colors[i].hue <= 30 ){
+        } else if( colors[i].hue > 233.75 || colors[i].hue <= 21.25 ){
             shade = 'red';
-        } else if( colors[i].hue > 30 && colors[i].hue <= 75 ){
+        } else if( colors[i].hue > 21.25 && colors[i].hue <= 63.75 ){
             shade = 'yellow';
-        } else if( colors[i].hue > 75 && colors[i].hue <= 150 ){
+        } else if( colors[i].hue > 63.75 && colors[i].hue <= 127.5 ){
             shade = 'green';
-        } else if( colors[i].hue > 150 && colors[i].hue <= 210 ){
+        } else if( colors[i].hue > 127.5 && colors[i].hue <= 148.75 ){
             shade = 'turquoise';
-        } else if( colors[i].hue > 210 && colors[i].hue <= 270 ){
+        } else if( colors[i].hue > 148.75 && colors[i].hue <= 191.25 ){
             shade = 'blue';
-        } else if( colors[i].hue > 270 && colors[i].hue <= 330 ){
+        } else if( colors[i].hue > 191.25 && colors[i].hue <= 233.75 ){
             shade = 'purple';
         }
         
@@ -290,13 +287,13 @@ function printChart(type,sortCriteria){
 
         if (type === 'fan'){
             // Calculate rotation of hue.
-            var rot = sortedColors[i].hue;
+            var rot = sortedColors[i].hue * 360/255;
             // Convert from degrees to radians.
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * sortedColors[i].val * center * 90/10000;
-            y = center + Math.cos(rot) * sortedColors[i].val * center * 90/10000;
+            x = center + Math.sin(rot) * sortedColors[i].sat * center * 9/10;
+            y = center + Math.cos(rot) * sortedColors[i].sat * center * 9/10;
 
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
@@ -384,46 +381,46 @@ function separateRgbValues(color){
     color.blue = temp_color[2];    
 }
 
-function rgbToHsv(color){
+function rgbToHsl(color){
     var rgb = color;
     rgb.red /= 255; 
     rgb.green /= 255; 
-    rgb.blue /= 255; 
+    rgb.blue /= 255;   
 
-    /* Getting the Max and Min values for Chroma. */
+    /* Getting the Max and Min values. */
     var max = Math.max.apply(Math, [rgb.red,rgb.green,rgb.blue]);
-    var min = Math.min.apply(Math, [rgb.red,rgb.green,rgb.blue]);
+    var min = Math.min.apply(Math, [rgb.red,rgb.green,rgb.blue]); 
 
-    /* Variables for HSV value of hex color. */
-    var chr = max-min;
-    var hue = 0;
-    if (max){
-        var val = max;
+    var lightness = (min + max)/2;
+
+    if (min === max){
+        var saturation = 0;
+        var hue = 0;
     } else{
-        val = 0;
-    }
-    var sat = 0;
+        if( lightness < 0.5){
+            var saturation = (max-min)/(max+min);
+        } else{
+            var saturation = (max-min)/(2-max-min);
+        }
 
-    if (val > 0) {
-        /* Calculate Saturation only if Value isn't 0. */
-        sat = chr/val;
-        if (sat > 0) {
-            if (rgb.red == max) {
-                hue = 42.6*(((rgb.green-min)-(rgb.blue-min))/chr);
-                if (hue < 0) {
-                    hue += 255;
-                }
-            } else if (rgb.green == max) {
-                hue = 85.2+42.6*(((rgb.blue-min)-(rgb.red-min))/chr);
-            } else if (rgb.blue == max) {
-                hue = 170.4+42.6*(((rgb.red-min)-(rgb.green-min))/chr);
-            }
+        if (rgb.red == max) {
+            var temp_hue = (rgb.green-rgb.blue)/(max-min);
+        } else if (rgb.green == max) {
+            var temp_hue = 2 + (rgb.blue-rgb.red)/(max-min);
+        } else if (rgb.blue == max) {
+            var temp_hue = 4 + (rgb.red-rgb.green)/(max-min);
+        }
+
+        var hue = temp_hue * 42.6;
+
+        if (hue < 0){
+            hue += 255;
         }
     }
 
-    rgb.hue = parseInt(hue) * 360/255;
-    rgb.sat = sat * 100;
-    rgb.val = val * 100;
+    rgb.hue = hue;
+    rgb.sat = saturation;
+    rgb.light = lightness;
 }
 
 
