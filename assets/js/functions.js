@@ -26,7 +26,6 @@ $(function() {
 
         printChart('rectangle','hue');
         printChart('fan','hue');
-        printChart('histogram','hue'); 
     }
 
     if (bodyId === 'home' || bodyId === 'converter'){

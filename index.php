@@ -32,9 +32,9 @@
 
 				<p>I was curious what colors were being used by large, popular sites, so I decided to find out.</p>
 			
-				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the most visited sites on the internet. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
+				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the <a href="http://www.alexa.com/topsites" target="_BLANK">most visited sites on the internet</a>. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
 			
-				<p>I plan to rescrape the data on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine trends in web development.</p>
+				<p>I plan to rescrape the <a href="data.php">data</a> on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine and graph trends in web development.</p>
 			</div>
 		</section>
 
@@ -146,7 +146,7 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Colors by Hue and Lightness</h2>
+				<h2>Colors by Hue and Then Lightness</h2>
 
 				<figure>
 					<svg class="hue fan chart"></svg>
@@ -643,7 +643,11 @@ echo $geshi->parse_code();
 					<li>Some colors in stylesheets aren't actually used on the sites.</li>
 
 					<li>If a color is found inside of a website's text it counts as being used. For example if the phrase "tan leather" is in a website's text, this scraper would say that the site uses tan. Additionally if the phrase "I unders<strong>tan</strong>d" is in the text, it would still count as tan.</li>
+					
+					<li>Colors added by javascript are not included.</li>
 				</ol>
+
+				<p>Notice any other issues? <a href="contact.php">Contact me</a> and I'll fix it or add it as a caveat. Thanks for reading!</p>
 			</div>
 		</section>
 	</main>

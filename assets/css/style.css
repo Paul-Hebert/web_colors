@@ -133,7 +133,7 @@ h3 {
   font-size: 16pt;
   margin-bottom: 13pt; }
 
-h4, p, small, figure, figcaption, code, label {
+h4, p, small, figure, figcaption, code, label, li {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
@@ -156,6 +156,11 @@ abbr {
 
 strong {
   color: #000; }
+
+ol {
+  padding-left: 42pt; }
+  ol li {
+    padding-left: 6pt; }
 
 .block.chart {
   padding: 8pt;
@@ -239,10 +244,14 @@ pre {
   pre * {
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
   pre ol {
-    font-size: 10pt; }
+    font-size: 10pt;
+    padding: 0; }
     pre ol li {
       background: #ddd;
-      counter-increment: customlistcounter; }
+      padding: 0;
+      counter-increment: customlistcounter;
+      padding-bottom: 0px;
+      font-size: 10pt; }
       pre ol li:first-of-type {
         counter-reset: customlistcounter; }
       pre ol li:nth-of-type(odd) {

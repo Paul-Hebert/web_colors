@@ -15,13 +15,15 @@ pre{
 
 	 ol{
 		font-size:$size-4;
-		//list-style:numbered;
-		//left:20px;
+		padding:0;
 
 		li{
 			background:$light-grey;	
-
+			padding:0;
 			counter-increment: customlistcounter;
+			padding-bottom:0px;
+			font-size:$size-4;
+
 			
 			&:first-of-type{
 				counter-reset: customlistcounter;

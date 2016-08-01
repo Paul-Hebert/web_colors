@@ -24,7 +24,7 @@ h3{
     margin-bottom:$size-5;
 }
 
-h4, p, small, figure, figcaption, code, label{
+h4, p, small, figure, figcaption, code, label, li{
     font-size:$size-5;
     padding-bottom:$size-3;
 }
@@ -53,4 +53,12 @@ abbr{
 
 strong{
     color:$black;
+}
+
+ol{
+    padding-left:$size-10;
+
+    li{
+        padding-left:$size-2;
+    }
 }

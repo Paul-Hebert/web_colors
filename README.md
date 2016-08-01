@@ -8,7 +8,6 @@ Reorganize content
 Add number labels to bar charts
 Refactor/optimize JS
 	Remove unused histogram code
-Add caveats about scraper
 Add hover effects to fan chart.
 
 # New outline

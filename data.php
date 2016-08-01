@@ -10,7 +10,7 @@
 			<h1>Data</h1>
 
 			<fieldset>
-				<label for="Date">Date</label>
+				<label for="Date">Select Your Date and Time:</label>
 
 				<?php
 					$path = 'assets/data/';
