@@ -193,8 +193,7 @@ ol {
     .bar .barColumn .color {
       height: 100%;
       width: .75px;
-      display: inline-block;
-      z-index: 10; }
+      display: inline-block; }
       .bar .barColumn .color span {
         top: 21pt;
         left: 0px; }
