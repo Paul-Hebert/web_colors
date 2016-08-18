@@ -37,22 +37,19 @@
 			display:inline-block;
 			z-index:10;
 
-			&:nth-of-type(100n):before{
-				content:'';
-				width:1px;
-				position:absolute;
-				background:$grey;
-				height:300px;
-				top:0;
-				bottom:0;
-				z-index:-5;
-			}
-
 			span{
 				top:$size-7;
 				left:0px;
 			}
 		}
+	}
+
+	.tickMark{
+		position:absolute;
+		top:0;
+		bottom:0;
+		width:.5px;
+		background:$grey;
 	}
 }
 

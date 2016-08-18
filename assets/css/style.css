@@ -195,18 +195,15 @@ ol {
       width: .75px;
       display: inline-block;
       z-index: 10; }
-      .bar .barColumn .color:nth-of-type(100n):before {
-        content: '';
-        width: 1px;
-        position: absolute;
-        background: #ccc;
-        height: 300px;
-        top: 0;
-        bottom: 0;
-        z-index: -5; }
       .bar .barColumn .color span {
         top: 21pt;
         left: 0px; }
+  .bar .tickMark {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: .5px;
+    background: #ccc; }
 
 svg {
   width: 100%; }

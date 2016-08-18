@@ -22,7 +22,7 @@ $(function() {
 
         printColorShades();
 
-        resizeBarCharts();
+        scaleCharts();
 
         $('.backgroundChanger').on("input change", function(){
             $( $(this).attr('data-target') ).css({
@@ -252,7 +252,7 @@ function printColorShades(){
     }
 }
 
-function resizeBarCharts(){
+function scaleCharts(){
     var barColumns = $('.barColumn');
     var lengths = [];
 
@@ -269,6 +269,10 @@ function resizeBarCharts(){
     console.log(chartWidth/maxLength + 'px');
 
     $('.barColumn .color').css('width',chartWidth/maxLength + 'px');
+
+    for(i = 0; i < maxLength; i += 100){
+        $('.bar.chart').append('<div class="tickMark" style="left:' + i + 'px"></div>');
+    }
 }
 
 function sortColors(sortCriteria) {
