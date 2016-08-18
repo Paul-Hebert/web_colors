@@ -193,7 +193,7 @@
 				<h3><abbr>RGB</abbr> (Red, Green, Blue)</h3>
 
 				<p>
-					Digital colors are made by combining different amounts of red, green and blue light. The amount of each color is represent by a number between 0 and 255.
+					Digital colors are made by combining different amounts of red, green and blue light. The amount of each color is represented by a number between 0 and 255.
 				</p>
 
 				<p>This is how to write the <abbr>RGB</abbr> color format: <code>rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is blue.</p>
@@ -234,7 +234,7 @@
 			<div class="subsection">
 				<h3>Hexadecimal</h3>
 
-				<aside class="left hide-on-small">
+				<aside class="left hide-on-medium-small">
 					<figure>
 						<table id="conversionTable">
 							<tr>
@@ -320,6 +320,11 @@
 				<p>
 					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
+
+				<aside class="right">
+					<p>Not interested in the code examples? You can read this article without them.</p>
+					<a href="#" class="button" id="codeToggle"><span>Hide</span><span class="hidden">Show</span> Code</a>
+				</aside>				
 
 				<figure class="codeFigure">
 					<figcaption>
@@ -602,7 +607,7 @@ echo $geshi->parse_code();
 
 				<p>The first step is to convert all red, green and blue values into decimals between 0 and 1.</p>
 
-				<p>Then you determine the "min" and "max." The min is the smallest decimal and the max is the largest decimal.</p>
+				<p>Then you determine the &ldquo;min&rdquo; and &ldquo;max.&rdquo; The min is the smallest decimal and the max is the largest decimal.</p>
 
 				<p>To discover the lightness, add the min and max values together and then divide by 2.</p>
 
@@ -622,7 +627,7 @@ echo $geshi->parse_code();
 
 				<p>If red was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
 
-				<p>After making this calculation you need to convert hue to a vlue between and 255. Multiply the value by 42.6. If it is below 0, then add 255 to the value.</p>
+				<p>After making this calculation you need to convert hue to a value between and 255. Multiply the value by 42.6. If it is below 0, then add 255 to the value.</p>
 			</div>
 
 			<div class="subsection">
@@ -642,7 +647,7 @@ echo $geshi->parse_code();
 
 					<li>Some colors in stylesheets aren't actually used on the sites.</li>
 
-					<li>If a color is found inside of a website's text it counts as being used. For example if the phrase "tan leather" is in a website's text, this scraper would say that the site uses tan. Additionally if the phrase "I unders<strong>tan</strong>d" is in the text, it would still count as tan.</li>
+					<li>If a color is found inside of a website's text it counts as being used. For example if the phrase "tan leather" is in a website's text, this scraper would say that the site uses tan. Additionally if the phrase "I understand" is in the text, it would still count as tan.</li>
 					
 					<li>Colors added by javascript are not included.</li>
 				</ol>

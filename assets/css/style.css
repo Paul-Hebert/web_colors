@@ -133,7 +133,7 @@ h3 {
   font-size: 16pt;
   margin-bottom: 13pt; }
 
-h4, p, small, figure, figcaption, code, label, li {
+h4, p, small, figure, figcaption, code, label, li, aside {
   font-size: 13pt;
   padding-bottom: 8pt; }
 
@@ -185,16 +185,29 @@ ol {
   .color:hover span {
     display: block; }
 
-.bar .barColumn {
-  height: 21pt;
-  margin-bottom: 6pt; }
-  .bar .barColumn .color {
-    height: 100%;
-    width: .75px;
-    display: inline-block; }
-    .bar .barColumn .color span {
-      top: 21pt;
-      left: 0px; }
+.bar {
+  position: relative; }
+  .bar .barColumn {
+    height: 21pt;
+    margin-bottom: 6pt; }
+    .bar .barColumn .color {
+      height: 100%;
+      width: .75px;
+      display: inline-block;
+      z-index: 10;
+      position: static; }
+      .bar .barColumn .color:nth-of-type(100n):before {
+        content: '';
+        width: 1px;
+        position: absolute;
+        background: #ccc;
+        height: 300px;
+        top: 0;
+        bottom: 0;
+        z-index: -5; }
+      .bar .barColumn .color span {
+        top: 21pt;
+        left: 0px; }
 
 svg {
   width: 100%; }
@@ -238,6 +251,9 @@ code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 10pt;
   padding: 3px 4px; }
+
+code {
+  white-space: nowrap; }
 
 pre {
   display: block; }
@@ -365,7 +381,7 @@ figcaption {
     margin-bottom: 16pt; }
 
   #title {
-    max-width: 90%; }
+    max-width: 89%; }
 
   h2 {
     font-size: 16pt;

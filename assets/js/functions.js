@@ -3,9 +3,17 @@ $(function() {
 
     bodyId = $('body').attr('id');
 
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // Contact Form Start-Up
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
     if( bodyId === 'contact' ){ 
         initializeContactForm();
     }	
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // Home Page Start-Up
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     if( bodyId === 'home' ){ 
         convertColors();
@@ -13,6 +21,8 @@ $(function() {
         printColorFormats();
 
         printColorShades();
+
+        resizeBarCharts();
 
         $('.backgroundChanger').on("input change", function(){
             $( $(this).attr('data-target') ).css({
@@ -24,13 +34,28 @@ $(function() {
             $(this).css( 'background', $(this).find('span').text() );
         });
 
-        printChart('rectangle','hue');
+        $('#codeToggle').click(function(){
+            $(this).find('span').toggleClass('hidden');
+
+            $('.codeFigure').toggleClass('hiddenHeight');
+
+            return false;
+        });
+
         printChart('fan','hue');
     }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // Home and Converter Start-Up
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     if (bodyId === 'home' || bodyId === 'converter'){
         initializeColorPickers();
     }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // Home and Scraper Start-Up
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     if( bodyId === 'home' || bodyId === 'scraper'){ 
         busy = false;
@@ -44,6 +69,10 @@ $(function() {
             ajaxScrape();
         });
     }
+
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+    // Data Page Start-Up
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     if( bodyId === 'data'){
         $('#downloads').submit(function(e){
@@ -221,6 +250,25 @@ function printColorShades(){
         
         $('#' + shade + 'Colors').append('<div class="color" style="background:' + colors[i].rgb + ';"><span>' + colors[i].original + '</span></div>');
     }
+}
+
+function resizeBarCharts(){
+    var barColumns = $('.barColumn');
+    var lengths = [];
+
+    for(i = 0; i < barColumns.length; i ++){
+        lengths.push(barColumns.eq(i).children().length);
+    }
+
+    var maxLength = Math.max.apply(Math, lengths);
+
+    var chartWidth = $('.bar.chart').eq(0).width() - 15; // Round down a little to make sure it fits.
+
+    console.log(chartWidth);
+
+    console.log(chartWidth/maxLength + 'px');
+
+    $('.barColumn .color').css('width',chartWidth/maxLength + 'px');
 }
 
 function sortColors(sortCriteria) {
