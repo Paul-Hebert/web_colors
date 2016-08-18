@@ -194,8 +194,7 @@ ol {
       height: 100%;
       width: .75px;
       display: inline-block;
-      z-index: 10;
-      position: static; }
+      z-index: 10; }
       .bar .barColumn .color:nth-of-type(100n):before {
         content: '';
         width: 1px;

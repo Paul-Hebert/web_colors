@@ -26,7 +26,6 @@
 
 .bar{
 	position:relative;
-	//overflow-y:hidden;
 
 	.barColumn{
 		height:$size-7;
@@ -37,7 +36,6 @@
 			width:.75px;
 			display:inline-block;
 			z-index:10;
-			position:static;
 
 			&:nth-of-type(100n):before{
 				content:'';
