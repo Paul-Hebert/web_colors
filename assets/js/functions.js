@@ -228,11 +228,11 @@ function printColorFormats(){
 
 function printColorShades(){
     for(i = 0; i < colors.length; i++){
-        if (colors[i].sat < 0.1 && colors[i].light < 0.05){
+        if (colors[i].sat < 10 && colors[i].light < 0.05){
             shade = 'black';
-        } else if(colors[i].sat < 0.1 && colors[i].light > 0.9){
+        } else if(colors[i].sat < 1 && colors[i].light > 90){
             shade = 'white';
-        } else if(colors[i].sat < 0.1 ){
+        } else if(colors[i].sat < 1 ){
             shade = 'grey';
         } else if( colors[i].hue > 233.75 || colors[i].hue <= 21.25 ){
             shade = 'red';
@@ -264,14 +264,12 @@ function scaleCharts(){
 
     var chartWidth = $('.bar.chart').eq(0).width() - 15; // Round down a little to make sure it fits.
 
-    console.log(chartWidth);
+    var dataWidth = chartWidth/maxLength;
 
-    console.log(chartWidth/maxLength + 'px');
-
-    $('.barColumn .color').css('width',chartWidth/maxLength + 'px');
+    $('.barColumn .color').css('width',dataWidth + 'px');
 
     for(i = 0; i < maxLength; i += 100){
-        $('.bar.chart').append('<div class="tickMark" style="left:' + i + 'px"></div>');
+        $('.bar.chart').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
     }
 }
 
@@ -343,14 +341,17 @@ function printChart(type,sortCriteria){
             rot *= 3.141592653589793 / 180;
 
             // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * sortedColors[i].sat * center * 9/10;
-            y = center + Math.cos(rot) * sortedColors[i].sat * center * 9/10;
+            x = center + Math.sin(rot) * sortedColors[i].sat * center * 9/1000;
+            y = center + Math.cos(rot) * sortedColors[i].sat * center * 9/1000;
 
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
+            console.log('hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].light + '%)');
+
             circle.attr({
-                fill: sortedColors[i].hex, //'hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].val + '%)'
-                id: sortedColors[i].hex.replace('#','c_')
+                fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
+                id: sortedColors[i].hex.replace('#','c_'),
+                class: 'color'
             });
 
         } else if(type === 'histogram'){
@@ -364,6 +365,12 @@ function printChart(type,sortCriteria){
 
             $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
         }
+    }
+
+    if (type === 'fan'){
+        $('.hue.fan.chart circle').hover(function(){
+            console.log( $(this).attr('id') );
+        });
     }
 }
 
@@ -470,8 +477,8 @@ function rgbToHsl(color){
     }
 
     rgb.hue = hue;
-    rgb.sat = saturation;
-    rgb.light = lightness;
+    rgb.sat = saturation * 100;
+    rgb.light = lightness * 100;
 }
 
 
