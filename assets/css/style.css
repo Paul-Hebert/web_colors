@@ -374,7 +374,7 @@ figcaption {
   to {
     transform: rotate(359deg); } }
 @media (max-width: 900px) {
-  .hide-on-small {
+  .hide-on-small, .tickMark {
     display: none; }
 
   .hide-on-medium-small {
@@ -397,7 +397,7 @@ figcaption {
     left: 105%;
     top: 0px;
     bottom: 0px;
-    background: #ccc;
+    background: #f0f0f0;
     width: 0%;
     overflow: hidden;
     -o-transition: all 250ms;
@@ -414,7 +414,6 @@ figcaption {
       display: block;
       padding: 8pt;
       text-align: center;
-      background: #f0f0f0;
       margin-bottom: 3pt; }
 
   #menu-toggle {

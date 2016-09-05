@@ -1,5 +1,5 @@
 @media (max-width:900px){
-	.hide-on-small{
+	.hide-on-small, .tickMark{
 		display:none;
 	}
 
@@ -27,7 +27,7 @@
 		left:105%;
 		top:0px;
 		bottom:0px;
-		background:$grey;
+		background:$off-white;
 		width:0%;
 		overflow:hidden;
 		@include transition_mixin(all $base-duration);
@@ -42,7 +42,6 @@
 			display:block;
 			padding:$size-3;
 			text-align:center;
-			background:$off-white;
 			margin-bottom:$size-1;
 		}
 	}

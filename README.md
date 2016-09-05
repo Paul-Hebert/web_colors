@@ -9,7 +9,7 @@
 
 * Fix responsive issues
 	* Code overflow
-* Add number labels to bar charts - Fix overlap issues
+* Add number labels to bar charts
 * Refactor/optimize JS
 	* Remove unused histogram code
 * Add code for RGB to HSV
