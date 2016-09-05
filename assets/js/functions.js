@@ -269,7 +269,7 @@ function scaleCharts(){
     $('.barColumn .color').css('width',dataWidth + 'px');
 
     for(i = 0; i < maxLength; i += 100){
-        $('.bar.chart').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
+        $('.bar.chart .grid').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
     }
 }
 

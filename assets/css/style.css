@@ -178,7 +178,14 @@ ol {
     display: block; }
 
 .bar {
-  position: relative; }
+  position: relative;
+  padding: 10pt 0; }
+  .bar .grid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0; }
   .bar .barColumn {
     height: 21pt;
     margin-bottom: 6pt; }
@@ -193,7 +200,7 @@ ol {
     position: absolute;
     top: 0;
     bottom: 0;
-    width: .5px;
+    width: 1px;
     background: #ccc; }
 
 svg {

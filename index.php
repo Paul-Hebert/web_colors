@@ -92,6 +92,8 @@
 
 				<figure class="large right">
 					<div class="shade bar chart">
+						<div class="grid"></div>
+
 						<aside class="left"><label>Black</label></aside>
 						<div class="barColumn" id="blackColors"></div>
 
@@ -133,6 +135,8 @@
 
 				<figure class="large right">
 					<div class="format bar chart">
+						<div class="grid"></div>
+
 						<aside class="left"><label>Hexadecimal</label></aside>
 						<div class="barColumn" id="hexadecimalColors"></div>
 
