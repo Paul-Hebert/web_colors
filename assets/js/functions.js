@@ -202,8 +202,10 @@ function convertColors(){
 
         separateRgbValues(color);
 
-        rgbToHsl(color);
+        color.hsl = rgbToHsl(color.rgb);
         
+        separateHslValues(color);
+
         colors.push( color );
     });
 }
@@ -429,15 +431,28 @@ function separateRgbValues(color){
     color.blue = temp_color[2];    
 }
 
-function rgbToHsl(color){
-    var rgb = color;
-    rgb.red /= 255; 
-    rgb.green /= 255; 
-    rgb.blue /= 255;   
+function separateHslValues(color){
+    var temp_color = color.hsl.replace("hsl(", "");
+    temp_color = temp_color.replace(")", "");
+    temp_color = temp_color.split(',');
+
+    color.hue = temp_color[0];
+    color.sat = temp_color[1];
+    color.light = temp_color[2];    
+}
+
+function rgbToHsl(rgb){
+    var channels = rgb.replace("rgb(", "");
+    channels = channels.replace(")", "");
+    channels = channels.split(',');
+
+    var red = channels[0] /= 255; 
+    var green = channels[1] /= 255; 
+    var blue = channels[2] /= 255; 
 
     /* Getting the Max and Min values. */
-    var max = Math.max.apply(Math, [rgb.red,rgb.green,rgb.blue]);
-    var min = Math.min.apply(Math, [rgb.red,rgb.green,rgb.blue]); 
+    var max = Math.max.apply(Math, [red,green,blue]);
+    var min = Math.min.apply(Math, [red,green,blue]); 
 
     var lightness = (min + max)/2;
 
@@ -451,12 +466,12 @@ function rgbToHsl(color){
             var saturation = (max-min)/(2-max-min);
         }
 
-        if (rgb.red == max) {
-            var temp_hue = (rgb.green-rgb.blue)/(max-min);
-        } else if (rgb.green == max) {
-            var temp_hue = 2 + (rgb.blue-rgb.red)/(max-min);
-        } else if (rgb.blue == max) {
-            var temp_hue = 4 + (rgb.red-rgb.green)/(max-min);
+        if (red == max) {
+            var temp_hue = (green-blue)/(max-min);
+        } else if (green == max) {
+            var temp_hue = 2 + (blue-red)/(max-min);
+        } else if (blue == max) {
+            var temp_hue = 4 + (red-green)/(max-min);
         }
 
         var hue = temp_hue * 42.6;
@@ -466,9 +481,10 @@ function rgbToHsl(color){
         }
     }
 
-    rgb.hue = hue;
-    rgb.sat = saturation * 100;
-    rgb.light = lightness * 100;
+    saturation *= 100;
+    lightness *= 100;
+
+    return 'hsl(' + hue + ',' + saturation + ',' + lightness + ')';
 }
 
 

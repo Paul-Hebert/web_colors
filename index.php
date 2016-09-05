@@ -646,6 +646,70 @@ echo $geshi->parse_code();
 				<p>If blue was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
 
 				<p>After making this calculation you need to convert hue to a value between and 255. Multiply the value by 42.6. If it is below 0, then add 255 to the value.</p>
+
+				<figure class="codeFigure">
+					<figcaption>
+						Here's how to convert an <abbr>RGB</abbr> color to <abbr>HSL</abbr> in javascript:
+					</figcaption>
+
+<?php
+$source = "rgbToHsl('rgb(100,50,0)');
+
+function rgbToHsl(rgb){
+    var channels = rgb.replace('rgb(', '');
+    channels = channels.replace(')', '');
+    channels = channels.split(',');
+
+    var red = channels[0] /= 255; 
+    var green = channels[1] /= 255; 
+    var blue = channels[2] /= 255; 
+
+    /* Getting the Max and Min values. */
+    var max = Math.max.apply(Math, [red,green,blue]);
+    var min = Math.min.apply(Math, [red,green,blue]); 
+
+    var lightness = (min + max)/2;
+
+    if (min === max){
+        var saturation = 0;
+        var hue = 0;
+    } else{
+        if( lightness < 0.5){
+            var saturation = (max-min)/(max+min);
+        } else{
+            var saturation = (max-min)/(2-max-min);
+        }
+
+        if (red == max) {
+            var temp_hue = (green-blue)/(max-min);
+        } else if (green == max) {
+            var temp_hue = 2 + (blue-red)/(max-min);
+        } else if (blue == max) {
+            var temp_hue = 4 + (red-green)/(max-min);
+        }
+
+        var hue = temp_hue * 42.6;
+
+        if (hue < 0){
+            hue += 255;
+        }
+    }
+
+    saturation *= 100;
+    lightness *= 100;
+
+    return 'hsl(' + hue + ',' + saturation + ',' + lightness + ')';
+}";
+
+$geshi = new GeSHi($source, 'javascript');
+
+$geshi->enable_line_numbers(GESHI_NORMAL_LINE_NUMBERS);
+
+$geshi->enable_classes();
+
+echo $geshi->parse_code();
+?>
+				</figure>		
 			</div>
 
 			<div class="subsection">
