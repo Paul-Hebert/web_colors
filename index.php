@@ -34,7 +34,21 @@
 			
 				<p><a href="http://www.alexa.com" target="_BLANK">Alexa.com</a> maintains a list of the <a href="http://www.alexa.com/topsites" target="_BLANK">most visited sites on the internet</a>. I wrote a <abbr>PHP</abbr> script to scrape the ten most popular sites and record all the colors used in the sites' home pages and style sheets.</p>
 			
-				<p>I plan to rescrape the <a href="data.php">data</a> on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine and graph trends in web development.</p>
+				<p>I plan to rescrape the <a href="data.php">data</a> on a regular basis. Because of this, I'll keep analysis to a minimum, since it could become outdated when the data changes. Once I have data over a larger time period I'll be able to examine and graph trends in web development. I also plan to examine the difference in color usage between popular websites from different parts of the world.</p>
+
+				
+
+				<?php
+					echo '<p>This data is current as of ';
+					$readableDate = $files[$array_length-1];
+					$readableDate = str_replace('.csv', '', $readableDate);
+					$readableDate = explode('T', $readableDate);
+					$readableDate = strtotime($readableDate[0]);
+					$readableDate = date('F jS, Y',$readableDate);
+
+					echo $readableDate;
+					echo '.</p>';
+				?>
 			</div>
 		</section>
 
@@ -162,7 +176,7 @@
 			
 				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
 
-				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors. For example, pure red is on top of pure white, since they both have a hue and value of 0.</p>
+				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>
 		</section>		
 
@@ -170,7 +184,7 @@
 			<div class="subsection">
 				<h1>Converting Between Color Formats</h1>
 
-				<p>In order to organize this data for the above charts, we had to convert all the colors used into a single format. Here I'll explain the different color formats and how I converted them all to <Abbr>HSL</abbr>.</p>				
+				<p>In order to organize this data for the above charts, I had to convert all the colors used into a single format. Here I'll explain the different color formats and how I converted them all to <Abbr>HSL</abbr>.</p>				
 			</div>
 
 			<div class="subsection">
@@ -318,7 +332,7 @@
 				</p>
 
 				<p>
-					Hexadecimal numbers are base-16 instead of base-10, so each character represents a number between 0 and 15 instead of 0 and 9.
+					Hexadecimal numbers are base 16 instead of base 10, so each character represents a number between 0 and 15 instead of 0 and 9.
 				</p>
 
 				<aside class="right">
@@ -328,7 +342,7 @@
 
 				<figure class="codeFigure">
 					<figcaption>
-						Here's how to convert base-16 to base-10 in javascript.
+						Here's how to convert base 16 to base 10 in javascript.
 					</figcaption>
 
 <?php
@@ -350,7 +364,7 @@ echo $geshi->parse_code();
 
 				<figure class="codeFigure">
 					<figcaption>
-						Here's how to do the inverse: convert base-10 to base-16.
+						Here's how to do the inverse: convert base 10 to base 16.
 					</figcaption>
 
 <?php
@@ -407,7 +421,7 @@ echo $geshi->parse_code();
 				</figure>
 
 				<p>
-					Here are the color values for <code>#BADA55</code>, converted into base-10.
+					Here are the color values for <code>#BADA55</code>, converted into base 10.
 				</p>
 
 				<figure>
@@ -602,7 +616,7 @@ echo $geshi->parse_code();
 				<h3>Converting from <abbr>RGB</abbr> to <abbr>HSL</abbr></h3>
 
 				<aside class="left">
-					<citation>I learned how to do this conversion from this <a href="http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/">helpful article</a> by Nikolai Waldman.</citation>
+					<citation>I learned how to do this conversion from this <a href="http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/" target="_BLANK">helpful article</a> by Nikolai Waldman.</citation>
 				</aside>
 
 				<p>The first step is to convert all red, green and blue values into decimals between 0 and 1.</p>
@@ -625,7 +639,7 @@ echo $geshi->parse_code();
 
 				<p>If green was the max then hue equals <code>2+(blue-red)/(max-min)</code></p>
 
-				<p>If red was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
+				<p>If blue was the max then hue equals <code>4+(red-green)/(max-min)</code></p>
 
 				<p>After making this calculation you need to convert hue to a value between and 255. Multiply the value by 42.6. If it is below 0, then add 255 to the value.</p>
 			</div>

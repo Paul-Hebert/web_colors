@@ -346,8 +346,6 @@ function printChart(type,sortCriteria){
 
             var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
-            console.log('hsl(' + colors[i].hue + ',' + colors[i].sat + '%,' + colors[i].light + '%)');
-
             circle.attr({
                 fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
                 id: sortedColors[i].hex.replace('#','c_'),
@@ -368,8 +366,8 @@ function printChart(type,sortCriteria){
     }
 
     if (type === 'fan'){
-        $('.hue.fan.chart circle').hover(function(){
-            console.log( $(this).attr('id') );
+        $('.hue.fan.chart .color').hover(function(){
+            console.log( $(this).attr('id').replace('c_','#') );
         });
     }
 }
