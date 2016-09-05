@@ -22,31 +22,9 @@ pre{
 		padding:0;
 
 		li{
-			background:$light-grey;	
 			padding:0;
-			counter-increment: customlistcounter;
 			padding-bottom:0px;
 			font-size:$size-4;
-
-			
-			&:first-of-type{
-				counter-reset: customlistcounter;
-			}	
-
-			&:nth-of-type(odd){
-				background:$grey;
-			}
-
-			&:before{
-				color:$grey;	
-				content: counter(customlistcounter) " ";
-				float:left;
-				background:$dark-grey;
-				text-align:right;
-				margin-right:$size-1;	
-				font-family: $monospace;	
-				width:$size-7;			
-			}
 		}
 	}
 }

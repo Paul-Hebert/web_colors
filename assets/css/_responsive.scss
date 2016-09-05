@@ -82,6 +82,12 @@
     .block.chart{
     	padding:$size-3 0;
     }
+
+    pre{
+    	overflow-x:scroll;
+    	background:$light-grey;
+    	padding:$size-3;
+    }
 }
 
 @media (min-width:901px){
@@ -164,6 +170,30 @@
 
 		&.extra{
 			width:1086px;
+		}
+	}
+
+	pre li{
+		background:$light-grey;	
+		counter-increment: customlistcounter;
+		
+		&:first-of-type{
+			counter-reset: customlistcounter;
+		}	
+
+		&:nth-of-type(odd){
+			background:$grey;
+		}
+
+		&:before{
+			color:$grey;	
+			content: counter(customlistcounter) " ";
+			float:left;
+			background:$dark-grey;
+			text-align:right;
+			margin-right:$size-1;	
+			font-family: $monospace;	
+			width:$size-7;			
 		}
 	}
 }

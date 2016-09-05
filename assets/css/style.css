@@ -267,24 +267,9 @@ pre {
     font-size: 10pt;
     padding: 0; }
     pre ol li {
-      background: #ddd;
       padding: 0;
-      counter-increment: customlistcounter;
       padding-bottom: 0px;
       font-size: 10pt; }
-      pre ol li:first-of-type {
-        counter-reset: customlistcounter; }
-      pre ol li:nth-of-type(odd) {
-        background: #ccc; }
-      pre ol li:before {
-        color: #ccc;
-        content: counter(customlistcounter) " ";
-        float: left;
-        background: #444;
-        text-align: right;
-        margin-right: 3pt;
-        font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-        width: 21pt; }
 
 .javascript .st0 {
   color: #C54E2C; }
@@ -443,7 +428,12 @@ figcaption {
     height: 6pt; }
 
   .block.chart {
-    padding: 8pt 0; } }
+    padding: 8pt 0; }
+
+  pre {
+    overflow-x: scroll;
+    background: #ddd;
+    padding: 8pt; } }
 @media (min-width: 901px) {
   main {
     margin-left: 250px;
@@ -503,7 +493,24 @@ figcaption {
     figure.large.left, figure.large.extra {
       margin-left: -250px; }
     figure.large.extra {
-      width: 1086px; } }
+      width: 1086px; }
+
+  pre li {
+    background: #ddd;
+    counter-increment: customlistcounter; }
+    pre li:first-of-type {
+      counter-reset: customlistcounter; }
+    pre li:nth-of-type(odd) {
+      background: #ccc; }
+    pre li:before {
+      color: #ccc;
+      content: counter(customlistcounter) " ";
+      float: left;
+      background: #444;
+      text-align: right;
+      margin-right: 3pt;
+      font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      width: 21pt; } }
 @media (max-width: 1140px) and (min-width: 901px) {
   .hide-on-medium-small {
     display: none; }
