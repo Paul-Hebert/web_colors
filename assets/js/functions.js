@@ -350,9 +350,17 @@ function printFanChart(){
         });
     }
 
-    $('.hue.fan.chart .color').hover(function(){
-        console.log( $(this).attr('id').replace('c_','#') );
+    $('.hue.fan.chart .color').mouseover(function(e){
+        $('body').append('<span class="hoverColor">' + $(this).attr('id').replace('c_','#') + '</span>' );
+        $('.hoverColor').css({
+            'left' : $(this).offset().left + 20,
+            'top'  : $(this).offset().top + 20
+        });
     });
+
+    $('.hue.fan.chart .color').mouseout(function(){
+        $('.hoverColor').remove();
+    });    
 }
 
 function threeDigitsToSix(color){ 

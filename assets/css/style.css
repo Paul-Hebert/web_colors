@@ -173,15 +173,7 @@ ol {
 .color {
   position: relative; }
   .color span {
-    display: none;
-    position: absolute;
-    background: #fff;
-    padding: 5px;
-    top: 13pt;
-    left: 13pt;
-    z-index: 5;
-    font-size: 13pt;
-    white-space: nowrap; }
+    display: none; }
   .color:hover span {
     display: block; }
 
@@ -206,6 +198,16 @@ ol {
 
 svg {
   width: 100%; }
+
+.hoverColor, .color span {
+  position: absolute;
+  background: #fff;
+  padding: 5px;
+  top: 13pt;
+  left: 13pt;
+  z-index: 5;
+  font-size: 13pt;
+  white-space: nowrap; }
 
 .color.listing {
   display: inline-block;

@@ -9,14 +9,7 @@
 
 	span{
 		display:none;
-		position:absolute;
-		background:#fff;
-		padding:5px;
-		top:$size-5;
-		left:$size-5;
-		z-index:5;	
-		font-size:$size-5;
-		white-space:nowrap;
+		@extend .hoverColor;
 	}
 
 	&:hover span{
@@ -54,6 +47,17 @@
 
 svg{
 	width:100%;
+}
+
+.hoverColor{
+	position:absolute;
+	background:#fff;
+	padding:5px;
+	top:$size-5;
+	left:$size-5;
+	z-index:5;	
+	font-size:$size-5;
+	white-space:nowrap;
 }
 
 .color.listing{
