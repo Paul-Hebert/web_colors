@@ -202,6 +202,13 @@ ol {
     bottom: 0;
     width: 1px;
     background: #ccc; }
+  .bar .scaleLabel {
+    position: absolute;
+    width: 100px;
+    text-align: center;
+    margin-left: -50px;
+    bottom: -13pt;
+    font-size: 8pt; }
 
 svg {
   width: 100%; }
@@ -359,7 +366,7 @@ figcaption {
   to {
     transform: rotate(359deg); } }
 @media (max-width: 900px) {
-  .hide-on-small, .tickMark {
+  .hide-on-small, .tickMark, .scaleLabel {
     display: none; }
 
   .hide-on-medium-small {

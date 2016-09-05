@@ -262,7 +262,7 @@ function scaleCharts(){
 
     var maxLength = Math.max.apply(Math, lengths);
 
-    var chartWidth = $('.bar.chart').eq(0).width() - 15; // Round down a little to make sure it fits.
+    var chartWidth = $('.bar.chart').eq(0).width(); // Round down a little to make sure it fits.
 
     var dataWidth = chartWidth/maxLength;
 
@@ -270,6 +270,7 @@ function scaleCharts(){
 
     for(i = 0; i < maxLength; i += 100){
         $('.bar.chart .grid').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
+        $('.bar.chart .grid').append('<div class="scaleLabel" style="left:' + i * dataWidth + 'px">' + i + '</div>');
     }
 }
 

@@ -52,6 +52,15 @@
 		width:1px;
 		background:$grey;
 	}
+
+	.scaleLabel{
+		position:absolute;
+		width:100px;
+		text-align:center;
+		margin-left:-50px;
+		bottom:-$size-5;
+		font-size:$size-3;
+	}
 }
 
 svg{
