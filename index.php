@@ -52,6 +52,7 @@
 			</div>
 		</section>
 
+		<!--
 		<section>
 			<div class="subsection">
 				<h2>Try it For Yourself</h2>
@@ -61,6 +62,7 @@
 				<?php include('assets/php/utilities/scrape/form.php'); ?>
 			</div>
 		</section>
+		-->
 
 		<section>
 			<div class="subsection">
@@ -164,7 +166,7 @@
 
 		<section>
 			<div class="subsection">
-				<h2>Colors by Hue and Then Lightness</h2>
+				<h2>Colors by Hue and Then Saturation</h2>
 
 				<figure>
 					<svg class="hue fan chart"></svg>
@@ -174,12 +176,10 @@
 					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
 				</figure>	
 
-				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their value.</p>
+				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation.</p>
 
 				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
 			
-				<p>You can see distinct lines towards red, green and blue. Many of the grayscale colors have a hue of zero. Since pure red has a hue of zero as well, you can see black, white and grey cluster with red.</p>
-
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>
 		</section>		

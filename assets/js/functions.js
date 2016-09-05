@@ -281,14 +281,14 @@ function sortColors(sortCriteria) {
         return colors.sort(
             firstBy(function (v1, v2) { return v1.hue - v2.hue; })
             .thenBy(function (v1, v2) { return v1.sat - v2.sat; })
-            .thenBy(function (v1, v2) { return v2.val - v1.val; })
+            .thenBy(function (v1, v2) { return v2.light - v1.light; })
         );
     }
     if (sortCriteria == 'sat'){
         return colors.sort(
             firstBy(function (v1, v2) { return v1.sat - v2.sat; })
             .thenBy(function (v1, v2) { return v1.hue - v2.hue; })
-            .thenBy(function (v1, v2) { return v1.val - v2.val; })
+            .thenBy(function (v1, v2) { return v1.light - v2.light; })
 
         );
     }
@@ -296,7 +296,7 @@ function sortColors(sortCriteria) {
         return colors.sort(
             firstBy(function (v1, v2) { return v1.val - v2.val; })
             .thenBy(function (v1, v2) { return v2.sat - v1.sat; })
-            .thenBy(function (v1, v2) { return v1.hue - v2.hue; })
+            .thenBy(function (v1, v2) { return v1.light - v2.light; })
         );
     }
 }
