@@ -5,8 +5,7 @@
 * Set up Scraper to accept different URL formats.
 * Fix responsive issues
 	* Code overflow
-	* Aside/figure differentiation
-* Add number labels to bar charts
+* Add number labels to bar charts - Fix overlap issues
 * Refactor/optimize JS
 	* Remove unused histogram code
 * Add hover effects to fan chart.

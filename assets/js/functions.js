@@ -42,7 +42,7 @@ $(function() {
             return false;
         });
 
-        printChart('fan','hue');
+        printFanChart();
     }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -298,25 +298,23 @@ function sortColors(sortCriteria) {
     }
 }
 
-function printChart(type,sortCriteria){
-    sortedColors = sortColors(sortCriteria);
+function printFanChart(){
+    sortedColors = sortColors('hue');
 
     usedColors = [];
 
-    if (type === 'fan'){
-        fan = Snap('.chart.' + type + '.' + sortCriteria);
-        center = $('.chart.' + type + '.' + sortCriteria).width()/2;
+    fan = Snap('.chart.fan.hue');
+    center = $('.chart.fan.hue').width()/2;
 
-        $('.chart.' + type + '.' + sortCriteria).height( center * 2 );
+    $('.chart.fan.hue').height( center * 2 );
 
-        var circle = fan.circle(center, center, 0);
+    var circle = fan.circle(center, center, 0);
 
-        circle.attr({
-            fill: '#fff',
-            class: 'background',
-            r: center
-        });
-    }
+    circle.attr({
+        fill: '#fff',
+        class: 'background',
+        r: center
+    });
 
     for(i = 0; i < sortedColors.length; i++){         
         var used = 1;
@@ -329,47 +327,32 @@ function printChart(type,sortCriteria){
         }
 
         if (used != 1){
-            $( '.chart.' + type + ' #' + sortedColors[i].hex.replace('#','c_') ).remove();
+            $( '.chart.fan #' + sortedColors[i].hex.replace('#','c_') ).remove();
         }   
 
         usedColors.push(sortedColors[i].hex);
 
-        if (type === 'fan'){
-            // Calculate rotation of hue.
-            var rot = sortedColors[i].hue * 360/255;
-            // Convert from degrees to radians.
-            rot *= 3.141592653589793 / 180;
+        // Calculate rotation of hue.
+        var rot = sortedColors[i].hue * 360/255;
+        // Convert from degrees to radians.
+        rot *= 3.141592653589793 / 180;
 
-            // Use simple trig to plot colors.
-            x = center + Math.sin(rot) * sortedColors[i].sat * center * 9/1000;
-            y = center + Math.cos(rot) * sortedColors[i].sat * center * 9/1000;
+        // Use simple trig to plot colors.
+        x = center + Math.sin(rot) * sortedColors[i].sat * center * 9/1000;
+        y = center + Math.cos(rot) * sortedColors[i].sat * center * 9/1000;
 
-            var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
+        var circle = fan.circle(x, y, center/100 * Math.sqrt(used));
 
-            circle.attr({
-                fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
-                id: sortedColors[i].hex.replace('#','c_'),
-                class: 'color'
-            });
-
-        } else if(type === 'histogram'){
-            var height = 4;
-
-            dataPoint = '<div class="color" style="';
-            dataPoint += 'background:' + sortedColors[i].hex + ';';
-            dataPoint += 'height:' + (height * used) + 'px;"';
-            dataPoint += ' id="c_' + sortedColors[i].hex.replace('#','') + '">';
-            dataPoint += '<span>' + sortedColors[i].hex + '</span></div>';
-
-            $('.chart.' + type + '.' + sortCriteria).append(dataPoint);   
-        }
-    }
-
-    if (type === 'fan'){
-        $('.hue.fan.chart .color').hover(function(){
-            console.log( $(this).attr('id').replace('c_','#') );
+        circle.attr({
+            fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
+            id: sortedColors[i].hex.replace('#','c_'),
+            class: 'color'
         });
     }
+
+    $('.hue.fan.chart .color').hover(function(){
+        console.log( $(this).attr('id').replace('c_','#') );
+    });
 }
 
 function threeDigitsToSix(color){ 
