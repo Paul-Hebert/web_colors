@@ -734,7 +734,7 @@ echo $geshi->parse_code();
 					<li>Colors added by external javascript are not included.</li>
 				</ol>
 
-				<p>Notice any other issues? <a href="contact.php">Contact me</a> and I'll fix it or add it as a caveat. Thanks for reading!</p>
+				<p>Notice any other issues? <a href="contact.php">Contact me</a> or put in a <a href="https://github.com/Paul-Hebert/web_colors">pull request</a> and I'll fix it or add it as a caveat. Thanks for reading!</p>
 			</div>
 		</section>
 	</main>

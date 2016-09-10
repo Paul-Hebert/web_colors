@@ -264,7 +264,7 @@ function scaleCharts(){
 
     var maxLength = Math.max.apply(Math, lengths);
 
-    var chartWidth = $('.bar.chart').eq(0).width(); // Round down a little to make sure it fits.
+    var chartWidth = $('.bar.chart').eq(0).width();
 
     var dataWidth = chartWidth/maxLength;
 

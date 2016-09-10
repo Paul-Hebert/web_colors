@@ -4,9 +4,6 @@
 * Investigate security of Scraper
 * Set up Scraper to accept different URL formats.
 * Switch #BADA55?
-
-## Important 
-
 * Refactor/optimize JS
 
 Data
