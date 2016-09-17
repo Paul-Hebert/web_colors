@@ -730,8 +730,6 @@ echo $geshi->parse_code();
 					<li>Colors in images are not included.</li>
 
 					<li>Some colors in stylesheets aren't actually used on the sites.</li>
-
-					<li>If a color is found inside of a website's text it counts as being used. For example if the phrase "tan leather" is in a website's text, this scraper would say that the site uses tan. Additionally if the phrase "I understand" is in the text, it would still count as tan.</li>
 					
 					<li>Colors added by external javascript are not included.</li>
 				</ol>
