@@ -1,5 +1,5 @@
 $(function() {
-	initializeMobileMenu();
+    initializeMobileMenu();
 
     bodyId = $('body').attr('id');
 
@@ -9,7 +9,7 @@ $(function() {
 
     if( bodyId === 'contact' ){ 
         initializeContactForm();
-    }	
+    }   
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     // Home Page Start-Up
@@ -324,16 +324,16 @@ function printFanChart(){
 
 
         for(z = 0; z < usedColors.length; z++){
-            if (sortedColors[i].hex === usedColors[z]){
+            if ('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light === usedColors[z]){
                 used ++;
             }
         }
 
         if (used != 1){
-            $( '.chart.fan #' + sortedColors[i].hex.replace('#','c_') ).remove();
+            $( '.chart.fan #' + 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light ).remove();
         }   
 
-        usedColors.push(sortedColors[i].hex);
+        usedColors.push('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light);
 
         // Calculate rotation of hue.
         var rot = sortedColors[i].hue * 360/255;
@@ -348,13 +348,13 @@ function printFanChart(){
 
         circle.attr({
             fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
-            id: sortedColors[i].hex.replace('#','c_'),
+            id: 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light,
             class: 'color'
         });
     }
 
     $('.hue.fan.chart .color').mouseover(function(e){
-        $('body').append('<span class="hoverColor">' + $(this).attr('id').replace('c_','#') + '</span>' );
+        $('body').append('<span class="hoverColor">' + $(this).attr('fill') + '</span>' );
         $('.hoverColor').css({
             'left' : $(this).offset().left + 20,
             'top'  : $(this).offset().top + 20
@@ -493,76 +493,76 @@ function rgbToHsl(rgb){
 /*****************************************************************************************************/
 
 function initializeMobileMenu(){
-	$('#menu-toggle').click(function(){
-		if ( $('#menu-toggle svg').attr('class') === 'open' ){
-			$('#menu-toggle svg').attr('class','');
-			$('#mobile_modal').fadeOut();
-		} else{
-			$('#menu-toggle svg').attr('class','open');
-			$('#mobile_modal').fadeIn();			
-		}
+    $('#menu-toggle').click(function(){
+        if ( $('#menu-toggle svg').attr('class') === 'open' ){
+            $('#menu-toggle svg').attr('class','');
+            $('#mobile_modal').fadeOut();
+        } else{
+            $('#menu-toggle svg').attr('class','open');
+            $('#mobile_modal').fadeIn();            
+        }
 
-		var first_y = $('.first-line').attr('y2');
-		var last_y = $('.last-line').attr('y2');
+        var first_y = $('.first-line').attr('y2');
+        var last_y = $('.last-line').attr('y2');
 
-		animate(
-	        $('.first-line'), // target jQuery element
-	        { y2: last_y}, // target attributes
-	        300 // optional duration in ms, defaults to 400
-	    );
-		animate(
-	        $('.last-line'), // target jQuery element
-	        { y2: first_y}, // target attributes
-	        300 // optional duration in ms, defaults to 400
-	    );
+        animate(
+            $('.first-line'), // target jQuery element
+            { y2: last_y}, // target attributes
+            300 // optional duration in ms, defaults to 400
+        );
+        animate(
+            $('.last-line'), // target jQuery element
+            { y2: first_y}, // target attributes
+            300 // optional duration in ms, defaults to 400
+        );
 
-		$('header nav').toggleClass('open');
-	});
+        $('header nav').toggleClass('open');
+    });
 }
 
 function initializeContactForm(){
-	$( ".contact_form" ).on( "submit", function( event ) {
-	    event.preventDefault();
+    $( ".contact_form" ).on( "submit", function( event ) {
+        event.preventDefault();
 
-	    if ( validate( $(this) ) ){
-		    var form_data = $('.contact_form').serialize();
+        if ( validate( $(this) ) ){
+            var form_data = $('.contact_form').serialize();
 
-		    $.ajax({
-			    type : 'POST',
-			    url : 'assets/php/utilities/email.php',
-			    data : form_data,
-			    success: function(data){
-			    	$('.contact_form *').animate({'opacity':0},300);
-			    	$('.contact_form').append(data);
-			    	$('#success').fadeIn(300);
-			    }
-			});
-		}
-	});
+            $.ajax({
+                type : 'POST',
+                url : 'assets/php/utilities/email.php',
+                data : form_data,
+                success: function(data){
+                    $('.contact_form *').animate({'opacity':0},300);
+                    $('.contact_form').append(data);
+                    $('#success').fadeIn(300);
+                }
+            });
+        }
+    });
 }
 
 function validate(form){
-	form.find('.error').removeClass('error');
-	form.find('.error_text').remove();
+    form.find('.error').removeClass('error');
+    form.find('.error_text').remove();
 
-	form.find('.required').each(function(){
-		if ( $(this).val() === '' || $(this).val() === null || $(this).val() === undefined ){
-			$(this).addClass('error');
-			$(this).change(function(){ $(this).removeClass('error') });
-		}
-	});
+    form.find('.required').each(function(){
+        if ( $(this).val() === '' || $(this).val() === null || $(this).val() === undefined ){
+            $(this).addClass('error');
+            $(this).change(function(){ $(this).removeClass('error') });
+        }
+    });
 
-	if ( $('.error').length > 0 ){
+    if ( $('.error').length > 0 ){
         var error_text = $('<div class="error_text">Please fill out all required fields above. Required fields have a red outline.</div>');
 
         error_text.insertBefore( form.find('input[type=submit], .button') );
 
-		form.find('.error_text').slideDown(350);
+        form.find('.error_text').slideDown(350);
 
-		return false;
-	} else{
-		return true;
-	}
+        return false;
+    } else{
+        return true;
+    }
 }
 
 /*****************************************************************************************************/
