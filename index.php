@@ -49,6 +49,8 @@
 					echo $readableDate;
 					echo '.</p>';
 				?>
+
+				<p>NOTE: This visualization doesn't include colors used in images, only CSS and HTML color codes. There are also a couple bugs which could cause false negatives and positives. For a full list of caveats and bugs <a href="caveats.php">click here.</a></p>
 			</div>
 		</section>
 
@@ -132,7 +134,7 @@
 				<h2>Colors by Format</h2>
 
 				<p id="colorFormatParagraph">
-					Browsers recognize colors in six different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+					Browsers recognize colors in seven different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
 				</p>
 
 				<figure class="large right">
