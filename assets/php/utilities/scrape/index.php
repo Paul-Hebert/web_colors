@@ -95,7 +95,7 @@
 				fwrite($csv, $top_site);
 
 				foreach($colors[0] as $color){
-					fwrite($csv, '|' . $color);
+					fwrite($csv, '|' . preg_replace('(\s|:|;)', '', $color));
 				}	
 
 				fwrite($csv,"\r\n");		
