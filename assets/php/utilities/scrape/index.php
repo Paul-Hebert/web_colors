@@ -45,11 +45,27 @@
 
 	foreach($top_sites as $top_site){
 		if($count < 10){
-			$top_site = $top_site;
+			echo '<h1>' . $top_site . '</h1>';
 
-			$text = file_get_contents($top_site);
+			$text = '';
 
-			// This part's not working.
+			$dom = new DOMDocument();
+			$dom->loadHTMLFile($top_site);
+
+			foreach($dom->getElementsByTagName('*') as $element ){
+				if( $element->hasAttributes() ) {
+					foreach ($element->attributes as $attr) {
+						if ($attr->nodeName == 'style'){
+					    	$text .= $attr->nodeValue;
+					    }
+					}
+				}
+			}
+
+			foreach($dom->getElementsByTagName('style') as $element ){
+				$text .= $element->nodeValue;
+			}
+
 			foreach(get_external_stylesheets($top_site) as $styles ){
 				if (strpos($styles, '//') === false) {
 					$text .= file_get_contents($top_site . '/' . $styles);
@@ -65,8 +81,6 @@
 
 			$text =  htmlspecialchars($text, ENT_COMPAT|ENT_SUBSTITUTE, 'UTF-8');
 			
-			//echo $text;
-
 			preg_match_all($GLOBALS['colorRegex'], $text, $matches);
 
 			$colors = array_map('array_unique', $matches);
@@ -115,7 +129,14 @@
 		if($links->length > 0){
 			foreach($links as $link){
 				if($link->nodeValue != 'More'){
-					array_push($sites,  'http://www.' . $link->nodeValue);
+					$dom = new DOMDocument();
+					$dom->loadHTMLFile('http://www.' . $link->nodeValue);
+
+					if( $dom->getElementsByTagName('*')['length'] == 0){
+						array_push($sites,  'https://www.' . $link->nodeValue);
+					} else{
+						array_push($sites,  'http://www.' . $link->nodeValue);
+					}
 				}
 			}
 		}
