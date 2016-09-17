@@ -324,16 +324,16 @@ function printFanChart(){
 
 
         for(z = 0; z < usedColors.length; z++){
-            if (sortedColors[i].hex === usedColors[z]){
+            if ('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light === usedColors[z]){
                 used ++;
             }
         }
 
         if (used != 1){
-            $( '.chart.fan #' + sortedColors[i].hex.replace('#','c_') ).remove();
+            $( '.chart.fan #' + 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light ).remove();
         }   
 
-        usedColors.push(sortedColors[i].hex);
+        usedColors.push('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light);
 
         // Calculate rotation of hue.
         var rot = sortedColors[i].hue * 360/255;
@@ -348,13 +348,13 @@ function printFanChart(){
 
         circle.attr({
             fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
-            id: sortedColors[i].hex.replace('#','c_'),
+            id: 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light,
             class: 'color'
         });
     }
 
     $('.hue.fan.chart .color').mouseover(function(e){
-        $('body').append('<span class="hoverColor">' + $(this).attr('id').replace('c_','#') + '</span>' );
+        $('body').append('<span class="hoverColor">' + $(this).attr('fill') + '</span>' );
         $('.hoverColor').css({
             'left' : $(this).offset().left + 20,
             'top'  : $(this).offset().top + 20

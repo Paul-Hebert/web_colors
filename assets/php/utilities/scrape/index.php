@@ -115,7 +115,14 @@
 		if($links->length > 0){
 			foreach($links as $link){
 				if($link->nodeValue != 'More'){
-					array_push($sites,  'http://www.' . $link->nodeValue);
+					$dom = new DOMDocument();
+					$dom->loadHTMLFile('http://www.' . $link->nodeValue);
+
+					if( $dom->getElementsByTagName('*')['length'] == 0){
+						array_push($sites,  'https://www.' . $link->nodeValue);
+					} else{
+						array_push($sites,  'http://www.' . $link->nodeValue);
+					}
 				}
 			}
 		}
