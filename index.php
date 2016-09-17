@@ -50,7 +50,7 @@
 					echo '.</p>';
 				?>
 
-				<p>NOTE: This visualization doesn't include colors used in images, only CSS and HTML color codes. There are also a couple bugs which could cause false negatives and positives. For a full list of caveats and bugs <a href="caveats.php">click here.</a></p>
+				<p>NOTE: This visualization doesn't include colors used in images, only CSS and HTML color codes. When this was first released there was a significant bug causing a number of false positives. This has now been resolved. I apologize for any inconvenience. For a full list of caveats and bugs <a href="caveats.php">click here.</a></p>
 			</div>
 		</section>
 
@@ -733,6 +733,8 @@ echo $geshi->parse_code();
 					
 					<li>Colors added by external javascript are not included.</li>
 				</ol>
+
+				<p>When this was first released there was a significant bug causing a number of false positives. This has now been resolved. I apologize for any inconvenience.</p>				
 
 				<p>Notice any other issues? <a href="contact.php">Contact me</a> or put in a <a href="https://github.com/Paul-Hebert/web_colors">pull request</a> and I'll fix it or add it as a caveat. Thanks for reading!</p>
 			</div>

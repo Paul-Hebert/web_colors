@@ -55,9 +55,7 @@
 			foreach($dom->getElementsByTagName('*') as $element ){
 				if( $element->hasAttributes() ) {
 					foreach ($element->attributes as $attr) {
-						if ($attr->nodeName == 'style'){
-					    	$text .= $attr->nodeValue;
-					    }
+					    $text .= $attr->nodeValue;
 					}
 				}
 			}
