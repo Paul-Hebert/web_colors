@@ -1,4 +1,11 @@
 <?php
+	set_time_limit(0);
+
+	ini_set('display_errors',1); 
+ 	error_reporting(E_ALL);
+
+ 	ini_set('memory_limit', '-1');
+
 	//Begin Regex
 	$GLOBALS['colorRegex'] = '/';
 
@@ -55,22 +62,22 @@
 			foreach($dom->getElementsByTagName('*') as $element ){
 				if( $element->hasAttributes() ) {
 					foreach ($element->attributes as $attr) {
-					    $text .= $attr->nodeValue;
+					    $text .= ' ' . $attr->nodeValue . ' ';
 					}
 				}
 			}
 
 			foreach($dom->getElementsByTagName('style') as $element ){
-				$text .= $element->nodeValue;
+				$text .= ' ' . innerHTML($element) . ' ';
 			}
 
 			foreach(get_external_stylesheets($top_site) as $styles ){
 				if (strpos($styles, '//') === false) {
-					$text .= file_get_contents($top_site . '/' . $styles);
+					$text .= ' ' . file_get_contents($top_site . '/' . $styles) . ' ';
 				} elseif(strpos($styles, 'http') === false){
-					$text .= file_get_contents('http:' . $styles);
+					$text .= ' ' . file_get_contents('http:' . $styles) . ' ';
 				} else{
-					$text .= file_get_contents($styles);
+					$text .= ' ' . file_get_contents($styles) . ' ';
 				}
 			}
 
@@ -83,6 +90,8 @@
 
 			$colors = array_map('array_unique', $matches);
 
+			echo $text;
+
 			if ( isset($_GET['url']) ){
 				echo '<div class="block chart"><aside class="left"><label>' . $top_site . '</label></aside>';
 					foreach($colors[0] as $color){
@@ -93,7 +102,7 @@
 				fwrite($csv, $top_site);
 
 				foreach($colors[0] as $color){
-					fwrite($csv, '|' . preg_replace('(\s|:|;)', '', $color));
+					fwrite( $csv, '|' . preg_replace('(\s|:|;)', '', $color) );
 				}	
 
 				fwrite($csv,"\r\n");		
@@ -174,5 +183,17 @@
 		}
 
 		return $stylesheets;
+	}
+
+	function innerHTML(\DOMElement $element){
+	    $doc = $element->ownerDocument;
+
+	    $html = '';
+
+	    foreach ($element->childNodes as $node) {
+	        $html .= $doc->saveHTML($node);
+	    }
+
+	    return $html;
 	}
 ?>
