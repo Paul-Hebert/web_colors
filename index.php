@@ -50,7 +50,7 @@
 					echo '.</p>';
 				?>
 
-				<p>NOTE: This visualization doesn't include colors used in images, only CSS and HTML color codes. When this was first released there was a significant bug causing a number of false positives. This has now been resolved. I apologize for any inconvenience. For a full list of caveats and bugs <a href="caveats.php">click here.</a></p>
+				<p>NOTE: This visualization doesn't include colors used in images, only CSS and HTML color codes. For a full list of caveats <a href="caveats.php">click here.</a></p>
 			</div>
 		</section>
 
@@ -134,7 +134,7 @@
 				<h2>Colors by Format</h2>
 
 				<p id="colorFormatParagraph">
-					Browsers recognize colors in seven different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RBGA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
+					Browsers recognize colors in seven different formats; hexadecimal, <abbr>RGB</abbr>, <abbr>RGBA</abbr>, <abbr>HSL</abbr>, <abbr>HSLA</abbr>, and predefined color names. 
 				</p>
 
 				<figure class="large right">
@@ -721,24 +721,7 @@ echo $geshi->parse_code();
 			</div>
 		</section>
 
-		<section>
-			<div class="subsection">
-				<h1>Caveats</h1>
-				<p>Although I've tried to make this site as accurate as possible there are some known issues which have not yet been resolved.</p>
-
-				<ol>
-					<li>Colors in images are not included.</li>
-
-					<li>Some colors in stylesheets aren't actually used on the sites.</li>
-					
-					<li>Colors added by external javascript are not included.</li>
-				</ol>
-
-				<p>When this was first released there was a significant bug causing a number of false positives. This has now been resolved. I apologize for any inconvenience.</p>				
-
-				<p>Notice any other issues? <a href="contact.php">Contact me</a> or put in a <a href="https://github.com/Paul-Hebert/web_colors">pull request</a> and I'll fix it or add it as a caveat. Thanks for reading!</p>
-			</div>
-		</section>
+		<?php include('assets/php/caveats.php'); ?>
 	</main>
 
 <?php
