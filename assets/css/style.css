@@ -196,6 +196,13 @@ ol {
       .bar .barColumn .color span {
         top: 21pt;
         left: 0px; }
+    .bar .barColumn .barCount {
+      font-size: 10pt;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 3pt;
+      position: relative;
+      top: -3pt; }
   .bar .tickMark {
     position: absolute;
     top: 0;

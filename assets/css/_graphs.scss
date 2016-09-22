@@ -43,6 +43,15 @@
 				left:0px;
 			}
 		}
+
+		.barCount{
+			font-size:$size-4;
+			display:inline-block;
+			vertical-align: middle;
+			margin-left: $size-1;
+			position:relative;
+			top:-$size-1;
+		}
 	}
 
 	.tickMark{
