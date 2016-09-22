@@ -260,13 +260,14 @@ function scaleCharts(){
 
     for(i = 0; i < barColumns.length; i ++){
         lengths.push(barColumns.eq(i).children().length);
+        barColumns.eq(i).append('<label class="barCount">' + barColumns.eq(i).children().length + '</label>');
     }
 
     var maxLength = Math.max.apply(Math, lengths);
 
     var chartWidth = $('.bar.chart').eq(0).width();
 
-    var dataWidth = chartWidth/maxLength;
+    var dataWidth = (chartWidth - 100)/maxLength;
 
     $('.barColumn .color').css('width',dataWidth + 'px');
 
