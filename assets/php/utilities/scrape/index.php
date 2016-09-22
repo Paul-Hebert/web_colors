@@ -1,4 +1,11 @@
 <?php
+	set_time_limit(0);
+
+	ini_set('display_errors',1); 
+ 	error_reporting(E_ALL);
+
+ 	ini_set('memory_limit', '-1');
+
 	//Begin Regex
 	$GLOBALS['colorRegex'] = '/';
 
@@ -45,18 +52,32 @@
 
 	foreach($top_sites as $top_site){
 		if($count < 10){
-			$top_site = $top_site;
+			echo '<h1>' . $top_site . '</h1>';
 
-			$text = file_get_contents($top_site);
+			$text = '';
 
-			// This part's not working.
+			$dom = new DOMDocument();
+			$dom->loadHTMLFile($top_site);
+
+			foreach($dom->getElementsByTagName('*') as $element ){
+				if( $element->hasAttributes() ) {
+					foreach ($element->attributes as $attr) {
+					    $text .= ' ' . $attr->nodeValue . ' ';
+					}
+				}
+			}
+
+			foreach($dom->getElementsByTagName('style') as $element ){
+				$text .= ' ' . innerHTML($element) . ' ';
+			}
+
 			foreach(get_external_stylesheets($top_site) as $styles ){
 				if (strpos($styles, '//') === false) {
-					$text .= file_get_contents($top_site . '/' . $styles);
+					$text .= ' ' . file_get_contents($top_site . '/' . $styles) . ' ';
 				} elseif(strpos($styles, 'http') === false){
-					$text .= file_get_contents('http:' . $styles);
+					$text .= ' ' . file_get_contents('http:' . $styles) . ' ';
 				} else{
-					$text .= file_get_contents($styles);
+					$text .= ' ' . file_get_contents($styles) . ' ';
 				}
 			}
 
@@ -65,11 +86,11 @@
 
 			$text =  htmlspecialchars($text, ENT_COMPAT|ENT_SUBSTITUTE, 'UTF-8');
 			
-			//echo $text;
-
 			preg_match_all($GLOBALS['colorRegex'], $text, $matches);
 
 			$colors = array_map('array_unique', $matches);
+
+			echo $text;
 
 			if ( isset($_GET['url']) ){
 				echo '<div class="block chart"><aside class="left"><label>' . $top_site . '</label></aside>';
@@ -81,7 +102,7 @@
 				fwrite($csv, $top_site);
 
 				foreach($colors[0] as $color){
-					fwrite($csv, '|' . $color);
+					fwrite( $csv, '|' . preg_replace('(\s|:|;)', '', $color) );
 				}	
 
 				fwrite($csv,"\r\n");		
@@ -162,5 +183,17 @@
 		}
 
 		return $stylesheets;
+	}
+
+	function innerHTML(\DOMElement $element){
+	    $doc = $element->ownerDocument;
+
+	    $html = '';
+
+	    foreach ($element->childNodes as $node) {
+	        $html .= $doc->saveHTML($node);
+	    }
+
+	    return $html;
 	}
 ?>
