@@ -74,14 +74,18 @@
 
 				<figure class="large right">
 					<?php
+						$site_count = 0;
+
 						foreach($sites as $site){
-							echo '<div class="block chart">';
+							echo '<a class="block chart" href="site.php?siteID=' . $site_count . '">';
 								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
 
-								for($count = 1; $count < count($site); $count++){
-									echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								for($color_count = 1; $color_count < count($site); $color_count++){
+									echo '<span class="color listing"><span>' . $site[$color_count] . '</span></span>';
 								}
-							echo '</div>';
+							echo '</a>';
+
+							$site_count++;
 						}
 					?>
 				</figure>

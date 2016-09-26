@@ -164,16 +164,21 @@ ol {
 
 .block.chart {
   padding: 8pt;
-  font-size: 0px; }
+  font-size: 0px;
+  display: block; }
   .block.chart:after {
     content: "";
     display: table;
     clear: both; }
 
+a.block.chart:hover {
+  background: #fff; }
+
 .color {
   position: relative; }
   .color span {
-    display: none; }
+    display: none;
+    color: #444; }
   .color:hover span {
     display: block; }
 
@@ -197,12 +202,16 @@ ol {
         top: 21pt;
         left: 0px; }
     .bar .barColumn .barCount {
-      font-size: 10pt;
+      font-family: Roboto, "sans-serif";
+      font-size: 8pt;
       display: inline-block;
       vertical-align: middle;
       margin-left: 3pt;
       position: relative;
-      top: -3pt; }
+      top: -3pt;
+      background: #f0f0f0;
+      line-height: 100%;
+      color: #444; }
   .bar .tickMark {
     position: absolute;
     top: 0;

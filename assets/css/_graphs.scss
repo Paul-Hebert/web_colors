@@ -2,6 +2,11 @@
 	@include clearfix();
 	padding:$size-3;
 	font-size:0px;
+	display:block;
+}
+
+a.block.chart:hover{
+	background:#fff;
 }
 
 .color{
@@ -10,6 +15,7 @@
 	span{
 		display:none;
 		@extend .hoverColor;
+		color:$dark-grey;
 	}
 
 	&:hover span{
@@ -45,12 +51,16 @@
 		}
 
 		.barCount{
-			font-size:$size-4;
+			font-family:$main-font;
+			font-size:$size-3;
 			display:inline-block;
 			vertical-align: middle;
 			margin-left: $size-1;
 			position:relative;
 			top:-$size-1;
+			background:$off-white;
+			line-height:100%;
+			color:$dark-grey;
 		}
 	}
 

@@ -259,8 +259,13 @@ function scaleCharts(){
     var lengths = [];
 
     for(i = 0; i < barColumns.length; i ++){
-        lengths.push(barColumns.eq(i).children().length);
-        barColumns.eq(i).append('<label class="barCount">' + barColumns.eq(i).children().length + '</label>');
+        var barCount = barColumns.eq(i).children().length;
+
+        lengths.push(barCount);
+        
+        if (barCount != 0){
+            barColumns.eq(i).append('<label class="barCount">' + barCount + '</label>');
+        }
     }
 
     var maxLength = Math.max.apply(Math, lengths);
