@@ -184,7 +184,7 @@
 
 				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation.</p>
 
-				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once.</p>
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once. Colors had their hue, saturation and lightness rounded to the nearest integer.</p>
 			
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>

@@ -329,17 +329,19 @@ function printFanChart(){
         var used = 1;
 
 
+        // TO DO: Only calculate this hsl value once.
+
         for(z = 0; z < usedColors.length; z++){
-            if ('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light === usedColors[z]){
+            if ('c_' + Math.round(sortedColors[i].hue) + '-' + Math.round(sortedColors[i].sat) + '-' + Math.round(sortedColors[i].light) === usedColors[z]){
                 used ++;
             }
         }
 
         if (used != 1){
-            $( '.chart.fan #' + 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light ).remove();
+            $( '.chart.fan #' + 'c_' + Math.round(sortedColors[i].hue) + '-' + Math.round(sortedColors[i].sat) + '-' + Math.round(sortedColors[i].light) ).remove();
         }   
 
-        usedColors.push('c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light);
+        usedColors.push( 'c_' + Math.round(sortedColors[i].hue) + '-' + Math.round(sortedColors[i].sat) + '-' + Math.round(sortedColors[i].light) );
 
         // Calculate rotation of hue.
         var rot = sortedColors[i].hue * 360/255;
@@ -354,13 +356,13 @@ function printFanChart(){
 
         circle.attr({
             fill: 'hsl(' + colors[i].hue/255 + ',' + colors[i].sat + '%,' + colors[i].light + '%)',
-            id: 'c_' + sortedColors[i].hue + sortedColors[i].sat + sortedColors[i].light,
+            id: 'c_' + Math.round(sortedColors[i].hue) + '-' + Math.round(sortedColors[i].sat) + '-' + Math.round(sortedColors[i].light),
             class: 'color'
         });
     }
 
     $('.hue.fan.chart .color').mouseover(function(e){
-        $('body').append('<span class="hoverColor">' + $(this).attr('fill') + '</span>' );
+        $('body').append('<span class="hoverColor">hsl(' + $(this).attr('id').replace('c_','').replace(/-/g,',') + ')' + '</span>' );
         $('.hoverColor').css({
             'left' : $(this).offset().left + 20,
             'top'  : $(this).offset().top + 20
