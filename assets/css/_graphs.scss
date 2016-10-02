@@ -95,6 +95,11 @@ svg{
 	z-index:5;	
 	font-size:$size-5;
 	white-space:nowrap;
+
+	.fanCount{
+		display:block;
+		font-size:$size-3;
+	}
 }
 
 .color.listing{

@@ -366,7 +366,7 @@ function printFanChart(){
             pluralSuffix = 's';
         }
 
-        $('body').append('<span class="hoverColor">' + colorData[0].replace(/-/g,' ') + '' + ' | Found ' + colorData[1] + ' time' + pluralSuffix + '</span>' );
+        $('body').append('<span class="hoverColor">' + colorData[0].replace(/-/g,' ') + '' + ' <span class="fanCount">Found ' + colorData[1] + ' time' + pluralSuffix + '</span></span>' );
         $('.hoverColor').css({
             'left' : $(this).offset().left + 20,
             'top'  : $(this).offset().top + 20
