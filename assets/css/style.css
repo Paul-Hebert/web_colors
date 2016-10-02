@@ -168,11 +168,17 @@ ol {
 .block.chart {
   padding: 8pt;
   font-size: 0px;
-  display: block; }
+  display: block;
+  cursor: pointer; }
   .block.chart:after {
     content: "";
     display: table;
     clear: both; }
+  .block.chart div {
+    display: inline-block;
+    max-width: calc( 250px + 440pt - 15px); }
+  .block.chart label {
+    cursor: pointer; }
 
 a.block.chart:hover {
   background: #fff; }
@@ -513,7 +519,15 @@ figcaption {
       clear: right;
       margin-right: -250px; }
 
-  .chart aside.left {
+  .block.chart label {
+    text-align: right;
+    width: calc( 250px - 10px - 10pt);
+    display: inline-block;
+    font-size: 10pt;
+    vertical-align: top;
+    padding-right: 10pt; }
+
+  .chart aside {
     text-align: right;
     margin-left: calc( (200px + 10px) * -1 ); }
 
@@ -522,7 +536,7 @@ figcaption {
     figure.large.left, figure.large.extra {
       margin-left: -250px; }
     figure.large.extra {
-      width: 250px * 2 + 440pt; }
+      width: calc( (250px * 2) + 440pt ); }
 
   pre li {
     background: #ddd;

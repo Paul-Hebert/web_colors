@@ -156,7 +156,16 @@
 		}
 	}
 
-	.chart aside.left{
+	.block.chart label{
+		text-align:right;
+		width:calc( #{$aside-offset} - 10px - #{$size-4});
+		display:inline-block;
+		font-size:$size-4;
+		vertical-align:top;
+		padding-right:$size-4;
+	}
+
+	.chart aside{
 		text-align:right;
 		margin-left:calc( (#{$aside-width} + 10px) * -1 );
 	}
@@ -169,7 +178,7 @@
 		}	
 
 		&.extra{
-			width:( (#{$aside-offset} * 2) + #{$main-width} );
+			width:calc( (#{$aside-offset} * 2) + #{$main-width} );
 		}
 	}
 

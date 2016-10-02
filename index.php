@@ -72,17 +72,19 @@
 
 				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes.</p>
 
-				<figure class="large right">
+				<figure class="extra large">
 					<?php
 						$site_count = 0;
 
 						foreach($sites as $site){
 							echo '<a class="block chart" href="site.php?siteID=' . $site_count . '">';
-								echo '<aside class="left"><label>' . $site[0] . '</label></aside>';
+								echo '<label>' . $site[0] . '</label>';
 
+								echo '<div>';
 								for($color_count = 1; $color_count < count($site); $color_count++){
 									echo '<span class="color listing"><span>' . $site[$color_count] . '</span></span>';
 								}
+								echo '</div>';
 							echo '</a>';
 
 							$site_count++;

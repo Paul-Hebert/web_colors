@@ -3,6 +3,16 @@
 	padding:$size-3;
 	font-size:0px;
 	display:block;
+	cursor:pointer;
+
+	div{
+		display:inline-block;
+		max-width:calc( #{$aside-offset} + #{$main-width} - 15px);
+	}
+
+	label{
+		cursor:pointer;
+	}
 }
 
 a.block.chart:hover{
