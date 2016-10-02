@@ -43,6 +43,9 @@ table {
 /*/////////////////////////////////////////////////////////////////////////////
     Fonts
 //////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////
+    Layout
+//////////////////////////////////////////////////////////////////////////////*/
 form {
   position: relative; }
 
@@ -512,14 +515,14 @@ figcaption {
 
   .chart aside.left {
     text-align: right;
-    margin-left: -210px; }
+    margin-left: calc( (200px + 10px) * -1 ); }
 
   figure.large {
-    width: 836px; }
+    width: calc(250px + 440pt); }
     figure.large.left, figure.large.extra {
       margin-left: -250px; }
     figure.large.extra {
-      width: 1086px; }
+      width: 250px * 2 + 440pt; }
 
   pre li {
     background: #ddd;

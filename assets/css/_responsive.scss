@@ -92,7 +92,7 @@
 
 @media (min-width:901px){
 	main{
-		margin-left:250px;
+		margin-left:$aside-offset;
 		margin-top:$size-8;
 	}
 
@@ -133,7 +133,7 @@
 	}
 
 	aside{
-		width:200px;
+		width:$aside-width;
 
 		*{
 			font-size:$size-4;
@@ -142,7 +142,7 @@
 		&.left{
 			float:left;
 			clear:left;
-			margin-left:-250px;
+			margin-left:-$aside-offset;
 
 			figure{
 				float:right;
@@ -152,24 +152,24 @@
 		&.right{
 			float:right;
 			clear:right;
-			margin-right:-250px;
+			margin-right:-$aside-offset;
 		}
 	}
 
 	.chart aside.left{
 		text-align:right;
-		margin-left:-210px;
+		margin-left:calc( (#{$aside-width} + 10px) * -1 );
 	}
 
 	figure.large{
-		width:836px;
+		width:calc(#{$aside-offset} + #{$main-width});
 
 		&.left, &.extra{
-			margin-left:-250px;			
+			margin-left:-$aside-offset;			
 		}	
 
 		&.extra{
-			width:1086px;
+			width:( (#{$aside-offset} * 2) + #{$main-width} );
 		}
 	}
 
@@ -204,12 +204,12 @@
 	}
 
 	figure.large.right, figure.extra.large{
-		width:440pt;
+		width:$main-width;
 	}
 
 	aside.right{
 		float:left;
-		margin-left:-250px;
+		margin-left:-$aside-offset;
 		margin-right:auto;
 	}
 }
