@@ -54,7 +54,6 @@
 			</div>
 		</section>
 
-		<!--
 		<section>
 			<div class="subsection">
 				<h2>Try it For Yourself</h2>
@@ -64,7 +63,6 @@
 				<?php include('assets/php/utilities/scrape/form.php'); ?>
 			</div>
 		</section>
-		-->
 
 		<section>
 			<div class="subsection">
@@ -670,8 +668,6 @@ echo $geshi->parse_code();
 				<p>The <abbr>HSL</abbr> color model is very close to how people interpret colors, so it is the most useful model for organization and analysis. Now that all of our colors are in <abbr>HSL</abbr> we can organize by hue, saturation and lightness.</p>
 			</div>
 		</section>
-
-		<?php include('assets/php/caveats.php'); ?>
 
 		<section>
 			<div class="subsection">
