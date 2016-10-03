@@ -101,36 +101,7 @@
 				<p>For the purposes of this chart, transparency was removed from all colors.</p>
 
 				<figure class="large right">
-					<div class="shade bar chart">
-						<div class="grid"></div>
-
-						<aside class="left"><label>Black</label></aside>
-						<div class="barColumn" id="blackColors"></div>
-
-						<aside class="left"><label>White</label></aside>
-						<div class="barColumn" id="whiteColors"></div>
-
-						<aside class="left"><label>Grey</label></aside>
-						<div class="barColumn" id="greyColors"></div>
-
-						<aside class="left"><label>Red</label></aside>
-						<div class="barColumn" id="redColors"></div>
-
-						<aside class="left"><label>Yellow</label></aside>
-						<div class="barColumn" id="yellowColors"></div>
-
-						<aside class="left"><label>Green</label></aside>
-						<div class="barColumn" id="greenColors"></div>
-
-						<aside class="left"><label>Turquoise</label></aside>
-						<div class="barColumn" id="turquoiseColors"></div>
-
-						<aside class="left"><label>Blue</label></aside>
-						<div class="barColumn" id="blueColors"></div>
-
-						<aside class="left"><label>Purple</label></aside>
-						<div class="barColumn" id="purpleColors"></div>
-					</div>
+					<?php include('assets/php/charts/hueBarChart.php'); ?>
 				</figure>
 			</div>
 		</section>
@@ -144,30 +115,7 @@
 				</p>
 
 				<figure class="large right">
-					<div class="format bar chart">
-						<div class="grid"></div>
-
-						<aside class="left"><label>Hexadecimal</label></aside>
-						<div class="barColumn" id="hexadecimalColors"></div>
-
-						<aside class="left"><label>Three Digit Hexadecimal</label></aside>
-						<div class="barColumn" id="threeDigitHexadecimalColors"></div>
-
-						<aside class="left"><label><abbr>RGB</abbr></label></aside>
-						<div class="barColumn" id="rgbColors"></div>
-
-						<aside class="left"><label><abbr>RGBA</abbr></label></aside>
-						<div class="barColumn" id="rgbaColors"></div>
-
-						<aside class="left"><label><abbr>HSL</abbr></label></aside>
-						<div class="barColumn" id="hslColors"></div>
-
-						<aside class="left"><label><abbr>HSLA</abbr></label></aside>
-						<div class="barColumn" id="hslaColors"></div>
-
-						<aside class="left"><label>Named Colors</label></aside>
-						<div class="barColumn" id="namedColors"></div>
-					</div>
+					<?php include('assets/php/charts/formatBarChart.php'); ?>
 				</figure>
 			</div>
 		</section>
@@ -177,11 +125,7 @@
 				<h2>Colors by Hue and Then Saturation</h2>
 
 				<figure>
-					<svg class="hue fan chart"></svg>
-
-					<input type="range" min="0" max="255" value="255" data-target=".hue.fan.chart .background" class="backgroundChanger" autocomplete="off">
-
-					<figcaption>Use this slider to change the background color and expose hidden colors.</figcaption>
+					<?php include('assets/php/charts/fanChart.php'); ?>
 				</figure>	
 
 				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation. All HSL values were rounded to integers.</p>
