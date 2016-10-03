@@ -227,6 +227,14 @@
 		margin-left:-$aside-offset;
 		margin-right:auto;
 	}
+
+    figure.listings.large{
+    	margin-left:0;
+
+    	label{
+    		text-align:left;
+    	}
+    }
 }
 
 @media (min-width:1300px){

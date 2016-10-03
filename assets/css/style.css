@@ -580,7 +580,12 @@ figcaption {
   aside.right {
     float: left;
     margin-left: -250px;
-    margin-right: auto; } }
+    margin-right: auto; }
+
+  figure.listings.large {
+    margin-left: 0; }
+    figure.listings.large label {
+      text-align: left; } }
 @media (min-width: 1300px) {
   main {
     margin-top: 0px; }

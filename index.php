@@ -72,7 +72,7 @@
 
 				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes.</p>
 
-				<figure class="extra large">
+				<figure class="extra large listings">
 					<?php
 						$site_count = 0;
 
