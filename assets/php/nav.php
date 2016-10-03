@@ -6,4 +6,5 @@
 				<!--<a href="scraper.php">Scraper</a>-->
 				<!--<a href="converter.php">Converter</a>-->
 				<a href="contact.php">Contact</a>
+				<a href="mailing-list.php">Mailing List</a>				
 			</nav>

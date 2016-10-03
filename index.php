@@ -672,6 +672,18 @@ echo $geshi->parse_code();
 		</section>
 
 		<?php include('assets/php/caveats.php'); ?>
+
+		<section>
+			<div class="subsection">
+				<h1>Join My Mailing List</h1>
+
+				<p>I'll only email you things I think you might find interesting.</p>
+			</div>
+
+			<div class="subsection">
+				<?php include('assets/php/mailchimpForm.php'); ?>
+			</div>
+		</section>
 	</main>
 
 <?php

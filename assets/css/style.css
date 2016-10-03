@@ -336,6 +336,9 @@ pre {
     padding: 0;
     margin: 0; }
 
+#mc_embed_signup h2, #mc_embed_signup .indicates-required {
+  display: none; }
+
 body {
   background: #f0f0f0;
   padding: 26pt; }

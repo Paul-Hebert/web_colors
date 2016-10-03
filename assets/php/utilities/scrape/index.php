@@ -99,15 +99,15 @@
 					}	
 				echo '</div>';
 
-				echo '<section><aside><figure>';
+				echo '<section><figure>';
 					include('../../charts/hueBarChart.php');
-				echo '</figure></aside>';
+				echo '</figure></section>';
 
-				echo '<aside><figure>';								
+				echo '<section><figure>';				
 					include('../../charts/formatBarChart.php');
-				echo '</figure></aside>';
+				echo '</figure></section>';
 
-				echo '<figure>';					
+				echo '<section><figure>';					
 					include('../../charts/fanChart.php');
 				echo '</figure></section>';
 			} else{
