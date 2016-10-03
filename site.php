@@ -1,6 +1,20 @@
 <?php
-	$title = 'The Colors of the Web';
+	$siteID = $_GET['siteID'];
+
+	$path = 'assets/data/';
+	$files = scandir($path);
+	$array_length = count($files);
+	$files = array_diff($files, array('.', '..'));
+
+	$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
+
+	$siteName = explode('//', $sites[$siteID][0]);
+	$siteName = explode('www.', $siteName[1])[1];
+
+	$title = 'The Colors of ' . $siteName;
 	$id = 'home';
+
+	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
 
 	include('assets/php/header.php');
 ?>
@@ -9,15 +23,7 @@
 		<section>
 			<div class="subsection" id="aggregate">
 				<?php
-					$siteID = $_GET['siteID'];
-
-					$path = 'assets/data/';
-					$files = scandir($path);
-					$array_length = count($files);
-					$files = array_diff($files, array('.', '..'));
-
-					$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
-					echo '<h1 id="title">' . $sites[$siteID][0] . '</h1>';
+					echo '<h1 id="title">' . $siteName . '</h1>';
 
 					echo '<figure class="large right" style="font-size:0px;">';
 						

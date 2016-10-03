@@ -2,6 +2,8 @@
 	$title = 'Contact';
 	$id = 'contact';
 
+	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
+
 	include('assets/php/header.php');
 ?>
 

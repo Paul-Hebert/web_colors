@@ -14,7 +14,12 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Slab' rel='stylesheet' type='text/css'>		
 		<link rel="stylesheet" type='text/css' href='assets/css/style.css'>
 
-		<?php include('assets/php/favicons.php'); ?>
+		<?php 
+			include('assets/php/favicons.php');
+			echo '<meta name="description" content="' . $metaDescription . '">';
+		 ?>
+
+		
 	</head>
 
 	<?php echo "<body id='" . $id . "'>"; ?>

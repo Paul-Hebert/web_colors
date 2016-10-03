@@ -2,6 +2,8 @@
 	$title = 'The Colors of the Web';
 	$id = 'home';
 
+	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
+
 	include('assets/php/header.php');
 ?>
 
@@ -76,7 +78,11 @@
 
 						foreach($sites as $site){
 							echo '<a class="block chart" href="site.php?siteID=' . $site_count . '">';
-								echo '<label>' . $site[0] . '</label>';
+
+								$siteName = explode('//', $sites[$site_count][0]);
+								$siteName = explode('www.', $siteName[1])[1];
+
+								echo '<label>' . $siteName . '</label>';
 
 								echo '<div>';
 								for($color_count = 1; $color_count < count($site); $color_count++){

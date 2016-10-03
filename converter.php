@@ -2,11 +2,14 @@
 	$title = 'Converter';
 	$id = 'converter';
 
+	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
+
 	include('assets/php/header.php');
 ?>
 
 	<main>
-		<h1>Converter</h1>
+		<section>
+			<h1>Converter</h1>
 
 			<figure class="colorPicker" data-format='rgba(,)' data-delimiter=",">
 				<code class="colorBlock"></code>
@@ -25,6 +28,7 @@
 					<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
 				</form>
 			</figure>
+
 			<figure class="colorPicker" data-format='#,' data-delimiter="">
 				<code class="colorBlock"></code>
 
@@ -39,6 +43,35 @@
 					?>
 				</form>
 			</figure>
+
+			<figure class="colorPicker" data-format='hsla(,)' data-delimiter=",">
+				<code class="colorBlock"></code>
+
+				<form autocomplete="off">
+					<label for="hue">Hue:</label>
+					<input type="range" min="0" max="360" data-scale="" data-unit="" name="hue" value="186">
+
+					<label for="saturation">Saturation:</label>
+					<input type="range" min="0" max="100" data-scale="" data-unit="%" name="saturation" value="218">
+
+					<label for="lightness">Lightness:</label>
+					<input type="range" min="0" max="100" data-scale="" data-unit="%" name="lightness" value="85">
+
+					<label for="alpha">Alpha:</label>
+					<input type="range" min="0" max="100" data-scale="100" data-unit="" name="alpha" value="100">
+				</form>
+			</figure>
+			
+			<figure class="colorPicker" data-format=',' data-delimiter="">
+				<code class="colorBlock"></code>
+
+				<form autocomplete="off">
+					<select name='color' data-scale="" data-unit="" class="colorNames">
+						<?php include('assets/php/color_names.php'); ?>
+					</select>
+				</form>
+			</figure>
+		</section>
 	</main>
 
 <?php
