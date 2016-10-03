@@ -4,6 +4,7 @@
 	font-size:0px;
 	display:block;
 	cursor:pointer;
+	@include transition_mixin(background $base-duration $base-easing);
 
 	div{
 		display:inline-block;
@@ -16,7 +17,7 @@
 }
 
 a.block.chart:hover{
-	background:#fff;
+	background:$off-white-faded;
 }
 
 .color{
@@ -105,6 +106,7 @@ svg{
 	z-index:5;	
 	font-size:$size-5;
 	white-space:nowrap;
+	@include shadow( 0px 0px 5px 0px $light-grey);
 
 	.fanCount{
 		display:block;

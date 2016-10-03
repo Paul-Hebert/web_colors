@@ -1,8 +1,8 @@
 <?php
 	set_time_limit(0);
 
-	//ini_set('display_errors',1); 
- 	//error_reporting(E_ALL);
+	// ini_set('display_errors',1); 
+ 	// error_reporting(E_ALL);
 
  	ini_set('memory_limit', '-1');
 
@@ -98,6 +98,18 @@
 						echo '<span style="background:' . $color . '" class="color listing"><span>' . $color . '</span></span>';
 					}	
 				echo '</div>';
+
+				echo '<section><aside><figure>';
+					include('../../charts/hueBarChart.php');
+				echo '</figure></aside>';
+
+				echo '<aside><figure>';								
+					include('../../charts/formatBarChart.php');
+				echo '</figure></aside>';
+
+				echo '<figure>';					
+					include('../../charts/fanChart.php');
+				echo '</figure></section>';
 			} else{
 				fwrite($csv, $top_site);
 

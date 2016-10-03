@@ -16,7 +16,7 @@ $(function() {
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     if( bodyId === 'home' ){ 
-        printCharts();
+        printCharts('#aggregate');
     }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -59,8 +59,8 @@ $(function() {
     }
 });
 
-function printCharts(){
-    convertColors();
+function printCharts(parent){
+    convertColors(parent);
 
     printColorFormats();
 
@@ -102,6 +102,8 @@ function ajaxScrape(){
 
             $('#scraperButton').html('<div class="loading"></div>');
 
+            $('#scraperResults').html('');
+
             $.ajax({
                 type: "POST",
                 url: 'assets/php/utilities/scrape/index.php?url=' + scraperUrl,
@@ -111,6 +113,8 @@ function ajaxScrape(){
                     busy = false;
 
                     $('#scraperButton').html('Scrape');
+
+                    printCharts('body');
                 }
             });
         } else{
@@ -150,10 +154,10 @@ function initializeColorPickers(){
     }).change();
 }
 
-function convertColors(){
+function convertColors(parent){
     colors = [];
 
-    $('#aggregate .color.listing').each(function(){
+    $(parent + ' .color.listing').each(function(){
         // Get original text
         var color = {original: $(this).text()};
 
