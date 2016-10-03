@@ -1,8 +1,8 @@
 <?php
 	set_time_limit(0);
 
-	ini_set('display_errors',1); 
- 	error_reporting(E_ALL);
+	//ini_set('display_errors',1); 
+ 	//error_reporting(E_ALL);
 
  	ini_set('memory_limit', '-1');
 
@@ -52,7 +52,7 @@
 
 	foreach($top_sites as $top_site){
 		if($count < 10){
-			echo '<h1>' . $top_site . '</h1>';
+			/*echo '<h1>' . $top_site . '</h1>';*/
 
 			$text = '';
 
@@ -90,7 +90,7 @@
 
 			$colors = array_map('array_unique', $matches);
 
-			echo $text;
+			/* echo $text; */
 
 			if ( isset($_GET['url']) ){
 				echo '<div class="block chart"><aside class="left"><label>' . $top_site . '</label></aside>';
