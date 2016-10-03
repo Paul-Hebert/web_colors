@@ -93,7 +93,7 @@
 @media (min-width:901px){
 	main{
 		margin-left:$aside-offset;
-		margin-top:$size-8;
+		margin-top:$size-10;
 	}
 
 	.hide-on-medium-large{
@@ -101,8 +101,14 @@
 	}
 
 	nav{
-		width:100%;
 		text-align:right;
+		position: fixed;
+		right: 0;
+		left: 0;
+		top: 0;	
+		background: #DDDDDD;
+		padding: $size-7;
+		z-index:100;
 
 		a{
 			padding:$size-6;
@@ -229,11 +235,9 @@
 	}
 
 	header nav{
-		position:fixed;
-		top:0px;
-		right:0px;
-		bottom:0px;
-		width:auto;
+		right:0;
+		bottom:0;
+		left:auto;
 		background:$light-grey;
 		padding:$size-6;
 

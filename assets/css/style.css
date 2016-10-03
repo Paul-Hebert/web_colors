@@ -482,14 +482,20 @@ figcaption {
 @media (min-width: 901px) {
   main {
     margin-left: 250px;
-    margin-top: 26pt; }
+    margin-top: 42pt; }
 
   .hide-on-medium-large {
     display: none; }
 
   nav {
-    width: 100%;
-    text-align: right; }
+    text-align: right;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    background: #DDDDDD;
+    padding: 21pt;
+    z-index: 100; }
     nav a {
       padding: 16pt;
       color: #444;
@@ -580,11 +586,9 @@ figcaption {
     margin-top: 0px; }
 
   header nav {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
     background: #ddd;
     padding: 16pt; }
     header nav a {
