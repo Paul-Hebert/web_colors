@@ -95,7 +95,7 @@
 			if ( isset($_GET['url']) ){
 				echo '<div class="block chart"><aside class="left"><label>' . $top_site . '</label></aside>';
 					foreach($colors[0] as $color){
-						echo '<span style="background:' . $color . '" class="color listing"><span>' . $color . '</span></span>';
+						echo '<span style="background:' . preg_replace('(\s|:|;)', '', $color)  . '" class="color listing"><span>' . preg_replace('(\s|:|;)', '', $color)  . '</span></span>';
 					}	
 				echo '</div>';
 

@@ -16,10 +16,17 @@
 
 		<?php 
 			include('assets/php/favicons.php');
-			echo '<meta name="description" content="' . $metaDescription . '">';
-		 ?>
-
-		
+			echo '
+				<meta property="og:title" content="' . $title . '">
+				<meta property="og:site_name" content="' . $title . '">
+				<meta name="description" content="' . $metaDescription . '">
+				<meta property="og:description" content="' . $metaDescription . '">
+				<meta property="og:image" content="' . $metaImage . '">
+				<meta name="twitter:image:alt" content="' . $metaImageAlt . '">				
+				<meta property="og:url" content="http://paulhebertdesigns.com/web_colors/">
+				<meta name="twitter:card" content="summary_large_image">
+			';
+		?>
 	</head>
 
 	<?php echo "<body id='" . $id . "'>"; ?>

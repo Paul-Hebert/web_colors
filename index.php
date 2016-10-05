@@ -3,6 +3,8 @@
 	$id = 'home';
 
 	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
+	$metaImage = 'http://www.paulhebertdesigns.com/web_colors/assets/imgs/ogImage.png';
+	$metaImageAlt = 'A visualization of the colors of the web.';
 
 	include('assets/php/header.php');
 ?>
