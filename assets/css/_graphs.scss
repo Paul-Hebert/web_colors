@@ -4,7 +4,7 @@
 	font-size:0px;
 	display:block;
 	cursor:pointer;
-	@include transition_mixin(background $base-duration $base-easing);
+	@include transition_mixin(all $base-duration $base-easing);
 
 	div{
 		display:inline-block;
@@ -17,7 +17,8 @@
 }
 
 a.block.chart:hover{
-	background:$off-white-faded;
+	background:$white;
+	@include shadow( 0px 0px 5px 0px $light-grey);
 }
 
 .color{
