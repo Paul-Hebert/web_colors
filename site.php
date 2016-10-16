@@ -1,5 +1,5 @@
 <?php
-	$siteID = $_GET['siteID'];
+	include('assets/php/functions.php');
 
 	$path = 'assets/data/';
 	$files = scandir($path);
@@ -8,13 +8,22 @@
 
 	$sites = array_map(function($v){return str_getcsv($v, "|");}, file($path . $files[$array_length-1]));
 
-	$siteName = explode('//', $sites[$siteID][0]);
-	$siteName = explode('www.', $siteName[1])[1];
+	$siteName = $_GET['s'];
+
+	$siteCount = 0;
+
+	foreach ($sites as $site) {
+		if( $_GET['s'] == cleanURL($site[0]) ){
+			$siteID = $siteCount;
+		}
+
+		$siteCount ++;
+	}
 
 	$title = 'The Colors of ' . $siteName;
 	$id = 'home';
 
-	$metaDescription = 'A website providing data on the colors used by popular websites online as well as color pickers, and color theory.';
+	$metaDescription = $title . ' | Curious what colors are used in ' . $siteName . '\'s code? View all the colors they used, organized by hue and format.';
 	$metaImage = 'assets/imgs/ogImage.png';
 	$metaImageAlt = 'A visualization of the colors of the web.';
 	include('assets/php/header.php');

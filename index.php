@@ -1,4 +1,6 @@
 <?php
+	include('assets/php/functions.php');
+
 	$title = 'The Colors of the Web';
 	$id = 'home';
 
@@ -79,10 +81,9 @@
 						$site_count = 0;
 
 						foreach($sites as $site){
-							echo '<a class="block chart" href="site.php?siteID=' . $site_count . '">';
-
-								$siteName = explode('//', $sites[$site_count][0]);
-								$siteName = explode('www.', $siteName[1])[1];
+							$siteName = cleanURL($sites[$site_count][0]);
+							
+							echo '<a class="block chart" href="site.php?s=' . $siteName . '">';
 
 								echo '<label>' . $siteName . '</label>';
 

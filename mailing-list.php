@@ -1,4 +1,6 @@
 <?php
+	include('assets/php/functions.php');
+
 	$title = 'Mailing List';
 	$id = 'mailingList';
 
