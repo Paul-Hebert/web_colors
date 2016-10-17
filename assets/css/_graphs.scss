@@ -81,7 +81,11 @@ a.block.chart:hover{
 		top:0;
 		bottom:0;
 		width:1px;
-		background:$grey;
+		background:$light-grey;
+
+		&.labeled{
+			background:$grey;
+		}
 	}
 
 	.scaleLabel{
@@ -121,24 +125,6 @@ svg{
 	height:$size-4;
 	line-height:0px;
 	position:relative;
-}
-
-.colorPicker{
-	.colorBlock{
-		border-width:$size-5;
-		text-align:center;
-		padding:$size-1 0px;
-		border-style:solid;
-		margin-bottom:$size-2;
-		background:$white;
-		display:block;
-		font-size: $size-3;
-	}
-
-	.colorNames{
-		width:100%;
-		padding:10px;
-	}
 }
 
 #conversionTable{

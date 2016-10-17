@@ -233,7 +233,9 @@ a.block.chart:hover {
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #ccc; }
+    background: #ddd; }
+    .bar .tickMark.labeled {
+      background: #ccc; }
   .bar .scaleLabel {
     position: absolute;
     width: 100px;
@@ -267,19 +269,6 @@ svg {
   height: 10pt;
   line-height: 0px;
   position: relative; }
-
-.colorPicker .colorBlock {
-  border-width: 13pt;
-  text-align: center;
-  padding: 3pt 0px;
-  border-style: solid;
-  margin-bottom: 6pt;
-  background: #fff;
-  display: block;
-  font-size: 8pt; }
-.colorPicker .colorNames {
-  width: 100%;
-  padding: 10px; }
 
 #conversionTable td {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; }
@@ -341,6 +330,19 @@ pre {
 
 #mc_embed_signup h2, #mc_embed_signup .indicates-required {
   display: none; }
+
+.colorPicker .colorBlock {
+  border-width: 13pt;
+  text-align: center;
+  padding: 3pt 0px;
+  border-style: solid;
+  margin-bottom: 6pt;
+  background: #fff;
+  display: block;
+  font-size: 8pt; }
+.colorPicker .colorNames {
+  width: 100%;
+  padding: 10px; }
 
 body {
   background: #f0f0f0;
@@ -477,6 +479,8 @@ figcaption {
 
   .block.chart {
     padding: 8pt 0; }
+    .block.chart label {
+      display: block; }
 
   pre {
     overflow-x: scroll;

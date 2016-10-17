@@ -1,0 +1,17 @@
+.colorPicker{
+	.colorBlock{
+		border-width:$size-5;
+		text-align:center;
+		padding:$size-1 0px;
+		border-style:solid;
+		margin-bottom:$size-2;
+		background:$white;
+		display:block;
+		font-size: $size-3;
+	}
+
+	.colorNames{
+		width:100%;
+		padding:10px;
+	}
+}

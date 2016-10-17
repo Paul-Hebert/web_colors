@@ -395,7 +395,7 @@ echo $geshi->parse_code();
 					<figcaption>Here's how to convert a hexadecimal color to <abbr>RGB</abbr>.</figcaption>
 
 <?php
-$source = " hexToRgb( '#BADA55' );
+$source = "hexToRgb( '#BADA55' );
 
 function hexToRgb(color){
     var red   = base16ToBase10( color.substring( 1, 3 ) );
@@ -419,7 +419,7 @@ echo $geshi->parse_code();
 					<figcaption>Here's how to convert an <abbr>RGB</abbr> color to hexadecimal.</figcaption>
 				
 <?php
-$source = " rgbToHex( 'rgb(100,222,0)' );
+$source = "rgbToHex( 'rgb(100,222,0)' );
 
 function rgbToHex(color){
     var temp_color = color.replace('rgb(', '');

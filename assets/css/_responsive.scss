@@ -81,6 +81,10 @@
 
     .block.chart{
     	padding:$size-3 0;
+
+    	label{
+    		display:block;
+    	}
     }
 
     pre{

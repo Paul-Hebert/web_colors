@@ -11,10 +11,12 @@
 	$siteName = $_GET['s'];
 
 	$siteCount = 0;
+	$notFound = true;
 
 	foreach ($sites as $site) {
 		if( $_GET['s'] == cleanURL($site[0]) ){
 			$siteID = $siteCount;
+			$notFound = false;
 		}
 
 		$siteCount ++;
@@ -30,6 +32,19 @@
 ?>
 
 	<main>
+		<?php
+			if($notFound == true){
+				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+
+				echo '<h1 id="title">
+					404 - Page Not Found
+				</h1>
+
+				<p>Sorry, this site isn\'t in our system.</p>';
+
+				include('notFound.php');
+			} else{
+		?>
 		<section>
 			<div class="subsection" id="aggregate">
 				<?php
@@ -96,7 +111,11 @@
 			
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>
-		</section>		
+		</section>	
+
+		<?php
+		}
+		?>	
 	</main>
 
 <?php

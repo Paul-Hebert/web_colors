@@ -280,13 +280,21 @@ function scaleCharts(){
 
     var chartWidth = $('.bar.chart').eq(0).width();
 
-    var dataWidth = (chartWidth - 100)/maxLength;
+    var tickMarkDistance = 50;
+
+    var scaleLabelFrequency = 2;
+
+    var dataWidth = (chartWidth - tickMarkDistance)/maxLength;
 
     $('.barColumn .color').css('width',dataWidth + 'px');
 
-    for(i = 0; i < maxLength; i += 100){
-        $('.bar.chart .grid').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
-        $('.bar.chart .grid').append('<div class="scaleLabel" style="left:' + i * dataWidth + 'px">' + i + '</div>');
+    for(i = 0; i < maxLength; i += tickMarkDistance){
+        if( (i/tickMarkDistance) % scaleLabelFrequency === 0){
+            $('.bar.chart .grid').append('<div class="scaleLabel" style="left:' + i * dataWidth + 'px">' + i + '</div>');
+            $('.bar.chart .grid').append('<div class="tickMark labeled" style="left:' + i * dataWidth + 'px"></div>');
+        } else{
+            $('.bar.chart .grid').append('<div class="tickMark" style="left:' + i * dataWidth + 'px"></div>');
+        }
     }
 }
 
