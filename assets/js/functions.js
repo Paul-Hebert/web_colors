@@ -280,9 +280,17 @@ function scaleCharts(){
 
     var chartWidth = $('.bar.chart').eq(0).width();
 
-    var tickMarkDistance = 50;
-
-    var scaleLabelFrequency = 2;
+    if (maxLength < 250){
+        var tickMarkDistance = 10;
+        var scaleLabelFrequency = 5;        
+    } else if (maxLength < 500){
+        var tickMarkDistance = 25;
+        var scaleLabelFrequency = 2;        
+    } else{
+        var tickMarkDistance = 50;
+        var scaleLabelFrequency = 2;        
+    }
+    
 
     var dataWidth = (chartWidth - tickMarkDistance)/maxLength;
 
