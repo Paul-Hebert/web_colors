@@ -276,7 +276,7 @@ function scaleCharts(){
 
     var maxLength = Math.max.apply(Math, lengths);
 
-    var chartWidth = $('.bar.chart').eq(0).width();
+    var chartWidth = $('.bar.chart').eq(0).width() - 50;
 
     if (maxLength < 250){
         var tickMarkDistance = 10;
