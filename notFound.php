@@ -13,7 +13,7 @@
 
 	<main>
 		<section>
-			<div class="subsection" id="aggregate">
+			<div class="subsection">
 				<h1 id="title">
 					404 - Page Not Found
 				</h1>
