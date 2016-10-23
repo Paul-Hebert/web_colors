@@ -14,12 +14,8 @@ body{
 	padding:$size-8;
 }
 
-header, footer{
-
-	a{
-		text-decoration:none;
-		color:$off-black;
-	}
+nav a{
+	text-decoration:none;
 }
 
 main{

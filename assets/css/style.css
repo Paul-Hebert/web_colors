@@ -73,9 +73,9 @@ input:not([type="submit"]):not([type="range"]), textarea {
     -moz-box-shadow: 0px 0px 3px 1px #f00;
     box-shadow: 0px 0px 3px 1px #f00; }
   input:not([type="submit"]):not([type="range"]):focus, textarea:focus {
-    -webkit-box-shadow: 0px 0px 3px 1px #166993;
-    -moz-box-shadow: 0px 0px 3px 1px #166993;
-    box-shadow: 0px 0px 3px 1px #166993; }
+    -webkit-box-shadow: 0px 0px 3px 1px #0C3D56;
+    -moz-box-shadow: 0px 0px 3px 1px #0C3D56;
+    box-shadow: 0px 0px 3px 1px #0C3D56; }
 
 .error_text {
   padding: 6pt;
@@ -92,7 +92,7 @@ input:not([type="submit"]):not([type="range"]), textarea {
 .button, input[type=submit] {
   -webkit-appearance: none;
   font-size: 13pt;
-  background: #0C3D56;
+  background: #166993;
   color: #f0f0f0;
   padding: 6pt;
   -o-border-radius: 6pt;
@@ -111,7 +111,7 @@ input:not([type="submit"]):not([type="range"]), textarea {
   -webkit-transition: background 250ms ease-in-out;
   transition: background 250ms ease-in-out; }
   .button:hover, input[type=submit]:hover {
-    background: #166993; }
+    background: #0C3D56; }
   .button *, input[type=submit] * {
     font-size: inherit; }
 
@@ -146,9 +146,9 @@ span {
 
 a:not(.button) {
   font-family: inherit;
-  color: #0C3D56; }
+  color: #166993; }
   a:not(.button):hover {
-    color: #166993; }
+    color: #0C3D56; }
 
 abbr {
   text-transform: uppercase;
@@ -348,9 +348,8 @@ body {
   background: #f0f0f0;
   padding: 26pt; }
 
-header a, footer a {
-  text-decoration: none;
-  color: #222; }
+nav a {
+  text-decoration: none; }
 
 main {
   max-width: 440pt;
@@ -378,7 +377,7 @@ figcaption {
   -webkit-border-radius: 50%;
   border-radius: 50%;
   border: 5px;
-  border-color: #166993;
+  border-color: #0C3D56;
   border-top-color: #fff;
   height: 30px;
   width: 30px;

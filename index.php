@@ -74,7 +74,7 @@
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes.</p>
+				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes. Click on a site for a breakdown of the colors that site uses.</p>
 
 				<figure class="extra large listings">
 					<?php
