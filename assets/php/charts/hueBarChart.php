@@ -19,9 +19,6 @@
 						<aside class="left"><label>Green</label></aside>
 						<div class="barColumn" id="greenColors"></div>
 
-						<aside class="left"><label>Turquoise</label></aside>
-						<div class="barColumn" id="turquoiseColors"></div>
-
 						<aside class="left"><label>Blue</label></aside>
 						<div class="barColumn" id="blueColors"></div>
 

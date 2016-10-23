@@ -240,21 +240,19 @@ function printColorShades(){
     for(i = 0; i < colors.length; i++){
         if (colors[i].sat < 10 && colors[i].light < 0.05){
             shade = 'black';
-        } else if(colors[i].sat < 1 && colors[i].light > 90){
+        } else if(colors[i].sat < 10 && colors[i].light > 90 || colors[i].sat < 95 && colors[i].light > 94 || colors[i].light > 98){
             shade = 'white';
-        } else if(colors[i].sat < 1 ){
+        } else if(colors[i].sat < 30 ){
             shade = 'grey';
         } else if( colors[i].hue > 233.75 || colors[i].hue <= 21.25 ){
             shade = 'red';
-        } else if( colors[i].hue > 21.25 && colors[i].hue <= 63.75 ){
+        } else if( colors[i].hue > 21.25 && colors[i].hue <= 60 ){
             shade = 'yellow';
-        } else if( colors[i].hue > 63.75 && colors[i].hue <= 127.5 ){
+        } else if( colors[i].hue > 60 && colors[i].hue <= 130 ){
             shade = 'green';
-        } else if( colors[i].hue > 127.5 && colors[i].hue <= 148.75 ){
-            shade = 'turquoise';
-        } else if( colors[i].hue > 148.75 && colors[i].hue <= 191.25 ){
+        } else if( colors[i].hue > 130 && colors[i].hue <= 180 ){
             shade = 'blue';
-        } else if( colors[i].hue > 191.25 && colors[i].hue <= 233.75 ){
+        } else if( colors[i].hue > 180 && colors[i].hue <= 233.75 ){
             shade = 'purple';
         }
         
