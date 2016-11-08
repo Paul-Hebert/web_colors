@@ -15,7 +15,7 @@ $(function() {
     // Home Page Start-Up
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-    if( bodyId === 'home' ){ 
+    if( bodyId === 'home' || bodyId === 'site'){ 
         printCharts('#aggregate');
     }
 
