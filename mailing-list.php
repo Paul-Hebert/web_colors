@@ -15,7 +15,7 @@
 			<div class="subsection">
 				<h1>Join My Mailing List</h1>
 
-				<p>I'll only email you things I think you might find interesting.</p>
+				<p>I'll only email you things I think you might find interesting. Things like this.</p>
 			</div>
 
 			<div class="subsection">

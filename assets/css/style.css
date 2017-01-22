@@ -123,6 +123,9 @@ input:not([type="submit"]):not([type="range"]), textarea {
 h1, h2, h3, h4, h5, h6 {
   font-family: Roboto Slab, "sans-serif";
   color: #444; }
+  h1 a:not(.button), h2 a:not(.button), h3 a:not(.button), h4 a:not(.button), h5 a:not(.button), h6 a:not(.button) {
+    text-decoration: none;
+    color: #222; }
 
 h1 {
   font-size: 26pt;
@@ -344,6 +347,50 @@ pre {
   width: 100%;
   padding: 10px; }
 
+[type=range] {
+  -webkit-appearance: none;
+  width: 100%; }
+  [type=range]:focus {
+    outline: none; }
+  [type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    border-radius: 5px; }
+  [type=range]::-webkit-slider-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-appearance: none; }
+  [type=range]::-moz-range-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    border-radius: 5px; }
+  [type=range]::-moz-range-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    cursor: pointer; }
+  [type=range]::-ms-track {
+    width: 100%;
+    height: 2px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    border-width: 12px 0;
+    color: transparent; }
+  [type=range]::-ms-fill-lower {
+    border-radius: 10px; }
+  [type=range]::-ms-fill-upper {
+    border-radius: 10px; }
+  [type=range]::-ms-thumb {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    cursor: pointer; }
+
 body {
   background: #f0f0f0;
   padding: 26pt; }
@@ -502,26 +549,27 @@ figcaption {
     background: #DDDDDD;
     padding: 21pt;
     z-index: 100; }
-    nav a {
+    nav a:not(.button) {
       padding: 16pt;
       color: #444;
       text-align: center;
       position: relative; }
-      nav a:after {
+      nav a:not(.button):after {
         content: '';
         position: absolute;
         bottom: 13pt;
         width: 0px;
         height: 3pt;
-        background: #ccc;
+        background: #166993;
         -o-transition: all 500ms;
         -ms-transition: all 500ms;
         -webkit-transition: all 500ms;
         transition: all 500ms;
         left: 50%; }
-      nav a:hover:after {
+      nav a:not(.button):hover:after {
         width: 80%;
-        left: 10%; }
+        left: 10%;
+        color: #166993; }
 
   footer nav {
     margin-top: 26pt; }

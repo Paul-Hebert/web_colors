@@ -7,6 +7,11 @@
 h1, h2, h3, h4, h5, h6{
     font-family:$second-font;       
     color:$dark-grey;
+
+    a:not(.button){
+        text-decoration:none;
+        color:$off-black;
+    }
 }
 
 h1{

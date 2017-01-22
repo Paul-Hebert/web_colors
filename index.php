@@ -60,7 +60,7 @@
 			</div>
 		</section>
 
-		<section>
+		<!--<section>
 			<div class="subsection">
 				<h2>Try it For Yourself</h2>
 
@@ -68,13 +68,14 @@
 
 				<?php include('assets/php/utilities/scrape/form.php'); ?>
 			</div>
-		</section>
+		</section>-->
 
 		<section>
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use. <span class="hide-on-small">Mouse over</span><span class="hide-on-medium-large">Click on</span> colors to see their color codes. Click on a site for a breakdown of the colors that site uses.</p>
+				<p>Here are the ten most popular sites, and the colors that they use. Duplicates were removed on a per site basis. However, if a site used the same color in multiple formats, each format is included. For example, if they used <code>#000</code>, <code>#000000</code>, and <code>black</code>, each would be included separately.</p>
+				<p><span class="hide-on-small">Mouse over colors to see their color codes. </span>Click on a site for a breakdown of the colors that site uses.</p>
 
 				<figure class="extra large listings">
 					<?php
@@ -135,9 +136,9 @@
 					<?php include('assets/php/charts/fanChart.php'); ?>
 				</figure>	
 
-				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation. All HSL values were rounded to integers.</p>
+				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation.</p>
 
-				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once. Colors had their hue, saturation and lightness rounded to the nearest integer.</p>
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once. Colors had their hue, saturation and lightness rounded to the nearest integer. Transparency was removed.</p>
 			
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>
@@ -682,7 +683,7 @@ echo $geshi->parse_code();
 			<div class="subsection">
 				<h1>Join My Mailing List</h1>
 
-				<p>I'll only email you things I think you might find interesting.</p>
+				<p>I'll only email you things I think you might find interesting. Things like this.</p>
 			</div>
 
 			<div class="subsection">
