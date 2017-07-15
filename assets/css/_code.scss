@@ -8,13 +8,13 @@ code{
 }
 
 .color-preview{
-	height: 10pt;
-	width: 10pt;
-	border:1px solid #fff;
+	height: $size-4;
+	width: $size-4;
+	border:$size-0 solid $off-white;
 	display: inline-block;
 	position: relative;
 	top: 2pt;
-	margin-right: 5pt;
+	margin-right: $size-2;
 }
 
 pre{
