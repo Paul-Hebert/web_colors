@@ -3,11 +3,18 @@ code{
 	padding:0px;
 	font-family: $monospace;
 	font-size:$size-4;
-	padding:3px 4px;	
+	padding:3px 4px;
+	white-space:nowrap;
 }
 
-code{
-	white-space:nowrap;
+.color-preview{
+	height: 10pt;
+	width: 10pt;
+	border:1px solid #fff;
+	display: inline-block;
+	position: relative;
+	top: 2pt;
+	margin-right: 5pt;
 }
 
 pre{

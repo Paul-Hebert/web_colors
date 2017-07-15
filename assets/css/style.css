@@ -291,10 +291,17 @@ code {
   padding: 0px;
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 10pt;
-  padding: 3px 4px; }
-
-code {
+  padding: 3px 4px;
   white-space: nowrap; }
+
+.color-preview {
+  height: 10pt;
+  width: 10pt;
+  border: 1px solid #fff;
+  display: inline-block;
+  position: relative;
+  top: 2pt;
+  margin-right: 5pt; }
 
 pre {
   display: block; }

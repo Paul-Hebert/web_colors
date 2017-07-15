@@ -74,7 +74,7 @@
 			<div class="subsection">
 				<h2>The Sites</h2>
 
-				<p>Here are the ten most popular sites, and the colors that they use. Duplicates were removed on a per site basis. However, if a site used the same color in multiple formats, each format is included. For example, if they used <code>#000</code>, <code>#000000</code>, and <code>black</code>, each would be included separately.</p>
+				<p>Here are the ten most popular sites, and the colors that they use. Duplicates were removed on a per site basis. However, if a site used the same color in multiple formats, each format is included. For example, if they used <code class="color-code">#000</code>, <code class="color-code">#000000</code>, and <code class="color-code">black</code>, each would be included separately.</p>
 				<p><span class="hide-on-small">Mouse over colors to see their color codes. </span>Click on a site for a breakdown of the colors that site uses.</p>
 
 				<figure class="extra large listings">
@@ -154,7 +154,7 @@
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
 
-				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code>white</code> and <code>red</code> to stranger examples like <code>LightGoldenRodYellow</code>, <code>PapayaWhip</code>, <code>IndianRed</code> and <code>AliceBlue</code>.
+				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code class="color-code">white</code> and <code class="color-code">red</code> to stranger examples like <code class="color-code">LightGoldenRodYellow</code>, <code class="color-code">PapayaWhip</code>, <code class="color-code">IndianRed</code> and <code class="color-code">AliceBlue</code>.
 			
 				<figure class="colorPicker" data-format=',' data-delimiter="">
 					<code class="colorBlock"></code>
@@ -174,7 +174,7 @@
 					Digital colors are made by combining different amounts of red, green and blue light. The amount of each color is represented by a number between 0 and 255.
 				</p>
 
-				<p>This is how to write the <abbr>RGB</abbr> color format: <code>rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is blue.</p>
+				<p>This is how to write the <abbr>RGB</abbr> color format: <code class="color-code">rgb(186, 218, 85)</code>. The first number is red, the second is green and the third is blue.</p>
 			</div>
 
 			<div class="subsection">
@@ -205,7 +205,7 @@
 				</p>
 
 				<figure>
-					<code>rgba(186, 218, 85, 0)</code> vs <code>rgba(186, 218, 85, 1)</code>
+					<code class="color-code">rgba(186, 218, 85, 0)</code> vs <code class="color-code">rgba(186, 218, 85, 1)</code>
 				</figure>
 			</div>
 
@@ -356,7 +356,7 @@ echo $geshi->parse_code();
 				</figure>
 
 				<p>
-					A hexadecimal color is six characters long and preceded by a number sign: <code>#BADA55</code>. Hexadecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section tells the browser that a hexadecimal color is coming.
+					A hexadecimal color is six characters long and preceded by a number sign: <code class="color-code">#BADA55</code>. Hexadecimal colors can be split into 4 sections: <code>#</code> + <code>BA</code> + <code>DA</code> + <code>55</code>. We can ignore the first section: <code>#</code>. This section tells the browser that a hexadecimal color is coming.
 				</p>
 
 				<p>
@@ -385,7 +385,7 @@ echo $geshi->parse_code();
 				</figure>
 
 				<p>
-					Here are the color values for <code>#BADA55</code>, converted into base 10.
+					Here are the color values for <code class="color-code">#BADA55</code>, converted into base 10.
 				</p>
 
 				<figure>
@@ -453,7 +453,7 @@ echo $geshi->parse_code();
 				</p>
 
 				<figure>
-					<code>f</code> = <code>ff</code> so <code>#fff</code> = <code>#ffffff</code> and <code>#3a9</code> = <code>#33aa99</code>.
+					<code>f</code> = <code>ff</code> so <code class="color-code">#fff</code> = <code class="color-code">#ffffff</code> and <code class="color-code">#3a9</code> = <code class="color-code">#33aa99</code>.
 				</figure>
 				<figure>
 

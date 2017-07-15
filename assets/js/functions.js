@@ -17,6 +17,7 @@ $(function() {
 
     if( bodyId === 'home' || bodyId === 'site'){ 
         printCharts('#aggregate');
+        previewColorCodes();
     }
 
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -87,6 +88,12 @@ function printCharts(parent){
     });
 
     printFanChart();
+}
+
+function previewColorCodes(){
+    $('.color-code').each(function(){
+        $(this).html("<span class='color-preview' style='background:" + $(this).text() + ";'></span>" + $(this).text());
+    });
 }
 
 function ajaxScrape(){
