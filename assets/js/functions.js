@@ -75,10 +75,6 @@ function printCharts(parent){
         });
     });
 
-    $('.color.listing').each(function(){
-        $(this).css( 'background', $(this).find('span').text() );
-    });
-
     $('#codeToggle').click(function(){
         $(this).find('span').toggleClass('hidden');
 

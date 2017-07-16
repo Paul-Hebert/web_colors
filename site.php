@@ -53,7 +53,7 @@
 								echo '<figure class="large right" style="font-size:0px;">';
 									
 									for($count = 1; $count < count($sites[$siteID]); $count++){
-										echo '<span class="color listing"><span>' . $sites[$siteID][$count] . '</span></span>';
+										echo '<span class="color listing" style="background:' . $sites[$siteID][$count] . ';"><span>' . $sites[$siteID][$count] . '</span></span>';
 									}
 
 								echo '</figure>';

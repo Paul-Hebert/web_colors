@@ -30,7 +30,7 @@
 
 						foreach($sites as $site){
 							for($count = 1; $count < count($site); $count++){
-								echo '<span class="color listing"><span>' . $site[$count] . '</span></span>';
+								echo '<span class="color listing" style="background:' . $site[$count] . ';"><span>' . $site[$count] . '</span></span>';
 							}
 						}
 					?>
@@ -90,7 +90,7 @@
 
 								echo '<div>';
 								for($color_count = 1; $color_count < count($site); $color_count++){
-									echo '<span class="color listing"><span>' . $site[$color_count] . '</span></span>';
+									echo '<span class="color listing" style="background:' . $site[$color_count] . ';"><span>' . $site[$color_count] . '</span></span>';
 								}
 								echo '</div>';
 							echo '</a>';
@@ -154,8 +154,12 @@
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
 
-				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code class="color-code">white</code> and <code class="color-code">red</code> to stranger examples like <code class="color-code">LightGoldenRodYellow</code>, <code class="color-code">PapayaWhip</code>, <code class="color-code">IndianRed</code> and <code class="color-code">AliceBlue</code>. These color names are written without any spaces. They're case insensitive, so it does not matter how they are capitalized. 
-			
+				<p>
+					Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code class="color-code">white</code> and <code class="color-code">red</code> to stranger examples like <code class="color-code">LightGoldenRodYellow</code>, <code class="color-code">PapayaWhip</code>, <code class="color-code">IndianRed</code> and <code class="color-code">AliceBlue</code>. These color names are written without any spaces. They're case insensitive, so it does not matter how they are capitalized.
+
+					<a href="predefined_color_names.php"> View all predefined color names.</a>
+				</p>
+
 				<figure class="colorPicker" data-format=',' data-delimiter="">
 					<code class="colorBlock"></code>
 
