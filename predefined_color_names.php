@@ -20,7 +20,6 @@
 					echo '<figure class="large right" style="font-size:0px;">';
 						
 						for($count = 1; $count < count($colorNames); $count++){
-							echo '<span class="color listing"><span>' . $colorNames[$count] . '</span></span>';
 							echo '<span class="color listing" style="background:' . $colorNames[$count] . ';"><span>' . $colorNames[$count] . '</span></span>';
 						}
 
@@ -51,8 +50,8 @@
 
 				<p>In this fan chart, colors are organized around the circle by hue. Their distance from the center is determined by their saturation.</p>
 
-							<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once. You may notice that there are duplicate named colors to account for alternate spellings. For example, <code class="color-code">SlateGrey</code> and <code class="color-code">SlateGray</code>.
-							<p>If a color was found with varying levels of transparency each was included separately. Colors had their hue, saturation and lightness rounded to the nearest integer. Transparency was removed.</p>
+				<p>If a color was found more than once in the data it has a larger area. A color that was found three times has an area three times larger than a color that was found once. You may notice that there are duplicate named colors to account for alternate spellings. For example, <code class="color-code">SlateGrey</code> and <code class="color-code">SlateGray</code>.
+				<p>If a color was found with varying levels of transparency each was included separately. Colors had their hue, saturation and lightness rounded to the nearest integer. Transparency was removed.</p>
 
 				<p>Unfortunately, using this style of chart has one main disadvantage. Some colors become hidden under other colors.</p>
 			</div>
