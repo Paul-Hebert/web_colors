@@ -161,7 +161,15 @@
 
 					<form autocomplete="off">
 						<select name='color' data-scale="" data-unit="" class="colorNames">
-							<?php include('assets/php/color_names.php'); ?>
+							<?php 
+								include('assets/php/color_names.php'); 
+
+								print_r($colorNames);
+
+								foreach($colorNames as $color){
+									echo "<option>" . $color . "</option>";
+								}
+							?>
 						</select>
 					</form>
 				</figure>

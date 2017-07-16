@@ -15,7 +15,7 @@ $(function() {
     // Home Page Start-Up
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-    if( bodyId === 'home' || bodyId === 'site'){ 
+    if( bodyId === 'home' || bodyId === 'site' || bodyId === 'color-names'){ 
         printCharts('#aggregate');
         previewColorCodes();
     }
@@ -733,8 +733,8 @@ var colorNames = [
     ['GreenYellow','#ADFF2F'],
     ['HoneyDew','#F0FFF0'],
     ['HotPink','#FF69B4'],
-    ['IndianRed ','#CD5C5C'],
-    ['Indigo ','#4B0082'],
+    ['IndianRed','#CD5C5C'],
+    ['Indigo','#4B0082'],
     ['Ivory','#FFFFF0'],
     ['Khaki','#F0E68C'],
     ['Lavender','#E6E6FA'],
