@@ -154,7 +154,7 @@
 			<div class="subsection">
 				<h3>Predefined Color Names</h3>
 
-				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code class="color-code">white</code> and <code class="color-code">red</code> to stranger examples like <code class="color-code">LightGoldenRodYellow</code>, <code class="color-code">PapayaWhip</code>, <code class="color-code">IndianRed</code> and <code class="color-code">AliceBlue</code>.
+				<p>Browsers recognize certain predefined color names. 140 names are supported by all browsers. The names range from common words like <code class="color-code">white</code> and <code class="color-code">red</code> to stranger examples like <code class="color-code">LightGoldenRodYellow</code>, <code class="color-code">PapayaWhip</code>, <code class="color-code">IndianRed</code> and <code class="color-code">AliceBlue</code>. These color names are written without any spaces. They're case insensitive, so it does not matter how they are capitalized. 
 			
 				<figure class="colorPicker" data-format=',' data-delimiter="">
 					<code class="colorBlock"></code>
