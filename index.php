@@ -426,7 +426,7 @@ $geshi->enable_classes();
 
 echo $geshi->parse_code();
 ?>				
-				<figure>
+				</figure>
 
 				<figure class="codeFigure">
 					<figcaption>Here's how to convert an <abbr>RGB</abbr> color to hexadecimal.</figcaption>
@@ -454,7 +454,7 @@ $geshi->enable_classes();
 
 echo $geshi->parse_code();
 ?>				
-				<figure>
+				</figure>
 			</div>
 
 			<div class="subsection">
@@ -467,7 +467,6 @@ echo $geshi->parse_code();
 				<figure>
 					<code>f</code> = <code>ff</code> so <code class="color-code">#fff</code> = <code class="color-code">#ffffff</code> and <code class="color-code">#3a9</code> = <code class="color-code">#33aa99</code>.
 				</figure>
-				<figure>
 
 				<figure class="codeFigure">
 					<figcaption>

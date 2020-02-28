@@ -12,6 +12,10 @@ input, textarea{
 	padding:$size-2;
 }
 
+input[type="range"] {
+	padding: 0;
+}
+
 input:not([type="submit"]):not([type="range"]), textarea{
 	font-size: $size-5;
 	border:1px solid $grey;
